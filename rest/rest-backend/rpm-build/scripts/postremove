@@ -1,0 +1,19 @@
+echo "start postun section for ecor"
+
+rm -Rf /app/ecor/container/webapps/%{webcontext}
+echo "/app/ecor/container/webapps/%{webcontext} removed..."
+
+rm -Rf /app/ecor/bin
+echo "/app/ecor/bin removed..."
+
+if [[ -L /app/%{user}/jdk ]] ; then
+    rm /app/%{user}/jdk
+    echo "symlink for jdk removed..."
+fi
+
+crontab -u %{user} -r 
+echo "crontab ecor removed..."
+
+
+chkconfig --del %{user}
+echo "end postun section for ecor"

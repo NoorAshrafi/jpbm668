@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- created by Joe Crean (IONA) -->
+<xs:schema targetNamespace="http://schemas.zurich.com/zsoa/ch/claims/2007/09/motorclaim" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mfbt="http://schemas.zurich.com/zsoa/ch/claims/2007/09/motorfraudbasetypes" xmlns="http://schemas.zurich.com/zsoa/ch/claims/2007/09/motorclaim" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+  <!-- schemaLocation="http://schemas.zurich.com/zsoa/ch/claims/2007/09/eldaexbasetypes/motorfraudbasetypes.xsd" -->
+  <xs:import namespace="http://schemas.zurich.com/zsoa/ch/claims/2007/09/motorfraudbasetypes" schemaLocation="./motorfraudbasetypes.xsd"/>
+  <!--simple types-->
+  <xs:simpleType name="ClaimNumber">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="64"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DocumentLanguage">
+     <xs:restriction base="xs:string">
+       <xs:enumeration value="de"/>
+       <xs:enumeration value="it"/>
+       <xs:enumeration value="fr"/>
+     </xs:restriction>
+  </xs:simpleType>
+  
+   <xs:simpleType name="VehicleType" >
+     <xs:restriction base="xs:positiveInteger">
+       <xs:enumeration value="1"/>
+       <xs:enumeration value="3"/>
+       <xs:enumeration value="5"/>
+       <xs:enumeration value="6"/>
+       <xs:enumeration value="7"/>
+       <xs:enumeration value="8"/>
+       <xs:enumeration value="9"/>
+       <xs:enumeration value="10"/>
+       <xs:enumeration value="11"/>
+       <xs:enumeration value="12"/>
+       <xs:enumeration value="13"/>
+     </xs:restriction>
+   </xs:simpleType>
+   
+   <xs:simpleType name="Cover">
+     <xs:restriction base="xs:positiveInteger">
+       <xs:enumeration value="1"/>
+       <xs:enumeration value="2"/>
+       <xs:enumeration value="3"/>
+       <xs:enumeration value="4"/>
+       <xs:enumeration value="5"/>
+       <xs:enumeration value="6"/>
+       <xs:enumeration value="7"/>
+       <xs:enumeration value="8"/>
+       <xs:enumeration value="9"/>
+       <xs:enumeration value="10"/>
+       <xs:enumeration value="11"/>
+       <xs:enumeration value="12"/>
+       <xs:enumeration value="13"/>
+       <xs:enumeration value="14"/>
+       <xs:enumeration value="15"/>
+       <xs:enumeration value="16"/>
+       <xs:enumeration value="17"/>
+       <xs:enumeration value="18"/>
+       <xs:enumeration value="21"/>
+       <xs:enumeration value="22"/>
+       <xs:enumeration value="23"/>
+       <xs:enumeration value="24"/>
+     </xs:restriction>
+   </xs:simpleType>
+  
+  <!--complex types-->
+    <xs:complexType name="DamagedPartyDetails">
+    <xs:all>
+      <xs:element name="insurer" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>FeldNr: 202</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="address" type="mfbt:ContactDetails"/>
+    </xs:all>
+  </xs:complexType>
+  
+  <xs:complexType name="InspectionAppointment">
+    <xs:all>
+      <xs:element name="inspectionDate" type="xs:date"/>
+      <xs:element name="inspectionTimeFrom" type="xs:time" minOccurs="0"/>
+      <xs:element name="inspectionTimeTo" type="xs:time" minOccurs="0"/>
+      <xs:element name="inspectionTimeCode" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:positiveInteger">
+            <xs:totalDigits value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="InspectionLocation">
+    <xs:all>
+      <xs:element name="partnerNumber" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Za-z0-9 ]{1,10}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ratingCode" type="mfbt:RatingCode" minOccurs="0"/>
+      <xs:element name="address" type="mfbt:ContactDetails"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="InspectionData">
+    <xs:all>
+      <xs:element name="inspectionAppointment" type="InspectionAppointment" minOccurs="0" />
+      <xs:element name="inspectionLocation" type="InspectionLocation" minOccurs="0" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="ForeignInsuredPartyData">
+    <xs:all>
+      <xs:element name="address" type="mfbt:ContactDetails" minOccurs="0"/>
+      <xs:element name="vehicle" type="xs:string" minOccurs="0"/>
+      <xs:element name="registrationNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="countryOfRegistration" type="mfbt:IsoCountryCode" minOccurs="0"/>
+      <xs:element name="foreignInsurer" type="xs:string" minOccurs="0"/>
+      <xs:element name="greenCardNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="borderInsuranceCert" type="xs:string" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+  
+  <xs:complexType name="Claimant">
+      <xs:all>
+         <xs:element name="company">
+           <xs:simpleType>
+             <xs:restriction base="xs:positiveInteger">
+               <xs:minInclusive value="1"/>
+               <xs:maxInclusive value="40"/>
+             </xs:restriction>
+           </xs:simpleType>
+         </xs:element>
+         <xs:element name="telephoneNumber" type="mfbt:TelephoneNumber" minOccurs="0"/>
+     </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="ClaimData">
+      <xs:all>
+          <xs:element name="claimNumber" type="ClaimNumber" minOccurs="0"/>
+          <xs:element name="claimant" type="Claimant" />
+          <xs:element name="claimDate" type="xs:date"/>
+          <xs:element name="claimTime" type="xs:time"/>
+          <xs:element name="activity" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:positiveInteger">
+                  <xs:minInclusive value="1"/>
+                  <xs:maxInclusive value="10"/>
+                </xs:restriction>
+              </xs:simpleType>
+          </xs:element>
+          <xs:element name="DESARegion" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:positiveInteger">
+                  <xs:minInclusive value="1"/>
+                  <xs:maxInclusive value="4"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          <xs:element name="poolBox" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:positiveInteger">
+                  <xs:minInclusive value="1"/>
+                  <xs:maxInclusive value="999"/>
+                </xs:restriction>
+              </xs:simpleType>
+          </xs:element>
+          <xs:element name="inspection" type="InspectionData" minOccurs="0" />
+          <xs:element name="priority" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="mfbt:Priority"/>
+              </xs:simpleType>
+          </xs:element>
+          <xs:element name="settlementType" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:positiveInteger">
+                  <xs:minInclusive value="1"/>
+                  <xs:maxInclusive value="12"/>
+                </xs:restriction>
+              </xs:simpleType>
+          </xs:element>
+          <xs:element name="effectiveSettlementType" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:positiveInteger">
+                  <xs:totalDigits value="10"/>
+                </xs:restriction>
+              </xs:simpleType>
+          </xs:element>
+          <xs:element name="previousDamage" type="xs:boolean" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>indicates if there was damage prior to the claim incident which was not reported</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          <xs:element name="remarks" type="mfbt:Memo" minOccurs="0"/>
+          <xs:element name="requestExpertise" type="xs:boolean" minOccurs="0" />
+
+          <xs:element name="processDurationKDX" type="xs:positiveInteger" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>technical field internal to ELDA - number of days</xs:documentation>
+              </xs:annotation>
+          </xs:element>
+          <xs:element name="receiverDamageInfo" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:positiveInteger">
+                  <xs:totalDigits value="10"/>
+                </xs:restriction>
+              </xs:simpleType>
+          </xs:element>
+          <xs:element name="documentLanguage" type="DocumentLanguage" minOccurs="0" />
+          <xs:element name="reportedBy" type="xs:string" minOccurs="0"/>
+       </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="DamageData">
+      <xs:all>
+        <xs:element name="damageNumber" type="xs:string" minOccurs="0"/>
+        <xs:element name="damageDate" type="xs:date"/>
+        <xs:element name="damageDateMutated" type="xs:date" minOccurs="0"/>
+        <xs:element name="timestamp" type="xs:time" minOccurs="0"/>
+        <xs:element name="place" type="xs:string" minOccurs="0"/>
+        <xs:element name="damagedParty" type="DamagedPartyDetails" minOccurs="0" />
+        <xs:element name="incidentDescription" type="mfbt:Memo">
+          <xs:annotation>
+            <xs:documentation>description of the course of events</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="damageClassification" type="mfbt:Num3StatusCode"/>
+        <xs:element name="assessor" type="xs:string" minOccurs="0"/>
+        <xs:element name="damageDescription1" type="mfbt:Memo" minOccurs="0"/>
+        <xs:element name="damageDescription2" type="mfbt:Memo" minOccurs="0"/>
+        <xs:element name="blame" type="mfbt:Num3StatusCode" minOccurs="0"/>
+        <xs:element name="neckOrSpineInjury" type="mfbt:Num3StatusCode" minOccurs="0"/>
+        <xs:element name="injured" type="mfbt:Num3StatusCode" minOccurs="0"/>
+        <xs:element name="placeOfTreatment" type="xs:string" minOccurs="0"/>
+        <xs:element name="report" type="xs:string" minOccurs="0"/>
+        <xs:element name="reportIssuer" type="xs:string" minOccurs="0"/>
+        <xs:element name="vehicleLocked" type="mfbt:Num3StatusCode" minOccurs="0"/>
+        <xs:element name="alarmActivated" type="mfbt:Num3StatusCode" minOccurs="0"/>
+        <xs:element name="vehicleKey" type="xs:string" minOccurs="0"/>
+      </xs:all>
+  </xs:complexType>  
+
+  <xs:complexType name="VehicleData">
+     <xs:all>
+       <xs:element name="registrationNumber" type="mfbt:RegistrationNumber" minOccurs="0"/>
+       <xs:element name="vehicleIdentificationNumber" type="xs:string" minOccurs="0">
+         <xs:annotation>
+           <xs:documentation>aka chassis number</xs:documentation>
+         </xs:annotation>
+       </xs:element>
+       <xs:element name="firstRegistrationDate" type="xs:date" minOccurs="0"/>
+       <xs:element name="vehicleType" type="VehicleType" />
+       <xs:element name="vehicleBrand" type="xs:string"/>
+       <xs:element name="mainClassification" type="xs:string"/>
+       <xs:element name="subClassification" type="xs:string" minOccurs="0"/>
+       <xs:element name="color" type="xs:string" minOccurs="0"/>
+       <xs:element name="yearBuilt" type="xs:gYear" minOccurs="0"/>
+       <xs:element name="listPrice" type="mfbt:MonetaryAmount" minOccurs="0"/>
+       <xs:element name="optionsPrice" type="mfbt:MonetaryAmount" minOccurs="0"/>
+       <xs:element name="mileage" type="xs:unsignedLong" minOccurs="0"/>
+     </xs:all>
+  </xs:complexType>  
+
+  <xs:complexType name="InsuranceData">
+     <xs:all>
+       <xs:element name="policyNumber" type="mfbt:PolicyNumber" minOccurs="0"/>
+       <xs:element name="insured" type="mfbt:ContactDetails"/>
+       <xs:element name="cover" type="Cover" />
+       <xs:element name="extentOfCover" type="mfbt:Memo" minOccurs="0"/>
+       <xs:element name="clauses" type="mfbt:Memo" minOccurs="0"/>
+       <xs:element name="specialProvisions" type="mfbt:Memo" minOccurs="0"/>
+       <xs:element name="generalConditions" type="mfbt:Memo" minOccurs="0"/>
+       <xs:element name="leased" type="xs:boolean" minOccurs="0"/>
+       <xs:element name="insurerPaymentAgreement" type="xs:boolean" minOccurs="0">
+         <xs:annotation>
+           <xs:documentation>an agreement which says that in the event of damage the insured will pass the insurance payouts back to the insurer</xs:documentation>
+         </xs:annotation>
+       </xs:element>
+       <xs:element name="excess" type="mfbt:MonetaryAmount" minOccurs="0">
+         <xs:annotation>
+           <xs:documentation>above is british term, american is deductible</xs:documentation>
+         </xs:annotation>
+       </xs:element>
+       <xs:element name="excessBBZB" type="xs:string" minOccurs="0"/>
+       <xs:element name="registrationNumberInsured" type="mfbt:RegistrationNumber" minOccurs="0"/>
+       <xs:element name="vehicleBrandInsured" type="xs:string" minOccurs="0"/>
+       <xs:element name="depreciationProtection" type="xs:boolean" minOccurs="0">
+         <xs:annotation>
+           <xs:documentation>an insurance extra which compensates for auto depreciation when claims are paid out; gap insurance</xs:documentation>
+         </xs:annotation>
+       </xs:element>
+       <xs:element name="vehicleTypeInsured" type="xs:string" minOccurs="0"/>
+     </xs:all>
+  </xs:complexType>  
+  <xs:complexType name="VehicleAddress">
+    <xs:all>
+      <xs:element name="currentLocation" type="xs:string"/>
+      <xs:element name="street" type="xs:string"/>
+      <xs:element name="ZIP" type="mfbt:ZIPCode"/>
+      <xs:element name="city" type="xs:string"/>
+      <xs:element name="country" type="mfbt:IsoCountryCode"/>
+      <xs:element name="telephoneNumber" type="mfbt:TelephoneNumber"/>
+      <xs:element name="faxNumber" type="mfbt:TelephoneNumber" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="VehicleReturnData">
+     <xs:all>
+       <xs:element name="vehicleReturn" type="xs:boolean"/>
+       <xs:element name="contactOnSite" type="xs:string" minOccurs="0"/>
+       <xs:element name="locationVehicleIDPaper" type="mfbt:FindLocationCode" minOccurs="0"/>
+       <xs:element name="locationVehicleKey" type="mfbt:FindLocationCode" minOccurs="0"/>
+       <xs:element name="locationVehiclePapers" type="mfbt:FindLocationCode" minOccurs="0"/>
+       <xs:element name="existingPhotos" type="xs:boolean"/>
+       <xs:element name="vehicleAddress" type="VehicleAddress" minOccurs="0" />
+       <xs:element name="insurance" type="mfbt:InsuranceTypeCode" minOccurs="0"/>
+       <xs:element name="returnCost" type="mfbt:MonetaryAmount" minOccurs="0"/>
+       <xs:element name="scrapValue" type="mfbt:MonetaryAmount" minOccurs="0"/>
+       <xs:element name="orderSubmission" type="xs:date" minOccurs="0"/>
+       <xs:element name="delivery" type="xs:date" minOccurs="0"/>
+       <xs:element name="integrated" type="xs:boolean" minOccurs="0"/>
+       <xs:element name="totalWriteOff" type="xs:boolean" minOccurs="0"/>
+       <xs:element name="scrapDealer" type="xs:string" minOccurs="0"/>
+       <xs:element name="returnStatus" minOccurs="0">
+         <xs:annotation>
+           <xs:documentation>technical Field internal to ELDA</xs:documentation>
+         </xs:annotation>
+         <xs:simpleType>
+           <xs:restriction base="xs:positiveInteger">
+             <xs:totalDigits value="10"/>
+           </xs:restriction>
+         </xs:simpleType>
+       </xs:element>
+       <xs:element name="returnEffective" type="xs:boolean" minOccurs="0"/>
+     </xs:all>
+  </xs:complexType>  
+  
+  <xs:complexType name="DriverData">
+      <xs:all>
+        <xs:element name="surname" type="xs:string"/>
+        <xs:element name="firstName" type="xs:string" minOccurs="0"/>
+        <xs:element name="street" type="xs:string" minOccurs="0"/>
+        <xs:element name="number" type="xs:string" minOccurs="0"/>
+        <xs:element name="ZIP" type="mfbt:ZIPCode" />
+        <xs:element name="city" type="xs:string" />
+        <xs:element name="country" type="mfbt:IsoCountryCode" minOccurs="0"/>
+        <xs:element name="privateTelephone" type="mfbt:TelephoneNumber" minOccurs="0"/>
+        <xs:element name="mobileTelephone" type="mfbt:TelephoneNumber" minOccurs="0"/>
+        <xs:element name="dateOfBirth" type="xs:date" minOccurs="0"/>
+        <xs:element name="drivingTestDate" type="xs:date" minOccurs="0"/>
+      </xs:all>
+  </xs:complexType>
+  
+  <xs:complexType name="ReplacementVehicle">
+    <xs:all>
+      <xs:element name="usage">
+        <xs:simpleType>
+          <xs:restriction base="xs:positiveInteger">
+            <xs:totalDigits value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="cost" type="mfbt:MonetaryAmount" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+  
+  <xs:complexType name="DamagePartnerData">
+      <xs:all>
+        <xs:element name="integratable" type="xs:boolean" minOccurs="0"/>
+        <xs:element name="integratedCase" type="xs:boolean" minOccurs="0"/>
+        <xs:element name="notIntegratableReason" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:positiveInteger">
+              <xs:minInclusive value="1"/>
+              <xs:maxInclusive value="7"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="totalWriteOff" type="xs:boolean" minOccurs="0"/>
+        <xs:element name="allocation" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:positiveInteger">
+              <xs:minInclusive value="1"/>
+              <xs:maxInclusive value="5"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="repairPartner" type="xs:string" minOccurs="0"/>
+        <xs:element name="partnerDiscount" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+              <xs:minInclusive value="0"/>
+              <xs:totalDigits value="5"/>
+              <xs:fractionDigits value="2"/>
+              <xs:maxInclusive value="100"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="repairCost" type="mfbt:MonetaryAmount" minOccurs="0"/>
+        <xs:element name="repairDurationInDays" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:unsignedInt">
+              <xs:totalDigits value="4"/>
+              <xs:whiteSpace value="collapse"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="handoverToRepPartner" type="xs:date" minOccurs="0"/>
+        <xs:element name="receivedFromRepPartner" type="xs:date" minOccurs="0"/>
+        <xs:element name="repairQuality" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:positiveInteger">
+              <xs:minInclusive value="1"/>
+              <xs:maxInclusive value="2"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="replacementVehicle" type="ReplacementVehicle" minOccurs="0" />
+        <xs:element name="alternativeTransportCost" type="mfbt:MonetaryAmount" minOccurs="0"/>
+        <xs:element name="remarks" type="mfbt:Memo" minOccurs="0"/>
+        <xs:element name="paysDirectly" type="xs:boolean" minOccurs="0"/>
+      </xs:all>
+  </xs:complexType>
+
+   <xs:complexType name="CauserData">
+     <xs:all>
+       <xs:element name="address" type="mfbt:PostalAddress" minOccurs="0" />
+       <xs:element name="privateTelephone" type="mfbt:TelephoneNumber" minOccurs="0"/>
+       <xs:element name="vehicle" type="xs:string" minOccurs="0"/>
+       <xs:element name="color" type="xs:string" minOccurs="0"/>
+       <xs:element name="registrationNumber" type="xs:string" minOccurs="0"/>
+       <xs:element name="insurer" type="xs:string" minOccurs="0"/>
+     </xs:all>
+   </xs:complexType>
+
+  <xs:complexType name="MotorClaimDocument">
+    <xs:all>
+      <xs:element name="claimData" type="ClaimData" />
+      <xs:element name="damageData" type="DamageData" minOccurs="0" />
+      <xs:element name="vehicleData" type="VehicleData" minOccurs="0" />
+      <xs:element name="insuranceData" type="InsuranceData" minOccurs="0" />
+      <xs:element name="vehicleReturnData" type="VehicleReturnData"  minOccurs="0" >
+        <xs:annotation>
+          <xs:documentation>returning a damaged vehicle to its owners home</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="driver" type="DriverData" minOccurs="0" />
+      <xs:element name="damagePartnerData" type="DamagePartnerData" minOccurs="0" />
+      <xs:element name="causer" type="CauserData" minOccurs="0" />
+      <xs:element name="foreignInsuredParty" minOccurs="0" type="ForeignInsuredPartyData" />
+    </xs:all>
+  </xs:complexType>
+
+</xs:schema>

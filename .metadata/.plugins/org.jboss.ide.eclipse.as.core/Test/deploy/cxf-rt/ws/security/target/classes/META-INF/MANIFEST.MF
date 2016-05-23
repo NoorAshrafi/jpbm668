@@ -1,0 +1,101 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385440860546
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF Runtime WS Security
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime WS Security
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-ws-security
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.ws.security;version="2.7.9.SNAPSHOT",org.
+ apache.cxf.ws.security.cache;version="2.7.9.SNAPSHOT",org.apache.cxf.ws
+ .security.kerberos;version="2.7.9.SNAPSHOT",org.apache.cxf.ws.security.
+ policy;version="2.7.9.SNAPSHOT",org.apache.cxf.ws.security.policy.build
+ ers;version="2.7.9.SNAPSHOT",org.apache.cxf.ws.security.policy.custom;v
+ ersion="2.7.9.SNAPSHOT",org.apache.cxf.ws.security.policy.interceptors;
+ version="2.7.9.SNAPSHOT",org.apache.cxf.ws.security.policy.model;versio
+ n="2.7.9.SNAPSHOT",org.apache.cxf.ws.security.sts.provider;version="2.7
+ .9.SNAPSHOT",org.apache.cxf.ws.security.sts.provider.model;version="2.7
+ .9.SNAPSHOT",org.apache.cxf.ws.security.sts.provider.model.secext;versi
+ on="2.7.9.SNAPSHOT",org.apache.cxf.ws.security.sts.provider.model.utili
+ ty;version="2.7.9.SNAPSHOT",org.apache.cxf.ws.security.sts.provider.mod
+ el.wstrust14;version="2.7.9.SNAPSHOT",org.apache.cxf.ws.security.sts.pr
+ ovider.model.xmldsig;version="2.7.9.SNAPSHOT",org.apache.cxf.ws.securit
+ y.sts.provider.operation;version="2.7.9.SNAPSHOT",org.apache.cxf.ws.sec
+ urity.tokenstore;version="2.7.9.SNAPSHOT",org.apache.cxf.ws.security.tr
+ ust;version="2.7.9.SNAPSHOT",org.apache.cxf.ws.security.trust.claims;ve
+ rsion="2.7.9.SNAPSHOT",org.apache.cxf.ws.security.trust.delegation;vers
+ ion="2.7.9.SNAPSHOT",org.apache.cxf.ws.security.wss4j;version="2.7.9.SN
+ APSHOT",org.apache.cxf.ws.security.wss4j.policyhandlers;version="2.7.9.
+ SNAPSHOT",org.apache.cxf.ws.security.wss4j.policyvalidators;version="2.
+ 7.9.SNAPSHOT"
+Implementation-Title: Apache CXF Runtime WS Security
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: net.sf.ehcache;resolution:=optional;version="[2.5,3.0.0)
+ ",net.sf.ehcache.config;resolution:=optional;version="[2.5,3.0.0)",org.
+ opensaml.common;resolution:=optional,org.opensaml.saml1.core;resolution
+ :=optional,org.opensaml.saml2.core;resolution:=optional,org.opensaml.xm
+ l;resolution:=optional,javax.annotation,javax.crypto,javax.jws,javax.jw
+ s.soap,javax.security.auth,javax.security.auth.callback,javax.security.
+ auth.kerberos,javax.security.auth.x500,javax.wsdl,javax.xml.bind,javax.
+ xml.bind.annotation,javax.xml.bind.annotation.adapters,javax.xml.bind.u
+ til,javax.xml.namespace,javax.xml.parsers,javax.xml.soap,javax.xml.stre
+ am,javax.xml.transform,javax.xml.transform.dom,javax.xml.ws,javax.xml.w
+ s.handler,javax.xml.ws.soap,javax.xml.xpath,org.apache.cxf;version="[2.
+ 7,3)",org.apache.cxf.binding;version="[2.7,3)",org.apache.cxf.binding.s
+ oap;version="[2.7,3)",org.apache.cxf.binding.soap.interceptor;version="
+ [2.7,3)",org.apache.cxf.binding.soap.model;version="[2.7,3)",org.apache
+ .cxf.binding.soap.saaj;version="[2.7,3)",org.apache.cxf.buslifecycle;ve
+ rsion="[2.7,3)",org.apache.cxf.common.classloader;version="[2.7,3)",org
+ .apache.cxf.common.i18n;version="[2.7,3)",org.apache.cxf.common.injecti
+ on;version="[2.7,3)",org.apache.cxf.common.jaxb;version="[2.7,3)",org.a
+ pache.cxf.common.logging;version="[2.7,3)",org.apache.cxf.common.securi
+ ty;version="[2.7,3)",org.apache.cxf.common.util;version="[2.7,3)",org.a
+ pache.cxf.configuration;version="[2.7,3)",org.apache.cxf.configuration.
+ security;version="[2.7,3)",org.apache.cxf.databinding;version="[2.7,3)"
+ ,org.apache.cxf.databinding.source;version="[2.7,3)",org.apache.cxf.end
+ point;version="[2.7,3)",org.apache.cxf.feature;version="[2.7,3)",org.ap
+ ache.cxf.headers;version="[2.7,3)",org.apache.cxf.helpers;version="[2.7
+ ,3)",org.apache.cxf.interceptor;version="[2.7,3)",org.apache.cxf.interc
+ eptor.security;version="[2.7,3)",org.apache.cxf.jaxws;version="[2.7,3)"
+ ;resolution:=optional,org.apache.cxf.message;version="[2.7,3)",org.apac
+ he.cxf.phase;version="[2.7,3)",org.apache.cxf.resource;version="[2.7,3)
+ ",org.apache.cxf.security;version="[2.7,3)",org.apache.cxf.security.tra
+ nsport;version="[2.7,3)",org.apache.cxf.service;version="[2.7,3)",org.a
+ pache.cxf.service.invoker;version="[2.7,3)",org.apache.cxf.service.mode
+ l;version="[2.7,3)",org.apache.cxf.staxutils;version="[2.7,3)",org.apac
+ he.cxf.transport;version="[2.7,3)",org.apache.cxf.transport.http;versio
+ n="[2.7,3)";resolution:=optional,org.apache.cxf.transport.https;version
+ ="[2.7,3)";resolution:=optional,org.apache.cxf.ws.addressing;version="[
+ 2.7,3)",org.apache.cxf.ws.addressing.policy;version="[2.7,3)",org.apach
+ e.cxf.ws.mex;version="[2.7,3)";resolution:=optional,org.apache.cxf.ws.m
+ ex.model._2004_09;version="[2.7,3)";resolution:=optional,org.apache.cxf
+ .ws.policy;version="[2.7,3)",org.apache.cxf.ws.policy.attachment.refere
+ nce;version="[2.7,3)",org.apache.cxf.ws.policy.builder.primitive;versio
+ n="[2.7,3)",org.apache.cxf.wsdl;version="[2.7,3)",org.apache.cxf.wsdl11
+ ;version="[2.7,3)",org.apache.neethi;version="[3.0,4)",org.apache.neeth
+ i.builders;version="[3.0,4)",org.apache.ws.security;version="[1.6,2)",o
+ rg.apache.ws.security.action;version="[1.6,2)",org.apache.ws.security.c
+ ache;version="[1.6,2)",org.apache.ws.security.components.crypto;version
+ ="[1.6,2)",org.apache.ws.security.conversation;version="[1.6,2)",org.ap
+ ache.ws.security.conversation.dkalgo;version="[1.6,2)",org.apache.ws.se
+ curity.handler;version="[1.6,2)",org.apache.ws.security.message;version
+ ="[1.6,2)",org.apache.ws.security.message.token;version="[1.6,2)",org.a
+ pache.ws.security.processor;version="[1.6,2)",org.apache.ws.security.sa
+ ml;version="[1.6,2)",org.apache.ws.security.saml.ext;version="[1.6,2)",
+ org.apache.ws.security.spnego;version="[1.6,2)",org.apache.ws.security.
+ util;version="[1.6,2)",org.apache.ws.security.validate;version="[1.6,2)
+ ",org.apache.xml.security.keys.content;version="[1.5,2)",org.apache.xml
+ .security.keys.content.keyvalues;version="[1.5,2)",org.apache.xml.secur
+ ity.utils;version="[1.5,2)",org.w3c.dom
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime WS Security
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

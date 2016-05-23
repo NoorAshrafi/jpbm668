@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+
+<!-- $Revision: 1.1 $ -->
+<!-- $Date: 2004/11/15 13:42:41 $ -->
+
+<!-- Title = EDI Transaction Dictionary by Transaction Set -->
+<!-- Transaction = INVOIC Invoice message -->
+<!--Element Types Legend: A = alphabetic characters, N = numeric characters, AN = alpha-numeric characters-->
+
+<EDI Type="UN" Version="D.01A Syntax version 3" Standard="FACT">
+<TransactionSet ID="MEDIDATA" Name="MEDIDATA message" Note="">
+	<Segment ID="UNH" Name="Message Header" Req="M" MaxUse="1">
+		<Element ID="0062" Name="Message Reference Number" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="14"/>
+		<CompositeElement ID="S009" Name="Message Identifier" Req="M" MaxUse="1">
+			<ComponentElement ID="0065" Name="Message Type" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="6"  Note="Type of message being trasmitted"/>
+			<ComponentElement ID="0052" Name="Message Version Number" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+			<ComponentElement ID="0054" Name="Message Release Number" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+			<ComponentElement ID="0051" Name="Controlling Agency" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="2"/>
+			<ComponentElement ID="0057" Name="Association Assigned Code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="6"/>
+		</CompositeElement>
+		<Element ID="0068" Name="Common Access Reference" Req="O" Type="AN" MinLength="1" MaxLength="35"/>
+		<CompositeElement ID="S010" Name="Status Of The Transfer" Req="O" MaxUse="1">
+			<ComponentElement ID="0070" Name="Sequence Of Transfers" Req="M" MaxUse="1" Type="N" MinLength="1" MaxLength="2"/>
+			<ComponentElement ID="0073" Name="First and Last Transfer" Req="O" MaxUse="1" Type="A" MinLengh="1" MaxLength="1"/>
+		</CompositeElement>
+	</Segment>
+	<Segment ID="BGM" Name="Beginning of message" Req="M" MaxUse="1">
+		<CompositeElement ID="C002" Name="Document/message name" Req="O" MaxUse="1">
+			<ComponentElement ID="1001" Name="Document name code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+			<ComponentElement ID="1131" Name="Code list identification code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="17"/>
+			<ComponentElement ID="3055" Name="code list responsibile agency code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+			<ComponentElement ID="1000" Name="Document name" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+		</CompositeElement>
+		<CompositeElement ID="C106" Name="Document/message identification" Req="O" MaxUse="1">
+			<ComponentElement ID="1004" Name="Document identifier" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+			<ComponentElement ID="1056" Name="Version identifier" Req="O" MaxUse="1" Type="AN" MinLengh="1" MaxLength="9"/>
+			<ComponentElement ID="1060" Name="Revision identifier" Req="O" MaxUse="1" Type="AN" MinLengh="1" MaxLength="6"/>
+		</CompositeElement>
+		<Element ID="1225" Name="Message function code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+		<Element ID="4343" Name="Response type code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+	</Segment>
+	<Segment ID="DTM" Name="Date / Time / Period" Req="M" MaxUse="5">
+		<CompositeElement ID="C507" Name="Date / Time / Period" Req="M" MaxUse="1">
+			<ComponentElement ID="2005" Name="Date or Time or Period Function Code Qualifier" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+			<ComponentElement ID="2380" Name="Date or Time or Period Value" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+			<ComponentElement ID="2379" Name="Date or Time or Period Format Code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+		</CompositeElement>
+	</Segment>
+	
+	<Loop ID="SG1" Name="SG1" Req="O" MaxUse="5">
+		<Segment ID="RFF" Name="Reference" Req="M" MaxUse="1">
+			<CompositeElement ID="C506" Name="Reference" Req="M" MaxUse="1">
+				<ComponentElement ID="1153" Name="Reference code qualifier" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+				<ComponentElement ID="1154" Name="Reference identifier" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="70"/>
+				<ComponentElement ID="1156" Name="Document line identifier" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="6"/>
+				<ComponentElement ID="4000" Name="Reference version identifier" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+				<ComponentElement ID="1060" Name="Revision identifier" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="6"/>
+			</CompositeElement>
+		</Segment>
+	</Loop>	
+
+	<Loop ID="SG2" Name="SG2" Req="O" MaxUse="20">
+		<Segment ID="NAD" Name="Name and address" Req="M" MaxUse="1">
+			<Element ID="3035" Name="Party functino code qualifer" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+			<CompositeElement ID="C082" Name="Party identification details" Req="O" MaxUse="1">
+				<ComponentElement ID="3039" Name="Party identifier" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+				<ComponentElement ID="1131" Name="Code list identification code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="17"/>
+				<ComponentElement ID="3055" Name="Code list responsible agency code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+			</CompositeElement>
+			<CompositeElement ID="C058" Name="Name and address" Req="O" MaxUse="1">
+				<ComponentElement ID="3124-1" Name="Name and address description" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+				<ComponentElement ID="3124-2" Name="Name and address description" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+				<ComponentElement ID="3124-3" Name="Name and address description" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+				<ComponentElement ID="3124-4" Name="Name and address description" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+				<ComponentElement ID="3124-5" Name="Name and address description" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+			</CompositeElement>
+			<CompositeElement ID="C080" Name="Party Name" Req="O" MaxUse="1">
+				<ComponentElement ID="3036-1" Name="Party name" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+				<ComponentElement ID="3036-2" Name="Party name" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+				<ComponentElement ID="3036-3" Name="Party name" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+				<ComponentElement ID="3036-4" Name="Party name" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+				<ComponentElement ID="3036-5" Name="Party name" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+				<ComponentElement ID="3045" Name="Party name format code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+			</CompositeElement>
+			<CompositeElement ID="C059" Name="Street" Req="O" MaxUse="1">
+				<ComponentElement ID="3042-1" Name="Street and number or post office box identifier" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+				<ComponentElement ID="3042-2" Name="Street and number or post office box identifier" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+				<ComponentElement ID="3042-3" Name="Street and number or post office box identifier" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+			</CompositeElement>
+			<Element ID="3164" Name="City name" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+			<CompositeElement ID="C819" Name="Country sub-entity details" Req="O" MaxUse="1">
+				<ComponentElement ID="3229" Name="Country sub-entity name code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="9"/>
+				<ComponentElement ID="1131" Name="Code list identification code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="17"/>
+				<ComponentElement ID="3055" Name="Code list responsible agency code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+				<ComponentElement ID="3228" Name="Country sub-entity name" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="70"/>
+			</CompositeElement>
+			<Element ID="3251" Name="Postal identification code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="17"/>
+			<Element ID="3207" Name="Country name code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+		</Segment>
+	
+		<Loop ID="SG3" Name="SG2" Req="O" MaxUse="10">
+			<Segment ID="RFF" Name="Reference" Req="M" MaxUse="1">
+				<CompositeElement ID="C506" Name="Reference" Req="M" MaxUse="1">
+					<ComponentElement ID="1153" Name="Reference code qualifier" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+					<ComponentElement ID="1154" Name="Reference identifier" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="70"/>
+					<ComponentElement ID="1156" Name="Document line identifier" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="6"/>
+					<ComponentElement ID="4000" Name="Reference version identifier" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+					<ComponentElement ID="1060" Name="Revision identifier" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="6"/>
+				</CompositeElement>
+			</Segment>
+			
+			<Segment ID="DTM" Name="Date / Time / Period" Req="O" MaxUse="5">
+				<CompositeElement ID="C507" Name="Date / Time / Period" Req="M" MaxUse="1">
+					<ComponentElement ID="2005" Name="Date or Time or Period Function Code Qualifier" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+					<ComponentElement ID="2380" Name="Date or Time or Period Value" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+					<ComponentElement ID="2379" Name="Date or Time or Period Format Code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+				</CompositeElement>
+			</Segment>
+	
+		</Loop>	
+		
+		<Loop ID="SG4" Name="SG4" Req="O" MaxUse="5">
+			<Segment ID="CTA" Name="Contact Information" Req="M" MaxUse="1">
+				<Element ID="3139" Name="Contact Function Code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+				<CompositeElement ID="C056" Name="Department or Employee Details" Req="O" MaxUse="1">
+					<ComponentElement ID="3413" Name="Department or Employee Name Code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="17"/>
+					<ComponentElement ID="3412" Name="Department or Employee Name" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+				</CompositeElement>
+			</Segment>
+			<Segment ID="COM" Name="Communication contact" Req="O" MaxUse="5">
+				<CompositeElement ID="C076" Name="Communication contact" Req="M" MaxUse="3">
+					<ComponentElement ID="3148" Name="Communication address identifier" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="512"/>
+					<ComponentElement ID="3155" Name="Communication address code qualifier" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+				</CompositeElement>
+			</Segment>
+		</Loop>	
+
+	</Loop>	
+		
+	<Loop ID="SG5" Name="SG5" Req="O" MaxUse="5">
+		<Segment ID="FTX" Name="Free text" Req="O" MaxUse="9999">
+			<Element ID="4451" Name="Text subject code qualifier" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+			<Element ID="4453" Name="Free text function code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+			<CompositeElement ID="C107" Name="Text reference" Req="O" MaxUse="1">
+				<ComponentElement ID="4441" Name="Free text value code" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="17"/>
+				<ComponentElement ID="1131" Name="Code list identification code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="17"/>
+				<ComponentElement ID="3055" Name="Code list reponsible agency code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+			</CompositeElement>
+			<CompositeElement ID="C108" Name="Text literal" Req="O" MaxUse="1">
+				<ComponentElement ID="4440-1" Name="Free text value" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="512"/>
+				<ComponentElement ID="4440-2" Name="Free text value" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="512"/>
+				<ComponentElement ID="4440-3" Name="Free text value" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="512"/>
+				<ComponentElement ID="4440-4" Name="Free text value" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="512"/>
+				<ComponentElement ID="4440-5" Name="Free text value" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="512"/>
+			</CompositeElement>
+			<Element ID="3453" Name="Language name code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+			<Element ID="4447" Name="Free text format code" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+		</Segment>
+	</Loop>	
+
+	<Segment ID="UNT" Name="Message trailer" Req="M" MaxUse="1">
+		<Element ID="0074" Name="Number of segments in the message" Req="M" MaxUse="1" Type="N" MinLength="1" MaxLength="6"/>
+		<Element ID="0062" Name="Message reference number" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="14"/>
+	</Segment>
+</TransactionSet>
+</EDI>		

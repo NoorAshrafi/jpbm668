@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+<form-beans>
+<form-bean name="acmeForm" type="com.csc.web.AcmeActionForm" />
+<form-bean name="searchForm" type="com.csc.web.SearchActionForm" />
+</form-beans>
+
+	<action-mappings>
+		<action path="/employeeName"
+        type="com.csc.web.AcmeAction"
+        name="acmeForm"
+        scope="session"
+        input="/pages/Patient_Registration.jsp"
+        >
+    
+    <forward name="success"
+            path="/pages/History-Physical-Page.jsp"/>
+            
+               
+</action>
+		
+		<action path="/employeeAddress"
+        type="com.csc.web.AcmeAction"
+        name="acmeForm"
+        scope="session"
+        input="/pages/History-Physical-Page.jsp"
+        parameter="methodToBeCalled">
+    <forward name="success"
+             path="/pages/Financial_Policy.jsp"/>            
+    
+                
+</action>
+		
+			<action path="/employeeFinancial"
+        type="com.csc.web.AcmeAction"
+        name="acmeForm"
+        scope="session"
+        input="/pages/Financial_Policy.jsp"
+        parameter="methodToBeCalled">
+    <forward name="success"
+             path="/pages/Consent_to_Use_Protected_Health_Information.jsp"/>            
+    
+                
+</action>	
+<action path="/employeeConsent"
+        type="com.csc.web.AcmeAction"
+        name="acmeForm"
+        scope="session"
+        input="/pages/Consent_to_Use_Protected_Health_Information.jsp"
+        parameter="methodToBeCalled">
+    <forward name="success"
+             path="/pages/Use_and_Disclose_of_Protected_Health_Information.jsp"/>            
+    
+                
+</action>	
+<action path="/employeeUseDisc"
+        type="com.csc.web.AcmeAction"
+        name="acmeForm"
+        scope="session"
+        input="/pages/Use_and_Disclose_of_Protected_Health_Information.jsp"
+        parameter="methodToBeCalled">
+    <forward name="success"
+             path="/pages/Authorization_to_Disclose_Protected_Health_Info.jsp"/>            
+    
+                
+</action>
+<action path="/employeeAuthorization"
+        type="com.csc.web.CompleteAction"
+        name="acmeForm"
+        scope="session"
+        input="/pages/Authorization_to_Disclose_Protected_Health_Info.jsp"
+        parameter="methodToBeCalled">
+    <forward name="success"
+             path="/pages/Patient_Registration.jsp"/>            
+    
+                
+</action>
+
+<action path="/searchForPatient"
+        type="com.csc.web.SearchAction"
+        name="searchForm"
+        scope="session"
+        input="/pages/Search-Results.jsp"
+        parameter="methodToBeCalled">
+    <forward name="success"
+             path="/pages/Search-Results.jsp"/>            
+    
+                
+</action>
+
+	</action-mappings>
+	 <message-resources
+		parameter="ApplicationResources" />
+	
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+	<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+</plug-in>
+	
+
+</struts-config>

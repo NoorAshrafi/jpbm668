@@ -1,0 +1,7 @@
+<- application context: change from /elda-frontend to /elda Done
+<- jaxws:client config: ${sts-url}: configure for https://int.zsoasec.ch.zurich.com:56080/opensso/RACF/STSServiceTransport Done
+<- locator access: how to?
+<- BST: why wsdl binding not in elda-common?
+<- jaxws:client config
+<- rename eprd-spring-beans.xml -> elda-spring-beans.xml Done
+<- move config files to src/main/resources

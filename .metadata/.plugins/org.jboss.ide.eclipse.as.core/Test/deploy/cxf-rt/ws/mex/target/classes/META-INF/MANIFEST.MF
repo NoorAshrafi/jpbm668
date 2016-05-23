@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385440800098
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF Runtime WS MetadataExchange
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime WS MetadataExchange
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-ws-mex
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.ws.mex;version="2.7.9.SNAPSHOT",org.apach
+ e.cxf.ws.mex.model._2004_09;version="2.7.9.SNAPSHOT"
+Implementation-Title: Apache CXF Runtime WS MetadataExchange
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.jws,javax.jws.soap,javax.xml.bind,javax.xml.bind.a
+ nnotation,javax.xml.namespace,javax.xml.ws,javax.xml.ws.soap,org.apache
+ .cxf;version="[2.7,3)",org.apache.cxf.binding;version="[2.7,3)",org.apa
+ che.cxf.binding.soap;version="[2.7,3)",org.apache.cxf.common.util;versi
+ on="[2.7,3)",org.apache.cxf.endpoint;version="[2.7,3)",org.apache.cxf.f
+ rontend;version="[2.7,3)",org.apache.cxf.helpers;version="[2.7,3)",org.
+ apache.cxf.interceptor;version="[2.7,3)",org.apache.cxf.jaxws;version="
+ [2.7,3)",org.apache.cxf.message;version="[2.7,3)",org.apache.cxf.phase;
+ version="[2.7,3)",org.apache.cxf.service;version="[2.7,3)",org.apache.c
+ xf.service.invoker;version="[2.7,3)",org.apache.cxf.service.model;versi
+ on="[2.7,3)",org.apache.cxf.ws.addressing;version="[2.7,3)",org.apache.
+ cxf.ws.policy;version="[2.7,3)",org.w3c.dom
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime WS MetadataExchange
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

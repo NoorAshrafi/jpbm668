@@ -1,0 +1,89 @@
+# --------------------------------------------------------------------------------
+#
+# ecor response file for stage UAT 1 (b0d02c42)
+#
+# --------------------------------------------------------------------------------
+#
+# ------------------------------
+# locator.properties
+# ------------------------------
+s=##LOC_END##=zsoazk1.uat.ch.zurich.com:16881,zsoazk2.uat.ch.zurich.com:16881=g
+s=##LOC_PRF##=https://b0d02c42d.rz.ch.zurich.com:30443/ecor-app/services=g
+
+# ------------------------------
+# agent.properties
+# ------------------------------
+s=##AGENT_URL##=https://uat.zsoasam.ch.zurich.com:16090/services/MonitoringServiceSOAP=g
+
+# ecor-spring-beans.xml
+# ------------------------------
+s=##ENV##=uat=g
+s=##ZSOASEC_ENV##=https://uat.zsoasec.ch.zurich.com=g
+s=##DB_POLLING_INTERVALL##=180000=g
+s=##ECM2CMIS_SERVICE_URL##=https://ceapp1433.emea.zurich.corp:60163/ecm2cmis/services=g
+
+# ------------------------------
+# ZSys.properties
+# ------------------------------
+s=##JDBC_URL##=jdbc:oracle:thin:@ora-chzqold1.rz.ch.zurich.com:1521:chzqold1=g
+s=##DATABASE_USERNAME##=elda=g
+s=##DATABASE_PASSWORD##=life02=g
+s=##CICS_URL##=zl08.rz.ch.zurich.com=g
+s=##CICS_SERVER##=CHZAZL08=g
+s=##CICS_USERID##=CHA5700=g
+s=##CICS_PASSWORD##=LONDON=g
+s=##TRACE##=true=g
+s=##CHECK_ENABLED##=true=g
+s=##EAN_NUMMER##=2099988870093=g
+s=##MF_ADMIN_NOVID##=PA043553=g
+s=##BVM_SPEZIALDIENSTADMIN_NOVID##="SchneiderG"=g
+s=##BVM_SPEZIALDIENSTADMIN_NOVID_STV##="LeppertD"=g
+s=##BVM_SVVV_ADMIN_NOVID##="chkdac"=g
+s=##BVM_SVVV_ADMIN_MAIL##="daniel.achermann@zurich.ch"=g
+
+# ------------------------------
+# MutationExpertisenAuftrag_de.properties
+# ------------------------------
+s=##EXPERTISEN_MAIL##=daniel.achermann@zurich.ch=g
+
+# ------------------------------
+# ImportExport.properties
+# ------------------------------
+s=##DESA_ABSENDER##=daniel.achermann@zurich.ch=g
+s=##SEND_INFO_FAX_ENABLED##=false=g
+s=##PARTFAX_ABSENDER##=daniel.achermann@zurich.ch=g
+s=##SEND_INFO_MOBHP_FAX_ENABLED##=false=g
+s=##PROD_ENV##=false=g
+s=##TEST_DESA_AND_PARTFAX_RECEIVER##=0446232655@chfax=g
+s=##NOVELL_ID_ALPINA_ADMIN##="KeelN"=g
+
+# ------------------------------
+# TestGetMediFiles.sh
+# ------------------------------
+s=##BASEDIR##=/app=g
+s=##OWNER##=ecor=g
+s=##MEDIPORT_BASEDIR##=/app=g
+s=##MEDIPORT_USER##=empg=g
+s=##MEDIPORT_SERVER##=b0d05e02.rz.ch.zurich.com=g
+
+# ------------------------------
+# TestGetMediFiles.sh (to be removed)
+# ------------------------------
+s=##STAGE##="LPU"=g
+
+# ------------------------------
+# tmp (to be removed)
+# ------------------------------
+s=##SAD_USER_NOV_ID##=""=g
+s=##SAD_USER_RACF_ID##=""=g
+
+# ------------------------------
+# scripts 
+# ------------------------------
+s=##PRIMARY_SERVER##="true"=g
+s=##IMPORT_EAN_FAILED_RECEIVERS##="judith.senn@zurich.ch daniel.achermann@zurich.ch"=g
+
+# ------------------------------
+# WEB.XML
+# ------------------------------
+s=##PROFILES##=primary,default=g

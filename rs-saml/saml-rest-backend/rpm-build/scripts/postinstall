@@ -1,0 +1,458 @@
+echo "start post section"
+echo " creating JDK sym link"
+
+if [[  -e /app/%{user}/jdk ]] ; then
+    rm  /app/%{user}/jdk
+fi
+ln -s %{jdkhome} /app/%{user}/jdk 
+
+
+echo "start creating data folders..."
+
+folder=/app/%{user}/data
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 777 $folder
+fi
+
+folder=/app/%{user}/data/xmllog
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 755 $folder
+fi
+
+folder=/app/%{user}/data/xmllog/pv
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 755 $folder
+fi
+
+folder=/app/%{user}/data/xmllog/bvm
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 755 $folder
+fi
+
+folder=/app/%{user}/data/xmllog/mf
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 755 $folder
+fi
+
+folder=/app/%{user}/data/tmp
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 755 $folder
+fi
+
+folder=/app/%{user}/data/sumex
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 755 $folder
+fi
+
+folder=/app/%{user}/data/sumex/elda_in
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 755 $folder
+fi
+
+folder=/app/%{user}/data/sumex/elda_in/statusSync
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 777 $folder
+fi
+
+folder=/app/%{user}/data/sumex/elda_in/statusSync/archive
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 777 $folder
+fi
+
+folder=/app/%{user}/data/sumex/elda_in/statusSync/parked
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 777 $folder
+fi
+
+folder=/app/%{user}/data/sumex/elda_out
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 755 $folder
+fi
+
+
+folder=/app/%{user}/data/sumex/elda_out/claimSync
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 777 $folder
+fi
+
+folder=/app/%{user}/data/sumex/elda_out/claimSync/archive
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 777 $folder
+fi
+
+folder=/app/%{user}/data/sumex/elda_out/claimSync/parked
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 777 $folder
+fi
+
+folder=/app/%{user}/data/sumex/elda_out/statusSync
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 777 $folder
+fi
+
+folder=/app/%{user}/data/sumex/elda_out/statusSync/archive
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 777 $folder
+fi
+
+folder=/app/%{user}/data/sumex/elda_out/statusSync/parked
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 777 $folder
+fi
+
+folder=/app/%{user}/data/parked
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 755 $folder
+fi
+
+folder=/app/%{user}/data/mpgw
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 777 $folder
+fi
+
+folder=/app/%{user}/data/mpgw/archive
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 777 $folder
+fi
+
+folder=/app/%{user}/data/mpgw/export
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 777 $folder
+fi
+
+folder=/app/%{user}/data/mpgw/ikmahnung
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 777 $folder
+fi
+
+folder=/app/%{user}/data/mpgw/parked
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 777 $folder
+fi
+
+folder=/app/%{user}/data/internet
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 755 $folder
+fi
+
+folder=/app/%{user}/data/ikmahnung
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 755 $folder
+fi
+
+folder=/app/%{user}/data/export_archive
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 755 $folder
+fi
+
+folder=/app/%{user}/data/export
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 755 $folder
+fi
+
+folder=/app/%{user}/data/assurbox
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 777 $folder
+fi
+
+folder=/app/%{user}/data/assurbox/archive
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 755 $folder
+fi
+
+folder=/app/%{user}/data/assurbox/parked
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 755 $folder
+fi
+
+folder=/app/%{user}/data/assurbox/tmp
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 755 $folder
+fi
+
+folder=/app/%{user}/data/archive
+if [ ! -d  $folder ] ; then
+    mkdir $folder
+    chown %{user}:%{groupname} $folder
+    chmod 755 $folder
+fi
+
+echo "end creating data folders..."
+
+
+%define server `hostname -s`
+Responsefile=$RPM_RESPONSEFILESDIR/Ecorbackend_response_%{server}
+echo "Response file used: $ResponseFile"
+
+
+# configure ecor-spring-beans.xml-stages
+# ----------------------------------
+echo "start configure ecor-spring-beans.xml-stages"
+stagesFile=/app/%{user}/stagefiles/ecor-spring-beans.xml-stages
+configFile=/app/%{user}/container/webapps/%{webcontext}/WEB-INF/spring/ecor-spring-beans.xml
+tmpFile=/var/tmp/%{user}Tmp
+sed -f $Responsefile < $stagesFile > $tmpFile
+mv $tmpFile $configFile
+chown %{user}:%{groupname} $configFile
+chmod 664 $configFile
+echo "end configure ecor-spring-beans.xml-stages"
+
+
+# configure elda.plugins.properties-stages
+# ----------------------------------
+echo "start configure elda.plugins.properties-stages"
+stagesFile=/app/%{user}/stagefiles/elda.plugins.properties-stages
+configFile=/app/%{user}/container/webapps/%{webcontext}/WEB-INF/classes/elda.plugins.properties
+tmpFile=/var/tmp/%{user}Tmp
+sed -f $Responsefile < $stagesFile > $tmpFile
+mv $tmpFile $configFile
+chown %{user}:%{groupname} $configFile
+chmod 664 $configFile
+echo "end configure elda.plugins.properties-stages"
+
+
+# configure ImportExport.properties-stages
+# ----------------------------------
+echo "start configure ImportExport.properties-stages"
+stagesFile=/app/%{user}/stagefiles/ImportExport.properties-stages
+configFile=/app/%{user}/container/webapps/%{webcontext}/WEB-INF/classes/ImportExport.properties
+tmpFile=/var/tmp/%{user}Tmp
+sed -f $Responsefile < $stagesFile > $tmpFile
+mv $tmpFile $configFile
+chown %{user}:%{groupname} $configFile
+chmod 664 $configFile
+echo "end configure ImportExport.properties-stages"
+
+
+# configure MutationExpertisenAuftrag_de.properties-stages
+# ----------------------------------
+echo "start MutationExpertisenAuftrag_de.properties-stages"
+stagesFile=/app/%{user}/stagefiles/MutationExpertisenAuftrag_de.properties-stages
+configFile=/app/%{user}/container/webapps/%{webcontext}/WEB-INF/classes/MutationExpertisenAuftrag_de.properties
+tmpFile=/var/tmp/%{user}Tmp
+sed -f $Responsefile < $stagesFile > $tmpFile
+mv $tmpFile $configFile
+chown %{user}:%{groupname} $configFile
+chmod 664 $configFile
+echo "end configure MutationExpertisenAuftrag_de.properties-stages"
+
+
+# configure ZSys.properties-stages
+# ----------------------------------
+echo "start ZSys.properties-stages"
+stagesFile=/app/%{user}/stagefiles/ZSys.properties-stages
+configFile=/app/%{user}/container/webapps/%{webcontext}/WEB-INF/classes/ZSys.properties
+tmpFile=/var/tmp/%{user}Tmp
+sed -f $Responsefile < $stagesFile > $tmpFile
+mv $tmpFile $configFile
+chown %{user}:%{groupname} $configFile
+chmod 664 $configFile
+echo "end configure ZSys.properties-stages"
+
+
+# configure TestGetMediFiles.sh-stages
+# ----------------------------------
+echo "start TestGetMediFiles.sh-stages"
+stagesFile=/app/%{user}/stagefiles/TestGetMediFiles.sh-stages
+configFile=/app/%{user}/bin/TestGetMediFiles.sh
+tmpFile=/var/tmp/%{user}Tmp
+sed -f $Responsefile < $stagesFile > $tmpFile
+mv $tmpFile $configFile
+chown %{user}:%{groupname} $configFile
+chmod 755 $configFile
+echo "end configure TestGetMediFiles.sh-stages"
+
+
+# configure GetMediFiles.sh-stages
+# ----------------------------------
+echo "start configure GetMediFiles.sh-stages"
+stagesFile=/app/%{user}/stagefiles/GetMediFiles.sh-stages
+configFile=/app/%{user}/bin/GetMediFiles.sh
+tmpFile=/var/tmp/%{user}Tmp
+sed -f $Responsefile < $stagesFile > $tmpFile
+mv $tmpFile $configFile
+chown %{user}:%{groupname} $configFile
+chmod 755 $configFile
+echo "end configure GetMediFiles.sh-stages"
+
+
+# configure SendRueck2Medi.sh-stages
+# ----------------------------------
+echo "start SendRueck2Medi.sh-stages"
+stagesFile=/app/%{user}/stagefiles/SendRueck2Medi.sh-stages
+configFile=/app/%{user}/bin/SendRueck2Medi.sh
+tmpFile=/var/tmp/%{user}Tmp
+sed -f $Responsefile < $stagesFile > $tmpFile
+mv $tmpFile $configFile
+chown %{user}:%{groupname} $configFile
+chmod 755 $configFile
+echo "end configure SendRueck2Medi.sh-stages"
+
+
+# configure mailImportlog.sh-stages
+# ----------------------------------
+echo "start mailImportlog.sh-stages"
+stagesFile=/app/%{user}/stagefiles/mailImportlog.sh-stages
+configFile=/app/%{user}/bin/mailImportlog.sh
+tmpFile=/var/tmp/%{user}Tmp
+sed -f $Responsefile < $stagesFile > $tmpFile
+mv $tmpFile $configFile
+chown %{user}:%{groupname} $configFile
+chmod 755 $configFile
+echo "end configure mailImportlog.sh-stages"
+
+
+# configure locator.properties-stages
+# ----------------------------------
+echo "start locator.properties-stages"
+stagesFile=/app/%{user}/stagefiles/locator.properties-stages
+configFile=/app/%{user}/container/webapps/%{webcontext}/WEB-INF/classes/locator.properties
+tmpFile=/var/tmp/%{user}Tmp
+sed -f $Responsefile < $stagesFile > $tmpFile
+mv $tmpFile $configFile
+chown %{user}:%{groupname} $configFile
+chmod 664 $configFile
+echo "end configure locator.properties-stages"
+
+
+# configure agent.properties-stages
+# ----------------------------------
+echo "start agent.properties-stages"
+stagesFile=/app/%{user}/stagefiles/agent.properties-stages
+configFile=/app/%{user}/container/webapps/%{webcontext}/WEB-INF/classes/agent.properties
+tmpFile=/var/tmp/%{user}Tmp
+sed -f $Responsefile < $stagesFile > $tmpFile
+mv $tmpFile $configFile
+chown %{user}:%{groupname} $configFile
+chmod 664 $configFile
+echo "end configure agent.properties-stages"
+
+
+# configure crontab-stages 
+# ---------------------------------
+echo "start configure crontab-stages"
+
+stagesFile=/app/%{user}/stagefiles/crontab-stages
+configFile=/app/%{user}/stagefiles/crontab
+tmpFile=/var/tmp/%{user}Tmp
+sed -f $Responsefile < $stagesFile > $tmpFile
+mv $tmpFile $configFile
+chown %{user}:%{groupname} $configFile
+chmod 664 $configFile
+echo "end configure crontab-stages"
+
+# configure web.xml-stages
+# ----------------------------------
+echo "start configure web.xml-stages"
+stagesFile=/app/%{user}/stagefiles/web.xml-stages
+configFile=/app/%{user}/container/webapps/%{webcontext}/WEB-INF/web.xml
+tmpFile=/var/tmp/%{user}Tmp
+sed -f $Responsefile < $stagesFile > $tmpFile
+mv $tmpFile $configFile
+chown %{user}:%{groupname} $configFile
+chmod 664 $configFile
+echo "end configure web.xml-stages"
+
+
+
+
+# script files
+dos2unix /app/ecor/bin/import.sh /app/ecor/bin/import.sh
+dos2unix /app/ecor/bin/doexport.sh /app/ecor/bin/doexport.sh
+dos2unix /app/ecor/bin/convert.sh /app/ecor/bin/convert.sh
+dos2unix /app/ecor/bin/BatchUpdateSchadenReferences.sh /app/ecor/bin/BatchUpdateSchadenReferences.sh
+dos2unix /app/ecor/bin/BatchGetInvDet.sh /app/ecor/bin/BatchGetInvDet.sh
+dos2unix /app/ecor/bin/BatchGetInvDel.sh /app/ecor/bin/BatchGetInvDel.sh
+dos2unix /app/ecor/bin/BatchAbgebrocheneAuftraege.sh /app/ecor/bin/BatchAbgebrocheneAuftraege.sh
+dos2unix /app/ecor/bin/mailImportlog.sh /app/ecor/bin/mailImportlog.sh
+dos2unix /app/ecor/bin/TestGetMediFiles.sh /app/ecor/bin/TestGetMediFiles.sh
+dos2unix /app/ecor/bin/GetMediFiles.sh /app/ecor/bin/GetMediFiles.sh
+dos2unix /app/ecor/bin/SendRueck2Medi.sh /app/ecor/bin/SendRueck2Medi.sh
+dos2unix /app/ecor/bin/javaenv.sh /app/ecor/bin/javaenv.sh
+dos2unix /app/ecor/bin/BatchGetSyncFiles.sh /app/ecor/bin/BatchGetSyncFiles.sh
+dos2unix /app/ecor/bin/smoketest.sh /app/ecor/bin/smoketest.sh
+echo "dos2unix invoked..."
+
+chown ecor:ecor /app/ecor/bin/*.sh
+echo "ownership scripts changed..."
+
+# create crontab entries
+crontab -u %{user} /app/%{user}/stagefiles/crontab
+echo "crontab ecor created..."
+
+
+# tmp begin
+rm -rf /app/%{user}/backstagefiles
+mkdir /app/%{user}/backstagefiles
+cp /app/%{user}/stagefiles/*.* /app/%{user}/backstagefiles/
+# tmp end 
+
+
+# remove temp files
+# -----------------
+rm -rf /app/%{user}/stagefiles
+echo "end post section for ecor "

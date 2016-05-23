@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Property id="data-formats">
+	<Property id="xml" type="data-format">
+		<Property id="xml-mime-type" type="mime-type">text/xml</Property>
+		<Property id="test" type="format-type">
+			<Property id="key">test</Property>
+			<Property id="xml-to-edi">template.gxp</Property>
+		</Property>
+		<Property id="unfall" type="format-type">
+			<Property id="key">Message/Unfallmeldung</Property>
+			<Property id="xml-to-edi">unfall.gxp</Property>
+		</Property>
+		<Property id="bagatellunfall" type="format-type">
+			<Property id="key">Message/Bagatellunfallmeldung</Property>
+			<Property id="xml-to-edi">bagatellunfall.gxp</Property>
+		</Property>
+		<Property id="taggeld" type="format-type">
+			<Property id="key">Message/Krankentaggeld</Property>
+			<Property id="xml-to-edi">krankentaggeld.gxp</Property>
+		</Property>
+		<Property id="kostengutsprache" type="format-type">
+			<Property id="key">Message/KoGu</Property>
+			<Property id="xml-to-edi">kostengutsprache.gxp</Property>
+		</Property>
+	</Property>
+	<Property id="unknown" type="data-format"/>
+</Property>

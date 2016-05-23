@@ -1,0 +1,280 @@
+/************************************************************/
+/* Theme:          Navigation Style                         */
+/* Browser:        IE 5+, NS 4.7 +                          */
+/* Author:         Zurich Financial Services, iBITS         */
+/* Created:        2003/07/30                               */
+/* Last Modified:                                           */
+/* By:                                                      */
+/************************************************************/
+
+
+/************************************************************/
+/* General Styles for all Navigation Levels                 */
+/************************************************************/
+
+#header a, #header span, #serviceNavTable .active, #primaryNavigation a, #primaryNavigation span, #secondNavigation a, #secondNavigation span, #breadCrumb, #breadCrumb a, #breadCrumb span, #footer a, #footer span {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+a.priActiv:link, a.priNav:link, a.secNav:link, a.secNavSelected:link, a.thirdNav:link, a.thirdNavSelected:link, a.fourthNav:link, a.language:link, #footer a:link, #specialLink a:link, #serviceNavTable a:link  { text-decoration: none;}
+a.priActiv:visited, a.priNav:visited, a.secNav:visited,  a.secNavSelected:visited, a.thirdNav:visited, a.thirdNavSelected:visited, a.fourthNav:visited, a.language:visited, #footer a:visited, #specialLink a:visited, #serviceNavTable a:visited  {text-decoration: none;}
+a.priActiv:hover, a.priNav:hover, a.secNav:hover, a.secNavSelected:hover, a.thirdNav:hover, a.thirdNavSelected:hover, a.fourthNav:hover, a.language:hover, #footer a:hover, #specialLink a:hover, #serviceNavTable a:hover  {text-decoration: underline;} 
+
+
+/*#specialLink a, .language, .active, .priActiv, .priNav, .secNav, secNavSelected, .thirdNav, thirdNavSelected, .fourthNav, fourthNavSelected {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}*/
+
+
+/************************************************************/
+/* Header Navigation                                        */
+/************************************************************/
+
+#header form {margin-top:0px; margin-bottom:0px;}
+
+#zurichLogo td {vertical-align: bottom !important;}
+
+#descriptor {border: 0px;margin: 0px;}
+
+#specialLink, #serviceNavTable {
+	float: right;
+	text-align: right;
+	vertical-align: middle;
+}
+
+#header .text {
+	color: #000;
+	background-color: #fff;
+	border-left: 1px solid #89b;
+	border-bottom: 1px solid #89b;
+	border-right: 1px solid #89b;
+	border-top: 1px solid #89b;
+	font-size: 11px;
+	width: 152px;
+	height: 16px;
+}
+
+
+#header .button {
+	color: #FFFFFF;
+	background-color: #8899BB;
+	border: 0;
+	font-size: 11px;
+	padding: 1px 2px 1px 2px;
+	margin-left:1px;
+	height: 16px;
+	width: 46px;
+}
+
+#specialLink a {
+	padding-top: 3px;
+	vertical-align: middle;
+	color: #039;
+	background-color: #fff;
+}
+
+#serviceNavTable td.languageBg {
+	background-color: #89b;
+	border-top: 3px solid #fff;
+	border-left: 1px solid #fff;
+	text-align: center;
+	vertical-align: middle;
+	height:19px;
+}
+
+#serviceNavTable a.language:link, a.language:visited, a.language:hover {color: #fff;}
+#serviceNavTable span.active { color: #cde;}
+
+/************************************************************/
+/* Primary Navigation Level (top)                           */
+/************************************************************/
+
+td.priNavBgSelectedLast {
+	color: #000;
+	background-color: #eed;
+	padding: 0px 5px;
+	border-left: 1px solid #fff;
+	border-right: 1px solid #fff;
+}
+
+td.priNavBorder { background-color: #eed; }
+
+td.priNavBg {
+	background-color: #039;
+	padding: 0px 5px;
+	margin: 0;
+	height: 20px;
+	border-right: 1px solid #fff;
+	white-space:nowrap;
+}
+
+td.priNavBgLast {
+	background-color: #039;
+	padding: 0px 5px;
+	margin: 0;
+	height: 20px;
+	white-space:nowrap;
+}
+
+td.priNavEnd {background-color: #039;}
+
+.priNavBgSelected {
+/*	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;*/
+	color: #000;
+	background-color: #eed;
+	padding: 0px 5px;
+	border-right: 1px solid #fff;
+}
+
+.priNav {color: #fff;}
+.priActiv {color: #000;}
+
+/************************************************************/
+/* Second to Forth Navigation Level (left)                  */
+/************************************************************/
+
+
+.secNav, .secNavSelected {
+	color: #fff;
+	padding: 4px 5px 5px 5px;
+	width: 140px;
+}
+
+.thirdNav,.thirdNavSelected {
+	color: #000;
+	padding: 4px 5px 5px 5px;
+	width: 140px;
+}
+
+.fourthNav, .fourthNavSelected {
+	color: #000;
+	padding: 4px 5px 4px 15px;
+	width: 140px;
+}
+
+
+
+td.secNavBgSelected {
+	font-weight: bold;
+	color: #fff;
+	background-color: #89b;
+/*	padding: 0px 5px;*/
+	border-bottom: 1px solid #fff;
+}
+
+.thirdNavSelected, .fourthNavSelected {
+/*	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;*/
+	font-weight: bold;
+	color: #000;
+}
+
+td.thirdNavBgSelected {
+	background-color: #c3ccdd;
+/*	padding: 4px 5px 5px 5px;*/
+	border-bottom: 1px solid #fff;
+}
+
+td.fourthNavBgSelected {
+	background-color: #c3ccdd;
+/*	padding: 4px 5px 5px 15px;*/
+	border-bottom: 1px solid #fff;
+}
+
+/* 2nd Level navigation */
+.secNavBg, .thirdNavBg, .fourthNavBg {
+	border-bottom: 1px solid #fff;
+	padding-top: 4px !important;
+	padding-top /**/:0px;
+}
+
+.secNavBg {
+	background-color: #89b;
+}
+
+.thirdNavBg {
+	background-color: #c3ccdd;
+}
+
+.fourthNavBg {
+	background-color: #c3ccdd;
+}
+
+
+/************************************************************/
+/* Branding / Imagery area                                  */
+/************************************************************/
+
+#imageryArea {
+	height: 113px;
+	background-color: #eed;
+}
+
+#imageryLeft {
+	margin-left: 5px;
+	float: left;
+}
+
+/************************************************************/
+/* Bread Crump Navigation                                   */
+/************************************************************/
+
+#breadCrumb  {
+	color: #039;
+	height: 20px;
+	padding: 4px 5px 5px 0px;
+}
+
+#breadCrumb a:link, #breadCrumb a:visited, #breadCrumb a:hover { color: #039; text-decoration: underline;}
+#breadCrumb .bcActiv { font-weight: normal;}
+
+/************************************************************/
+/* Footer Navigation                                        */
+/************************************************************/
+
+#footerLayout {background-color: #f6f6f6;}
+#footer {text-align: right;  padding-right: 5px;}
+#footer a { color: #000;}
+#footer .activ { font-weight: bold; }
+#footer .copyright {color: #666;}
+
+/************************************************************/
+/* Special Navigation PopUp                                 */
+/************************************************************/
+
+td.priNavBgPopUp {
+	background-color: #666;
+	padding: 0px 5px;
+	margin: 0;
+	height: 20px;
+	border-right: 1px solid #fff;
+	white-space:nowrap;
+}
+
+td.priNavBgLastPopUp {
+	background-color: #666;
+	padding: 0px 5px;
+	margin: 0;
+	height: 20px;
+	white-space:nowrap;
+}
+td.priNavBorderPopUp { background-color: #ccc; }
+
+/************************************************************/
+/* Special ZuriTel                                          */
+/************************************************************/
+#imageryArea .imageryLeft img {margin-left: 5px;margin-bottom: 5px;}
+#imageryArea .imageryRight img {margin-left: 0px;margin-bottom: 5px;}
+#imageryArea {vertical-align: top;}
+#imageryArea td {background-color: #EEEEDD;}
+
+#footerLeft {
+	text-align: left;
+	padding-left: 5px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	}
+#footerLeft .company {color: #999;}

@@ -1,0 +1,16 @@
+com.zurich.chz.elda.mail.subject_1 = Expertisenauftrag Nr.
+com.zurich.chz.elda.mail.subject_2 = : Hohe Priorität aus BVM
+com.zurich.chz.elda.mail.toAdress = ##EXPERTISEN_MAIL##
+com.zurich.chz.elda.mail.titel = Mutation Expertisenauftrag
+com.zurich.chz.elda.mail.label1 = Auftragsnummer
+com.zurich.chz.elda.mail.label2 = Schadennummer
+com.zurich.chz.elda.mail.label3 = Policennummer
+com.zurich.chz.elda.mail.label4 = Eingangsdatum
+com.zurich.chz.elda.mail.label5 = Mutationsdatum
+com.zurich.chz.elda.mail.label6 = Priorität (alt)
+com.zurich.chz.elda.mail.label7 = Priorität (neu)
+com.zurich.chz.elda.mail.label8 = Hinweistext
+com.zurich.chz.elda.mail.hinweistext = Übersteuerung des Auftrags aufgrund BVM-Berechnung. Auftrag für Planung priorisieren und zwingend besichtigen lassen.
+
+com.zurich.chz.elda.bemerkung.score = BVM: Ja
+

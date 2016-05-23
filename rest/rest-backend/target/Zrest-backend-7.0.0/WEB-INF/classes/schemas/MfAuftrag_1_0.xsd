@@ -1,0 +1,992 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by ikw (Zürch Schweiz) -->
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Roger Müller (softwarepipeline.com) -->
+<xs:schema targetNamespace="http://www.zurich.ch/elda" xmlns="http://www.zurich.ch/elda" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02">
+	<xs:include schemaLocation="EldaExBase_1_0.xsd"/>
+	<xs:include schemaLocation="Message_1_0.xsd"/>
+	<xs:element name="MfAuftrag" type="MfAuftragDokument"/>
+	<!--simple types-->
+	<xs:simpleType name="AuftragsnummerType">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="15"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PrioritaetType">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="2"/>
+			<xs:maxInclusive value="99"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DatumType">
+		<xs:restriction base="xs:date">
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ZeitType">
+		<xs:restriction base="xs:time">
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--complex types-->
+	<xs:complexType name="MfAuftragDokument">
+		<xs:complexContent>
+			<xs:extension base="AbstractDokumentType">
+				<xs:all>
+					<xs:element name="Auftragsdaten">
+						<xs:annotation>
+							<xs:documentation>FeldNr: 1 - 16, 148 - 157</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:all>
+								<xs:element name="Auftragsnummer" type="AuftragsnummerType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Feldnr: 1</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Auftraggeber">
+									<xs:complexType>
+										<xs:all>
+											<xs:element name="Gesellschaft">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 2</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+													<xs:restriction base="NumCodeType">
+														<xs:minInclusive value="1"/>
+														<xs:maxInclusive value="40"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element name="UserId" type="UserIdType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 3</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="SpazId" type="UserIdType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 3a</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Telefonnummer" type="TelefonnummerType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 6</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+										</xs:all>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Auftragsdatum" type="DatumType">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 4</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Auftragszeit" type="ZeitType">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 5</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Taetigkeit" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 10</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="NumCodeType">
+											<xs:minInclusive value="1"/>
+											<xs:maxInclusive value="10"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="DESARegion" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 14d</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="NumCodeType">
+											<xs:minInclusive value="1"/>
+											<xs:maxInclusive value="4"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="PoolBox" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 14e</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="NumCodeType">
+											<xs:minInclusive value="1"/>
+											<xs:maxInclusive value="999"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Besichtigung" minOccurs="0">
+									<xs:complexType>
+										<xs:group ref="BesichtigungsGroup"/>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Prioritaet" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 15a</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="PrioritaetType"/>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Erledigungsart" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 15b</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="NumCodeType">
+											<xs:minInclusive value="1"/>
+											<xs:maxInclusive value="12"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="ErledigungsartEffektiv" type="NumCodeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 15d</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Vorschaeden" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 15c</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:boolean">
+											<xs:whiteSpace value="collapse"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Bemerkungen" type="MemoType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 16</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="ExpertiseErzwingen" type="xs:boolean" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 21</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="DurchlaufZeitKDX" type="xs:positiveInteger" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>technisches Feld ELDA-Intern Anzahl Tage</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="SherpaOut" type="DatumType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>technisches Feld ELDA-Intern (Eingangs-Datum Expertise/Bewertung)</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="SchadenInfoEmpfaenger" type="NumCodeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 606</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Dokumentensprache" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 607</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="NumCodeType">
+											<xs:enumeration value="1"/>
+											<xs:enumeration value="2"/>
+											<xs:enumeration value="3"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="MeldungDurch" type="String255Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 611</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:all>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Schadendaten" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>FeldNr: 18 - 28, 7, 7a, 135 - 146, 246</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:all>
+								<xs:element name="Schadennummer" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 18</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Schadendatum" type="xs:date">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 7</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="SchadendatumMutiert" type="xs:date" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 7a</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Zeitpunkt" type="xs:time" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 203</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Ort" type="String30Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 204</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Geschaedigter" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 135 - 146</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:group ref="Geschaedigter"/>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Schadenhergang" type="MemoType">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 22</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Schadenklassifikation" type="Num3StatusCodeType">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 24</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Schaetzer" type="String255Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 25a</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="SchadenBeschreibung1" type="MemoType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 25b</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="SchadenBeschreibung2" type="MemoType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 25c</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Verschulden" type="Num3StatusCodeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 26</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="HalswirbelsaeulenVerletzung" type="Num3StatusCodeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 27</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Verletzte" type="Num3StatusCodeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 27a</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Behandlungsort" type="String255Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 27b</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Rapport" type="String255Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 28</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="RapportDienststelle" type="String30Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 205</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="FahrzeugAbgeschlossen" type="Num3StatusCodeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 206</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="AlarmEingeschaltet" type="Num3StatusCodeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 207</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="FahrzeugSchluessel" type="String30Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 209</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:all>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Fahrzeugdaten" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>FeldNr: 30 - 45</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:all>
+								<xs:element name="Kontrollschild" type="KontrollschildType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 30</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Fahrgestellnummer" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 32</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="ErstInbetriebnahme" type="xs:date" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 33</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Fahrzeugart">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 34</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="NumCodeType">
+											<xs:enumeration value="1"/>
+											<xs:enumeration value="3"/>
+											<xs:enumeration value="5"/>
+											<xs:enumeration value="6"/>
+											<xs:enumeration value="7"/>
+											<xs:enumeration value="8"/>
+											<xs:enumeration value="9"/>
+											<xs:enumeration value="10"/>
+											<xs:enumeration value="11"/>
+											<xs:enumeration value="12"/>
+											<xs:enumeration value="13"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Marke" type="String64Type">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 37</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Haupttyp" type="String255Type">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 38</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Untertyp" type="String255Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 602</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Farbe" type="String255Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 41</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Baujahr" type="xs:gYear" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 43</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="DeklarierterKatalogpreis" type="GeldMengeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 44b</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Zubehoerpreis" type="GeldMengeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 45</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Kilometerstand" type="xs:unsignedLong" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 208</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:all>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Versicherungsdaten" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>FeldNr: 31. 39 - 40, 46 - 56, 108 - 120</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:all>
+								<xs:element name="Policennummer" type="PolicenNummerType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 46</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Versicherungsnehmer" type="AdressenType">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 108 - 120</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Deckung">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 50</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="NumCodeType">
+											<xs:enumeration value="1"/>
+											<xs:enumeration value="2"/>
+											<xs:enumeration value="3"/>
+											<xs:enumeration value="4"/>
+											<xs:enumeration value="5"/>
+											<xs:enumeration value="6"/>
+											<xs:enumeration value="7"/>
+											<xs:enumeration value="8"/>
+											<xs:enumeration value="9"/>
+											<xs:enumeration value="10"/>
+											<xs:enumeration value="11"/>
+											<xs:enumeration value="12"/>
+											<xs:enumeration value="13"/>
+											<xs:enumeration value="14"/>
+											<xs:enumeration value="15"/>
+											<xs:enumeration value="16"/>
+											<xs:enumeration value="17"/>
+											<xs:enumeration value="18"/>
+											<xs:enumeration value="21"/>
+											<xs:enumeration value="22"/>
+											<xs:enumeration value="23"/>
+											<xs:enumeration value="24"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Deckungsumfang" type="MemoType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 51</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Lob2" type="String5Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: ToDo</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Klauseln" type="MemoType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 52</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="BesondereBestimmungen" type="MemoType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 53</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="AllgemeineBedingungen" type="MemoType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 54</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Leasing" type="xs:boolean" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 55</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Zession" type="xs:boolean" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 56</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Selbstbehalt" type="GeldMengeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 68</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="SelbstbehaltGemBBZB" type="String255Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 69</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="KontrollschildVN" type="KontrollschildType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 31</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="MarkeVN" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 39</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Zeitwertzusatz" type="xs:boolean" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 57</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="FahrzeugtypVN" type="String255Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 40</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:all>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Rueckfuehrungsdaten" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>FeldNr: 400 - 499</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:all>
+								<xs:element name="Rueckfuehrung" type="xs:boolean">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 400</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="AnsprechpartnerVorOrt" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 402</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="FahrzeugAusweis" type="LageplatzCodeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 403</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="FahrzeugSchluessel" type="LageplatzCodeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 404</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="FahrzeugDokumente" type="LageplatzCodeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 405</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="PhotosVorhanden" type="xs:boolean">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 406</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="FahrzeugAdresse" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 407 - 412, 418</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:all>
+											<xs:element name="StandortZurZeit" type="String64Type">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 418</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Strasse" type="String64Type">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 407</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="PLZ" type="PLZType">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 408</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Ort" type="String64Type">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 409</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Land">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 410</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Telefonnummer" type="TelefonnummerType">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 411</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Faxnummer" type="TelefonnummerType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 412</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+										</xs:all>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Branche" type="BranchenCodeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 413</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Rueckfuehrkosten" type="GeldMengeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 414</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Restwerterloes" type="GeldMengeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 415</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Auftragserteilung" type="xs:date" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 416</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Ablieferung" type="xs:date" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 417</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Einbindung" type="xs:boolean" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr. 419</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Totalschaden" type="xs:boolean" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 521</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Restwertverwerter" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 522</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="RueckfuehrungStatus" type="NumCodeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>technisches Feld ELDA-Intern </xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="RueckfuehrungEffektiv" type="xs:boolean" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 523</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:all>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Lenker" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>FeldNr: 123 - 131, 200, 201</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:all>
+								<xs:element name="Name" type="String64Type">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 123</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Vorname" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 122</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Strasse" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 124</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Nummer" type="String16Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 125</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="PLZ" type="PLZType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 126</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Ort" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 127</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Land" type="IsoLandCodeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 128</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="TelefonPrivat" type="TelefonnummerType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 129</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Mobile" type="TelefonnummerType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 131</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Geburtsdatum" type="xs:date" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 200</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Pruefungsdatum" type="xs:date" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 201</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:all>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Schadenpartnerdaten" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>FeldNr: 500 - 599</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:all>
+								<xs:element name="Einbindbar" type="xs:boolean" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 501</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Einbindungsfall" type="xs:boolean" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: ??</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="NichtEinbindbarGrund" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: ??</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="NumCodeType">
+											<xs:minInclusive value="1"/>
+											<xs:maxInclusive value="7"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Totalschaden" type="xs:boolean" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 502</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Zuweisung" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 503</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="NumCodeType">
+											<xs:minInclusive value="1"/>
+											<xs:maxInclusive value="5"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Reparaturpartner" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 506</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Partnerrabat" type="ProzentType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 508</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="EffektRepKosten" type="GeldMengeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 511</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="EffektRepDauerInTagen" type="AnzahlType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 513</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="UebergabeAnRepPartner" type="xs:date" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 514</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="RuecknahmeVonRepPartner" type="xs:date" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 515</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Reparaturqualitaet" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 516</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="NumCodeType">
+											<xs:minInclusive value="1"/>
+											<xs:maxInclusive value="2"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Ersatzwagen" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 517 - 518</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:all>
+											<xs:element name="Benutzung" type="NumCodeType">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 517</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Kosten" type="GeldMengeType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 518</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+										</xs:all>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="KostenAndereMobilitaet" type="GeldMengeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 519</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Bemerkungen" type="MemoType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 520</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Selbstzahler" type="xs:boolean" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 609</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:all>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Verursacher" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>FeldNr: 235 - 243</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:all>
+								<xs:element name="Adresse" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 235 - 239</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:all>
+											<xs:element name="Vorname" type="String30Type" minOccurs="0"/>
+											<xs:element name="Nachname" type="String64Type"/>
+											<xs:element name="Strasse" type="String64Type" minOccurs="0"/>
+											<xs:element name="Nummer" type="String16Type" minOccurs="0"/>
+											<xs:element name="PLZ" type="PLZType" minOccurs="0"/>
+											<xs:element name="Ort" type="String64Type" minOccurs="0"/>
+											<xs:element name="Land" type="IsoLandCodeType" minOccurs="0"/>
+											<xs:element name="PrivatTelefonnummer" type="TelefonnummerType" minOccurs="0"/>
+										</xs:all>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Fahrzeug" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 240</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Farbe" type="String30Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 241</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Kontrollschild" type="String16Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 242</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Versicherer" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 243</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:all>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="AuslaendischerVersicherungsnehmer" minOccurs="0">
+						<xs:complexType>
+							<xs:group ref="AuslVersicherungsnehmerGroup"/>
+						</xs:complexType>
+					</xs:element>
+				</xs:all>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!--groups-->
+	<xs:group name="Geschaedigter">
+		<xs:all>
+			<xs:element name="Versicherer" type="String64Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>FeldNr: 202</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Adresse" type="AdressenType"/>
+		</xs:all>
+	</xs:group>
+	<xs:group name="BesichtigungsGroup">
+		<xs:all>
+			<xs:element name="Besichtigungstermin" minOccurs="0">
+				<xs:complexType>
+					<xs:all>
+						<xs:element name="Besichtigungsdatum" type="DatumType">
+							<xs:annotation>
+								<xs:documentation>FeldNr: 11</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="BesichtigungszeitVon" type="ZeitType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>FeldNr: 12</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="BesichtigungszeitBis" type="ZeitType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>FeldNr: 13</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="BesichtigungszeitCode" type="NumCodeType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>FeldNr: 610</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BesichtigungsOrt" minOccurs="0">
+				<xs:complexType>
+					<xs:all>
+						<xs:element name="Partnernummer" type="AlphaNumCodeType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>FeldNr: 14g</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Ratingcode" type="RatingCodeType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>FeldNr: 14f</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Adresse" type="AdressenType">
+							<xs:annotation>
+								<xs:documentation>FeldNr: 148 - 158</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+	</xs:group>
+	<xs:group name="AuslVersicherungsnehmerGroup">
+		<xs:all>
+			<xs:element name="Adresse" type="AdressenType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>FeldNr: 280- 286</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Fahrzeug" type="String64Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>FeldNr: 287</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Kontrollschild" type="String16Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>FeldNr: 288</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Immatrikulationsland" type="IsoLandCodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>FeldNr: 289</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AuslVersicherer" type="String64Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>FeldNr: 290</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="GrueneVersicherungskartenNr" type="String16Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>FeldNr: 291</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Grenzversicherung" type="String64Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>FeldNr: 292</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:all>
+	</xs:group>
+</xs:schema>

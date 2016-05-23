@@ -1,0 +1,74 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385436736290
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Blueprint: OSGI-INF/blueprint/soap-binding.xml
+Bundle-Description: Apache CXF Runtime SOAP Binding
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime SOAP Binding
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-bindings-soap
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.binding.soap;version="2.7.9.SNAPSHOT",org
+ .apache.cxf.binding.soap.blueprint;version="2.7.9.SNAPSHOT",org.apache.
+ cxf.binding.soap.interceptor;version="2.7.9.SNAPSHOT",org.apache.cxf.bi
+ nding.soap.jms.interceptor;version="2.7.9.SNAPSHOT",org.apache.cxf.bind
+ ing.soap.model;version="2.7.9.SNAPSHOT",org.apache.cxf.binding.soap.saa
+ j;version="2.7.9.SNAPSHOT",org.apache.cxf.binding.soap.spring;version="
+ 2.7.9.SNAPSHOT",org.apache.cxf.binding.soap.tcp;version="2.7.9.SNAPSHOT
+ ",org.apache.cxf.binding.soap.tcp.frames;version="2.7.9.SNAPSHOT",org.a
+ pache.cxf.binding.soap.wsdl.extensions;version="2.7.9.SNAPSHOT",org.apa
+ che.cxf.binding.soap.wsdl11;version="2.7.9.SNAPSHOT"
+Export-Service: org.apache.aries.blueprint.NamespaceHandler;osgi.service
+ .blueprint.namespace="http://cxf.apache.org/blueprint/bindings/soap"
+Implementation-Title: Apache CXF Runtime SOAP Binding
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: org.apache.aries.blueprint;version="[0.3,2)";resolution:
+ =optional,org.apache.aries.blueprint.mutable;version="[0.3,2)";resoluti
+ on:=optional,org.springframework.beans;resolution:=optional;version="[2
+ .5,4)",org.springframework.beans.factory.xml;resolution:=optional;versi
+ on="[2.5,4)",javax.activation,javax.annotation,javax.jws.soap,javax.wsd
+ l,javax.wsdl.extensions,javax.wsdl.extensions.mime,javax.wsdl.extension
+ s.soap,javax.wsdl.extensions.soap12,javax.wsdl.factory,javax.xml.bind.a
+ nnotation,javax.xml.namespace,javax.xml.soap,javax.xml.stream,javax.xml
+ .transform,javax.xml.transform.dom,javax.xml.validation,javax.xml.xpath
+ ,org.apache.cxf;version="[2.7,3)",org.apache.cxf.annotations;version="[
+ 2.7,3)",org.apache.cxf.attachment;version="[2.7,3)",org.apache.cxf.bind
+ ing;version="[2.7,3)",org.apache.cxf.common;version="[2.7,3)",org.apach
+ e.cxf.common.i18n;version="[2.7,3)",org.apache.cxf.common.injection;ver
+ sion="[2.7,3)",org.apache.cxf.common.logging;version="[2.7,3)",org.apac
+ he.cxf.common.util;version="[2.7,3)",org.apache.cxf.common.xmlschema;ve
+ rsion="[2.7,3)",org.apache.cxf.configuration;version="[2.7,3)",org.apac
+ he.cxf.configuration.blueprint;version="[2.7,3)",org.apache.cxf.configu
+ ration.spring;version="[2.7,3)",org.apache.cxf.databinding;version="[2.
+ 7,3)",org.apache.cxf.endpoint;version="[2.7,3)",org.apache.cxf.headers;
+ version="[2.7,3)",org.apache.cxf.helpers;version="[2.7,3)",org.apache.c
+ xf.interceptor;version="[2.7,3)",org.apache.cxf.io;version="[2.7,3)",or
+ g.apache.cxf.message;version="[2.7,3)",org.apache.cxf.phase;version="[2
+ .7,3)",org.apache.cxf.service;version="[2.7,3)",org.apache.cxf.service.
+ model;version="[2.7,3)",org.apache.cxf.staxutils;version="[2.7,3)",org.
+ apache.cxf.transport;version="[2.7,3)",org.apache.cxf.ws.addressing;ver
+ sion="[2.7,3)",org.apache.cxf.wsdl;version="[2.7,3)",org.apache.cxf.wsd
+ l11;version="[2.7,3)",org.apache.mina.core.buffer;version="[2.0,3)";res
+ olution:=optional,org.apache.mina.core.filterchain;version="[2.0,3)";re
+ solution:=optional,org.apache.mina.core.future;version="[2.0,3)";resolu
+ tion:=optional,org.apache.mina.core.service;version="[2.0,3)";resolutio
+ n:=optional,org.apache.mina.core.session;version="[2.0,3)";resolution:=
+ optional,org.apache.mina.filter.codec;version="[2.0,3)";resolution:=opt
+ ional,org.apache.mina.filter.logging;version="[2.0,3)";resolution:=opti
+ onal,org.apache.mina.transport.socket.nio;version="[2.0,3)";resolution:
+ =optional,org.apache.ws.commons.schema;version="[2.0,3)",org.osgi.servi
+ ce.blueprint;version="[1.0.0,2.0.0)";resolution:=optional,org.osgi.serv
+ ice.blueprint.container;version="[1.0,2)";resolution:=optional,org.osgi
+ .service.blueprint.reflect;version="[1.0,2)";resolution:=optional,org.w
+ 3c.dom,org.xml.sax
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime SOAP Binding
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

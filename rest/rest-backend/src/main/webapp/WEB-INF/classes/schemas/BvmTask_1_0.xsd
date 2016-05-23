@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by ikw (Zürch Schweiz) -->
+<!-- edited with XMLSPY v5 U (http://www.xmlspy.com) by name (softwarepipeline.com) -->
+<xs:schema targetNamespace="http://www.zurich.ch/elda" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.zurich.ch/elda" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02">
+	<xs:include schemaLocation="EldaExBase_1_0.xsd"/>
+	<xs:include schemaLocation="Message_1_0.xsd"/>
+	<!--simple types-->
+	<xs:simpleType name="NumericCodeType">
+		<xs:restriction base="xs:unsignedInt">
+			<xs:totalDigits value="3"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="BvmTask" type="BvmTaskDocument"/>
+	<xs:simpleType name="ClaimAmountType">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999999999.99"/>
+			<xs:totalDigits value="12"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PriorityType">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="2"/>
+			<xs:maxInclusive value="99"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="YesNoUnknownType">
+		<xs:annotation>
+			<xs:documentation>
+				0 = unbekannt
+				1 = nein
+				2 = ja
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NumericCodeType">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NumberOfVehiclesInvolvedType">
+		<xs:annotation>
+			<xs:documentation>	
+				0 = unbekannt
+				1 = 2 Fahrzeuge
+				2 = 3 Fahrzeuge
+				3 = mehr als 3 Fahrzeuge
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NumericCodeType">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PrimaryClaimTypeType">
+		<xs:annotation>
+			<xs:documentation>
+				00 = unbekannt
+				65 = Hagel
+				90 = Schneerutsch
+				60 = übrige Elementarschäden
+				01 = Steinschlag
+				02 = Erdrutsch
+				03 = Felssturz
+				04 = Überschwemmung
+				05 = Lawine
+				06 = Schneedruck
+				07 = Sturm
+		</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NumericCodeType">
+			<xs:enumeration value="00"/>
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="65"/>
+			<xs:enumeration value="90"/>
+			<xs:enumeration value="60"/>
+			<xs:enumeration value="02"/>
+			<xs:enumeration value="03"/>
+			<xs:enumeration value="04"/>
+			<xs:enumeration value="05"/>
+			<xs:enumeration value="06"/>
+			<xs:enumeration value="07"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ForceMutationExpertiseType">
+		<xs:annotation>
+			<xs:documentation>	
+				1 = Expertise erzwingen
+				2 = keine Expertise erzwingen
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NumericCodeType">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ClaimCategoryType">
+		<xs:restriction base="xs:unsignedInt">
+			<xs:totalDigits value="2"/>
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InsuranceCodeType">
+		<xs:restriction base="xs:unsignedInt">
+			<xs:totalDigits value="3"/>
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MutationScoreCommentsType">
+		<xs:annotation>
+			<xs:documentation>
+				0 = BVM: unbekannt
+				1 = BVM: nein
+				2 = BVM: ja
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NumericCodeType">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OccupationType">
+		<xs:annotation>
+			<xs:documentation>
+				0 = keine Angabe (unbekannt)
+				1 = angestellt
+				2 = leitend
+				3 = selbständig
+				4 = im Ruhestand
+				5 = im Haushalt
+				6 = Schul. Ausbildung
+				7 = Berufsausbildung
+				8 = IV-Rente
+				9 = arbeitslos
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NumericCodeType">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+			<xs:enumeration value="7"/>
+			<xs:enumeration value="8"/>
+			<xs:enumeration value="9"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ArrangementsVehicleType">
+		<xs:annotation>
+			<xs:documentation>
+				0 = leer
+				1 = Fahrzeughistorie bestellen / Vorschäden abklären
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NumericCodeType">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ArrangementsFinancialBackgroundType">
+		<xs:annotation>
+			<xs:documentation>
+				0 = leer
+				1 = Betreibungsauskunft einholen
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NumericCodeType">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ArrangementsPersonalType">
+		<xs:annotation>
+			<xs:documentation>
+				0 = leer
+				1 = Vorschäden / Vorversicherer abklären
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NumericCodeType">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ArrangementsContractualType">
+		<xs:annotation>
+			<xs:documentation>
+				0 = leer
+				1 = Vertragsdaten überprüfen (Vorversicherer/Deckung/Versicherungsbeginn)
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NumericCodeType">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VersionISPType">
+		<xs:restriction base="xs:unsignedInt">
+			<xs:totalDigits value="3"/>
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="100"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ScoreType">
+		<xs:restriction base="xs:unsignedInt">
+			<xs:totalDigits value="3"/>
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="100"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="YesNoType">
+		<xs:annotation>
+			<xs:documentation>
+				ja = ja
+				nein = nein
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="yes"/>
+			<xs:enumeration value="no"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="JNType">
+		<xs:annotation>
+			<xs:documentation>
+				J = ja
+				N = nein
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="J"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PolicyNumberType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,20}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RegionType">
+		<xs:annotation>
+			<xs:documentation>
+				0=unbekannt
+				1=West
+				2=Mitte Bern
+				3=Mitte Luzern
+				4=Ost Ostschweiz
+				5=Ost Zürich
+				6=Tessin
+				7=Hauptsitz
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NumericCodeType">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+			<xs:enumeration value="7"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--complex types-->
+	<xs:complexType name="PersonType">
+		<xs:all>
+			<xs:element name="Firstname" type="String30Type" minOccurs="0"/>
+			<xs:element name="Surname" type="String64Type" minOccurs="0"/>
+			<xs:element name="Street" type="String64Type" minOccurs="0"/>
+			<xs:element name="Number" type="String16Type" minOccurs="0"/>
+			<xs:element name="PostCode" type="PLZType" minOccurs="0"/>
+			<xs:element name="City" type="String64Type" minOccurs="0"/>
+			<xs:element name="Nationality" type="String64Type" minOccurs="0"/>
+			<xs:element name="DateOfBirth" type="String10Type" minOccurs="0"/>
+			<xs:element name="TelephoneNumber" type="TelefonnummerType" minOccurs="0"/>
+			<xs:element name="FaxNumber" type="TelefonnummerType" minOccurs="0"/>
+			<xs:element name="Email" type="EmailType" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="CaseWorkerType">
+		<xs:annotation>
+			<xs:documentation>FeldNr: xxxx</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="Firstname" type="String30Type" minOccurs="0"/>
+			<xs:element name="Surname" type="String64Type" minOccurs="0"/>
+			<xs:element name="Telephone" type="TelefonnummerType" minOccurs="0"/>
+			<xs:element name="MobileNumber" type="TelefonnummerType" minOccurs="0"/>
+			<xs:element name="FaxNumber" type="TelefonnummerType" minOccurs="0"/>
+			<xs:element name="Email" type="EmailType" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="BvmTaskDocument">
+		<xs:annotation>
+			<xs:documentation>de:BvmAuftragDokument</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="AbstractDokumentType">
+				<xs:all>
+					<xs:element name="TaskDetails" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>FeldNr: xxxx, de:Auftragsdaten</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:all>
+								<xs:element name="HostId" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 160, de: HostId</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="NameHostId" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 161, de:NameHostId</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="CaseWorker" type="CaseWorkerType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 286, 287, 288, de:Sachbearbeiter</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="TaskOrigin" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 228, de:HerkunftAuftrag</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="PriorityCarExpertise" type="PriorityType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 231, de:PrioritaetFzExpertise</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Region" type="RegionType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 232, de:Region</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="ForceMutationExpertise" type="ForceMutationExpertiseType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 154, de:MutationExpertiseErzwingen</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="VersionISP" type="VersionISPType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 293, de:VersionISP</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="AssessmentDateISP" type="xs:date" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 294, de:DatumBewertungISP</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="ImportDate" type="xs:date" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 164, de:DatumFalleroeffnung</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="NameCoordinator" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 166, de:NameKoordinator</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="NameObserver" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 193, de:NameErmittler</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="CompletionData" minOccurs="0">
+									<xs:complexType>
+										<xs:all>
+											<xs:element name="ExternalFees" type="GeldMengeType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 177, de:ExterneKosten</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Reclaims" type="GeldMengeType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 178, de:Rueckforderungen</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="ReceptReclaims" type="GeldMengeType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 179, de:EingangRueckforderungen</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="DeclineReason" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 180, 
+														de:Ablehnungsgrund
+														0 = kein Ablehnungsgrund
+														1 = VVG 6
+														2 = VVG 40
+														3 = StGB 138
+														4 = StGB 158
+														5 = StGB 160
+														6 = StGB 251
+														7 = ZGB 8
+													</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+													<xs:restriction base="NumericCodeType">
+														<xs:enumeration value="0"/>
+														<xs:enumeration value="1"/>
+														<xs:enumeration value="2"/>
+														<xs:enumeration value="3"/>
+														<xs:enumeration value="4"/>
+														<xs:enumeration value="5"/>
+														<xs:enumeration value="6"/>
+														<xs:enumeration value="7"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element name="Measures" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 181,
+														de: Massnahmen
+														0 = keine Massnahme
+														1 = Ablehnung Schadenzahlung
+														2 = Vergleich
+														3 = Rücktritt vom Vertrag
+														4 = Kündigung im Schadenfall
+													</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+													<xs:restriction base="NumericCodeType">
+														<xs:enumeration value="0"/>
+														<xs:enumeration value="1"/>
+														<xs:enumeration value="2"/>
+														<xs:enumeration value="3"/>
+														<xs:enumeration value="4"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element name="ZisEntry" type="YesNoType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 182, de: ZIS Eintrag</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Complaint" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 183
+														de: Strafanzeige
+														0 = Keine Strafanzeige
+														1 = Anzeige erstattet/polizeiliche oder gerichtliche Ermittlungen im Gang
+														2 = Strafverfahren eingestellt
+														3 = Strafverfahren mit rechtskräftiger Verurteilung abgeschlossen
+													</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+													<xs:restriction base="NumericCodeType">
+														<xs:enumeration value="0"/>
+														<xs:enumeration value="1"/>
+														<xs:enumeration value="2"/>
+														<xs:enumeration value="3"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element name="CivilProceeding" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 184
+														de:Zivilverfahren
+														0 = Kein Verfahren hängig
+														1 = Hängig/Klage gegen Versicherer eingereicht
+														2 = Abgeschlossen durch Rückzug der Klage
+														3 = Abgeschlossen durch Abweisung der Klage
+													</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+													<xs:restriction base="NumericCodeType">
+														<xs:enumeration value="0"/>
+														<xs:enumeration value="1"/>
+														<xs:enumeration value="2"/>
+														<xs:enumeration value="3"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element name="ConfirmationOfSuspicion" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 185
+														de: Verdachtsbestätigung
+														0 = Verdacht nicht bestätigt
+														1 = Person
+														2 = Fahrzeug
+														3 = Schadenhistorie
+														4 = Vertrag
+														5 = Finanzieller Hintergrund
+														6 = Sonstige Auffälligkeit
+													</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+													<xs:restriction base="NumericCodeType">
+														<xs:enumeration value="0"/>
+														<xs:enumeration value="1"/>
+														<xs:enumeration value="2"/>
+														<xs:enumeration value="3"/>
+														<xs:enumeration value="4"/>
+														<xs:enumeration value="5"/>
+														<xs:enumeration value="6"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element name="RejectionReason" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 186, 
+														de: Rückweisungsgrund
+														0 = unbekannt
+														1 = Fehlende Kapazitäten
+														2 = Aufwand/Ertrag ungünstig
+														3 = Unbegründeter Verdacht
+													</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+													<xs:restriction base="NumericCodeType">
+														<xs:enumeration value="0"/>
+														<xs:enumeration value="1"/>
+														<xs:enumeration value="2"/>
+														<xs:enumeration value="3"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element name="ExternalOrderOfInvestigation" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 187
+														Externer Ermittlungsauftrag
+														0 = Anderer
+														1 = Fahrzeughistorie
+														2 = Schlüsselgutachten
+														3 = Urkundenlabor
+														4 = Auslandermittlungen
+														5 = Sonstiges Gutachten
+														6 = Observationsauftrag
+													</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+													<xs:restriction base="NumericCodeType">
+														<xs:enumeration value="1"/>
+														<xs:enumeration value="2"/>
+														<xs:enumeration value="3"/>
+														<xs:enumeration value="4"/>
+														<xs:enumeration value="5"/>
+														<xs:enumeration value="6"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element name="JudgementDate" type="xs:date" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 213, de:DatumUrteil</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="JudicialAuthority" type="String255Type" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 214, de:UrteilendeInstanz</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Sentence" type="String255Type" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 215, de:Strafe</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+										</xs:all>
+									</xs:complexType>
+								</xs:element>
+							</xs:all>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="ClaimDetails" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>FeldNr: xxxx, de:Schadendaten</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:all>
+								<xs:element name="ClaimNumber" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 196, de:Schadennummer</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="ClaimAmount" type="ClaimAmountType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 1, de:Schadenhoehe</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="ClaimDate" type="xs:date" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 4, de:Schadendatum</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="ClaimCategory" type="ClaimCategoryType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 233, de:Schadenkategorie</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="PrimaryClaimType" type="PrimaryClaimTypeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 8, de:ElementarschadenArt</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="BigEvent" type="YesNoUnknownType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 6, de:Grossereignis</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="NumberOfVehiclesInvolved" type="NumberOfVehiclesInvolvedType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 7, de:AnzahlBeteiligteFrz</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="ClaimLocation" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 289, de:Schadenort</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="PostCodeClaimLocation" type="PLZType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 111, de:PlzSchadenort</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="ClaimCountry" type="IsoLandCodeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 25, de:Schadenland</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="AddressDriver" type="PersonType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 205, 206, 207, 108, de:AdresseLenker</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="AddressCounterparty" type="PersonType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 209, 210, 211, 212, de:AdresseKontrahent</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="UrsacheText" type="String145Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr , de:UrsacheText</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:all>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="VehicleDetails" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>FeldNr: xxxx, de:Fahrzeugdaten</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:all>
+								<xs:element name="ChassisNumberInsuredVehicle" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 241, de:FahrgestellnummerVersichertesFahrzeug</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Mark" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 283, de:Marke</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="RegistrationNumber" type="KontrollschildType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 284, de:Kontrollschild</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Model" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 285, de:Model</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:all>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="InsuranceDetails" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>FeldNr: xxxx, de:Versicherungsdaten</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:all>
+								<xs:element name="PolicyNumber" type="PolicyNumberType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 197, de:Policennummer</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="InsuranceType" type="InsuranceCodeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 190, de:Versicherungsart</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="AddressPolicyHolder" type="PersonType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 18, 28, 109, 199, 200, 201, de:AdresseVN</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="IndustryPolicyHolder" type="String64Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 127, de:BrancheVN</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="OccupationPolicyHolder" type="OccupationType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 132, de:BerufsStellungVN</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="AddressMainDriver" type="PersonType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 104, 106, 107, 202, 203, 204, de:AdresseHL</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:all>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Bvmdata" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>FeldNr: xxx, de:Bvmdaten</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:all>
+								<xs:element name="BvmForceMessage" type="YesNoUnknownType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 124, de:BvmMeldungErzwingen</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="MutationScoreComments" type="MutationScoreCommentsType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 155, de:MutationScoreBemerkungen</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="RepeatedSuspicionMoment" type="JNType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>FeldNr: 292, de:WiederholteVerdachtsmeldung</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Arrangements" minOccurs="0">
+									<xs:complexType>
+										<xs:all>
+											<xs:element name="ArrangementsVehicle" type="ArrangementsVehicleType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 138, de:MassnahmeFahrzeug</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="ArrangementsFinancialBackground" type="ArrangementsFinancialBackgroundType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 140, de:MassnahmeFinanziellerHintergrund</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="ArrangementsPersonal" type="ArrangementsPersonalType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 141, de:MassnahmePerson</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="ArrangementsContractual" type="ArrangementsContractualType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 143, de:MassnahmeVertrag</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="OtherObservations" type="YesNoUnknownType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 144, de:SonstigeAuffälligkeit</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Activity5" type="YesNoUnknownType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 218, de:Aktivität5</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Activity6" type="YesNoUnknownType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 219, de:Aktivität6</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+										</xs:all>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Score" minOccurs="0">
+									<xs:complexType>
+										<xs:all>
+											<xs:element name="Score" type="ScoreType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 135, de:Score</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="ScoreChangeDate" type="xs:date" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 291, de:DatumScoringaenderung</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="ScoreVehicleSuspicion" type="ScoreType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 145, de:VerdachtsscoreFahrzeug</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="ScoreFinancialBackgroundSuspicion" type="ScoreType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 146, de:VerdachtsscoreFinanziellerHintergrund</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="ScorePersonalSuspicion" type="ScoreType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 147, de:VerdachtsscorePerson</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="ScoreClaimHistorySuspicion" type="ScoreType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 148, de:VerdachtsscorSchadenhistorie</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="ScoreContractSuspicion" type="ScoreType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 149, de:VerdachtsscoreVertrag</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Score6Suspicion" type="ScoreType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 221, de:Verdachtsscore6</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="ThresholdExceeded" type="YesNoUnknownType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 134, de:PruefschwelleUeberschritten</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="AdditionalQuestions" type="YesNoUnknownType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>FeldNr: 137, de:AuslösungZusatzfragen</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+										</xs:all>
+									</xs:complexType>
+								</xs:element>
+							</xs:all>
+						</xs:complexType>
+					</xs:element>
+				</xs:all>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

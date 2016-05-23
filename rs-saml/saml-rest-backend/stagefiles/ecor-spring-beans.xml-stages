@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:cxf="http://cxf.apache.org/core"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+	xmlns:sec="http://cxf.apache.org/configuration/security"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+		http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
+		http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://cxf.apache.org/configuration/security http://cxf.apache.org/schemas/configuration/security.xsd">
+
+
+    <import resource="classpath:META-INF/cxf/cxf.xml" />
+
+    <bean id="applicationContextProvider" class="com.zurich.chz.ws.EldaApplicationContext" />
+
+    <context:component-scan base-package="com.zurich.zsoa" />
+    <context:annotation-config />
+ 
+    <context:property-placeholder
+        location="classpath:locator.properties,classpath:common.properties,classpath:stsTruststore.properties" />
+<!-- 
+ATTENTION : the ststTokenInterceptor is a temporary Solution as long as the Omniswitch does not sent 
+			a WS-Security Header.
+			This MUST be removed when the correct Security Header is provided
+ -->
+
+    <cxf:bus>
+        <cxf:inInterceptors>
+            <ref bean="basicAuthInterceptor" />
+        </cxf:inInterceptors>
+        <cxf:features>
+            <cxf:logging />
+        </cxf:features>
+    </cxf:bus>
+
+    <bean id="org.apache.cxf.management.InstrumentationManager"
+        class="org.apache.cxf.management.jmx.InstrumentationManagerImpl">
+        <property name="bus" ref="cxf" />
+        <property name="enabled" value="true" />
+        <property name="serverName" value="server1" />
+        <property name="usePlatformMBeanServer" value="true" />
+        <property name="createMBServerConnectorFactory" value="false" />
+    </bean>
+
+    <bean id="CounterRepository" class="org.apache.cxf.management.counters.CounterRepository">
+        <property name="bus" ref="cxf" />
+    </bean>
+
+    <bean id="delegationCallbackHandler"
+        class="com.zurich.zsoa.saft.cxf.security.ThreadLocalCallbackHandler" />
+
+    <http-conf:conduit name="##ZSOASEC_ENV##:56080/.*">
+        <http-conf:tlsClientParameters
+            disableCNCheck="true">
+            <sec:trustManagers>
+                <sec:keyStore type="${truststore.type}" password="${truststore.password}"
+                    file="${truststore.file}" />
+            </sec:trustManagers>
+        </http-conf:tlsClientParameters>
+    </http-conf:conduit>
+
+
+    <!-- sad Authorization_1_0 -->
+    <jaxws:client id="sad_Authorization_1_0ServiceClient"
+        serviceName="sad:sad.Authorization_1_0SOAPService" endpointName="sad:sad.Authorization_1_0SOAPPortSSL"
+        serviceClass="com.zurich.ch.sad.SadAuthorization10" address="locator://sad.Authorization_1_0SOAPService"
+        xmlns:sad="http://ch.zurich.com/sad" wsdlLocation="WEB-INF/Omniswitch/sad.wsdl" username="${codeservice.username}" password="${codeservice.password}">
+        <jaxws:properties>
+            <entry key="ws-security.sts.client">
+                <bean class="org.apache.cxf.ws.security.trust.STSClient">
+                    <constructor-arg ref="cxf" />
+                    <property name="wsdlLocation"
+                        value="##ZSOASEC_ENV##:56080/opensso/RACF/STSServiceTransportUT?wsdl" />
+                    <property name="serviceName"
+                        value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}SecurityTokenService" />
+                    <property name="endpointName"
+                        value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}TransportUT_RACF_Port" />
+                    <property name="onBehalfOf" ref="delegationCallbackHandler" />
+                    <property name="enableAppliesTo" value="true" />
+                </bean>
+            </entry>
+            <entry key="ws-security.cache.issued.token.in.endpoint" value="false" />
+			<entry key="ws-security.is-bsp-compliant" value="false" />
+            <entry key="ws-security.username" value="${codeservice.username}" />
+            <entry key="ws-security.password" value="${codeservice.password}" />
+            <entry key="zsoa.sam.enabled" value="false" />
+        </jaxws:properties>
+    </jaxws:client>
+
+    <http-conf:conduit
+        name="{http://ch.zurich.com/sad}sad.Authorization_1_0SOAPPortSSL.http-conduit">
+        <http-conf:tlsClientParameters
+            disableCNCheck="true">
+            <sec:trustManagers>
+                <sec:keyStore type="${truststore.type}" password="${truststore.password}"
+                    file="${truststore.file}" />
+            </sec:trustManagers>
+        </http-conf:tlsClientParameters>
+		<http-conf:client ConnectionTimeout="300000" ReceiveTimeout="300000"/>
+    </http-conf:conduit>
+    
+    
+    <!-- sad Message -->
+        <jaxws:client id="sad_UserSecurity_2_0ServiceClient"
+            serviceName="sad:sad.UserSecurity_2_0SOAPService" endpointName="sad:sad.UserSecurity_2_0SOAPPortSSL"
+            serviceClass="com.zurich.ch.sad.SadUserSecurity20" address="locator://sad.UserSecurity_2_0SOAPService"
+            xmlns:sad="http://ch.zurich.com/sad" wsdlLocation="WEB-INF/Omniswitch/sad.wsdl" username="${codeservice.username}" password="${codeservice.password}">
+            <jaxws:properties>
+                <entry key="ws-security.sts.client">
+                    <bean class="org.apache.cxf.ws.security.trust.STSClient">
+                        <constructor-arg ref="cxf" />
+                        <property name="wsdlLocation"
+                            value="##ZSOASEC_ENV##:56080/opensso/RACF/STSServiceTransportUT?wsdl" />
+                        <property name="serviceName"
+                            value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}SecurityTokenService" />
+                        <property name="endpointName"
+                            value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}TransportUT_RACF_Port" />
+                        <property name="onBehalfOf" ref="delegationCallbackHandler" />
+                        <property name="enableAppliesTo" value="true" />
+                    </bean>
+                </entry>
+                <entry key="ws-security.cache.issued.token.in.endpoint" value="false" />
+    			<entry key="ws-security.is-bsp-compliant" value="false" />
+                <entry key="ws-security.username" value="${codeservice.username}" />
+                <entry key="ws-security.password" value="${codeservice.password}" />
+                <entry key="zsoa.sam.enabled" value="false" />
+            </jaxws:properties>
+        </jaxws:client>
+    
+        
+    
+     <!-- sad User_1_0 -->
+        <jaxws:client id="sad_User_1_0ServiceClient"
+            serviceName="sad:sad.User_1_0SOAPService" endpointName="sad:sad.User_1_0SOAPPortSSL"
+            serviceClass="com.zurich.ch.sad.SadUser10" address="locator://sad.User_1_0SOAPService"
+            xmlns:sad="http://ch.zurich.com/sad" wsdlLocation="WEB-INF/Omniswitch/sad.wsdl" username="${codeservice.username}" password="${codeservice.password}">
+            <jaxws:properties>
+                <entry key="ws-security.sts.client">
+                    <bean class="org.apache.cxf.ws.security.trust.STSClient">
+                        <constructor-arg ref="cxf" />
+                        <property name="wsdlLocation"
+                            value="##ZSOASEC_ENV##:56080/opensso/RACF/STSServiceTransportUT?wsdl" />
+                        <property name="serviceName"
+                            value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}SecurityTokenService" />
+                        <property name="endpointName"
+                            value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}TransportUT_RACF_Port" />
+                        <property name="onBehalfOf" ref="delegationCallbackHandler" />
+                        <property name="enableAppliesTo" value="true" />
+                    </bean>
+                </entry>
+                <entry key="ws-security.cache.issued.token.in.endpoint" value="false" />
+    			<entry key="ws-security.is-bsp-compliant" value="false" />
+                <entry key="ws-security.username" value="${codeservice.username}" />
+                <entry key="ws-security.password" value="${codeservice.password}" />
+                <entry key="zsoa.sam.enabled" value="false" />
+            </jaxws:properties>
+        </jaxws:client>
+    
+        <!-- Kdx SYstem -->
+        <jaxws:client id="Kdx_KdxSystem_1_0ServiceClient"  
+            serviceName="kdx:kdx.KdxSystem_1_0SOAPService" endpointName="kdx:kdx.KdxSystem_1_0SOAPPort"
+            serviceClass="com.zurich.ch.kdx.KdxKdxSystem10" address="locator://kdx.KdxSystem_1_0SOAPService"
+            xmlns:kdx="http://ch.zurich.com/kdx" wsdlLocation="WEB-INF/Omniswitch/kdx.wsdl" username="${codeservice.username}" password="${codeservice.password}">
+            <jaxws:properties>
+                <entry key="ws-security.sts.client">
+                    <bean class="org.apache.cxf.ws.security.trust.STSClient">
+                        <constructor-arg ref="cxf" />
+                        <property name="wsdlLocation"
+                            value="##ZSOASEC_ENV##:56080/opensso/RACF/STSServiceTransportUT?wsdl" />
+                        <property name="serviceName"
+                            value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}SecurityTokenService" />
+                        <property name="endpointName"
+                            value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}TransportUT_RACF_Port" />
+                        <property name="onBehalfOf" ref="delegationCallbackHandler" />
+                        <property name="enableAppliesTo" value="true" />
+                    </bean>
+                </entry>
+                <entry key="ws-security.cache.issued.token.in.endpoint" value="false" />
+                    <entry key="ws-security.is-bsp-compliant" value="false" />
+                    <entry key="ws-security.username" value="${codeservice.username}" />
+                    <entry key="ws-security.password" value="${codeservice.password}" />
+            <entry key="zsoa.sam.enabled" value="false" />
+                
+            </jaxws:properties>
+        </jaxws:client>
+    
+        <http-conf:conduit
+            name="{http://ch.zurich.com/kdx}kdx.KdxSystem_1_0SOAPPort.http-conduit">
+            <http-conf:tlsClientParameters
+                disableCNCheck="true">
+                <sec:trustManagers>
+                    <sec:keyStore type="${truststore.type}" password="${truststore.password}"
+                        file="${truststore.file}" />
+                </sec:trustManagers>
+            </http-conf:tlsClientParameters>
+                <http-conf:client ConnectionTimeout="300000" ReceiveTimeout="300000"/>
+    </http-conf:conduit>
+    
+
+<!-- KdxSytem10Interface -->
+<!-- 
+    <bean id="KdxSystem10Interface" class="com.zurich.chz.ws.esb.KdxSystem10InterfaceImpl">
+        <property name="kdx10" ref="Kdx_KdxSystem_1_0ServiceClient" />
+    </bean>
+ -->      
+ 
+      
+      <!-- deploy falsch?  -->
+ 
+      <!-- Document10 SYstem -->
+            <jaxws:client id="Document_1_0ServiceClient"  
+                serviceName="ecm:ecm.Document_1_0SOAPService" endpointName="ecm:ecm.Document_1_0SOAPPort"
+                serviceClass="com.zurich.ch.ecm.EcmDocument10" address="##ECM2CMIS_SERVICE_URL##"
+                xmlns:ecm="http://ch.zurich.com/ecm" wsdlLocation="WEB-INF/Omniswitch/Document_1_0.wsdl" username="${codeservice.username}" password="${codeservice.password}">
+                <jaxws:properties>
+                    <entry key="ws-security.sts.client">
+		                    <bean class="org.apache.cxf.ws.security.trust.STSClient">
+		                        <constructor-arg ref="cxf" />
+		                        <property name="wsdlLocation" value="##ZSOASEC_ENV##:56080/opensso/RACF/STSServiceTransportUT?wsdl" />
+                                <property name="serviceName"
+                                    value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}SecurityTokenService" />
+                                <property name="endpointName"
+                                    value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}TransportUT_RACF_Port" />
+		                        <property name="tokenType"
+		                            value="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0" />
+                
+                            <property name="onBehalfOf" ref="delegationCallbackHandler" />
+                            <property name="enableAppliesTo" value="true" />
+                        </bean>
+                    </entry>
+                    <entry key="ws-security.cache.issued.token.in.endpoint" value="false" />
+                        <entry key="ws-security.is-bsp-compliant" value="false" />
+                        <entry key="ws-security.username" value="${codeservice.username}" />
+                        <entry key="ws-security.password" value="${codeservice.password}" />
+                <entry key="zsoa.sam.enabled" value="false" />
+                    
+                </jaxws:properties>
+            </jaxws:client>
+        
+            <http-conf:conduit
+                name="{http://ch.zurich.com/ecm}ecm.Document_1_0SOAPPort.http-conduit">
+                <http-conf:tlsClientParameters
+                    disableCNCheck="true">
+                    <sec:trustManagers>
+                        <sec:keyStore type="${truststore.type}" password="${truststore.password}"
+                            file="${truststore.file}" />
+                    </sec:trustManagers>
+                </http-conf:tlsClientParameters>
+                    <http-conf:client ConnectionTimeout="300000" ReceiveTimeout="300000"/>
+    </http-conf:conduit>
+
+
+
+    <!-- Layer Capability Start -->
+        
+
+<!-- Layer 1 Document10 SYstem -->
+            <jaxws:client id="Layer1_Document_1_0ServiceClient"  
+                serviceName="ecm:ecm.Document_1_0SOAPService" endpointName="ecm:ecm.Document_1_0SOAPPort"
+                serviceClass="com.zurich.ch.ecm.EcmDocument10" address="##ECM2CMIS_SERVICE_URL##"
+                xmlns:ecm="http://ch.zurich.com/ecm" wsdlLocation="WEB-INF/Omniswitch/Document_1_0.wsdl" username="${codeservice.username}" password="${codeservice.password}">
+                <jaxws:properties>
+                <entry key="zsoa.locator.enabled" value="false"></entry>
+                    <entry key="ws-security.sts.client">
+                            <bean class="org.apache.cxf.ws.security.trust.STSClient">
+                                <constructor-arg ref="cxf" />
+                                <property name="wsdlLocation" value="##ZSOASEC_ENV##:56080/opensso/RACF/STSServiceTransportUT?wsdl" />
+                                <property name="serviceName"
+                                    value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}SecurityTokenService" />
+                                <property name="endpointName"
+                                    value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}TransportUT_RACF_Port" />
+                                <property name="tokenType"
+                                    value="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0" />
+
+                            <property name="onBehalfOf" ref="delegationCallbackHandler" />
+                            <property name="enableAppliesTo" value="true" />
+                        </bean>
+                    </entry>
+                    <entry key="ws-security.cache.issued.token.in.endpoint" value="false" />
+                        <entry key="ws-security.is-bsp-compliant" value="false" />
+                        <entry key="ws-security.username" value="${codeservice.username}" />
+                        <entry key="ws-security.password" value="${codeservice.password}" />
+                <entry key="zsoa.sam.enabled" value="false" />
+
+                </jaxws:properties>
+            </jaxws:client>
+
+            <http-conf:conduit
+                name="{http://ch.zurich.com/ecm}ecm.Document_1_0SOAPPort.http-conduit"> 
+                <http-conf:tlsClientParameters
+                    disableCNCheck="true">
+                    <sec:trustManagers>
+                        <sec:keyStore type="${truststore.type}" password="${truststore.password}"
+                            file="${truststore.file}" />
+                    </sec:trustManagers>
+                </http-conf:tlsClientParameters>
+                    <http-conf:client ConnectionTimeout="300000" ReceiveTimeout="300000"/>
+    </http-conf:conduit>
+
+    <!-- Layer 2 Document10 SYstem -->
+            <jaxws:client id="Layer2_Document_1_0ServiceClient"  
+                serviceName="ecm:ecm.Document_1_0SOAPService" endpointName="ecm:ecm.Document_1_0SOAPPort"
+                serviceClass="com.zurich.ch.ecm.EcmDocument10" address="locator://ecm.Document_1_0SOAPService"
+                xmlns:ecm="http://ch.zurich.com/ecm" wsdlLocation="WEB-INF/Omniswitch/Document_1_0.wsdl" username="${codeservice.username}" password="${codeservice.password}">
+                <jaxws:properties>
+                    <entry key="ws-security.sts.client">
+                            <bean class="org.apache.cxf.ws.security.trust.STSClient">
+                                <constructor-arg ref="cxf" />
+                                <property name="wsdlLocation" value="##ZSOASEC_ENV##:56080/opensso/RACF/STSServiceTransportUT?wsdl" />
+                                <property name="serviceName"
+                                    value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}SecurityTokenService" />
+                                <property name="endpointName"
+                                    value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}TransportUT_RACF_Port" />
+                                <property name="tokenType"
+                                    value="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0" />
+
+                            <property name="onBehalfOf" ref="delegationCallbackHandler" />
+                            <property name="enableAppliesTo" value="true" />
+                        </bean>
+                    </entry>
+                    <entry key="ws-security.cache.issued.token.in.endpoint" value="false" />
+                        <entry key="ws-security.is-bsp-compliant" value="false" />
+                        <entry key="ws-security.username" value="${codeservice.username}" />
+                        <entry key="ws-security.password" value="${codeservice.password}" />
+                <entry key="zsoa.sam.enabled" value="false" />
+
+                </jaxws:properties>
+            </jaxws:client>
+
+            <http-conf:conduit
+                name="{http://ch.zurich.com/ecm}ecm.Document_1_0SOAPPort.http-conduit"> 
+                <http-conf:tlsClientParameters
+                    disableCNCheck="true">
+                    <sec:trustManagers>
+                        <sec:keyStore type="${truststore.type}" password="${truststore.password}"
+                            file="${truststore.file}" />
+                    </sec:trustManagers>
+                </http-conf:tlsClientParameters>
+                    <http-conf:client ConnectionTimeout="300000" ReceiveTimeout="300000"/>
+    </http-conf:conduit>
+
+    <!-- Layer Capability end -->
+
+    <!-- Layer Capability end -->
+
+
+    
+    <!-- EcmDocument10Interface -->
+     
+        <bean id="Document10Interface" class="com.zurich.chz.ws.esb.Document10InterfaceImpl">
+            <property name="ecm10" ref="Document_1_0ServiceClient" />
+        </bean>
+        
+        <!-- Layer Capability start -->
+        <bean id="Layer1Document10Interface" class="com.zurich.chz.ws.esb.Layer1Document10InterfaceImpl">
+            <property name="ecm10" ref="Layer1_Document_1_0ServiceClient" />
+        </bean>
+        <bean id="Layer2Document10Interface" class="com.zurich.chz.ws.esb.Layer2Document10InterfaceImpl">
+            <property name="ecm10" ref="Layer2_Document_1_0ServiceClient" />
+        </bean>
+        <!-- Layer Capability End -->
+             
+    <!-- SadMsgExchange10Interface -->
+        <bean id="SadInterface" class="com.zurich.chz.ws.esb.SadInterfaceImpl">
+            <property name="user20" ref="sad_UserSecurity_2_0ServiceClient" />
+            <property name="sad10" ref="sad_User_1_0ServiceClient" />
+            <property name="aut10" ref="sad_Authorization_1_0ServiceClient" />
+    </bean>
+ 
+    
+    <!-- Start for Provider -->
+    <bean id="stsTokenInterceptor"
+        class="com.zurich.chz.ws.esb.security.STSSamlTokenInterceptor" />
+
+    <bean id="basicAuthInterceptor"
+		class="com.zurich.chz.ws.esb.security.BasicAuthInterceptor" />
+		
+    <!-- elda Message and Report End point Start -->    
+    <bean id="kuh" class="com.zurich.chz.ws.ServiceImpl"/>
+    
+    <!-- elda Message and Report End point Start -->    
+    <bean id="bbt" class="com.zurich.chz.ws.ServiceImpl"/>
+    
+    <bean id="bbtPasswordCallback" class="com.zurich.chz.ws.esb.security.BBTPasswordCallbackHandler">
+    	<property name="username" value="${bbt.username}"></property>
+    	<property name="pw" value="${bbt.password}"></property>
+    </bean>
+    
+	<jaxws:endpoint id="document_1_0_bbt" implementor="#bbt"
+        address="/bbt/MsgExchange_1_0" wsdlLocation="/WEB-INF/Omniswitch/elda.wsdl"
+        xmlns:ns1="http://ch.zurich.com/elda" serviceName="ns1:elda.MsgExchange_1_0SOAPService"
+        endpointName="ns1:elda.MsgExchange_1_0SOAPPort">
+        <!-- use this config for user validation per callback handler -->
+        <jaxws:properties>
+         <entry key="ws-security.callback-handler" value-ref="bbtPasswordCallback"/>
+         <entry key="zsoa.locator.enabled" value="false"></entry>
+        </jaxws:properties> 
+        <!-- use the below config for sts delegated validation 
+        <jaxws:properties>
+            <entry key="ws-security.signature.properties" value="stsTruststore.properties" />
+            <entry key="ws-security.ut.validator">
+                <bean
+                    class="org.apache.cxf.ws.security.trust.STSTokenValidator" />
+            </entry>
+            <entry key="ws-security.sts.client">
+                <bean class="org.apache.cxf.ws.security.trust.STSClient">
+                    <constructor-arg ref="cxf" />
+                    <property name="wsdlLocation" value="##ZSOASEC_ENV##:56080/opensso/RACF/STSServiceTransportUT?wsdl" />
+                    <property name="serviceName"
+                        value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}SecurityTokenService" />
+                    <property name="endpointName"
+                        value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}Transport_RACF_Port" />
+                    <property name="tokenType"
+                        value="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0" />
+                </bean>
+            </entry>
+            <entry key="zsoa.locator.enabled" value="false"></entry>
+        </jaxws:properties>
+        -->
+        <jaxws:inInterceptors>
+        	<ref bean="stsTokenInterceptor" />
+        </jaxws:inInterceptors>
+    </jaxws:endpoint>
+
+    <jaxws:endpoint id="document_1_0" implementor="#kuh"
+        address="/elda/MsgExchange_1_0" wsdlLocation="/WEB-INF/Omniswitch/elda.wsdl"
+        xmlns:ns1="http://ch.zurich.com/elda" serviceName="ns1:elda.MsgExchange_1_0SOAPService"
+        endpointName="ns1:elda.MsgExchange_1_0SOAPPort">
+        <jaxws:properties>
+            <entry key="ws-security.signature.properties" value="stsTruststore.properties" />
+            <entry key="ws-security.bst.validator">
+                <bean
+                    class="org.apache.cxf.ws.security.trust.STSTokenValidator" />
+            </entry>
+            
+            <entry key="ws-security.callback-handler" value-ref="bbtPasswordCallback"/>
+            
+            <entry key="ws-security.sts.client">
+                <bean class="org.apache.cxf.ws.security.trust.STSClient">
+                    <constructor-arg ref="cxf" />
+                    <property name="wsdlLocation" value="##ZSOASEC_ENV##:56080/opensso/RACF/STSServiceTransport?wsdl" />
+                    <property name="serviceName"
+                        value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}SecurityTokenService" />
+                    <property name="endpointName"
+                        value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}Transport_RACF_Port" />
+                    <property name="tokenType"
+                        value="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0" />
+                </bean>
+            </entry>
+        </jaxws:properties>
+        <jaxws:inInterceptors>
+        	<ref bean="stsTokenInterceptor" />
+        </jaxws:inInterceptors>
+    </jaxws:endpoint>
+
+
+
+    <!-- kdxsystem point Start -->    
+    <!-- 
+     <bean id="Kdx_System" class="com.zurich.chz.ws.KdxSystemServiceImpl"/> 
+
+
+    <jaxws:endpoint id="Kdx_System_1_0" implementor="#Kdx_System"
+        address="/kdx/KdxSystem_1_0" wsdlLocation="/WEB-INF/Omniswitch/kdx.wsdl"
+        xmlns:ns1="http://ch.zurich.com/kdx" serviceName="ns1:kdx.KdxSystem_1_0SOAPService"
+        endpointName="ns1:kdx.KdxSystem_1_0SOAPPort">
+        <jaxws:properties>
+            <entry key="ws-security.signature.properties" value="stsTruststore.properties" />
+            <entry key="ws-security.bst.validator">
+                <bean
+                    class="org.apache.cxf.ws.security.trust.STSTokenValidator" />
+            </entry>
+            <entry key="ws-security.sts.client">
+                <bean class="org.apache.cxf.ws.security.trust.STSClient">
+                    <constructor-arg ref="cxf" />
+                    <property name="wsdlLocation" value="https://dev.zsoasec.ch.zurich.com:56080/opensso/RACF/STSServiceTransport?wsdl" />
+                    <property name="serviceName"
+                        value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}SecurityTokenService" />
+                    <property name="endpointName"
+                        value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}Transport_RACF_Port" />
+                    <property name="tokenType"
+                        value="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0" />
+                </bean>
+            </entry>
+        </jaxws:properties>
+    </jaxws:endpoint>
+     -->
+	
+	<!-- claimManagment point Start -->    
+    <bean id="Claim_Management" class="com.zurich.chz.ws.ClaimManagementV10Impl"/>
+
+    <jaxws:endpoint id="Claim_Management_V10" implementor="#Claim_Management"
+        address="/ClaimManagement-v1_0" wsdlLocation="/WEB-INF/WASABI/claimmanagement_v1/ClaimManagement-v1.wsdl"
+        xmlns:ns1="http://webservices.zurich.com/zsoa/ch/claims/ClaimManagement-v1" serviceName="ns1:ClaimManagement-v1_0Service"
+        endpointName="ns1:SOAPoHTTPEndpoint">
+        <jaxws:properties>
+            <entry key="ws-security.signature.properties" value="stsTruststore.properties" />         
+            <entry key="ws-security.bst.validator">
+                <bean
+                    class="org.apache.cxf.ws.security.trust.STSTokenValidator" />
+            </entry>
+            <entry key="ws-security.sts.client">
+                <bean class="org.apache.cxf.ws.security.trust.STSClient">
+                    <constructor-arg ref="cxf" />
+                    <property name="wsdlLocation" value="##ZSOASEC_ENV##:56080/opensso/RACF/STSServiceTransport?wsdl" />
+                    <property name="serviceName"
+                        value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}SecurityTokenService" />
+                    <property name="endpointName"
+                        value="{http://docs.oasis-open.org/ws-sx/ws-trust/200512/}Transport_RACF_Port" />
+                    <property name="tokenType"
+                        value="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0" />
+                </bean>
+            </entry>
+        </jaxws:properties>
+        <jaxws:inInterceptors>
+        	<ref bean="stsTokenInterceptor" />
+        </jaxws:inInterceptors>
+    </jaxws:endpoint>
+   
+   
+   
+    <http-conf:conduit
+        name="{http://www.talend.org/esb/sam/MonitoringService/v1}MonitoringServicePort.http-conduit">
+        <http-conf:tlsClientParameters
+            disableCNCheck="true">
+            <sec:trustManagers>
+                <sec:keyStore type="${truststore.type}"
+                    password="${truststore.password}" file="${truststore.file}" />
+            </sec:trustManagers>
+        </http-conf:tlsClientParameters>
+    </http-conf:conduit>
+    
+    <http-conf:conduit
+            name="{http://ch.zurich.com/sad}sad.User_1_0SOAPPortSSL.http-conduit">
+            <http-conf:tlsClientParameters
+                disableCNCheck="true">
+                <sec:trustManagers>
+                    <sec:keyStore type="${truststore.type}" password="${truststore.password}"
+                        file="${truststore.file}" />
+                </sec:trustManagers>
+            </http-conf:tlsClientParameters>
+    		<http-conf:client ConnectionTimeout="300000" ReceiveTimeout="300000"/>
+    </http-conf:conduit>
+    
+    
+    <http-conf:conduit
+            name="{http://ch.zurich.com/sad}sad.UserSecurity_2_0SOAPPortSSL.http-conduit">
+            <http-conf:tlsClientParameters
+                disableCNCheck="true">
+                <sec:trustManagers>
+                    <sec:keyStore type="${truststore.type}" password="${truststore.password}"
+                        file="${truststore.file}" />
+                </sec:trustManagers>
+            </http-conf:tlsClientParameters>
+    		<http-conf:client ConnectionTimeout="300000" ReceiveTimeout="300000"/>
+    	</http-conf:conduit>
+    
+    <http-conf:conduit name="https://int.zsoasec.ch.zurich.com:56080/.*">
+        <http-conf:tlsClientParameters
+            disableCNCheck="true">
+            <sec:trustManagers>
+                <sec:keyStore type="${truststore.type}"
+                    password="${truststore.password}" file="${truststore.file}" />
+            </sec:trustManagers>
+        </http-conf:tlsClientParameters>
+    </http-conf:conduit>
+
+    <http-conf:conduit name="https://uat.zsoasec.ch.zurich.com:56080/.*">
+        <http-conf:tlsClientParameters
+            disableCNCheck="true">
+            <sec:trustManagers>
+                <sec:keyStore type="${truststore.type}"
+                    password="${truststore.password}" file="${truststore.file}" />
+            </sec:trustManagers>
+        </http-conf:tlsClientParameters>
+    </http-conf:conduit>
+
+    <http-conf:conduit name="https://zsoasec.ch.zurich.com:56080/.*">
+        <http-conf:tlsClientParameters
+            disableCNCheck="true">
+            <sec:trustManagers>
+                <sec:keyStore type="${truststore.type}"
+                    password="${truststore.password}" file="${truststore.file}" />
+            </sec:trustManagers>
+        </http-conf:tlsClientParameters>
+    </http-conf:conduit>
+    
+    <!-- end for Provider -->
+    
+    
+    
+    
+    
+    
+    <!-- Http host setup for stage check -->
+    <bean id="stage" class="java.lang.String">
+        <constructor-arg type="java.lang.String" value="${current.stage}" />
+    </bean>
+
+
+   <beans profile="primary">
+       <bean id="kdxMessageBatchHandler" class="com.zurich.chz.elda.exchange.KdxMessageBatchHandler">
+       	<property name="kdxService" ref="Kdx_KdxSystem_1_0ServiceClient"></property>
+       </bean>
+    
+       <task:scheduled-tasks scheduler="batchRunner">
+          <task:scheduled ref="kdxMessageBatchHandler" method="doDbPoll" fixed-delay="##DB_POLLING_INTERVALL##"/>
+       </task:scheduled-tasks>
+
+       <task:scheduler id="batchRunner" pool-size="2"/>
+    </beans>
+
+</beans>

@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Roger Müller (softwarepipeline.com) -->
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Roger Müller (Zurich) -->
+<xsd:schema targetNamespace="file:ZBase.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ZBase="file:ZBase.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02">
+	<!--redefined types-->
+	<xsd:include schemaLocation="EldaBase_1_0.xsd"/>
+	<!--primary types-->
+	<xsd:complexType name="HeaderType">
+		<xsd:sequence>
+			<xsd:element name="Generator" type="ZBase:GeneratorType"/>
+			<xsd:element name="Datum" type="xsd:date"/>
+			<xsd:element name="Zeit" type="xsd:time"/>
+			<xsd:element name="Empfaenger" type="ZBase:FirmennameType"/>
+			<xsd:element name="XSDVersion" type="ZBase:String8Type"/>
+			<xsd:element name="Sprache" type="ZBase:String8Type"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AbklaerungType">
+		<xsd:sequence>
+			<xsd:element name="Polizeirapport" type="xsd:boolean"/>
+			<xsd:element name="Polizeidienststelle" type="ZBase:String1000Type" minOccurs="0"/>
+			<xsd:element name="AndereAbklaerungen" type="xsd:boolean"/>
+			<xsd:element name="Abklaerungen" type="ZBase:String1000Type" minOccurs="0"/>
+			<xsd:element name="Zeugen" type="xsd:boolean"/>
+			<xsd:element name="Zeugenbeschreibung" type="ZBase:String1000Type" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AnstellungType">
+		<xsd:sequence>
+			<xsd:element name="AnstellungsDatum" type="xsd:date"/>
+			<xsd:element name="BeruflicheTaetigkeit" type="ZBase:String40Type"/>
+			<xsd:element name="Arbeitsplatz" type="ZBase:ArbeitsplatzType"/>
+			<xsd:element name="StellungImBeruf" type="ZBase:StellungImBerufType"/>
+			<xsd:element name="OECode" type="ZBase:OECodeType" default="9999999" minOccurs="0"/>
+			<xsd:element name="Arbeitsverhaeltnis" type="ZBase:ArbeitsverhaeltnisType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ArztenType">
+		<xsd:sequence>
+			<xsd:element name="ErstbehandelnderArzt" type="ZBase:ArztType" minOccurs="0"/>
+			<xsd:element name="NachbehandelnderArzt" type="ZBase:ArztType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="KeyType">
+		<xsd:sequence>
+			<xsd:element name="MeldungsNummer" type="ZBase:MeldungsNummerType" default="0"/>
+			<xsd:element name="SchadenNummer" type="ZBase:SchadenNummerType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="KontaktType">
+		<xsd:sequence>
+			<xsd:element name="Familienname" type="ZBase:NameType"/>
+			<xsd:element name="Vorname" type="ZBase:NameType" minOccurs="0"/>
+			<xsd:element name="Email" type="ZBase:EmailType" minOccurs="0"/>
+			<xsd:element name="Telephone" type="ZBase:String35Type" minOccurs="0"/>
+			<xsd:element name="Bemerkungen" type="ZBase:String1000Type" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LohnType">
+		<xsd:sequence>
+			<xsd:element name="Grundlohn" type="ZBase:GeldType" minOccurs="0"/>
+			<xsd:element name="Teuerungszulage" type="ZBase:GeldType" minOccurs="0"/>
+			<xsd:element name="Akkord" type="ZBase:GeldType" minOccurs="0"/>
+			<xsd:element name="Kinderzulage" type="ZBase:GeldType" minOccurs="0"/>
+			<xsd:element name="Ferienentschaedigung" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Entschaedigung" type="ZBase:GeldType" minOccurs="0"/>
+						<xsd:element name="Prozent" type="ZBase:ProzentType" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="AndereLohnzulagen" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Lohnzulage" type="ZBase:GeldType"/>
+						<xsd:element name="Art" type="ZBase:String40Type"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Gratifikation" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Entschaedigung" type="ZBase:GeldType" minOccurs="0"/>
+						<xsd:element name="Prozent" type="ZBase:ProzentType" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Naturahllohn" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Lohnzulage" type="ZBase:GeldType"/>
+						<xsd:element name="Art" type="ZBase:String40Type"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--secondary types-->
+	<xsd:simpleType name="GeldMengeType">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="9999999999.99"/>
+			<xsd:totalDigits value="12"/>
+			<xsd:fractionDigits value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="ArbeitsverhaeltnisType">
+		<xsd:sequence>
+			<xsd:element name="Gekuendigt" type="xsd:boolean"/>
+			<xsd:element name="GekuendigtAb" type="xsd:date" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ArbeitszeitType">
+		<xsd:sequence>
+			<xsd:element name="WochenarbeitszeitTage">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:decimal">
+						<xsd:minInclusive value="0"/>
+						<xsd:maxInclusive value="9.99"/>
+						<xsd:totalDigits value="3"/>
+						<xsd:fractionDigits value="2"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="WochenarbeitszeitStunden">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:decimal">
+						<xsd:minInclusive value="0"/>
+						<xsd:maxInclusive value="99.99"/>
+						<xsd:totalDigits value="4"/>
+						<xsd:fractionDigits value="2"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="BetriebsueblicheArbeitszeit">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:decimal">
+						<xsd:minInclusive value="0"/>
+						<xsd:maxInclusive value="99.99"/>
+						<xsd:totalDigits value="4"/>
+						<xsd:fractionDigits value="2"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Arbeitseinsatz">
+				<xsd:simpleType>
+					<xsd:restriction base="ZBase:ArbeitseinsatzType">
+						<xsd:minInclusive value="1"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Sonderfall" type="ZBase:String35Type" minOccurs="0"/>
+			<xsd:element name="WeitereArbeitgeber" type="ZBase:String80Type" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ArztType">
+		<xsd:sequence>
+			<xsd:element name="Titel" type="ZBase:NameType" minOccurs="0"/>
+			<xsd:element name="Familienname" type="ZBase:NameType" minOccurs="0"/>
+			<xsd:element name="Vorname" type="ZBase:NameType" minOccurs="0"/>
+			<xsd:element name="Strasse" type="ZBase:NameType" minOccurs="0"/>
+			<xsd:element name="Nummer" type="ZBase:NameType" minOccurs="0"/>
+			<xsd:element name="PLZ" type="ZBase:PLZType" minOccurs="0"/>
+			<xsd:element name="Ort" type="ZBase:NameType" minOccurs="0"/>
+			<xsd:element name="Land" type="ZBase:LandType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BankverbindungType">
+		<xsd:sequence>
+			<xsd:element name="Konto" type="ZBase:String40Type" minOccurs="0"/>
+			<xsd:element name="Verbindung" type="ZBase:String40Type" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GeldType">
+		<xsd:sequence>
+			<xsd:element name="ProStunde" type="ZBase:GeldMengeType" minOccurs="0"/>
+			<xsd:element name="ProTag" type="ZBase:GeldMengeType" minOccurs="0"/>
+			<xsd:element name="ProMonat" type="ZBase:GeldMengeType" minOccurs="0"/>
+			<xsd:element name="ProJahr" type="ZBase:GeldMengeType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GeneratorType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="ZBase:String40Type"/>
+			<xsd:element name="Version" type="ZBase:String8Type"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FirmennameType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="ZBase:NameType"/>
+			<xsd:element name="Nnummer" type="ZBase:FirmenNummerType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="VerletzungenType">
+		<xsd:sequence>
+			<xsd:element name="Koerperteil" type="ZBase:KoerperteilType"/>
+			<xsd:element name="Koerperhaelfte" type="ZBase:KoerperhaelfteType"/>
+			<xsd:element name="Schaedigungsart" type="ZBase:SchaedigungsartType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PostadressType">
+		<xsd:sequence>
+			<xsd:element name="Strasse" minOccurs="0">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="35"/>
+						<xsd:pattern value="([a-z]|[A-Z]|[0-9]|@| |è|é|á|à|ô|ç|ë|\*|ì|ò|ù|â|ê|î|û|í|ó|ú|ñ|£|$|%|§|°|~|ä|ö|ü|Ä|Ö|Ü|\-|'|´|`|,|:|\.|\-|\+|&#33;|&#47;|&#61;|&#94;|&amp;|&apos;|&gt;|&lt;|&quot;|\(|\)|\{|\})*"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Nummer" type="ZBase:NameType" minOccurs="0"/>
+			<xsd:element name="PLZ" type="ZBase:PLZType"/>
+			<xsd:element name="Ort" type="ZBase:NameType"/>
+			<xsd:element name="Land" type="ZBase:LandType"/>
+			<xsd:element name="Telefon" minOccurs="0">
+				<xsd:simpleType>
+					<xsd:restriction base="ZBase:String40Type">
+						<xsd:maxLength value="35"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--general simple types-->
+	<xsd:simpleType name="EmailType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[A-Za-z0-9\.\-_]{1,64}@[A-Za-z0-9\.\-_]{1,64}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="35"/>
+			<xsd:pattern value="([a-z]|[A-Z]|[0-9]|@| |è|é|á|à|ô|ç|ë|\*|ì|ò|ù|â|ê|î|û|í|ó|ú|ñ|£|$|%|§|°|~|ä|ö|ü|Ä|Ö|Ü|\-|'|´|`|,|:|\.|\-|\+|&#33;|&#47;|&#61;|&#94;|&amp;|&apos;|&gt;|&lt;|&quot;|\(|\)|\{|\})+"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PLZType">
+		<xsd:restriction base="ZBase:NameType">
+			<xsd:maxLength value="6"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FirmenNummerType">
+		<xsd:restriction base="ZBase:NameType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="MeldungsNummerType">
+		<xsd:restriction base="xsd:unsignedLong"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="UnfallCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[- .0-9',//A-Za-z]{1,20}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LandType">
+		<xsd:restriction base="ZBase:IsoLandCodeType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="GeschlechtType">
+		<xsd:restriction base="xsd:short">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--enumerations-->
+	<xsd:simpleType name="ArbeitseinsatzType">
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ArbeitsplatzType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="1"/>
+			<xsd:enumeration value="2"/>
+			<xsd:enumeration value="3"/>
+			<xsd:enumeration value="4"/>
+			<xsd:enumeration value="9"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="KoerperhaelfteType">
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="KoerperteilType">
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="80"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="KrankheitsartType">
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SchaedigungsartType">
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:minInclusive value="10"/>
+			<xsd:maxInclusive value="99"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StellungImBerufType">
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="9"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SonderfallType">
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="5"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AbteilungType">
+		<xsd:restriction base="xsd:short">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="HospitalisationsgrundType">
+		<xsd:restriction base="xsd:short">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

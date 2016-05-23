@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385436525775
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF Runtime Local Transport
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime Local Transport
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-transports-local
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.transport.local;version="2.7.9.SNAPSHOT"
+Implementation-Title: Apache CXF Runtime Local Transport
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.annotation,org.apache.cxf;version="[2.7,3)",org.ap
+ ache.cxf.common.injection;version="[2.7,3)",org.apache.cxf.common.loggi
+ ng;version="[2.7,3)",org.apache.cxf.helpers;version="[2.7,3)",org.apach
+ e.cxf.io;version="[2.7,3)",org.apache.cxf.message;version="[2.7,3)",org
+ .apache.cxf.service.model;version="[2.7,3)",org.apache.cxf.transport;ve
+ rsion="[2.7,3)",org.apache.cxf.workqueue;version="[2.7,3)",org.apache.c
+ xf.ws.addressing;version="[2.7,3)",org.apache.cxf.wsdl.http;version="[2
+ .7,3)"
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime Local Transport
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

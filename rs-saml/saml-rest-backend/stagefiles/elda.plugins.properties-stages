@@ -1,0 +1,79 @@
+# --- Assign each plugin each Java class --------------------------------------------------------------------------
+# --- Syntax: plugins.<plugin-name>.ClassName = "" ----------------------------------------------------------------
+plugins.jmx_mbeanserver.ClassName = "com.zurich.chz.omniart.plugin.jmx.MBeanServerPlugin"
+plugins.log4j_init.ClassName = "com.zurich.chz.omniart.plugin.log4j.Log4JInitPlugin"
+plugins.log4j_mbean.ClassName = "com.zurich.chz.omniart.plugin.log4j.Log4JMBeanPlugin"
+plugins.jmx_adaptor_html.ClassName = "com.zurich.chz.omniart.plugin.jmx.HtmlAdaptorMBeanPlugin"
+plugins.contextmanager.ClassName = "com.zurich.chz.omniart.plugin.common.ThreadContextManagerPlugin"
+plugins.orbix6_container.ClassName = "com.zurich.chz.omnibus.infrastructure.plugins.orbix6.OrbixContainerPlugin"
+plugins.orbix_ns_corbaobjects.ClassName = "com.zurich.chz.omnibus.infrastructure.plugins.orbix6.CorbaObjectsPlugin"
+plugins.omnibus_mbean.ClassName = "com.zurich.chz.omnibus.infrastructure.plugins.OmnibusPropertiesMBeanPlugin"
+plugins.elda_server.ClassName = "com.zurich.chz.elda.exchange.EldaAppServerPlugin"
+plugins.elda_kdxmessage.ClassName = "com.zurich.chz.elda.exchange.KdxMessageBatchHandlerPlugin"
+plugins.elda_testclient.ClassName = "com.zurich.chz.elda.exchange.EldaUnixClientPlugin"
+
+# --- List the plugins you want to load ---------------------------------------------------------------------------
+pluginList = ["log4j_init", "contextmanager", "jmx_mbeanserver", "log4j_mbean"]
+
+# --- Plugin 'contextmanager' -------------------------------------------------------------------------------------
+plugins.contextmanager.contextTypes = "User"
+
+# --- Plugin 'jmx_mbeanserver' ------------------------------------------------------------------------------------
+#plugins.jmx_mbeanserver.useExisting = false
+plugins.jmx_mbeanserver.defaultDomain = ""
+
+# --- Plugin 'jmx_adaptor_html' ----------------------------------------------------------------------------------
+plugins.jmx_adaptor_html.port = 8083
+
+# --- Plugin 'orbix6_corba_objects' ------------------------------------------------------------------------------
+plugins.orbix_ns_corbaobjects.naming-context = "corba"
+plugins.orbix_ns_corbaobjects.ns-url= "http://ff-http-server-1.z.ch.zurich.com/omnibus.get-ns?domain##STAGE##;http://ff-http-server-2.z.ch.zurich.com/omnibus.get-ns?domain##STAGE##"
+
+#----- SERVER KUH
+domain.elda.serverKuh.pluginList = ["log4j_init", "contextmanager", "jmx_mbeanserver", "log4j_mbean", "elda_server", "omnibus_mbean", "orbix_ns_corbaobjects"]
+domain.elda.serverKuh.plugins.log4j_init.configFile = "##BASEDIR##/##OWNER##/corba/resources/log4j.eldaKuh.properties"
+domain.elda.serverKuh.plugins.elda_server.principalType = "racf"
+domain.elda.serverKuh.plugins.elda_server.is2-ns-ctx = "corba/is2/sad"
+domain.elda.serverKuh.plugins.elda_server.pkiCertificate = "/app/certs/runtime/certs/Ecor.p12"
+domain.elda.serverKuh.plugins.elda_server.pkiPassword = orbixsrv
+domain.elda.serverKuh.plugins.elda_server.pkiTrustedCA = "/app/certs/runtime/caLists/caList.cert.pem"
+domain.elda.serverKuh.plugins.elda_server.trusted-subject-cn = "OrbixME;EcorServer"
+domain.elda.serverKuh.plugins.elda_server._enforce-corbasec-pi-csi-accessid = "true"
+domain.elda.serverKuh.persistent.plugins.elda_server.poa-name = EldaKuh
+domain.elda.serverKuh.plugins.elda_server.appId = Kuh
+domain.elda.serverKuh.plugins.elda_server.orbix-loglevel = 1
+domain.elda.serverKuh.plugins.elda_server.orbix-logfile = "/app/ecor/container/logs/EldaAppServerKuhPlugin.orbix.log"
+
+#----- SERVER KALB
+domain.elda.serverKalb.pluginList = ["log4j_init", "contextmanager", "jmx_mbeanserver", "log4j_mbean", "elda_server", "omnibus_mbean", "orbix_ns_corbaobjects"]
+domain.elda.serverKalb.plugins.log4j_init.configFile = "##BASEDIR##/##OWNER##/corba/resources/log4j.eldaKalb.properties"
+domain.elda.serverKalb.plugins.elda_server.principalType = "racf"
+domain.elda.serverKalb.plugins.elda_server.is2-ns-ctx = "corba/is2/sad"
+domain.elda.serverKalb.plugins.elda_server.pkiCertificate = "/app/certs/runtime/certs/Ecor.p12"
+domain.elda.serverKalb.plugins.elda_server.pkiPassword = orbixsrv
+domain.elda.serverKalb.plugins.elda_server.pkiTrustedCA = "/app/certs/runtime/caLists/caList.cert.pem"
+domain.elda.serverKalb.persistent.plugins.elda_server.poa-name = EldaKalb
+domain.elda.serverKalb.plugins.elda_server.appId = Kalb
+domain.elda.serverKalb.plugins.elda_server.orbix-loglevel = 1
+domain.elda.serverKalb.plugins.elda_server.orbix-logfile = "/app/ecor/container/logs/EldaAppServerKalbPlugin.orbix.log"
+
+#----- KdxMessageBatchHandlerPlugin (Files werden asynchron an Kdx-Server übermittelt)
+domain.elda.kdxmessage.pluginList = ["log4j_init", "contextmanager", "jmx_mbeanserver", "log4j_mbean", "elda_kdxmessage", "omnibus_mbean", "orbix_ns_corbaobjects"]
+domain.elda.kdxmessage.plugins.log4j_init.configFile = "##BASEDIR##/##OWNER##/corba/resources/log4j.eldaKdxMessage.properties"
+domain.elda.kdxmessage.plugins.elda_kdxmessage.principalType = "racf"
+domain.elda.kdxmessage.plugins.elda_kdxmessage.is2-ns-ctx = "corba/is2/sad"
+domain.elda.kdxmessage.plugins.elda_kdxmessage.pkiTrustedCA = "/app/certs/runtime/caLists/caList.cert.pem"
+domain.elda.kdxmessage.plugins.elda_kdxmessage.principal = "cha5700"
+domain.elda.kdxmessage.plugins.elda_kdxmessage.password = "london"
+# domain.elda.kdxmessage.plugins.elda_kdxmessage.pkiCertificate = "/app/certs/runtime/certs/Elda_APP.p12"
+# domain.elda.kdxmessage.plugins.elda_kdxmessage.pkiPassword = "orbixapp"
+domain.elda.kdxmessage.plugins.elda_kdxmessage.orbix-loglevel = 1
+domain.elda.kdxmessage.plugins.elda_kdxmessage.orbix-logfile = "/app/ecor/container/logs/KdxMessageBatchHandlerPlugin.orbix.log"
+
+#----- Monitoring TestClient für Unix (hole File von Property-Eintrag)
+domain.elda.testclient.pluginList = ["log4j_init", "contextmanager", "jmx_mbeanserver", "log4j_mbean", "elda_testclient", "omnibus_mbean", "orbix_ns_corbaobjects"]
+domain.elda.testclient.plugins.log4j_init.configFile = "##BASEDIR##/##OWNER##/corba/resources/log4j.eldatestclient.properties"
+domain.elda.testclient.plugins.elda_testclient.principalType = "racf"
+domain.elda.testclient.plugins.elda_testclient.is2-ns-ctx = "corba/is2/sad"
+domain.elda.testclient.plugins.elda_testclient.pkiTrustedCA = "/app/certs/runtime/caLists/caList.cert.pem"
+domain.elda.testclient.plugins.elda_testclient.fileName = "##BASEDIR##/##OWNER##/corba/b2bfc/xml-samples/Test.xml"

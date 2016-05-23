@@ -1,0 +1,148 @@
+/*	BODY:before { content: "used css-file: fonts_nc.css"; } */
+	INPUT:focus {background-color:#ffff99;} /* Versuch */
+	TD:focus  {background-color:#ffff99;} /* Versuch */
+	
+    .title { font-family:arial, helvetica, univers, sans-serif; font-size:8pt; color:#ffffff; font-weight:600; }
+    .text { font-family:arial, helvetica, univers, sans-serif; font-size:8pt; color:#000000; }
+    .body { font-family:arial, helvetica, univers, sans-serif; font-size:8pt; color:#000066; }
+    .klein-rot { font-family:arial, helvetica, univers, sans-serif; font-size:8pt; color:#FF0000; }
+    
+    input.xlarge { font-family:arial, helvetica, univers, sans-serif; font-size:8pt; width:500px; }
+    input.large { font-family:arial, helvetica, univers, sans-serif; font-size:8pt; width:200px; }
+    input.standard { font-family:arial, helvetica, univers, sans-serif; font-size:8pt; width:150px; }
+    input.medium { font-family:arial, helvetica, univers, sans-serif; font-size:8pt; width:120px; }
+    input.middle { font-family:arial, helvetica, univers, sans-serif; font-size:8pt; width:100px; }
+    input.date { font-family:arial, helvetica, univers, sans-serif; font-size:8pt; width:70px; }
+    input.small { font-family:arial, helvetica, univers, sans-serif; font-size:8pt; width:45px; }
+    
+    select.select {font-family:arial, helvetica, univers, sans-serif; font-size:8pt; }
+    
+    input.radio { background:#ced6e9; }
+    
+    textarea.area { font-family:arial, helvetica, univers, sans-serif; font-size:8pt; width:500px; }
+    textarea.sarea { font-family:arial, helvetica, univers, sans-serif; font-size:8pt; width:300px; }
+    
+    td.caption { vertical-align:top; border-width:0px; border-style:solid; font-family:arial, helvetica, univers, sans-serif; font-size:8pt; }
+    
+    td.caption { vertical-align:top; border-width:0px; border-style:solid; font-family:arial, helvetica, univers, sans-serif; font-size:8pt; }
+    td.caption-b { vertical-align:bottom; border-width:0px; border-style:solid; padding-left:1px; font-family:arial, helvetica, univers, sans-serif; font-size:12pt; }
+    
+    td.space { vertical-align:top; border-width:0px; width:10px; border-style:solid; }
+    
+    td.tdXX  {              vertical-align:top; background-color:#CED6E9; font-family:arial, helvetica, univers, sans-serif; font-size:8pt; border-collapse:separate; empty-cells:show; border-top:2px #808080 solid; border-right:2px #FFFFFF solid; border-bottom:2px #FFFFFF solid;	border-left:2px #808080 solid; padding-left:1px; }
+    td.tdXXX  { vertical-align:top; border-width:2px; border-style:inset;  font-family:arial, helvetica, univers, sans-serif; font-size:12pt; empty-cells:show; padding-left:1px;}
+
+    td.polnr { width:200px; vertical-align:top; background-color:#CED6E9; font-family:arial, helvetica, univers, sans-serif; font-size:10pt; padding-left:1px; }            
+	td.navi { background-color:#003399; color:#FFFFFF; font-family:arial, helvetica, univers, sans-serif; font-size:8pt; }
+    .output { border:1px #808080 solid; padding-left:1px; padding-right:1px;  vertical-align:top; font-size:8pt; }
+    .data { border-collapse:collapse; empty-cells:show; border-spacing:1px; background-color="#ced6e9"; font-family:arial, helvetica, univers, sans-serif; font-size:8pt;}
+    .captions { font-family:arial, helvetica, univers, sans-serif; font-size:8pt; table-layout:fixed ;}
+	
+    .spacing1 { height:5px;  }
+    .spacing2 { height:10px; }
+    .spacing3 { height:15px; }
+    .spacing4 { height:20px; }
+    .spacing5 { height:25px; }
+
+	.w1   { width:1px;   height:0px; }
+	.w2   { width:2px;   height:0px; }
+	.w5   { width:5px;   height:0ox; }
+    .w10  { width:10px;  height:0px; }
+    .w15  { width:15px;  height:0px; }            
+    .w20  { width:20px;  height:0px; }
+    .w30  { width:30px;  height:0px; }
+    .w35  { width:35px;  height:0px; }
+    .w40  { width:40px;  height:0px; }     
+    .w45  { width:45px;  height:0px; }    
+    .w50  { width:50px;  height:0px; }
+    .w55  { width:55px;  height:0px; }
+    .w60  { width:60px;  height:0px; }
+    .w65  { width:65px;  height:0px; }
+    .w70  { width:70px;  height:0px; }    
+    .w75  { width:75px;  height:0px; }    
+    .w80  { width:80px;  height:0px; }  
+    .w85  { width:85px;  height:0px; }   
+    .w90  { width:90px;  height:0px; }    
+    .w100 { width:100px; height:0px; }
+    .w105 { width:105px; height:0px; }    
+    .w110 { width:110px; height:0px; }
+    .w115 { width:115px; height:0px; }
+    .w120 { width:120px; height:0px; }
+    .w130 { width:130px; height:0px; }
+    .w140 { width:140px; height:0px; }
+    .w145 { width:145px; height:0px; }
+    .w150 { width:150px; height:0px; }
+    .w160 { width:160px; height:0px; }
+    .w175 { width:175px; height:0px; }
+    .w180 { width:180px; height:0px; }
+    .w200 { width:200px; height:0px; }  
+    .w210 { width:210px; height:0px; }  
+    .w220 { width:220px; height:0px; }      
+    .w230 { width:230px; height:0px; } 
+    .w240 { width:240px; height:0px; } 
+    .w250 { width:250px; height:0px; }     
+    .w260 { width:260px; height:0px; } 
+    .w270 { width:270px; height:0px; }
+    .w275 { width:275px; height:0px; }
+    .w280 { width:280px; height:0px; }
+    .w300 { width:300px; height:0px; }
+    .w330 { width:330px; height:0px; }
+    .w350 { width:350px; height:0px; }
+    .w360 { width:360px; height:0px; }
+    .w370 { width:370px; height:0px; }
+    .w380 { width:380px; height:0px; }
+    .w390 { width:390px; height:0px; }
+    .w400 { width:400px; height:0px; }            
+    .w430 { width:430px; height:0px; }
+    .w500 { width:500px; height:0px; }
+    .w520 { width:520px; height:0px; }
+    .w560 { width:520px; height:0px; }
+    .w630 { width:630px; height:0px; }
+    .w620 { width:620px; height:0px; }
+    .w720 { width:720px; height:0px; }                
+    .w740 { width740px;  height:0px; }    
+
+	/* start for p2000 */
+    .activeTab {
+        Font-Family: Arial;
+        Font-Size  : 12px;
+        Font-Weight: Bold;
+        Background-Color: #ced6e9;
+        Border-Top:   1px solid #000000;
+        Border-Left:  1px solid #000000;
+        Border-Right: 1px solid #000000;
+    }
+    .inactiveTab {
+        Font-Family: Arial;
+        Font-Size  : 12px;
+        Font-Weight: Boldx;
+        Background-Color: #C0C0C0;
+        Border     : 1px solid #000000;
+    }
+    .tabContent {
+        Font-Family: Arial;
+        Font-Size  : 12px;
+        Font-Weight: Boldx;
+        Background-Color: #ced6e9;
+        Border-Left:  1px solid #000000;
+        Border-Right: 1px solid #000000;
+        Border-Bottom:   1px solid #000000;
+    }
+    
+   a:link { COLOR: #003399 }
+   a:active { COLOR: #003399; FONT-SIZE: 9pt; Font-Weight: Bold }
+   a:visited { COLOR: #003399 }
+   a { TEXT-DECORATION: none }
+
+   .heading { font-family:arial, helvetica, univers, sans-serif; font-size:8pt; color:#000000; font-weight:600; }
+    /* end for p2000 */
+
+   /* added for Swiss Apps changes WO */
+   h1 {
+		Color:#000066;
+		Font-Family:Arial,Helvetica,sans-serif;
+		Font-Size:140%;
+		Font-Weight:normal;
+		Margin: 0px;
+   }
+  

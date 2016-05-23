@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Roger Müller (softwarepipeline.com) -->
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Roger Müller (Zurich) -->
+<xsd:schema targetNamespace="http://www.zurich.ch/elda" xmlns="http://www.zurich.ch/elda" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02">
+	<xsd:include schemaLocation="EldaBase_1_0.xsd"/>
+	<!--general simple types-->
+	<xsd:simpleType name="EmailType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="64"/>
+			<xsd:pattern value="[A-Za-z0-9\.\-_]{1,64}@[A-Za-z0-9\.\-_]{1,64}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AnzahlType">
+		<xsd:restriction base="xsd:unsignedInt">
+			<xsd:totalDigits value="4"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PolicenummerType">
+		<xsd:restriction base="AlphaNumType">
+			<xsd:maxLength value="64"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PLZType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="16"/>
+			<xsd:pattern value="[A-Za-z0-9 \-]*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DateiType">
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="collapse"/>
+			<xsd:enumeration value="image/jpeg"/>
+			<xsd:enumeration value="text/pdf"/>
+			<xsd:enumeration value="image/tif"/>
+			<xsd:enumeration value="text/doc"/>
+			<xsd:enumeration value="text/xls"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DateinameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="30"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NumCodeType">
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:totalDigits value="10"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Num3StatusCodeType">
+		<xsd:restriction base="NumCodeType">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="3"/>
+			<xsd:enumeration value="1"/>
+			<xsd:enumeration value="2"/>
+			<xsd:enumeration value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ZeitraumCodeType">
+		<xsd:annotation>
+			<xsd:documentation>
+			  0 => kundenangepasste Zeit
+			  1 => ganzer Tag
+			  2 => Vormittag
+			  3 => Nachmittag
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:whiteSpace value="collapse"/>
+			<xsd:enumeration value="0"/>
+			<xsd:enumeration value="1"/>
+			<xsd:enumeration value="2"/>
+			<xsd:enumeration value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RatingCodeType">
+		<xsd:annotation>
+			<xsd:documentation>
+			  1 => A
+			  2 => B
+			  3 => C
+			  4 => U
+			  5 => leer			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="NumCodeType">
+			<xsd:enumeration value="1"/>
+			<xsd:enumeration value="2"/>
+			<xsd:enumeration value="3"/>
+			<xsd:enumeration value="4"/>
+			<xsd:enumeration value="5"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LageplatzCodeType">
+		<xsd:annotation>
+			<xsd:documentation>
+			  1 => Im Fahrzeug
+			  2 => beim VN
+			  3 => im Dossier
+			  4 => unbekannt
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="NumCodeType">
+			<xsd:enumeration value="1"/>
+			<xsd:enumeration value="2"/>
+			<xsd:enumeration value="3"/>
+			<xsd:enumeration value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BranchenCodeType">
+		<xsd:annotation>
+			<xsd:documentation>
+			  1 => Haftpflicht
+			  2 => Kasko
+			  3 => Assistance
+			  4 => uebrige
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="NumCodeType">
+			<xsd:enumeration value="1"/>
+			<xsd:enumeration value="2"/>
+			<xsd:enumeration value="3"/>
+			<xsd:enumeration value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RegionenCodeType">
+		<xsd:restriction base="NumCodeType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="AlphaNumCodeType">
+		<xsd:restriction base="AlphaNumType">
+			<xsd:maxLength value="14"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="KontrollschildType">
+		<xsd:restriction base="String16Type">
+			<xsd:maxLength value="16"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="GeldMengeType">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="9999999999.99"/>
+			<xsd:totalDigits value="12"/>
+			<xsd:fractionDigits value="2"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--groups-->
+	<xsd:group name="PostadressGroup">
+		<xsd:sequence>
+			<xsd:element name="Anrede" type="String16Type" minOccurs="0"/>
+			<xsd:element name="Vorname" type="String30Type" minOccurs="0"/>
+			<xsd:element name="Nachname" type="String64Type"/>
+			<xsd:element name="Strasse" type="String64Type" minOccurs="0"/>
+			<xsd:element name="Nummer" type="String16Type" minOccurs="0"/>
+			<xsd:element name="PLZ" type="PLZType"/>
+			<xsd:element name="Ort" type="String64Type"/>
+			<xsd:element name="Land" type="IsoLandCodeType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:group name="EKontaktGroup">
+		<xsd:sequence>
+			<xsd:element name="PrivatTelefonnummer" type="TelefonnummerType" minOccurs="0"/>
+			<xsd:element name="GeschaeftTelefonnummer" type="TelefonnummerType" minOccurs="0"/>
+			<xsd:element name="Mobilenummer" type="TelefonnummerType" minOccurs="0"/>
+			<xsd:element name="Faxnummer" type="TelefonnummerType" minOccurs="0"/>
+			<xsd:element name="Email" type="String64Type" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:group>
+	<!--general complex types-->
+	<xsd:complexType name="AdressenType">
+		<xsd:sequence>
+			<xsd:group ref="PostadressGroup"/>
+			<xsd:group ref="EKontaktGroup"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DokumentenType">
+		<xsd:all>
+			<xsd:element name="Bezeichnung">
+				<xsd:simpleType>
+					<xsd:restriction base="String30Type">
+						<xsd:enumeration value="Kalkulation"/>
+						<xsd:enumeration value="Bewertung"/>
+						<xsd:enumeration value="BewertungKasko"/>
+						<xsd:enumeration value="Minderwert"/>
+						<xsd:enumeration value="Fotos"/>
+						<xsd:enumeration value="Brief"/>
+						<xsd:enumeration value="Schlussbericht"/>
+						<xsd:enumeration value="Verwertungsvollmacht"/>
+						<xsd:enumeration value="Restwertermittlung"/>
+						<xsd:enumeration value="Auftragsinfo"/>
+						<xsd:enumeration value="Uebriges"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Dateityp" type="DateiType"/>
+			<xsd:element name="Dateiname" type="DateinameType"/>
+			<xsd:element name="Umschreibung" type="String255Type" minOccurs="0"/>
+			<xsd:element name="Datum" type="xsd:date" minOccurs="0"/>
+		</xsd:all>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,80 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385436697413
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Activator: org.apache.cxf.transport.http_jetty.osgi.HTTPJettyTran
+ sportActivator
+Bundle-Blueprint: OSGI-INF/blueprint/httpj.xml
+Bundle-Description: Apache CXF Runtime HTTP Jetty Transport
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime HTTP Jetty Transport
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-transports-http-jetty
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+DynamicImport-Package: org.eclipse.jetty.jmx
+Export-Package: org.apache.cxf.transport.http_jetty;version="2.7.9.SNAPS
+ HOT",org.apache.cxf.transport.http_jetty.blueprint;version="2.7.9.SNAPS
+ HOT",org.apache.cxf.transport.http_jetty.continuations;version="2.7.9.S
+ NAPSHOT",org.apache.cxf.transport.http_jetty.osgi;version="2.7.9.SNAPSH
+ OT",org.apache.cxf.transport.http_jetty.spring;version="2.7.9.SNAPSHOT"
+ ,org.apache.cxf.transport.https_jetty;version="2.7.9.SNAPSHOT",org.apac
+ he.cxf.transports.http_jetty.configuration;version="2.7.9.SNAPSHOT"
+Export-Service: org.apache.aries.blueprint.NamespaceHandler;osgi.service
+ .blueprint.namespace="http://cxf.apache.org/transports/http-jetty/confi
+ guration"
+Implementation-Title: Apache CXF Runtime HTTP Jetty Transport
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.servlet;version="[0.0,4)",javax.servlet.http;versi
+ on="[0.0,4)",org.eclipse.jetty.continuation;version="[7.6,8.2)",org.ecl
+ ipse.jetty.http;version="[7.6,8.2)",org.eclipse.jetty.io;version="[7.6,
+ 8.2)",org.eclipse.jetty.security;version="[7.6,8.2)",org.eclipse.jetty.
+ server;version="[7.6,8.2)",org.eclipse.jetty.server.handler;version="[7
+ .6,8.2)",org.eclipse.jetty.server.nio;version="[7.6,8.2)",org.eclipse.j
+ etty.server.session;version="[7.6,8.2)",org.eclipse.jetty.server.ssl;ve
+ rsion="[7.6,8.2)",org.eclipse.jetty.util.component;version="[7.6,8.2)";
+ resolution:=optional,org.eclipse.jetty.util.thread;version="[7.6,8.2)";
+ resolution:=optional,org.apache.aries.blueprint;version="[0.3,2)";resol
+ ution:=optional,org.apache.aries.blueprint.mutable;version="[0.3,2)";re
+ solution:=optional,org.springframework.beans;resolution:=optional;versi
+ on="[2.5,4)",org.springframework.beans.factory;resolution:=optional;ver
+ sion="[2.5,4)",org.springframework.beans.factory.config;resolution:=opt
+ ional;version="[2.5,4)",org.springframework.beans.factory.support;resol
+ ution:=optional;version="[2.5,4)",org.springframework.beans.factory.xml
+ ;resolution:=optional;version="[2.5,4)",org.springframework.context;res
+ olution:=optional;version="[2.5,4)",org.springframework.util;resolution
+ :=optional;version="[2.5,4)",javax.annotation,javax.management,javax.ne
+ t.ssl,javax.xml.bind,javax.xml.bind.annotation,javax.xml.bind.annotatio
+ n.adapters,javax.xml.namespace,javax.xml.parsers,javax.xml.transform,ja
+ vax.xml.transform.dom,javax.xml.transform.stream,org.apache.cxf;version
+ ="[2.7,3)",org.apache.cxf.bus.spring;version="[2.7,3)",org.apache.cxf.b
+ uslifecycle;version="[2.7,3)",org.apache.cxf.common.classloader;version
+ ="[2.7,3)",org.apache.cxf.common.i18n;version="[2.7,3)",org.apache.cxf.
+ common.injection;version="[2.7,3)",org.apache.cxf.common.jaxb;version="
+ [2.7,3)",org.apache.cxf.common.logging;version="[2.7,3)",org.apache.cxf
+ .common.util;version="[2.7,3)",org.apache.cxf.configuration.blueprint;v
+ ersion="[2.7,3)",org.apache.cxf.configuration.jsse;version="[2.7,3)",or
+ g.apache.cxf.configuration.security;version="[2.7,3)",org.apache.cxf.co
+ nfiguration.spring;version="[2.7,3)",org.apache.cxf.continuations;versi
+ on="[2.7,3)",org.apache.cxf.endpoint;version="[2.7,3)",org.apache.cxf.h
+ elpers;version="[2.7,3)",org.apache.cxf.interceptor;version="[2.7,3)",o
+ rg.apache.cxf.io;version="[2.7,3)",org.apache.cxf.management;version="[
+ 2.7,3)",org.apache.cxf.message;version="[2.7,3)",org.apache.cxf.phase;v
+ ersion="[2.7,3)",org.apache.cxf.service.model;version="[2.7,3)",org.apa
+ che.cxf.staxutils;version="[2.7,3)",org.apache.cxf.transport;version="[
+ 2.7,3)",org.apache.cxf.transport.http;version="[2.7,3)",org.apache.cxf.
+ transport.https;version="[2.7,3)",org.apache.cxf.transports.http;versio
+ n="[2.7,3)",org.apache.cxf.transports.http.configuration;version="[2.7,
+ 3)",org.osgi.framework;version="[1.5,2)",org.osgi.service.blueprint;ver
+ sion="[1.0.0,2.0.0)";resolution:=optional,org.osgi.service.blueprint.re
+ flect;version="[1.0,2)",org.osgi.service.cm;version="[1.3,2)",org.osgi.
+ util.tracker;version="[1.4,2)",org.w3c.dom
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime HTTP Jetty Transport
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

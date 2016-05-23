@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by ikw (Zürch Schweiz) -->
+<xsd:schema targetNamespace="file:Bagatellunfallmeldung.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ZBase="file:ZBase.xsd" xmlns:bum="file:Bagatellunfallmeldung.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02">
+	<xsd:import namespace="file:ZBase.xsd" schemaLocation="ZBase.xsd"/>
+	<xsd:complexType name="BagatellunfallmeldungType">
+		<xsd:sequence>
+			<xsd:element name="Key" type="ZBase:KeyType" minOccurs="0"/>
+			<xsd:element name="Arbeitgeber" type="bum:ArbeitgeberType"/>
+			<xsd:element name="Verletzter" type="bum:VerletzterType"/>
+			<xsd:element name="Anstellung" type="ZBase:AnstellungType"/>
+			<xsd:element name="Unfall" type="bum:UnfallType"/>
+			<xsd:element name="Aerzte" type="ZBase:ArztenType"/>
+			<xsd:element name="Arbeitszeit" type="ZBase:ArbeitszeitType"/>
+			<xsd:element name="Kontakt" type="ZBase:KontaktType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--primary types-->
+	<xsd:complexType name="ArbeitgeberType">
+		<xsd:sequence>
+			<xsd:element name="Firma" type="ZBase:FirmennameType"/>
+			<xsd:element name="Adresse" type="ZBase:PostadressType"/>
+			<xsd:element name="Police">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="UVGPolice" type="ZBase:PolicenNummerType" minOccurs="0"/>
+						<xsd:element name="UVGZPolice" type="ZBase:PolicenNummerType" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Bank" type="ZBase:BankverbindungType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="UnfallType">
+		<xsd:sequence>
+			<xsd:element name="Unfalldatum" type="xsd:date"/>
+			<xsd:element name="Unfallzeit" type="xsd:time" minOccurs="0"/>
+			<xsd:element name="UnfallOrt" type="ZBase:String80Type"/>
+			<xsd:element name="Beschreibung" type="ZBase:String1000Type"/>
+			<xsd:element name="UnfallCode" type="ZBase:UnfallCodeType" default="9999999999"/>
+			<xsd:element name="Nichtberufsunfall" type="xsd:boolean"/>
+			<xsd:element name="Wochentag" type="ZBase:WochenTagType" minOccurs="0"/>
+			<xsd:element name="LetztesArbeitsdatum" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="LetzteArbeitszeit" type="xsd:time" minOccurs="0"/>
+			<xsd:element name="Verletzungen">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Verletzung" type="ZBase:VerletzungenType" maxOccurs="3"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="VerletzterType">
+		<xsd:sequence>
+			<xsd:element name="Person" type="bum:PersonType"/>
+			<xsd:element name="Adresse" type="ZBase:PostadressType"/>
+			<xsd:element name="Bank" type="ZBase:BankverbindungType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--secondary types-->
+	<xsd:complexType name="PersonType">
+		<xsd:sequence>
+			<xsd:element name="Geschlecht" type="ZBase:GeschlechtType"/>
+			<xsd:element name="FamilienName" type="ZBase:NameType"/>
+			<xsd:element name="VorName" type="ZBase:NameType"/>
+			<xsd:element name="Heimatort" type="ZBase:String40Type" minOccurs="0"/>
+			<xsd:element name="Geburtstag" type="xsd:date"/>
+			<xsd:element name="Nationalitaet" type="ZBase:LandType"/>
+			<xsd:element name="Zivilstand" type="ZBase:ZivilstandType"/>
+			<xsd:element name="AHVNummer" type="ZBase:AHVNummerType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

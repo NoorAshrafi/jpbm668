@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>Apache CXF JAX-RS System Advanced Security Tests - Checkstyle report</title>
+    <link>http://cxf.apache.org</link>
+    <description>Apache CXF JAX-RS System Advanced Security Tests - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2006 - 2016 The Apache Software Foundation</copyright>
+    <item>
+      <title>File: 11,
+             Errors: 0,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>http://cxf.apache.org/checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://cxf.apache.org/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://cxf.apache.org/checkstyle.html#main.java.org.apache.cxf.systest.jaxrs.security.saml.SecureBookStore.java">main/java/org/apache/cxf/systest/jaxrs/security/saml/SecureBookStore.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://cxf.apache.org/checkstyle.html#main.java.org.apache.cxf.systest.jaxrs.security.saml.SamlRetrievalInterceptor.java">main/java/org/apache/cxf/systest/jaxrs/security/saml/SamlRetrievalInterceptor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://cxf.apache.org/checkstyle.html#main.java.org.apache.cxf.systest.jaxrs.security.saml.CustomSecurityContextProvider.java">main/java/org/apache/cxf/systest/jaxrs/security/saml/CustomSecurityContextProvider.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://cxf.apache.org/checkstyle.html#main.java.org.apache.cxf.systest.jaxrs.security.Book.java">main/java/org/apache/cxf/systest/jaxrs/security/Book.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://cxf.apache.org/checkstyle.html#main.java.org.apache.cxf.systest.jaxrs.security.saml.JAXRSSamlAuthorizationTest.java">main/java/org/apache/cxf/systest/jaxrs/security/saml/JAXRSSamlAuthorizationTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://cxf.apache.org/checkstyle.html#main.java.org.apache.cxf.systest.jaxrs.security.saml.SamlCallbackHandler.java">main/java/org/apache/cxf/systest/jaxrs/security/saml/SamlCallbackHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://cxf.apache.org/checkstyle.html#main.java.org.apache.cxf.systest.jaxrs.security.saml.BookServerSaml.java">main/java/org/apache/cxf/systest/jaxrs/security/saml/BookServerSaml.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://cxf.apache.org/checkstyle.html#main.java.org.apache.cxf.systest.jaxrs.security.saml.SecureClaimBookStore.java">main/java/org/apache/cxf/systest/jaxrs/security/saml/SecureClaimBookStore.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://cxf.apache.org/checkstyle.html#main.java.org.apache.cxf.systest.jaxrs.security.saml.KeystorePasswordCallback.java">main/java/org/apache/cxf/systest/jaxrs/security/saml/KeystorePasswordCallback.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://cxf.apache.org/checkstyle.html#main.java.org.apache.cxf.systest.jaxrs.security.saml.SecureBookServerSaml.java">main/java/org/apache/cxf/systest/jaxrs/security/saml/SecureBookServerSaml.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://cxf.apache.org/checkstyle.html#main.java.org.apache.cxf.systest.jaxrs.security.saml.JAXRSSamlTest.java">main/java/org/apache/cxf/systest/jaxrs/security/saml/JAXRSSamlTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

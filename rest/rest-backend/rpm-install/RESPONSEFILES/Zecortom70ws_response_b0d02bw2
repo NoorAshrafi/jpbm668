@@ -1,0 +1,16 @@
+s/##SERVER_PORT##/20040/g
+s/##HTTPS_PORT##/20443/g
+s/##NETWORK_IP##/172.28.212.209/g
+s/##PKCS12_PW##/bowmore/g
+s/##PKCS12_FILE##/\/app\/certs\/runtime\/certs\/b0d02bw2d.rz.ch.zurich.com.p12/g
+s/##TRUSTSTORE##/\/app\/certs\/runtime\/caLists\/truststore/g
+s/##TRUSTSTORE_PW##/omnisec/g
+s/##INSTALLUSER##/ecor/g
+s/##JMX_PORT##/20400/g
+s/##MEM-XMS##/256m/g
+s/##MEM-XMX##/512m/g
+s/##MEM-NEWSIZE##/128m/g
+s/##MEM-MAXNEWSIZE##/256m/g
+s/##MEM-PERMSIZE##/128m/g
+s/##MEM-MAXPERMSIZE##/256m/g
+

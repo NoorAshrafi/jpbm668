@@ -1,0 +1,10 @@
+#!/usr/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/local/ssl/bin:.
+export PATH
+
+
+# check wegen move IT auf altem stand!!!! noch in gebrauch?
+
+scp ##MEDIPORT_USER##@##MEDIPORT_SERVER##:MPGateway/mpgw/out/out1/* ##BASEDIR##/##OWNER##/data/mpgw/ && ssh ##MEDIPORT_USER##@##MEDIPORT_SERVER## 'rm -f ##MEDIPORT_BASEDIR##/##MEDIPORT_USER##/MPGateway/mpgw/out/out1/*'
+
+exit

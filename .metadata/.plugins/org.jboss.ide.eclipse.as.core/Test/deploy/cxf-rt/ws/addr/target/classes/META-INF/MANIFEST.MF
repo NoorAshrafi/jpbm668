@@ -1,0 +1,59 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385436802851
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Blueprint: OSGI-INF/blueprint/ws-addressing.xml
+Bundle-Description: Apache CXF Runtime WS Addressing
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime WS Addressing
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-ws-addr
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.ws.addressing.blueprint;version="2.7.9.SN
+ APSHOT",org.apache.cxf.ws.addressing.impl;version="2.7.9.SNAPSHOT",org.
+ apache.cxf.ws.addressing.policy;version="2.7.9.SNAPSHOT",org.apache.cxf
+ .ws.addressing.soap;version="2.7.9.SNAPSHOT",org.apache.cxf.ws.addressi
+ ng.spring;version="2.7.9.SNAPSHOT"
+Export-Service: org.apache.aries.blueprint.NamespaceHandler;osgi.service
+ .blueprint.namespace="http://cxf.apache.org/ws/addressing"
+Implementation-Title: Apache CXF Runtime WS Addressing
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: org.springframework.beans.factory.xml;resolution:=option
+ al;version="[2.5,4)",org.apache.aries.blueprint;version="[0.3,2)";resol
+ ution:=optional,javax.wsdl,javax.wsdl.extensions,javax.xml.bind,javax.x
+ ml.namespace,javax.xml.ws,org.apache.cxf;version="[2.7,3)",org.apache.c
+ xf.binding;version="[2.7,3)",org.apache.cxf.binding.soap;version="[2.7,
+ 3)",org.apache.cxf.binding.soap.interceptor;version="[2.7,3)",org.apach
+ e.cxf.binding.soap.model;version="[2.7,3)",org.apache.cxf.common.i18n;v
+ ersion="[2.7,3)",org.apache.cxf.common.injection;version="[2.7,3)",org.
+ apache.cxf.common.logging;version="[2.7,3)",org.apache.cxf.common.util;
+ version="[2.7,3)",org.apache.cxf.configuration.blueprint;version="[2.7,
+ 3)",org.apache.cxf.configuration.spring;version="[2.7,3)",org.apache.cx
+ f.databinding;version="[2.7,3)",org.apache.cxf.endpoint;version="[2.7,3
+ )",org.apache.cxf.feature;version="[2.7,3)",org.apache.cxf.headers;vers
+ ion="[2.7,3)",org.apache.cxf.helpers;version="[2.7,3)",org.apache.cxf.i
+ nterceptor;version="[2.7,3)",org.apache.cxf.io;version="[2.7,3)",org.ap
+ ache.cxf.jaxb;version="[2.7,3)",org.apache.cxf.message;version="[2.7,3)
+ ",org.apache.cxf.phase;version="[2.7,3)",org.apache.cxf.service;version
+ ="[2.7,3)",org.apache.cxf.service.model;version="[2.7,3)",org.apache.cx
+ f.transport;version="[2.7,3)",org.apache.cxf.workqueue;version="[2.7,3)
+ ",org.apache.cxf.ws.addressing;version="[2.7,3)",org.apache.cxf.ws.addr
+ essing.v200403;version="[2.7,3)",org.apache.cxf.ws.addressing.v200408;v
+ ersion="[2.7,3)",org.apache.cxf.ws.addressing.wsdl;version="[2.7,3)",or
+ g.apache.cxf.ws.policy;version="[2.7,3)",org.apache.cxf.ws.policy.build
+ er.primitive;version="[2.7,3)",org.apache.cxf.wsdl;version="[2.7,3)",or
+ g.apache.neethi;version="[3.0,4)",org.apache.neethi.builders;version="[
+ 3.0,4)",org.apache.neethi.builders.xml;version="[3.0,4)",org.osgi.servi
+ ce.blueprint;version="[1.0.0,2.0.0)";resolution:=optional,org.osgi.serv
+ ice.blueprint.reflect;version="[1.0,2)";resolution:=optional,org.w3c.do
+ m
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime WS Addressing
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

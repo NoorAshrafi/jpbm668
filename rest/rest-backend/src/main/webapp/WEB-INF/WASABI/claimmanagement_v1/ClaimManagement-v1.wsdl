@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ClaimManagement-v1.wsdl" 
+    targetNamespace="http://webservices.zurich.com/zsoa/ch/claims/ClaimManagement-v1" 
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+    xmlns:tns="http://webservices.zurich.com/zsoa/ch/claims/ClaimManagement-v1" 
+    xmlns:types-v1_0="http://webservices.zurich.com/zsoa/ch/claims/ClaimManagement-v1.0" 
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    
+xmlns:wsp="http://www.w3.org/ns/ws-policy"
+xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
+xmlns:t="http://docs.oasis-open.org/ws-sx/ws-trust/200512"
+xmlns:wsaw="http://www.w3.org/2005/08/addressing"
+xmlns:http="http://cxf.apache.org/transports/http/configuration"
+xmlns:sec="http://cxf.apache.org/configuration/security"
+
+    >
+    <!--                    _____                                            -->
+    <!--                   |_   _| _   _  _ __    ___  ___                   -->
+    <!--                     | |  | | | || '_ \  / _ \/ __|                  -->
+    <!--                     | |  | |_| || |_) ||  __/\__ \                  -->
+    <!--                     |_|   \__, || .__/  \___||___/                  -->
+    <!--                           |___/ |_|                                 -->
+    <wsdl:types>
+        <!--  ***** Version 1.0 ***** -->
+        <schema 
+            targetNamespace="http://webservices.zurich.com/zsoa/ch/claims/ClaimManagement-v1.0" 
+            xmlns="http://www.w3.org/2001/XMLSchema" 
+            xmlns:mclaim="http://schemas.zurich.com/zsoa/ch/claims/2007/09/motorclaim" 
+            xmlns:mfm="http://schemas.zurich.com/zsoa/ch/claims/2007/09/motorfraudmsg" 
+            xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+            xmlns:zsoacommon="http://schemas.zurich.com/zsoa/ch/common/2006/10">
+            <import namespace="http://schemas.zurich.com/zsoa/ch/common/2006/10" 
+                schemaLocation="./schema/Common.xsd"/>
+            <import 
+                namespace="http://schemas.zurich.com/zsoa/ch/claims/2007/09/motorclaim" 
+                schemaLocation="./schema/motorclaim.xsd"/>
+            <import 
+                namespace="http://schemas.zurich.com/zsoa/ch/claims/2007/09/motorfraudmsg" 
+                schemaLocation="./schema/motorfraudmsg.xsd"/>
+            <element name="sendSuspicionOfFraud">
+                <complexType>
+                    <sequence>
+                        <element name="fraudDocument" type="mfm:SuspectedFraudDocument"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="sendSuspicionOfFraudResponse">
+                <complexType>
+                    <sequence>
+                        <element name="fraudResponse" type="string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="zsoaFaultWrapper">
+                <complexType>
+                    <sequence>
+                        <element ref="zsoacommon:ZSOAFaultDetails"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="sendMotorClaim">
+                <complexType>
+                    <sequence>
+                        <element name="claimDocument" type="mclaim:MotorClaimDocument"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="sendMotorClaimResponse">
+                <complexType>
+                    <sequence>
+                        <element name="claimResponse" type="string"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </wsdl:types>
+    <!--           __  __                                                    -->
+    <!--          |  \/  |  ___  ___  ___   __ _   __ _   ___  ___           -->
+    <!--          | |\/| | / _ \/ __|/ __| / _` | / _` | / _ \/ __|          -->
+    <!--          | |  | ||  __/\__ \\__ \| (_| || (_| ||  __/\__ \          -->
+    <!--          |_|  |_| \___||___/|___/ \__,_| \__, | \___||___/          -->
+    <!--                                          |___/                      -->
+    <!--  ***** Version 1.0 ***** -->
+    <wsdl:message name="ClaimManagement-v1_0.sendMotorClaim">
+        <wsdl:part element="types-v1_0:sendMotorClaim" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="ClaimManagement-v1_0.sendMotorClaimResponse">
+        <wsdl:part element="types-v1_0:sendMotorClaimResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="ClaimManagement-v1_0.sendSuspicionOfFraud">
+        <wsdl:part element="types-v1_0:sendSuspicionOfFraud" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="ClaimManagement-v1_0.sendSuspicionOfFraudResponse">
+        <wsdl:part element="types-v1_0:sendSuspicionOfFraudResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="zsoaFault">
+        <wsdl:part element="types-v1_0:zsoaFaultWrapper" name="parameters"/>
+    </wsdl:message>
+    <!--      ___         _                 __                               -->
+    <!--     |_ _| _ __  | |_   ___  _ __  / _|  __ _   ___   ___  ___       -->
+    <!--      | | | '_ \ | __| / _ \| '__|| |_  / _` | / __| / _ \/ __|      -->
+    <!--      | | | | | || |_ |  __/| |   |  _|| (_| || (__ |  __/\__ \      -->
+    <!--     |___||_| |_| \__| \___||_|   |_|   \__,_| \___| \___||___/      -->
+    <!--                                                                     -->
+    <!--  ***** Version 1.0 ***** -->
+    <wsdl:portType name="ClaimManagement-v1_0">
+        <wsdl:operation name="sendMotorClaim">
+            <wsdl:input message="tns:ClaimManagement-v1_0.sendMotorClaim" 
+                name="sendMotorClaim"/>
+            <wsdl:output 
+                message="tns:ClaimManagement-v1_0.sendMotorClaimResponse" 
+                name="sendMotorClaimResponse"/>
+            <wsdl:fault message="tns:zsoaFault" name="zsoaFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="sendSuspicionOfFraud">
+            <wsdl:input message="tns:ClaimManagement-v1_0.sendSuspicionOfFraud" 
+                name="sendSuspicionOfFraud"/>
+            <wsdl:output 
+                message="tns:ClaimManagement-v1_0.sendSuspicionOfFraudResponse" 
+                name="sendSuspicionOfFraudResponse"/>
+            <wsdl:fault message="tns:zsoaFault" name="zsoaFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <!--             ____   _             _  _                               -->
+    <!--            | __ ) (_) _ __    __| |(_) _ __    __ _  ___            -->
+    <!--            |  _ \ | || '_ \  / _` || || '_ \  / _` |/ __|           -->
+    <!--            | |_) || || | | || (_| || || | | || (_| |\__ \           -->
+    <!--            |____/ |_||_| |_| \__,_||_||_| |_| \__, ||___/           -->
+    <!--                                               |___/                 -->
+    <!--  ***** Version 1.0 ***** -->
+    <wsdl:binding name="ClaimManagement-v1_0.SOAPoHTTP" 
+        type="tns:ClaimManagement-v1_0">
+        <!-- Built client code Change Start -->
+    	<wsp:PolicyReference URI="#SAML-BST-Policy" />
+    <!-- Built client code Change End -->
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="sendMotorClaim">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="sendMotorClaim">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="sendMotorClaimResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="zsoaFault">
+                <soap:fault name="zsoaFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="sendSuspicionOfFraud">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="sendSuspicionOfFraud">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="sendSuspicionOfFraudResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="zsoaFault">
+                <soap:fault name="zsoaFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <!-- Built client code Change Start -->
+    <wsp:Policy xmlns:wsp="http://www.w3.org/ns/ws-policy" Name="SAMLandBSTPolicy"
+    wsu:Id="SAML-BST-Policy" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
+    xmlns:t="http://docs.oasis-open.org/ws-sx/ws-trust/200512" xmlns:wsaw="http://www.w3.org/2005/08/addressing"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:ExactlyOne>
+        <wsp:All>
+            <sp:TransportBinding>
+                <wsp:Policy>
+                    <sp:TransportToken>
+                        <wsp:Policy>
+                            <sp:HttpsToken RequireClientCertificate="false">
+                                <wsp:Policy />
+                            </sp:HttpsToken>
+                        </wsp:Policy>
+                    </sp:TransportToken>
+                    <sp:AlgorithmSuite>
+                        <wsp:Policy>
+                            <sp:TripleDesRsa15 />
+                        </wsp:Policy>
+                    </sp:AlgorithmSuite>
+                    <sp:Layout>
+                        <wsp:Policy>
+                            <sp:Lax />
+                        </wsp:Policy>
+                    </sp:Layout>
+                </wsp:Policy>
+            </sp:TransportBinding>
+            <sp:SupportingTokens>
+                <wsp:Policy>
+                    <sp:IssuedToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+                        <sp:RequestSecurityTokenTemplate>
+                            <t:TokenType>http://schemas.iona.com/security/IONASSOToken</t:TokenType>
+                            <t:KeyType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/Bearer</t:KeyType>
+                        </sp:RequestSecurityTokenTemplate>
+                        <wsp:Policy>
+                            <sp:RequireInternalReference />
+                        </wsp:Policy>
+                        <sp:Issuer>
+                            <wsaw:Address>http://to-be-ignored/</wsaw:Address>
+                        </sp:Issuer>
+                    </sp:IssuedToken>
+                </wsp:Policy>
+            </sp:SupportingTokens>
+            <sp:Wss11>
+                <wsp:Policy>
+                    <sp:MustSupportRefIssuerSerial />
+                    <sp:MustSupportRefThumbprint />
+                    <sp:MustSupportRefEncryptedKey />
+                </wsp:Policy>
+            </sp:Wss11>
+            <sp:Trust13>
+                <wsp:Policy>
+                    <sp:MustSupportIssuedTokens />
+                    <sp:RequireClientEntropy />
+                    <sp:RequireServerEntropy />
+                </wsp:Policy>
+            </sp:Trust13>
+        </wsp:All>
+        <wsp:All>
+            <sp:TransportBinding xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+                    <wsp:Policy>
+                        <sp:TransportToken>
+                         <wsp:Policy>
+                            <sp:HttpsToken RequireClientCertificate="false">
+                                <wsp:Policy />
+                            </sp:HttpsToken>
+                        </wsp:Policy>
+                        </sp:TransportToken>
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <sp:TripleDesRsa15 />
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Lax />
+                            </wsp:Policy>
+                        </sp:Layout>
+                        <sp:IncludeTimestamp />
+                    </wsp:Policy>
+                </sp:TransportBinding>
+                <sp:SupportingTokens xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+                    <wsp:Policy>
+                        <sp:IssuedToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+                            <sp:RequestSecurityTokenTemplate>
+                                <t:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</t:TokenType>
+                                <t:KeyType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/Bearer</t:KeyType>
+                            </sp:RequestSecurityTokenTemplate>
+                            <wsp:Policy>
+                                <sp:RequireInternalReference />
+                            </wsp:Policy>
+                            <sp:Issuer>
+                                <wsaw:Address>http://localhost:8080/DoubleItSTS/DoubleItSTSServiceUT
+                                </wsaw:Address>
+                            </sp:Issuer>
+                        </sp:IssuedToken>
+                    </wsp:Policy>
+                </sp:SupportingTokens>
+                <sp:Wss11>
+                    <wsp:Policy>
+                        <sp:MustSupportRefIssuerSerial />
+                        <sp:MustSupportRefThumbprint />
+                        <sp:MustSupportRefEncryptedKey />
+                    </wsp:Policy>
+                </sp:Wss11>
+                <sp:Trust13>
+                    <wsp:Policy>
+                        <sp:MustSupportIssuedTokens />
+                        <sp:RequireClientEntropy />
+                        <sp:RequireServerEntropy />
+                    </wsp:Policy>
+                </sp:Trust13>
+        </wsp:All>
+    </wsp:ExactlyOne>
+</wsp:Policy>
+    
+    <!-- Built client code Change End -->
+    <!--             ____                      _                             -->
+    <!--            / ___|   ___  _ __ __   __(_)  ___   ___  ___            -->
+    <!--            \___ \  / _ \| '__|\ \ / /| | / __| / _ \/ __|           -->
+    <!--             ___) ||  __/| |    \ V / | || (__ |  __/\__ \           -->
+    <!--            |____/  \___||_|     \_/  |_| \___| \___||___/           -->
+    <!--                                                                     -->
+    <!--  ***** Version 1.0 ***** -->
+    <wsdl:service name="ClaimManagement-v1_0Service">
+        <wsdl:port binding="tns:ClaimManagement-v1_0.SOAPoHTTP" 
+            name="SOAPoHTTPEndpoint">
+            <soap:address location="https://localhost:9393"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

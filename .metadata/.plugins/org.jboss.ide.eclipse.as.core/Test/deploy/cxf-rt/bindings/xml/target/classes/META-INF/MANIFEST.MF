@@ -1,0 +1,40 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385436754176
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF Runtime XML Binding
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime XML Binding
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-bindings-xml
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.binding.xml;version="2.7.9.SNAPSHOT",org.
+ apache.cxf.binding.xml.interceptor;version="2.7.9.SNAPSHOT",org.apache.
+ cxf.binding.xml.wsdl11;version="2.7.9.SNAPSHOT",org.apache.cxf.bindings
+ .xformat;version="2.7.9.SNAPSHOT"
+Implementation-Title: Apache CXF Runtime XML Binding
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.wsdl,javax.wsdl.extensions,javax.wsdl.extensions.h
+ ttp,javax.xml.bind,javax.xml.bind.annotation,javax.xml.namespace,javax.
+ xml.stream,org.apache.cxf;version="[2.7,3)",org.apache.cxf.binding;vers
+ ion="[2.7,3)",org.apache.cxf.common;version="[2.7,3)",org.apache.cxf.co
+ mmon.i18n;version="[2.7,3)",org.apache.cxf.common.injection;version="[2
+ .7,3)",org.apache.cxf.common.logging;version="[2.7,3)",org.apache.cxf.c
+ ommon.util;version="[2.7,3)",org.apache.cxf.endpoint;version="[2.7,3)",
+ org.apache.cxf.helpers;version="[2.7,3)",org.apache.cxf.interceptor;ver
+ sion="[2.7,3)",org.apache.cxf.message;version="[2.7,3)",org.apache.cxf.
+ service.model;version="[2.7,3)",org.apache.cxf.staxutils;version="[2.7,
+ 3)",org.apache.cxf.tools.common;version="[2.7,3)";resolution:=optional,
+ org.apache.cxf.tools.validator;version="[2.7,3)";resolution:=optional,o
+ rg.apache.cxf.transport;version="[2.7,3)",org.apache.cxf.wsdl;version="
+ [2.7,3)",org.apache.cxf.wsdl.http;version="[2.7,3)",org.w3c.dom
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime XML Binding
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

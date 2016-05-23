@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Title: Apache CXF JAX-RS System Advanced Security Tests
+Implementation-Vendor-Id: org.apache
+Specification-Vendor: The Apache Software Foundation
+Build-Jdk: 1.7.0_51
+Built-By: pupperpelly
+Specification-Title: Apache CXF JAX-RS System Advanced Security Tests
+Created-By: Maven Integration for Eclipse
+

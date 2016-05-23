@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.5">
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\blueprint\BlueprintBeanLocator.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\blueprint\BlueprintBus.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\blueprint\BundleDelegatingClassLoader.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\blueprint\BusDefinitionParser.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\blueprint\ConfigurerImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\blueprint\CXFCoreNamespaceHandler.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\BusState.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\CXFBusFactory.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\CXFBusImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\extension\Extension.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\extension\ExtensionException.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\extension\ExtensionManager.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\extension\ExtensionManagerBus.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\extension\ExtensionManagerImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\extension\ExtensionRegistry.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\extension\TextExtensionFragmentParser.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\extension\XmlExtensionFragmentParser.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\ManagedBus.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\managers\BindingFactoryManagerImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\managers\ClientLifeCycleManagerImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\managers\ConduitInitiatorManagerImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\managers\CXFBusLifeCycleManager.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\managers\DestinationFactoryManagerImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\managers\EndpointResolverRegistryImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\managers\HeaderManagerImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\managers\PhaseManagerImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\managers\ServerLifeCycleManagerImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\managers\ServerRegistryImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\managers\ServiceContractResolverRegistryImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\managers\WorkQueueImplMBeanWrapper.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\managers\WorkQueueManagerImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\managers\WorkQueueManagerImplMBeanWrapper.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\osgi\CXFActivator.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\osgi\CXFExtensionBundleListener.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\osgi\ManagedWorkQueueList.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\osgi\OSGiBeanLocator.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\osgi\OSGIBusListener.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\osgi\WorkQueueSingleConfig.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\resource\ResourceManagerImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\spring\BusApplicationContext.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\spring\BusApplicationContextResourceResolver.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\spring\BusDefinitionParser.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\spring\BusEntityResolver.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\spring\BusExtensionPostProcessor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\spring\BusWiringBeanFactoryPostProcessor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\spring\ControlledValidationXmlBeanDefinitionReader.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\spring\Jsr250BeanPostProcessor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\spring\NamespaceHandler.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\spring\OldSpringSupport.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\spring\SpringBeanLocator.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\spring\SpringBus.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\spring\SpringBusFactory.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\bus\spring\TunedDocumentLoader.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\catalog\CatalogWSDLLocator.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\catalog\CatalogXmlSchemaURIResolver.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\catalog\OASISCatalogManager.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\catalog\OASISCatalogManagerHelper.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\configuration\blueprint\AbstractBPBeanDefinitionParser.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\configuration\blueprint\InterceptorTypeConverter.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\configuration\blueprint\SimpleBPBeanDefinitionParser.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\databinding\source\mime\CustomExtensionRegistry.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\databinding\source\mime\MimeAttribute.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\databinding\source\mime\MimeSerializer.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\databinding\source\NodeDataReader.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\databinding\source\NodeDataWriter.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\databinding\source\SourceDataBinding.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\databinding\source\XMLStreamDataReader.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\databinding\source\XMLStreamDataWriter.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\databinding\stax\StaxDataBinding.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\databinding\stax\StaxDataBindingFeature.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\databinding\stax\StaxDataBindingInterceptor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\databinding\stax\XMLStreamWriterCallback.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\feature\transform\AbstractXSLTInterceptor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\feature\transform\XSLTFeature.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\feature\transform\XSLTInInterceptor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\feature\transform\XSLTOutInterceptor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\feature\transform\XSLTUtils.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\interceptor\security\AbstractAuthorizingInInterceptor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\interceptor\security\AbstractSecurityContextInInterceptor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\interceptor\security\AbstractUsernameTokenInInterceptor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\interceptor\security\AccessDeniedException.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\interceptor\security\AuthenticationException.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\interceptor\security\DefaultSecurityContext.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\interceptor\security\DepthRestrictingStreamInterceptor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\interceptor\security\JAASLoginInterceptor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\interceptor\security\NamePasswordCallbackHandler.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\interceptor\security\OperationInfoAuthorizingInterceptor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\interceptor\security\RolePrefixSecurityContextImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\interceptor\security\SAMLSecurityContext.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\interceptor\security\SecureAnnotationsInterceptor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\interceptor\security\SimpleAuthorizingInterceptor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\service\factory\AbstractServiceConfiguration.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\service\factory\AbstractServiceFactoryBean.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\service\factory\AnnotationsFactoryBeanListener.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\service\factory\DefaultServiceConfiguration.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\service\factory\FactoryBeanListener.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\service\factory\FactoryBeanListenerManager.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\service\factory\MethodNameSoapActionServiceConfiguration.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\service\factory\ReflectionServiceFactoryBean.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\service\factory\ServiceConstructionException.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\service\factory\SimpleMethodDispatcher.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\service\factory\WSDLBasedServiceConfiguration.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\test\AbstractCXFSpringTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\test\AbstractCXFTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\test\TestApplicationContext.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\test\TestUtilities.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\test\XPathAssert.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\transport\common\gzip\GZIPFeature.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\transport\common\gzip\GZIPInInterceptor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\transport\common\gzip\GZIPOutInterceptor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\transports\http\internal\QueryHandlerRegistryImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\wsdl11\AbstractWrapperWSDLLocator.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\wsdl11\PartialWSDLProcessor.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\wsdl11\ResourceManagerWSDLLocator.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\wsdl11\SchemaSerializer.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\wsdl11\SchemaUtil.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\wsdl11\ServiceWSDLBuilder.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\wsdl11\SOAPBindingUtil.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\wsdl11\WSDLDefinitionBuilder.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\wsdl11\WSDLEndpointFactory.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\wsdl11\WSDLManagerImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\wsdl11\WSDLRuntimeException.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\wsdl11\WSDLServiceBuilder.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\wsdl11\WSDLServiceFactory.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\wsdl11\WSDLServiceFactoryImpl.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\main\java\org\apache\cxf\wsdl11\WSDLServiceUtils.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\bus\blueprint\CXFCoreNamespaceHandlerTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\bus\CXFBusImplTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\bus\extension\ExtensionManagerTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\bus\extension\ExtensionTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\bus\extension\TextExtensionFragmentParserTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\bus\extension\XmlExtensionFragmentParserTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\bus\managers\EndpointResolverRegistryImplTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\bus\managers\ServerRegistryImpTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\bus\managers\ServiceContractResolverRegistryImplTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\bus\osgi\OSGiBusListenerTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\bus\osgi\WorkQueueSingleConfigTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\bus\spring\BusApplicationContextTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\bus\spring\BusApplicationListenerTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\bus\spring\BusDefinitionParserTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\bus\spring\SpringBusFactoryTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\buslifecycle\CXFBusLifeCycleManagerTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\configuration\foo\Address.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\configuration\foo\Foo.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\configuration\foo\ObjectFactory.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\configuration\foo\package-info.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\configuration\foo\Point.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\configuration\spring\ConfigurerImplTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\databinding\source\XMLStreamDataReaderTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\endpoint\DummyServer.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\endpoint\EndpointImplTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\feature\transform\XSLTInterceptorsTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\interceptor\DocLiteralInInterceptorTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\interceptor\LoggingOutInterceptorTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\interceptor\OutgoingChainInterceptorTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\interceptor\security\DefaultSecurityContextTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\interceptor\security\NamePasswordCallbackHandlerTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\interceptor\security\OperationInfoAuthorizingInterceptorTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\interceptor\security\RolePrefixSecurityContextImplTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\interceptor\security\SecureAnnotationsInterceptorTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\interceptor\security\SimpleAuthorizingInterceptorTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\interceptor\ServiceInvokerInterceptorTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\service\factory\ReflectionServiceFactorBeanTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\test\XPathAssertTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\transport\common\gzip\GZIPAcceptEncodingTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\wsdl11\ServiceWSDLBuilderTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\wsdl11\WSDLDefinitionBuilderTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\wsdl11\WSDLManagerImplTest.java">
+</file>
+<file name="C:\Form 16\2.7.x-fixes\2.7.x-fixes\rt\core\src\test\java\org\apache\cxf\wsdl11\WSDLServiceBuilderTest.java">
+</file>
+</checkstyle>

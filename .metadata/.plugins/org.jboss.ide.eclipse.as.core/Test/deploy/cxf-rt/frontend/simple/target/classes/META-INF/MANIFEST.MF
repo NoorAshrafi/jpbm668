@@ -1,0 +1,68 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385436776632
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Blueprint: OSGI-INF/blueprint/cxf-simple.xml
+Bundle-Description: Apache CXF Runtime Simple Frontend
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime Simple Frontend
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-frontend-simple
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.frontend;version="2.7.9.SNAPSHOT",org.apa
+ che.cxf.frontend.blueprint;version="2.7.9.SNAPSHOT",org.apache.cxf.fron
+ tend.spring;version="2.7.9.SNAPSHOT",org.apache.cxf.simple;version="2.7
+ .9.SNAPSHOT"
+Export-Service: org.apache.aries.blueprint.NamespaceHandler;osgi.service
+ .blueprint.namespace="http://cxf.apache.org/blueprint/simple"
+Implementation-Title: Apache CXF Runtime Simple Frontend
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: org.apache.aries.blueprint;version="[0.3,2)";resolution:
+ =optional,org.apache.aries.blueprint.mutable;version="[0.3,2)";resoluti
+ on:=optional,org.springframework.beans;resolution:=optional;version="[2
+ .5,4)",org.springframework.beans.factory;resolution:=optional;version="
+ [2.5,4)",org.springframework.beans.factory.config;resolution:=optional;
+ version="[2.5,4)",org.springframework.beans.factory.support;resolution:
+ =optional;version="[2.5,4)",org.springframework.beans.factory.xml;resol
+ ution:=optional;version="[2.5,4)",org.springframework.context;resolutio
+ n:=optional;version="[2.5,4)",javax.wsdl,javax.wsdl.extensions,javax.ws
+ dl.extensions.schema,javax.wsdl.extensions.soap,javax.wsdl.extensions.s
+ oap12,javax.wsdl.factory,javax.wsdl.xml,javax.xml.namespace;resolution:
+ =optional,javax.xml.stream;resolution:=optional,javax.xml.transform;res
+ olution:=optional,javax.xml.transform.dom;resolution:=optional,org.apac
+ he.cxf;version="[2.7,3)",org.apache.cxf.binding;version="[2.7,3)",org.a
+ pache.cxf.binding.soap;version="[2.7,3)",org.apache.cxf.binding.soap.in
+ terceptor;version="[2.7,3)",org.apache.cxf.binding.soap.model;version="
+ [2.7,3)",org.apache.cxf.bus.spring;version="[2.7,3)",org.apache.cxf.cat
+ alog;version="[2.7,3)",org.apache.cxf.common.classloader;version="[2.7,
+ 3)",org.apache.cxf.common.i18n;version="[2.7,3)",org.apache.cxf.common.
+ injection;version="[2.7,3)",org.apache.cxf.common.logging;version="[2.7
+ ,3)",org.apache.cxf.common.util;version="[2.7,3)",org.apache.cxf.config
+ uration;version="[2.7,3)",org.apache.cxf.configuration.blueprint;versio
+ n="[2.7,3)",org.apache.cxf.configuration.security;version="[2.7,3)",org
+ .apache.cxf.configuration.spring;version="[2.7,3)",org.apache.cxf.datab
+ inding;version="[2.7,3)",org.apache.cxf.endpoint;version="[2.7,3)",org.
+ apache.cxf.feature;version="[2.7,3)",org.apache.cxf.helpers;version="[2
+ .7,3)",org.apache.cxf.interceptor;version="[2.7,3)",org.apache.cxf.mess
+ age;version="[2.7,3)",org.apache.cxf.phase;version="[2.7,3)",org.apache
+ .cxf.service;version="[2.7,3)",org.apache.cxf.service.factory;version="
+ [2.7,3)",org.apache.cxf.service.invoker;version="[2.7,3)",org.apache.cx
+ f.service.model;version="[2.7,3)",org.apache.cxf.staxutils;version="[2.
+ 7,3)",org.apache.cxf.transport;version="[2.7,3)",org.apache.cxf.transpo
+ rt.common.gzip;version="[2.7,3)",org.apache.cxf.ws.addressing;version="
+ [2.7,3)",org.apache.cxf.wsdl;version="[2.7,3)",org.apache.cxf.wsdl11;ve
+ rsion="[2.7,3)",org.osgi.service.blueprint;version="[1.0.0,2.0.0)";reso
+ lution:=optional,org.osgi.service.blueprint.container;version="[1.0,2)"
+ ;resolution:=optional,org.osgi.service.blueprint.reflect;version="[1.0,
+ 2)";resolution:=optional,org.w3c.dom;resolution:=optional,org.xml.sax;r
+ esolution:=optional
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime Simple Frontend
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

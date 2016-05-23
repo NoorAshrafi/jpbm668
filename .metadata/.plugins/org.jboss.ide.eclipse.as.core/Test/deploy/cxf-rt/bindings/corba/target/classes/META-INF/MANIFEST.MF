@@ -1,0 +1,47 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385440158537
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF Runtime CORBA Binding
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime CORBA Binding
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-bindings-corba
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.binding.corba;version="2.7.9.SNAPSHOT",or
+ g.apache.cxf.binding.corba.interceptors;version="2.7.9.SNAPSHOT",org.ap
+ ache.cxf.binding.corba.runtime;version="2.7.9.SNAPSHOT",org.apache.cxf.
+ binding.corba.types;version="2.7.9.SNAPSHOT",org.apache.cxf.binding.cor
+ ba.utils;version="2.7.9.SNAPSHOT",org.apache.cxf.binding.corba.wsdl;ver
+ sion="2.7.9.SNAPSHOT"
+Implementation-Title: Apache CXF Runtime CORBA Binding
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.annotation,javax.wsdl,javax.wsdl.extensions,javax.
+ xml.bind,javax.xml.bind.annotation,javax.xml.bind.annotation.adapters,j
+ avax.xml.namespace,javax.xml.stream,javax.xml.stream.events,javax.xml.w
+ s,org.apache.cxf;version="[2.7,3)",org.apache.cxf.binding;version="[2.7
+ ,3)",org.apache.cxf.common.injection;version="[2.7,3)",org.apache.cxf.c
+ ommon.logging;version="[2.7,3)",org.apache.cxf.common.util;version="[2.
+ 7,3)",org.apache.cxf.common.xmlschema;version="[2.7,3)",org.apache.cxf.
+ databinding;version="[2.7,3)",org.apache.cxf.endpoint;version="[2.7,3)"
+ ,org.apache.cxf.helpers;version="[2.7,3)",org.apache.cxf.interceptor;ve
+ rsion="[2.7,3)",org.apache.cxf.io;version="[2.7,3)",org.apache.cxf.mess
+ age;version="[2.7,3)",org.apache.cxf.phase;version="[2.7,3)",org.apache
+ .cxf.service;version="[2.7,3)",org.apache.cxf.service.model;version="[2
+ .7,3)",org.apache.cxf.transport;version="[2.7,3)",org.apache.cxf.ws.add
+ ressing;version="[2.7,3)",org.apache.cxf.wsdl;version="[2.7,3)",org.apa
+ che.cxf.wsdl11;version="[2.7,3)",org.apache.ws.commons.schema;version="
+ [2.0,3)",org.apache.ws.commons.schema.utils;version="[2.0,3)",org.omg.C
+ ORBA,org.omg.CORBA.TypeCodePackage,org.omg.CORBA.portable,org.omg.CosNa
+ ming,org.omg.PortableServer,org.omg.PortableServer.POAPackage,org.w3c.d
+ om
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime CORBA Binding
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

@@ -1,0 +1,23 @@
+package com.example;
+
+public class PetMain {
+	
+	public static void main(){
+		Animal a;
+		Spider s = new Spider();
+		s.eat();
+		s.walk();
+		
+		
+		Fish f = new Fish();
+		f.eat();
+		f.play();
+		f.walk();
+		
+		Cat c = new Cat();
+		c.eat();
+		c.play();
+		c.walk();
+	}
+
+}

@@ -1,0 +1,73 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385440758809
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Blueprint: OSGI-INF/blueprint/ws-rm.xml
+Bundle-Description: Apache CXF Runtime WS Reliable Messaging
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime WS Reliable Messaging
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-ws-rm
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.ws.rm;version="2.7.9.SNAPSHOT",org.apache
+ .cxf.ws.rm.blueprint;version="2.7.9.SNAPSHOT",org.apache.cxf.ws.rm.feat
+ ure;version="2.7.9.SNAPSHOT",org.apache.cxf.ws.rm.manager;version="2.7.
+ 9.SNAPSHOT",org.apache.cxf.ws.rm.persistence;version="2.7.9.SNAPSHOT",o
+ rg.apache.cxf.ws.rm.persistence.jdbc;version="2.7.9.SNAPSHOT",org.apach
+ e.cxf.ws.rm.policy;version="2.7.9.SNAPSHOT",org.apache.cxf.ws.rm.soap;v
+ ersion="2.7.9.SNAPSHOT",org.apache.cxf.ws.rm.spring;version="2.7.9.SNAP
+ SHOT",org.apache.cxf.ws.rm.v200502;version="2.7.9.SNAPSHOT",org.apache.
+ cxf.ws.rm.v200502wsa15;version="2.7.9.SNAPSHOT",org.apache.cxf.ws.rm.v2
+ 00702;version="2.7.9.SNAPSHOT",org.apache.cxf.ws.rmp.v200502;version="2
+ .7.9.SNAPSHOT",org.apache.cxf.ws.rmp.v200702;version="2.7.9.SNAPSHOT"
+Export-Service: org.apache.aries.blueprint.NamespaceHandler;osgi.service
+ .blueprint.namespace=""
+Implementation-Title: Apache CXF Runtime WS Reliable Messaging
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: org.apache.aries.blueprint;version="[0.3,2)";resolution:
+ =optional,org.apache.aries.blueprint.mutable;version="[0.3,2)";resoluti
+ on:=optional,org.springframework.beans.factory.config;resolution:=optio
+ nal;version="[2.5,4)",org.springframework.beans.factory.support;resolut
+ ion:=optional;version="[2.5,4)",org.springframework.beans.factory.xml;r
+ esolution:=optional;version="[2.5,4)",javax.annotation,javax.management
+ ,javax.management.openmbean,javax.sql,javax.wsdl.extensions,javax.xml.b
+ ind,javax.xml.bind.annotation,javax.xml.bind.annotation.adapters,javax.
+ xml.datatype,javax.xml.namespace,javax.xml.transform,javax.xml.transfor
+ m.stream,javax.xml.validation,org.apache.cxf;version="[2.7,3)",org.apac
+ he.cxf.binding;version="[2.7,3)",org.apache.cxf.binding.soap;version="[
+ 2.7,3)",org.apache.cxf.binding.soap.interceptor;version="[2.7,3)",org.a
+ pache.cxf.binding.soap.model;version="[2.7,3)",org.apache.cxf.common.i1
+ 8n;version="[2.7,3)",org.apache.cxf.common.injection;version="[2.7,3)",
+ org.apache.cxf.common.logging;version="[2.7,3)",org.apache.cxf.common.u
+ til;version="[2.7,3)",org.apache.cxf.configuration.blueprint;version="[
+ 2.7,3)",org.apache.cxf.configuration.spring;version="[2.7,3)",org.apach
+ e.cxf.continuations;version="[2.7,3)",org.apache.cxf.databinding;versio
+ n="[2.7,3)",org.apache.cxf.endpoint;version="[2.7,3)",org.apache.cxf.fe
+ ature;version="[2.7,3)",org.apache.cxf.headers;version="[2.7,3)",org.ap
+ ache.cxf.helpers;version="[2.7,3)",org.apache.cxf.interceptor;version="
+ [2.7,3)",org.apache.cxf.io;version="[2.7,3)",org.apache.cxf.jaxb;versio
+ n="[2.7,3)",org.apache.cxf.management;version="[2.7,3)",org.apache.cxf.
+ management.annotation;version="[2.7,3)",org.apache.cxf.message;version=
+ "[2.7,3)",org.apache.cxf.phase;version="[2.7,3)",org.apache.cxf.service
+ ;version="[2.7,3)",org.apache.cxf.service.factory;version="[2.7,3)",org
+ .apache.cxf.service.invoker;version="[2.7,3)",org.apache.cxf.service.mo
+ del;version="[2.7,3)",org.apache.cxf.transport;version="[2.7,3)",org.ap
+ ache.cxf.transport.common.gzip;version="[2.7,3)",org.apache.cxf.workque
+ ue;version="[2.7,3)",org.apache.cxf.ws.addressing;version="[2.7,3)",org
+ .apache.cxf.ws.addressing.impl;version="[2.7,3)",org.apache.cxf.ws.addr
+ essing.soap;version="[2.7,3)",org.apache.cxf.ws.addressing.v200408;vers
+ ion="[2.7,3)",org.apache.cxf.ws.policy;version="[2.7,3)",org.apache.cxf
+ .ws.policy.builder.jaxb;version="[2.7,3)",org.apache.neethi;version="[3
+ .0,4)",org.osgi.service.blueprint;version="[1.0.0,2.0.0)";resolution:=o
+ ptional,org.osgi.service.blueprint.reflect;version="[1.0,2)";resolution
+ :=optional,org.w3c.dom
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime WS Reliable Messaging
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Roger Mueller (softwarepipeline.com) -->
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Roger Müller (Zurich) -->
+<xsd:schema targetNamespace="http://www.zurich.ch/elda" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.zurich.ch/elda" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02">
+	<xsd:element name="Message" type="MessageType"/>
+	<xsd:complexType name="AbstractDokumentType" abstract="true"/>
+	<xsd:complexType name="HeaderType">
+		<xsd:sequence>
+			<xsd:element name="Absender" type="SystemType"/>
+			<xsd:element name="Mandant" type="MandantType"/>
+			<xsd:element name="Datum" type="xsd:date"/>
+			<xsd:element name="Zeit" type="xsd:time"/>
+			<xsd:element name="Empfaenger" type="SystemType"/>
+			<xsd:element name="XSDVersion" type="xsd:string"/>
+			<xsd:element name="Sprache" type="xsd:string"/>
+			<xsd:element name="DokuType">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="KoGu"/>
+						<xsd:enumeration value="Unfallmeldung"/>
+						<xsd:enumeration value="Bagatellunfallmeldung"/>
+						<xsd:enumeration value="Krankentaggeld"/>
+						<xsd:enumeration value="MfAuftrag"/>
+						<xsd:enumeration value="MfKDXAuftrag"/>
+						<xsd:enumeration value="MfExpertise"/>
+						<xsd:enumeration value="MfBewertung"/>
+						<xsd:enumeration value="BvmTask"/>
+						<xsd:enumeration value="MedidataDokumentListe"/>
+						<xsd:enumeration value="MessageListe"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Testdaten" type="xsd:boolean"/>
+			<xsd:element name="Erfasser" type="ErfasserType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BodyType">
+		<xsd:sequence>
+			<xsd:element name="Document" type="AbstractDokumentType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SystemType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string"/>
+			<xsd:element name="Nummer" type="xsd:positiveInteger"/>
+			<xsd:element name="Version" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MandantType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Nummer" type="xsd:positiveInteger"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ErfasserType">
+		<xsd:choice>
+			<xsd:element name="NovellId" type="xsd:string"/>
+			<xsd:element name="HostId" type="xsd:string"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="MessageType">
+		<xsd:complexContent>
+			<xsd:extension base="AbstractDokumentType">
+				<xsd:sequence>
+					<xsd:element name="Header" type="HeaderType"/>
+					<xsd:element name="Body" type="BodyType"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="MessageListenType">
+		<xsd:complexContent>
+			<xsd:extension base="AbstractDokumentType">
+				<xsd:sequence>
+					<xsd:element ref="Message" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

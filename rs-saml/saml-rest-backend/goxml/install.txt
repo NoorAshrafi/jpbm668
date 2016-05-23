@@ -1,0 +1,72 @@
+GoXML(TM) Transform 2.0 Installation readme
+
+Hardware Requirements:
+Intel Pentium(TM)II 500 and above
+128mb RAM
+Sun Sparc Ultra 5 400mhz and above
+
+OS requirements:
+Windows 2000 Professional/Server
+Windows NT 4.0 service pack 6 and above
+Linux RedHat 6.2
+Solaris 8
+
+Java Development Kit runtime (JRE):
+1.2.2 and above
+
+Install:
+ Windows:
+   Insert the GoXML(TM) Transform CD, and allow
+   the CD to auto-run (if auto-run is disabled 
+   right click on your CD-Drive and execute setup.exe).
+   Run "start installer for windows".  This will
+   download the installer and run it automatically.
+   Once you have run the install.exe follow the
+   instructions to install. Before running GoXML(TM)
+   Transform you will need a license key.
+   To acquire one contact 
+   XML Global:
+
+Phone: 1-800-201-1848
+Email: support@xmlglobal.com
+
+ Linux:
+   Run install.bin from the directory
+   Install/InstData/Unix/Linux on the CD and 
+   follow the instructions.  Alternatively, you
+   can load up install.htm into your web browser
+   to launch the graphical installer.
+   Before running GoXML(TM) Transform you will 
+   need a license file.  To acquire one contact 
+   XML Global:
+
+Phone: 1-800-201-1848
+
+Email: support@xmlglobal.com
+
+ Solaris:
+   Run install.bin from the directory
+   Install/InstData/Unix/Solaris on the CD and 
+   follow the instructions.  Alternatively, you
+   can load up install.htm into your web browser 
+   to launch the graphical installer.
+   Before running GoXML(TM) Transform you will need a 
+   license file.  To acquire one contact XML Global:
+
+Phone: 1-800-201-1848
+
+Email: support@xmlglobal.com
+
+ Unix:
+   Run install.bin from the directory
+   Install/InstData/Unix/Others on the CD and 
+   follow the instructions.  Alternatively, you
+   can load up install.htm into your web browser 
+   to launch the graphical installer.
+   Before running GoXML(TM) Transform you will need a 
+   license file.  To acquire one contact XML Global:
+
+Phone: 1-800-201-1848
+
+Email: support@xmlglobal.com
+

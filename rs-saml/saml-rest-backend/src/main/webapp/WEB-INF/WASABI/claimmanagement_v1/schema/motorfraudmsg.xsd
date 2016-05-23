@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- created by Joe Crean (IONA) -->
+<xs:schema targetNamespace="http://schemas.zurich.com/zsoa/ch/claims/2007/09/motorfraudmsg" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns:mfbt="http://schemas.zurich.com/zsoa/ch/claims/2007/09/motorfraudbasetypes"
+           xmlns="http://schemas.zurich.com/zsoa/ch/claims/2007/09/motorfraudmsg" 
+           elementFormDefault="qualified" 
+           attributeFormDefault="unqualified" 
+           version="1.0.0">
+
+
+	<xs:import namespace="http://schemas.zurich.com/zsoa/ch/claims/2007/09/motorfraudbasetypes" 
+	           schemaLocation="./motorfraudbasetypes.xsd"/>	
+
+	<!--simple types-->
+	<xs:simpleType name="ClaimAmount">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999999999.99"/>
+			<xs:totalDigits value="12"/>
+			<xs:fractionDigits value="2"/>
+        </xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="YesNoUnknown">
+		<xs:annotation>
+			<xs:documentation>
+				0 = unknown
+				1 = no
+				2 = yes
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedInt">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NumberOfVehiclesInvolved">
+		<xs:annotation>
+			<xs:documentation>	
+				0 = unknown
+				1 = 2 vehicles
+				2 = 3 vehicles
+				3 = more as 3 vehicles
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedInt">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PrimaryClaim">
+		<xs:annotation>
+			<xs:documentation>
+				00 = unknown
+				65 = Hail
+				90 = Snow drift
+				60 = other Weather related damages
+				01 = Damage through stones (e.g. broken windshield)
+				02 = Mudslide
+				03 = Rockslide
+				04 = Flood
+				05 = Avalanche
+				06 = Snow weight
+				07 = Storm
+		</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedInt">
+			<xs:enumeration value="00"/>
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="65"/>
+			<xs:enumeration value="90"/>
+			<xs:enumeration value="60"/>
+			<xs:enumeration value="02"/>
+			<xs:enumeration value="03"/>
+			<xs:enumeration value="04"/>
+			<xs:enumeration value="05"/>
+			<xs:enumeration value="06"/>
+			<xs:enumeration value="07"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ForceMutationExpertise">
+		<xs:annotation>
+			<xs:documentation>	
+				1 = request Expertise
+				2 = dont request Expertise 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedInt">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ClaimCategory">
+		<xs:restriction base="xs:unsignedInt">
+			<xs:totalDigits value="2"/>
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InsuranceCode">
+		<xs:restriction base="xs:unsignedInt">
+			<xs:totalDigits value="3"/>
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MutationScoreComments">
+		<xs:annotation>
+			<xs:documentation>
+				0 = Fraud Message: unknown
+				1 = Fraud Message: no
+				2 = Fraud Message: yes
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedInt">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Occupation">
+		<xs:annotation>
+			<xs:documentation>
+				0 = no info (unknown)
+				1 = employed
+				2 = leader
+				3 = self-employed
+				4 = retired
+				5 = in Household
+				6 = School Training
+				7 = Apprentice
+				8 = Retired - invalid
+				9 = unemployed
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedInt">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+			<xs:enumeration value="7"/>
+			<xs:enumeration value="8"/>
+			<xs:enumeration value="9"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ArrangementsVehicle">
+		<xs:annotation>
+			<xs:documentation>
+				0 = empty
+				1 = order vehicle history  / clarify previous damages 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedInt">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ArrangementsFinancialBackground">
+		<xs:annotation>
+			<xs:documentation>
+				0 = empty
+				1 = get prosecution information
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedInt">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ArrangementsPersonal">
+		<xs:annotation>
+			<xs:documentation>
+				0 = empty
+				1 = previous damages / clarify with previous insurer
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedInt">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ArrangementsContractual">
+		<xs:annotation>
+			<xs:documentation>
+				0 = leer
+				1 = examine contract data (previous insurer/cover/begin date of insurance)
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedInt">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VersionISP">
+		<xs:restriction base="xs:unsignedInt">
+			<xs:totalDigits value="3"/>
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="100"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Score">
+		<xs:restriction base="xs:unsignedInt">
+			<xs:totalDigits value="3"/>
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="100"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Region">
+		<xs:annotation>
+			<xs:documentation>
+				0=unknown
+				1=West
+				2=Middle Bern
+				3=Middle Lucern
+				4=East East Switzerland
+				5=East Zurich
+				6=Tessin/Ticino
+				7=HQ
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedInt">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+			<xs:enumeration value="7"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--complex types-->
+	<xs:complexType name="Person">
+		<xs:all>
+			<xs:element name="firstname" type="xs:string" minOccurs="0"/>
+			<xs:element name="surname" type="xs:string" minOccurs="0"/>
+			<xs:element name="street" type="xs:string" minOccurs="0"/>
+			<xs:element name="number" type="xs:string" minOccurs="0"/>
+			<xs:element name="postCode" type="mfbt:ZIPCode" minOccurs="0"/>
+			<xs:element name="city" type="xs:string" minOccurs="0"/>
+			<xs:element name="nationality" type="xs:string" minOccurs="0"/>
+			<xs:element name="dateOfBirth" type="xs:date" minOccurs="0"/>
+			<xs:element name="telephoneNumber" type="mfbt:TelephoneNumber" minOccurs="0"/>
+			<xs:element name="faxNumber" type="mfbt:TelephoneNumber" minOccurs="0"/>
+			<xs:element name="email" type="mfbt:EmailAddress" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="CaseWorker">
+		<xs:all>
+			<xs:element name="firstname" type="xs:string" minOccurs="0"/>
+			<xs:element name="surname" type="xs:string" minOccurs="0"/>
+			<xs:element name="telephone" type="mfbt:TelephoneNumber" minOccurs="0"/>
+			<xs:element name="mobileNumber" type="mfbt:TelephoneNumber" minOccurs="0"/>
+			<xs:element name="faxNumber" type="mfbt:TelephoneNumber" minOccurs="0"/>
+			<xs:element name="email" type="mfbt:EmailAddress" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="CompletionData">
+		<xs:all>
+			<xs:element name="externalFees" type="mfbt:MonetaryAmount" minOccurs="0"/>
+			<xs:element name="reclaims" type="mfbt:MonetaryAmount" minOccurs="0"/>
+			<xs:element name="receptReclaims" type="mfbt:MonetaryAmount" minOccurs="0"/>
+			<xs:element name="declineReason" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation> 
+						0 = no reason to decline
+						1 = VVG 6
+						2 = VVG 40
+						3 = StGB 138
+						4 = StGB 146
+						5 = StGB 158
+						6 = StGB 160
+						7 = StGB 251-254
+						8 = ZGB 8
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedInt">
+						<xs:enumeration value="0"/>
+						<xs:enumeration value="1"/>
+						<xs:enumeration value="2"/>
+						<xs:enumeration value="3"/>
+						<xs:enumeration value="4"/>
+						<xs:enumeration value="5"/>
+						<xs:enumeration value="6"/>
+						<xs:enumeration value="7"/>
+						<xs:enumeration value="8"/>						
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="measures" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>FeldNr: 181,
+						de: Massnahmen
+						0 = no measures
+						1 = decline damage payment
+						2 = compare
+						3 = retire from the contract
+						4 = termination in case of damage
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedInt">
+						<xs:enumeration value="0"/>
+						<xs:enumeration value="1"/>
+						<xs:enumeration value="2"/>
+						<xs:enumeration value="3"/>
+						<xs:enumeration value="4"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="zisEntry" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="complaint" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						0 = no legal process
+						1 = legal proceedings allowed/legal or police investigation in process
+						2 = legal proceedings terminated
+						3 = legal proceedings completed with verdict
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedInt">
+						<xs:enumeration value="0"/>
+						<xs:enumeration value="1"/>
+						<xs:enumeration value="2"/>
+						<xs:enumeration value="3"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="civilProceeding" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						0 = no proceeding
+						1 = charge against the insurer was entered
+						2 = completed when charge was retracted 
+						3 = completed when charge was rejected
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedInt">
+						<xs:enumeration value="0"/>
+						<xs:enumeration value="1"/>
+						<xs:enumeration value="2"/>
+						<xs:enumeration value="3"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="confirmationOfSuspicion" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						0 = Suspicion not confirmed
+						1 = Person
+						2 = Vehivle
+						3 = Damage history
+						4 = Contract
+						5 = Financial Background
+						6 = Other conspicuous details
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedInt">
+						<xs:enumeration value="0"/>
+						<xs:enumeration value="1"/>
+						<xs:enumeration value="2"/>
+						<xs:enumeration value="3"/>
+						<xs:enumeration value="4"/>
+						<xs:enumeration value="5"/>
+						<xs:enumeration value="6"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="rejectionReason" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						0 = unknown
+						1 = no capacity
+						2 = effort/return not favourable
+						3 = suspicion without reason
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedInt">
+						<xs:enumeration value="0"/>
+						<xs:enumeration value="1"/>
+						<xs:enumeration value="2"/>
+						<xs:enumeration value="3"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="externalOrderOfInvestigation" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						0 = other
+						1 = vehicle history
+						2 = examination of vehicle keys
+						3 = laboratory results
+						4 = foreign investigation
+						5 = other examination
+						6 = order for observation
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedInt">
+						<xs:enumeration value="1"/>
+						<xs:enumeration value="2"/>
+						<xs:enumeration value="3"/>
+						<xs:enumeration value="4"/>
+						<xs:enumeration value="5"/>
+						<xs:enumeration value="6"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="judgementDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="judicialAuthority" type="xs:string" minOccurs="0"/>
+			<xs:element name="sentence" type="xs:string" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+
+	
+	<xs:complexType name="TaskDetails" >
+		<xs:all>
+			<xs:element name="hostId" type="xs:string" minOccurs="0"/>
+			<xs:element name="nameHostId" type="xs:string" minOccurs="0"/>
+			<xs:element name="caseWorker" type="CaseWorker" minOccurs="0"/>
+			<xs:element name="taskOrigin" type="xs:string" minOccurs="0"/>
+			<xs:element name="priorityCarExpertise" type="mfbt:Priority" minOccurs="0"/>
+			<xs:element name="region" type="Region" minOccurs="0"/>
+			<xs:element name="forceMutationExpertise" type="ForceMutationExpertise" minOccurs="0"/>
+			<xs:element name="versionISP" type="VersionISP" minOccurs="0"/>
+			<xs:element name="assessmentDateISP" type="xs:date" minOccurs="0"/>
+			<xs:element name="importDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="nameCoordinator" type="xs:string" minOccurs="0"/>
+			<xs:element name="nameObserver" type="xs:string" minOccurs="0"/>
+			<xs:element name="completionData" type="CompletionData" minOccurs="0">
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="ClaimDetails">
+		<xs:all>
+			<xs:element name="claimNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="claimAmount" type="ClaimAmount" minOccurs="0"/>
+			<xs:element name="claimDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="claimCategory" type="ClaimCategory" minOccurs="0"/>
+			<xs:element name="primaryClaim" type="PrimaryClaim" minOccurs="0"/>
+			<xs:element name="bigEvent" type="YesNoUnknown" minOccurs="0"/>
+			<xs:element name="numberOfVehiclesInvolved" type="NumberOfVehiclesInvolved" minOccurs="0"/>
+			<xs:element name="claimLocation" type="xs:string" minOccurs="0"/>
+			<xs:element name="postCodeClaimLocation" type="mfbt:ZIPCode" minOccurs="0"/>
+			<xs:element name="claimCountry" type="mfbt:IsoCountryCode" minOccurs="0"/>
+			<xs:element name="addressDriver" type="Person" minOccurs="0"/>
+			<xs:element name="addressCounterparty" type="Person" minOccurs="0"/>
+			<xs:element name="causeNote" type="xs:string" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="VehicleDetails">
+		<xs:all>
+			<xs:element name="chassisNumberInsuredVehicle" type="xs:string" minOccurs="0"/>
+			<xs:element name="brand" type="xs:string" minOccurs="0"/>
+			<xs:element name="registrationNumber" type="mfbt:RegistrationNumber" minOccurs="0"/>
+			<xs:element name="model" type="xs:string" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="InsuranceDetails" >
+		<xs:all>
+			<xs:element name="policyNumber" type="mfbt:PolicyNumber" minOccurs="0"/>
+			<xs:element name="insurance" type="InsuranceCode" minOccurs="0"/>
+			<xs:element name="addressPolicyHolder" type="Person" minOccurs="0"/>
+			<xs:element name="industryPolicyHolder" type="xs:string" minOccurs="0"/>
+			<xs:element name="occupationPolicyHolder" type="Occupation" minOccurs="0"/>
+			<xs:element name="addressMainDriver" type="Person" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="Arrangements">
+		<xs:all>
+			<xs:element name="arrangementsVehicle" type="ArrangementsVehicle" minOccurs="0"/>
+			<xs:element name="arrangementsFinancialBackground" type="ArrangementsFinancialBackground" minOccurs="0"/>
+			<xs:element name="arrangementsPersonal" type="ArrangementsPersonal" minOccurs="0"/>
+			<xs:element name="arrangementsContractual" type="ArrangementsContractual" minOccurs="0"/>
+			<xs:element name="otherObservations" type="YesNoUnknown" minOccurs="0"/>
+			<xs:element name="activity5" type="YesNoUnknown" minOccurs="0"/>
+			<xs:element name="activity6" type="YesNoUnknown" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="ScoreDetails">
+		<xs:all>
+			<xs:element name="score" type="Score" minOccurs="0"/>
+			<xs:element name="scoreChangeDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="scoreVehicleSuspicion" type="Score" minOccurs="0"/>
+			<xs:element name="scoreFinancialBackgroundSuspicion" type="Score" minOccurs="0"/>
+			<xs:element name="scorePersonalSuspicion" type="Score" minOccurs="0"/>
+			<xs:element name="scoreClaimHistorySuspicion" type="Score" minOccurs="0"/>
+			<xs:element name="scoreContractSuspicion" type="Score" minOccurs="0"/>
+			<xs:element name="score6Suspicion" type="Score" minOccurs="0"/>
+			<xs:element name="thresholdExceeded" type="YesNoUnknown" minOccurs="0"/>
+			<xs:element name="additionalQuestions" type="YesNoUnknown" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+
+
+	<xs:complexType name="FraudMessageData" >
+		<xs:all>
+			<xs:element name="forceFraudMessage" type="YesNoUnknown" minOccurs="0"/>
+			<xs:element name="mutationScoreComments" type="MutationScoreComments" minOccurs="0"/>
+			<xs:element name="repeatedSuspicionMoment" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="arrangements" type="Arrangements" minOccurs="0" />
+			<xs:element name="scoreDetails"  type="ScoreDetails" minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+	
+	<xs:complexType name="SuspectedFraudDocument">
+		<xs:all>
+			<xs:element name="taskDetails" type="TaskDetails" minOccurs="0" />			
+            <xs:element name="claimDetails" type="ClaimDetails" minOccurs="0" />
+            <xs:element name="vehicleDetails" type="VehicleDetails" minOccurs="0" />
+            <xs:element name="insuranceDetails" type="InsuranceDetails" minOccurs="0" />
+            <xs:element name="fraudMessageData" type="FraudMessageData" minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+</xs:schema>

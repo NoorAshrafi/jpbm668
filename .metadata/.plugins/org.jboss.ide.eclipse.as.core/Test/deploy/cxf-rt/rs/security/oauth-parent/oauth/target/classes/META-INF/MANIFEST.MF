@@ -1,0 +1,43 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385394860123
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF Runtime OAuth 1.0a
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime OAuth 1.0a
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-rs-security-oauth
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.rs.security.oauth.client;version="2.7.9.S
+ NAPSHOT",org.apache.cxf.rs.security.oauth.data;version="2.7.9.SNAPSHOT"
+ ,org.apache.cxf.rs.security.oauth.filters;version="2.7.9.SNAPSHOT",org.
+ apache.cxf.rs.security.oauth.provider;version="2.7.9.SNAPSHOT",org.apac
+ he.cxf.rs.security.oauth.services;version="2.7.9.SNAPSHOT",org.apache.c
+ xf.rs.security.oauth.utils;version="2.7.9.SNAPSHOT"
+Implementation-Title: Apache CXF Runtime OAuth 1.0a
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.servlet;version="[0.0,4)";resolution:=optional,jav
+ ax.servlet.http;version="[0.0,4)";resolution:=optional,javax.ws.rs;vers
+ ion="[2.0,3)",javax.ws.rs.client;version="[2.0,3)",javax.ws.rs.core;ver
+ sion="[2.0,3)",javax.ws.rs.ext;version="[2.0,3)",javax.xml.bind.annotat
+ ion,net.oauth,net.oauth.server,org.apache.cxf.common.classloader;versio
+ n="[2.7,3)",org.apache.cxf.common.logging;version="[2.7,3)",org.apache.
+ cxf.common.security;version="[2.7,3)",org.apache.cxf.common.util;versio
+ n="[2.7,3)",org.apache.cxf.configuration.security;version="[2.7,3)",org
+ .apache.cxf.jaxrs.client;version="[2.7,3)",org.apache.cxf.jaxrs.ext;ver
+ sion="[2.7,3)",org.apache.cxf.jaxrs.ext.form;version="[2.7,3)",org.apac
+ he.cxf.jaxrs.impl;version="[2.7,3)",org.apache.cxf.jaxrs.model;version=
+ "[2.7,3)",org.apache.cxf.jaxrs.provider;version="[2.7,3)",org.apache.cx
+ f.jaxrs.utils;version="[2.7,3)",org.apache.cxf.message;version="[2.7,3)
+ ",org.apache.cxf.phase;version="[2.7,3)",org.apache.cxf.security;versio
+ n="[2.7,3)"
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime OAuth 1.0a
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

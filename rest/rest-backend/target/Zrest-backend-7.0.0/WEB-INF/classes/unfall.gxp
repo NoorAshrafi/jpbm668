@@ -1,0 +1,1600 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with GoXML Transform Version 2.0 - http://www.xmlglobal.com -->
+<!-- xch version=Version 2.0 -->
+<Project>
+<Template>
+
+<TransformTemplate>
+  <TemplateMetadata>
+      <Version>$Revision: 1.1 $</Version>
+      <Title></Title>
+      <ModifiedDate>$Date: 2004/11/15 13:42:42 $</ModifiedDate>
+      <UniqueID></UniqueID>
+  </TemplateMetadata>
+  <CustomerExtensions>
+    <ReplaceFunctions>
+      <ReplaceFunction name="ACCIDENT-TYPE" >
+        <Value match="true" replace="1" />
+        <Value match="false" replace="2" />
+      </ReplaceFunction>
+      <ReplaceFunction name="WITNESSES" >
+        <Value match="true" replace="31" />
+        <Value match="false" replace="32" />
+      </ReplaceFunction>
+      <ReplaceFunction name="INVESTIGATION" >
+	  	<Value match="true" replace="" /> <!-- 21 -->
+	  	<Value match="false" replace="" /> <!-- 22 -->
+	  </ReplaceFunction>
+	<ReplaceFunction name="TAX-WITHHOLDING" >
+        <Value match="true" replace="1" />
+        <Value match="false" replace="0" />
+      </ReplaceFunction>
+    </ReplaceFunctions>
+    <Functions>
+    </Functions>
+  </CustomerExtensions>
+  <Mapping>
+    <Input format="XML">
+      <Parameter name="Structure" value=""/>
+      <Parameter name="Validate" value="false"/>
+    </Input>
+    <Output format="EDIFACT">
+      <Parameter name="SegmentDelimiter" value="'&#xA;"/>
+      <Parameter name="Structure" value="medidata.dic"/>
+    </Output>
+    <MapStructure>
+      <Table>
+        <Rules>
+          <MapRule output="EDI" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="UNB" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="S001" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0001" input="'UNOC'" />
+          <MapRule output="0002" input="'3'" />
+          <MapRule output="S001" input="@ENDPARENT()" />
+          <MapRule output="S002" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0004" input="Message/Unfallmeldung/um:Arbeitgeber/um:Firma/ZBase:Nnummer" />
+          <MapRule output="0007" input="'ZV'" />
+          <MapRule output="0008" input="" />
+          <MapRule output="S002" input="@ENDPARENT()" />
+          <MapRule output="S003" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0010" input="Message/Header/ZBase:Empfaenger/ZBase:Nnummer" />
+          <MapRule output="0007" input="'14'" />
+          <MapRule output="0014" input="" />
+          <MapRule output="S003" input="@ENDPARENT()" />
+          <MapRule output="S004" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0017" input="Message/Header/ZBase:Datum" />
+          <MapRule output="0019" input="Message/Header/ZBase:Zeit" />
+          <MapRule output="S004" input="@ENDPARENT()" />
+          <MapRule output="0020" input="'0'" />
+          <MapRule output="S005" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0022" input="" />
+          <MapRule output="0025" input="" />
+          <MapRule output="S005" input="@ENDPARENT()" />
+          <MapRule output="0026" input="'MEGENRAL'" />
+          <MapRule output="0029" input="" />
+          <MapRule output="0031" input="" />
+          <MapRule output="0032" input="'MEDIDATA'" />
+          <MapRule output="0035" input="'0'" />
+          <MapRule output="UNB" input="@ENDPARENT()" />
+          <MapRule output="MEDIDATA" input="@PARENT()" unique="" sort="" sortType="None" context="Message/Unfallmeldung" path="" />
+          <MapRule output="UNH" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0062" input="@COUNT()" />
+          <MapRule output="S009" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0065" input="'GENRAL'" />
+          <MapRule output="0052" input="'D'" />
+          <MapRule output="0054" input="'93A'" />
+          <MapRule output="0051" input="'UN'" />
+          <MapRule output="0057" input="'AA1100'" />
+          <MapRule output="S009" input="@ENDPARENT()" />
+          <MapRule output="0068" input="" />
+          <MapRule output="S010" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0070" input="" />
+          <MapRule output="0073" input="" />
+          <MapRule output="S010" input="@ENDPARENT()" />
+          <MapRule output="UNH" input="@ENDPARENT()" />
+          <MapRule output="BGM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C002" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1001" input="'551'" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="1000" input="" />
+          <MapRule output="C002" input="@ENDPARENT()" />
+          <MapRule output="C106" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1004" input="Message/Unfallmeldung/um:Key/ZBase:MeldungsNummer" />
+          <MapRule output="1056" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C106" input="@ENDPARENT()" />
+          <MapRule output="1225" input="'9'" />
+          <MapRule output="4343" input="'MP'" />
+          <MapRule output="BGM" input="@ENDPARENT()" />
+          <MapRule output="DTM-DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="DTM-1" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'182'" />
+          <MapRule output="2380" input="@CONCAT(Message/Header/ZBase:Datum,Message/Header/ZBase:Zeit)" />
+          <MapRule output="2379" input="'203'" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="DTM-1" input="@ENDPARENT()" />
+          <MapRule output="DTM-2" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'21'" />
+          <MapRule output="2380" input="Message/Unfallmeldung/um:Unfall/um:Unfalldatum" />
+          <MapRule output="2379" input="'102'" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="DTM-2" input="@ENDPARENT()" />
+          <MapRule output="DTM-DTM" input="@ENDPARENT()" />
+          <MapRule output="SG1" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'FNB'" />
+          <MapRule output="1154" input="'0'" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'SUN'" />
+          <MapRule output="1154" input="Message/Unfallmeldung/um:Key/ZBase:SchadenNummer" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'UAT'" />
+          <MapRule output="1154" input="'1'" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'VSP'" />
+          <MapRule output="1154" input="@IF( Message/Unfallmeldung/um:Arbeitgeber/um:Police/um:UVGPolice != @NULL(), @IF( Message/Unfallmeldung/um:Arbeitgeber/um:Police/um:UVGZPolice != @NULL(), '3', '1' ), @IF( Message/Unfallmeldung/um:Arbeitgeber/um:Police/um:UVGZPolice != @NULL(), '2', '' ) )" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'BNF'" />
+          <MapRule output="1154" input="@REPLACE(@LOWER(Message/Unfallmeldung/um:Unfall/um:Nichtberufsunfall),'ACCIDENT-TYPE')" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="SG1" input="@ENDPARENT()" />
+          <MapRule output="SG2" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="NAD-MEB" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="NAD" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3035" input="'MEB'" />
+          <MapRule output="C082" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3039" input="Message/Unfallmeldung/um:Arbeitgeber/um:Firma/ZBase:Nnummer" />
+          <MapRule output="1131" input="'ZV'" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C082" input="@ENDPARENT()" />
+          <MapRule output="C058" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3124-1" input="" />
+          <MapRule output="3124-2" input="" />
+          <MapRule output="3124-3" input="" />
+          <MapRule output="3124-4" input="" />
+          <MapRule output="3124-5" input="" />
+          <MapRule output="C058" input="@ENDPARENT()" />
+          <MapRule output="C080" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3036-1" input="Message/Unfallmeldung/um:Arbeitgeber/um:Firma/ZBase:Name" />
+          <MapRule output="3036-2" input="" />
+          <MapRule output="3036-3" input="" />
+          <MapRule output="3036-4" input="" />
+          <MapRule output="3036-5" input="" />
+          <MapRule output="3045" input="" />
+          <MapRule output="C080" input="@ENDPARENT()" />
+          <MapRule output="C059" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3042-1" input="{@IF(Message/Unfallmeldung/um:Arbeitgeber/um:Adresse/ZBase:Strasse != 'false', @IF(Message/Unfallmeldung/um:Arbeitgeber/um:Adresse/ZBase:Nummer != 'false', @CONCAT(Message/Unfallmeldung/um:Arbeitgeber/um:Adresse/ZBase:Strasse, ' ', Message/Unfallmeldung/um:Arbeitgeber/um:Adresse/ZBase:Nummer ), Message/Unfallmeldung/um:Arbeitgeber/um:Adresse/ZBase:Strasse ), '')}" />
+          <MapRule output="3042-2" input="" />
+          <MapRule output="3042-3" input="" />
+          <MapRule output="C059" input="@ENDPARENT()" />
+          <MapRule output="3164" input="Message/Unfallmeldung/um:Arbeitgeber/um:Adresse/ZBase:Ort" />
+          <MapRule output="C819" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3229" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="3228" input="" />
+          <MapRule output="C819" input="@ENDPARENT()" />
+          <MapRule output="3251" input="Message/Unfallmeldung/um:Arbeitgeber/um:Adresse/ZBase:PLZ" />
+          <MapRule output="3207" input="Message/Unfallmeldung/um:Arbeitgeber/um:Adresse/ZBase:Land" />
+          <MapRule output="NAD" input="@ENDPARENT()" />
+          <MapRule output="SG3" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF-AUF-DTM-DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'AUF'" />
+          <MapRule output="1154" input="@IF( @LOWER(Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitsunfaehigkeitVorhanden) == 'true', @IF(Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitAufgenommenAb != '', '0' , '1' ), '3' )" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitAufgenommenZuProzent" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="DTM-1" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'290'" />
+          <MapRule output="2380" input="@IF( @LOWER(Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitsunfaehigkeitVorhanden) == 'true', @IF(Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitsunfaehikeitAbZeit != @NULL(), @CONCAT(Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitsunfaehigkeitsDatum,Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitsunfaehikeitAbZeit), Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitsunfaehigkeitsDatum), '')" />
+          <MapRule output="2379" input="@IF(Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitsunfaehikeitAbZeit != @NULL(),'203','102')" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="DTM-1" input="@ENDPARENT()" />
+          <MapRule output="DTM-2" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'287'" />
+          <MapRule output="2380" input="Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitAufgenommenAb" />
+          <MapRule output="2379" input="'102'" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="DTM-2" input="@ENDPARENT()" />
+          <MapRule output="RFF-AUF-DTM-DTM" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFD-DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'UFD'" />
+          <MapRule output="1154" input="Message/Unfallmeldung/um:Arbeitszeit/ZBase:Arbeitseinsatz" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'320'" />
+          <MapRule output="2380" input="Message/Unfallmeldung/um:Arbeitszeit/ZBase:BetriebsueblicheArbeitszeit" />
+          <MapRule output="2379" input="'805'" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFD-DTM" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFG-DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'UFG'" />
+          <MapRule output="1154" input="{@IF( Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitAufgenommen != @NULL(), @IF( @LOWER(Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitAufgenommen) == 'true', @IF( Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitAufgenommenZuProzent &lt; '100', '2', '3'), '1' ), '')}" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="@IF( Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitAufgenommen != @NULL(), @IF( @LOWER(Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitAufgenommen) == 'true', @IF(Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitAufgenommenZuProzent != @NULL(), Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitAufgenommenZuProzent, '' ), '' ), '')" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'58'" />
+          <MapRule output="2380" input="Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitAufgenommenAb" />
+          <MapRule output="2379" input="'102'" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFG-DTM" input="@ENDPARENT()" />
+          <MapRule output="RFF-PNU" input="@PARENT()" unique="" sort="" sortType="None" context="Message/Unfallmeldung/um:Arbeitgeber/um:Police" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'PNU'" />
+          <MapRule output="1154" input="@IF(Message/Unfallmeldung/um:Arbeitgeber/um:Police/um:UVGPolice != @NULL(), @CONCAT(Message/Unfallmeldung/um:Arbeitgeber/um:Police/um:UVGPolice, @IF(Message/Unfallmeldung/um:Arbeitgeber/um:Police/um:UVGZPolice != @NULL(), @CONCAT('  /  ',Message/Unfallmeldung/um:Arbeitgeber/um:Police/um:UVGZPolice), '') ), '')" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF-PNU" input="@ENDPARENT()" />
+          <MapRule output="SG3" input="@ENDPARENT()" />
+          <MapRule output="SG4" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="CTA" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3139" input="'MS'" />
+          <MapRule output="C056" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3413" input="" />
+          <MapRule output="3412" input="{@IF( Message/Unfallmeldung/um:Kontakt/ZBase:Vorname != 'false', @CONCAT(Message/Unfallmeldung/um:Kontakt/ZBase:Familienname, ' ', Message/Unfallmeldung/um:Kontakt/ZBase:Vorname ), Message/Unfallmeldung/um:Kontakt/ZBase:Familienname )}" />
+          <MapRule output="C056" input="@ENDPARENT()" />
+          <MapRule output="CTA" input="@ENDPARENT()" />
+          <MapRule output="COM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C076" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3148" input="Message/Unfallmeldung/um:Kontakt/ZBase:Telephone" />
+          <MapRule output="3155" input="'TE'" />
+          <MapRule output="C076" input="@ENDPARENT()" />
+          <MapRule output="COM" input="@ENDPARENT()" />
+          <MapRule output="SG4" input="@ENDPARENT()" />
+          <MapRule output="NAD-MEB" input="@ENDPARENT()" />
+          <MapRule output="NAD-MEA" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="NAD" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3035" input="'MEA'" />
+          <MapRule output="C082" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3039" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C082" input="@ENDPARENT()" />
+          <MapRule output="C058" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3124-1" input="" />
+          <MapRule output="3124-2" input="" />
+          <MapRule output="3124-3" input="" />
+          <MapRule output="3124-4" input="" />
+          <MapRule output="3124-5" input="" />
+          <MapRule output="C058" input="@ENDPARENT()" />
+          <MapRule output="C080" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3036-1" input="Message/Unfallmeldung/um:Arbeitgeber/um:Bank/ZBase:Verbindung" />
+          <MapRule output="3036-2" input="" />
+          <MapRule output="3036-3" input="" />
+          <MapRule output="3036-4" input="" />
+          <MapRule output="3036-5" input="" />
+          <MapRule output="3045" input="" />
+          <MapRule output="C080" input="@ENDPARENT()" />
+          <MapRule output="C059" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3042-1" input="" />
+          <MapRule output="3042-2" input="" />
+          <MapRule output="3042-3" input="" />
+          <MapRule output="C059" input="@ENDPARENT()" />
+          <MapRule output="3164" input="" />
+          <MapRule output="C819" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3229" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="3228" input="" />
+          <MapRule output="C819" input="@ENDPARENT()" />
+          <MapRule output="3251" input="" />
+          <MapRule output="3207" input="" />
+          <MapRule output="NAD" input="@ENDPARENT()" />
+          <MapRule output="RFF-AFS" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'AFS'" />
+          <MapRule output="1154" input="Message/Unfallmeldung/um:Arbeitgeber/um:Bank/ZBase:Konto" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF-AFS" input="@ENDPARENT()" />
+		  <MapRule output="NAD-MEA" input="@ENDPARENT()" />
+		  <MapRule output="NAD-MEN" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+		  <MapRule output="NAD" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3035" input="'MEN'" />
+          <MapRule output="C082" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3039" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C082" input="@ENDPARENT()" />
+          <MapRule output="C058" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3124-1" input="" />
+          <MapRule output="3124-2" input="" />
+          <MapRule output="3124-3" input="" />
+          <MapRule output="3124-4" input="" />
+          <MapRule output="3124-5" input="" />
+          <MapRule output="C058" input="@ENDPARENT()" />
+          <MapRule output="C080" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3036-1" input="Message/Unfallmeldung/um:Verletzter/um:Bank/ZBase:Konto" />
+          <MapRule output="3036-2" input="" />
+          <MapRule output="3036-3" input="" />
+          <MapRule output="3036-4" input="" />
+          <MapRule output="3036-5" input="" />
+          <MapRule output="3045" input="" />
+          <MapRule output="C080" input="@ENDPARENT()" />
+          <MapRule output="C059" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3042-1" input="" />
+          <MapRule output="3042-2" input="" />
+          <MapRule output="3042-3" input="" />
+          <MapRule output="C059" input="@ENDPARENT()" />
+          <MapRule output="3164" input="" />
+          <MapRule output="C819" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3229" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="3228" input="" />
+          <MapRule output="C819" input="@ENDPARENT()" />
+          <MapRule output="3251" input="" />
+          <MapRule output="3207" input="" />
+          <MapRule output="NAD" input="@ENDPARENT()" />
+          <MapRule output="RFF-AFS" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'AFS'" />
+          <MapRule output="1154" input="" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="Message/Unfallmeldung/um:Verletzter/um:Bank/ZBase:Verbindung" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF-AFS" input="@ENDPARENT()" />
+          <MapRule output="NAD-MEN" input="@ENDPARENT()" />
+          <MapRule output="NAD-MEG" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="NAD" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3035" input="'MEG'" />
+          <MapRule output="C082" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3039" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C082" input="@ENDPARENT()" />
+          <MapRule output="C058" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3124-1" input="" />
+          <MapRule output="3124-2" input="" />
+          <MapRule output="3124-3" input="" />
+          <MapRule output="3124-4" input="" />
+          <MapRule output="3124-5" input="" />
+          <MapRule output="C058" input="@ENDPARENT()" />
+          <MapRule output="C080" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3036-1" input="Message/Unfallmeldung/um:Arbeitszeit/ZBase:WeitereArbeitgeber" />
+          <MapRule output="3036-2" input="" />
+          <MapRule output="3036-3" input="" />
+          <MapRule output="3036-4" input="" />
+          <MapRule output="3036-5" input="" />
+          <MapRule output="3045" input="" />
+          <MapRule output="C080" input="@ENDPARENT()" />
+          <MapRule output="C059" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3042-1" input="" />
+          <MapRule output="3042-2" input="" />
+          <MapRule output="3042-3" input="" />
+          <MapRule output="C059" input="@ENDPARENT()" />
+          <MapRule output="3164" input="" />
+          <MapRule output="C819" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3229" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="3228" input="" />
+          <MapRule output="C819" input="@ENDPARENT()" />
+          <MapRule output="3251" input="" />
+          <MapRule output="3207" input="" />
+          <MapRule output="NAD" input="@ENDPARENT()" />
+          <MapRule output="NAD-MEG" input="@ENDPARENT()" />
+          <MapRule output="NAD-MEV" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="NAD" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3035" input="'MEV'" />
+          <MapRule output="C082" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3039" input="Message/Header/ZBase:Empfaenger/ZBase:Nnummer" />
+          <MapRule output="1131" input="'9'" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C082" input="@ENDPARENT()" />
+          <MapRule output="C058" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3124-1" input="Message/Unfallmeldung/um:Unfall/um:UnfallCode" />
+          <MapRule output="3124-2" input="" />
+          <MapRule output="3124-3" input="" />
+          <MapRule output="3124-4" input="" />
+          <MapRule output="3124-5" input="" />
+          <MapRule output="C058" input="@ENDPARENT()" />
+          <MapRule output="C080" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3036-1" input="Message/Header/ZBase:Empfaenger/ZBase:Name" />
+          <MapRule output="3036-2" input="" />
+          <MapRule output="3036-3" input="" />
+          <MapRule output="3036-4" input="" />
+          <MapRule output="3036-5" input="" />
+          <MapRule output="3045" input="" />
+          <MapRule output="C080" input="@ENDPARENT()" />
+          <MapRule output="C059" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3042-1" input="" />
+          <MapRule output="3042-2" input="" />
+          <MapRule output="3042-3" input="" />
+          <MapRule output="C059" input="@ENDPARENT()" />
+          <MapRule output="3164" input="" />
+          <MapRule output="C819" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3229" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="3228" input="" />
+          <MapRule output="C819" input="@ENDPARENT()" />
+          <MapRule output="3251" input="" />
+          <MapRule output="3207" input="" />
+          <MapRule output="NAD" input="@ENDPARENT()" />
+          <MapRule output="NAD-MEV" input="@ENDPARENT()" />
+          <MapRule output="NAD-MEP" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="NAD" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3035" input="'MEP'" />
+          <MapRule output="C082" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3039" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C082" input="@ENDPARENT()" />
+          <MapRule output="C058" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3124-1" input="Message/Unfallmeldung/um:Anstellung/ZBase:BeruflicheTaetigkeit" />
+          <MapRule output="3124-2" input="" />
+          <MapRule output="3124-3" input="" />
+          <MapRule output="3124-4" input="" />
+          <MapRule output="3124-5" input="" />
+          <MapRule output="C058" input="@ENDPARENT()" />
+          <MapRule output="C080" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3036-1" input="Message/Unfallmeldung/um:Verletzter/um:Person/um:FamilienName" />
+          <MapRule output="3036-2" input="Message/Unfallmeldung/um:Verletzter/um:Person/um:VorName" />
+          <MapRule output="3036-3" input="" />
+          <MapRule output="3036-4" input="" />
+          <MapRule output="3036-5" input="" />
+          <MapRule output="3045" input="" />
+          <MapRule output="C080" input="@ENDPARENT()" />
+          <MapRule output="C059" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3042-1" input="@IF( Message/Unfallmeldung/um:Verletzter/um:Adresse/ZBase:Strasse != 'false', @IF(Message/Unfallmeldung/um:Verletzter/um:Adresse/ZBase:Nummer != 'false', @CONCAT(Message/Unfallmeldung/um:Verletzter/um:Adresse/ZBase:Strasse, ' ', Message/Unfallmeldung/um:Verletzter/um:Adresse/ZBase:Nummer), Message/Unfallmeldung/um:Verletzter/um:Adresse/ZBase:Strasse ), '' )" />
+          <MapRule output="3042-2" input="" />
+          <MapRule output="3042-3" input="" />
+          <MapRule output="C059" input="@ENDPARENT()" />
+          <MapRule output="3164" input="Message/Unfallmeldung/um:Verletzter/um:Adresse/ZBase:Ort" />
+          <MapRule output="C819" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3229" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="3228" input="" />
+          <MapRule output="C819" input="@ENDPARENT()" />
+          <MapRule output="3251" input="Message/Unfallmeldung/um:Verletzter/um:Adresse/ZBase:PLZ" />
+          <MapRule output="3207" input="Message/Unfallmeldung/um:Verletzter/um:Adresse/ZBase:Land" />
+          <MapRule output="NAD" input="@ENDPARENT()" />
+          <MapRule output="SG3" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF-GGG" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'GGG'" />
+          <MapRule output="1154" input="Message/Unfallmeldung/um:Verletzter/um:Person/um:Geschlecht" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'329'" />
+          <MapRule output="2380" input="Message/Unfallmeldung/um:Verletzter/um:Person/um:Geburtstag" />
+          <MapRule output="2379" input="'102'" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'171'" />
+          <MapRule output="2380" input="Message/Unfallmeldung/um:Anstellung/ZBase:AnstellungsDatum" />
+          <MapRule output="2379" input="'102'" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'173'" />
+          <MapRule output="2380" input="Message/Unfallmeldung/um:Anstellung/ZBase:Arbeitsverhaeltnis/ZBase:GekuendigtAb" />
+          <MapRule output="2379" input="'102'" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="RFF-GGG" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFQ" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'UFQ'" />
+          <MapRule output="1154" input="Message/Unfallmeldung/um:Anstellung/ZBase:StellungImBeruf" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="DTM-1" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'289'" />
+          <MapRule output="2380" input="{@IF(Message/Unfallmeldung/um:Unfall/um:Unfalldatum != @NULL(), @IF( Message/Unfallmeldung/um:Unfall/um:Unfallzeit != @NULL(), @CONCAT(Message/Unfallmeldung/um:Unfall/um:Unfalldatum,Message/Unfallmeldung/um:Unfall/um:Unfallzeit), Message/Unfallmeldung/um:Unfall/um:Unfalldatum ), '')}" />
+          <MapRule output="2379" input="{@IF( Message/Unfallmeldung/um:Unfall/um:Unfallzeit != @NULL(), '203', '102' )}" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="DTM-1" input="@ENDPARENT()" />
+          <MapRule output="DTM-2" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'291'" />
+          <MapRule output="2380" input="Message/Unfallmeldung/um:Arbeitsunfaehigkeit/um:ArbeitAufgenommenAb" />
+          <MapRule output="2379" input="'102'" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="DTM-2" input="@ENDPARENT()" />
+          <MapRule output="DTM-3" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'293'" />
+          <MapRule output="2380" input="{@IF( Message/Unfallmeldung/um:Unfall/um:LetztesArbeitsdatum != @NULL(), @IF( Message/Unfallmeldung/um:Unfall/um:LetzteArbeitszeit != @NULL(), @CONCAT(Message/Unfallmeldung/um:Unfall/um:LetztesArbeitsdatum,Message/Unfallmeldung/um:Unfall/um:LetzteArbeitszeit), Message/Unfallmeldung/um:Unfall/um:LetztesArbeitsdatum), '')}" />
+          <MapRule output="2379" input="{@IF( Message/Unfallmeldung/um:Unfall/um:LetzteArbeitszeit != @NULL(), '203', '102')}" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="DTM-3" input="@ENDPARENT()" />
+          <MapRule output="DTM-4" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'314'" />
+          <MapRule output="2380" input="Message/Unfallmeldung/um:Arbeitszeit/ZBase:WochenarbeitszeitTage" />
+          <MapRule output="2379" input="'804'" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="DTM-4" input="@ENDPARENT()" />
+          <MapRule output="DTM-5" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'314'" />
+          <MapRule output="2380" input="Message/Unfallmeldung/um:Arbeitszeit/ZBase:WochenarbeitszeitStunden" />
+          <MapRule output="2379" input="'805'" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="DTM-5" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFQ" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFH" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'UFH'" />
+          <MapRule output="1154" input="Message/Header/ZBase:Sprache" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFH" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFI" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'UFI'" />
+          <MapRule output="1154" input="Message/Unfallmeldung/um:Verletzter/um:Person/um:Nationalitaet" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFI" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFK" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'UFK'" />
+          <MapRule output="1154" input="Message/Unfallmeldung/um:Verletzter/um:Person/um:AHVNummer" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFK" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFL" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'UFL'" />
+          <MapRule output="1154" input="Message/Unfallmeldung/um:Verletzter/um:Person/um:Heimatort" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFL" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'UFM'" />
+          <MapRule output="1154" input="Message/Unfallmeldung/um:Verletzter/um:Person/um:Zivilstand" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFM" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFN" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'UFN'" />
+          <MapRule output="1154" input="Message/Unfallmeldung/um:Verletzter/um:Person/um:ZahlDerKinder" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF-UFN" input="@ENDPARENT()" />
+          <MapRule output="RFF-SOF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'SOF'" />
+          <MapRule output="1154" input="Message/Unfallmeldung/um:Arbeitszeit/ZBase:Sonderfall" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="1060" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF-SOF" input="@ENDPARENT()" />
+          <MapRule output="SG3" input="@ENDPARENT()" />
+          <MapRule output="SG4" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="CTA" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3139" input="'MS'" />
+          <MapRule output="C056" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3413" input="" />
+          <MapRule output="3412" input="" />
+          <MapRule output="C056" input="@ENDPARENT()" />
+          <MapRule output="CTA" input="@ENDPARENT()" />
+          <MapRule output="COM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C076" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3148" input="Message/Unfallmeldung/um:Verletzter/um:Adresse/ZBase:Telefon" />
+          <MapRule output="3155" input="'TE'" />
+          <MapRule output="C076" input="@ENDPARENT()" />
+          <MapRule output="COM" input="@ENDPARENT()" />
+          <MapRule output="SG4" input="@ENDPARENT()" />
+          <MapRule output="NAD-MEP" input="@ENDPARENT()" />
+          <MapRule output="NAD-MEQ" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="NAD" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3035" input="'MEQ'" />
+          <MapRule output="C082" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3039" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C082" input="@ENDPARENT()" />
+          <MapRule output="C058" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3124-1" input="Message/Unfallmeldung/um:Anstellung/ZBase:Arbeitsplatz" />
+          <MapRule output="3124-2" input="" />
+          <MapRule output="3124-3" input="" />
+          <MapRule output="3124-4" input="" />
+          <MapRule output="3124-5" input="" />
+          <MapRule output="C058" input="@ENDPARENT()" />
+          <MapRule output="C080" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3036-1" input="Message/Unfallmeldung/um:Arbeitgeber/um:Firma/ZBase:Name" />
+          <MapRule output="3036-2" input="" />
+          <MapRule output="3036-3" input="" />
+          <MapRule output="3036-4" input="" />
+          <MapRule output="3036-5" input="" />
+          <MapRule output="3045" input="" />
+          <MapRule output="C080" input="@ENDPARENT()" />
+          <MapRule output="C059" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3042-1" input="@IF(Message/Unfallmeldung/um:Arbeitgeber/um:Adresse/ZBase:Strasse != 'false', @IF(Message/Unfallmeldung/um:Arbeitgeber/um:Adresse/ZBase:Nummer != 'false', @CONCAT(Message/Unfallmeldung/um:Arbeitgeber/um:Adresse/ZBase:Strasse, ' ', Message/Unfallmeldung/um:Arbeitgeber/um:Adresse/ZBase:Nummer), Message/Unfallmeldung/um:Arbeitgeber/um:Adresse/ZBase:Strasse ), '' )" />
+          <MapRule output="3042-2" input="" />
+          <MapRule output="3042-3" input="" />
+          <MapRule output="C059" input="@ENDPARENT()" />
+          <MapRule output="3164" input="Message/Unfallmeldung/um:Arbeitgeber/um:Adresse/ZBase:Ort" />
+          <MapRule output="C819" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3229" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="3228" input="" />
+          <MapRule output="C819" input="@ENDPARENT()" />
+          <MapRule output="3251" input="Message/Unfallmeldung/um:Arbeitgeber/um:Adresse/ZBase:PLZ" />
+          <MapRule output="3207" input="Message/Unfallmeldung/um:Arbeitgeber/um:Adresse/ZBase:Land" />
+          <MapRule output="NAD" input="@ENDPARENT()" />
+          <MapRule output="NAD-MEQ" input="@ENDPARENT()" />
+          <MapRule output="NAD-MED" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="NAD" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3035" input="'MED'" />
+          <MapRule output="C082" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3039" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C082" input="@ENDPARENT()" />
+          <MapRule output="C058" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3124-1" input="" />
+          <MapRule output="3124-2" input="" />
+          <MapRule output="3124-3" input="" />
+          <MapRule output="3124-4" input="" />
+          <MapRule output="3124-5" input="" />
+          <MapRule output="C058" input="@ENDPARENT()" />
+          <MapRule output="C080" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3036-1" input="@IF(Message/Unfallmeldung/um:Aerzte/ZBase:ErstbehandelnderArzt/ZBase:Familienname != @NULL(), @IF(Message/Unfallmeldung/um:Aerzte/ZBase:ErstbehandelnderArzt/ZBase:Vorname != @NULL(), @CONCAT(Message/Unfallmeldung/um:Aerzte/ZBase:ErstbehandelnderArzt/ZBase:Familienname, ' ', Message/Unfallmeldung/um:Aerzte/ZBase:ErstbehandelnderArzt/ZBase:Vorname), Message/Unfallmeldung/um:Aerzte/ZBase:ErstbehandelnderArzt/ZBase:Familienname ), '' )" />
+          <MapRule output="3036-2" input="Message/Unfallmeldung/um:Aerzte/ZBase:ErstbehandelnderArzt/ZBase:Titel" />
+          <MapRule output="3036-3" input="" />
+          <MapRule output="3036-4" input="" />
+          <MapRule output="3036-5" input="" />
+          <MapRule output="3045" input="" />
+          <MapRule output="C080" input="@ENDPARENT()" />
+          <MapRule output="C059" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3042-1" input="{@IF(Message/Unfallmeldung/um:Aerzte/ZBase:ErstbehandelnderArzt/ZBase:Strasse != 'false', @IF(Message/Unfallmeldung/um:Aerzte/ZBase:ErstbehandelnderArzt/ZBase:Nummer != 'false', @CONCAT(Message/Unfallmeldung/um:Aerzte/ZBase:ErstbehandelnderArzt/ZBase:Strasse, ' ', Message/Unfallmeldung/um:Aerzte/ZBase:ErstbehandelnderArzt/ZBase:Nummer), Message/Unfallmeldung/um:Aerzte/ZBase:ErstbehandelnderArzt/ZBase:Strasse), '' )}" />
+          <MapRule output="3042-2" input="" />
+          <MapRule output="3042-3" input="" />
+          <MapRule output="C059" input="@ENDPARENT()" />
+          <MapRule output="3164" input="Message/Unfallmeldung/um:Aerzte/ZBase:ErstbehandelnderArzt/ZBase:Ort" />
+          <MapRule output="C819" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3229" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="3228" input="" />
+          <MapRule output="C819" input="@ENDPARENT()" />
+          <MapRule output="3251" input="Message/Unfallmeldung/um:Aerzte/ZBase:ErstbehandelnderArzt/ZBase:PLZ" />
+          <MapRule output="3207" input="Message/Unfallmeldung/um:Aerzte/ZBase:ErstbehandelnderArzt/ZBase:Land" />
+          <MapRule output="NAD" input="@ENDPARENT()" />
+          <MapRule output="NAD-MED" input="@ENDPARENT()" />
+          <MapRule output="NAD-MEX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="NAD" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3035" input="'MEX'" />
+          <MapRule output="C082" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3039" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C082" input="@ENDPARENT()" />
+          <MapRule output="C058" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3124-1" input="" />
+          <MapRule output="3124-2" input="" />
+          <MapRule output="3124-3" input="" />
+          <MapRule output="3124-4" input="" />
+          <MapRule output="3124-5" input="" />
+          <MapRule output="C058" input="@ENDPARENT()" />
+          <MapRule output="C080" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3036-1" input="@IF(Message/Unfallmeldung/um:Aerzte/ZBase:NachbehandelnderArzt/ZBase:Familienname != @NULL(), @IF(Message/Unfallmeldung/um:Aerzte/ZBase:NachbehandelnderArzt/ZBase:Vorname != @NULL(), @CONCAT(Message/Unfallmeldung/um:Aerzte/ZBase:NachbehandelnderArzt/ZBase:Familienname, ' ', Message/Unfallmeldung/um:Aerzte/ZBase:NachbehandelnderArzt/ZBase:Vorname), Message/Unfallmeldung/um:Aerzte/ZBase:NachbehandelnderArzt/ZBase:Familienname ), '' )" />
+          <MapRule output="3036-2" input="Message/Unfallmeldung/um:Aerzte/ZBase:NachbehandelnderArzt/ZBase:Titel" />
+          <MapRule output="3036-3" input="" />
+          <MapRule output="3036-4" input="" />
+          <MapRule output="3036-5" input="" />
+          <MapRule output="3045" input="" />
+          <MapRule output="C080" input="@ENDPARENT()" />
+          <MapRule output="C059" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3042-1" input="{@IF(Message/Unfallmeldung/um:Aerzte/ZBase:NachbehandelnderArzt/ZBase:Strasse != 'false', @IF(Message/Unfallmeldung/um:Aerzte/ZBase:NachbehandelnderArzt/ZBase:Nummer != 'false', @CONCAT(Message/Unfallmeldung/um:Aerzte/ZBase:NachbehandelnderArzt/ZBase:Strasse,' ', Message/Unfallmeldung/um:Aerzte/ZBase:NachbehandelnderArzt/ZBase:Nummer), Message/Unfallmeldung/um:Aerzte/ZBase:NachbehandelnderArzt/ZBase:Strasse ), '' )}" />
+          <MapRule output="3042-2" input="" />
+          <MapRule output="3042-3" input="" />
+          <MapRule output="C059" input="@ENDPARENT()" />
+          <MapRule output="3164" input="Message/Unfallmeldung/um:Aerzte/ZBase:NachbehandelnderArzt/ZBase:Ort" />
+          <MapRule output="C819" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3229" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="3228" input="" />
+          <MapRule output="C819" input="@ENDPARENT()" />
+          <MapRule output="3251" input="Message/Unfallmeldung/um:Aerzte/ZBase:NachbehandelnderArzt/ZBase:PLZ" />
+          <MapRule output="3207" input="Message/Unfallmeldung/um:Aerzte/ZBase:NachbehandelnderArzt/ZBase:Land" />
+          <MapRule output="NAD" input="@ENDPARENT()" />
+          <MapRule output="NAD-MEX" input="@ENDPARENT()" />
+          <MapRule output="SG2" input="@ENDPARENT()" />
+          <MapRule output="SG5" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="SG5-1" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNA'" />
+          <MapRule output="4453" input="'ORT'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="'98'" />
+          <MapRule output="4440-2" input="Message/Unfallmeldung/um:Unfall/um:UnfallOrt" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-1" input="@ENDPARENT()" />
+          <MapRule output="SG5-2" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNB'" />
+          <MapRule output="4453" input="'UFB'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="Message/Unfallmeldung/um:Unfall" path="" />
+          <MapRule output="4440-1" input="{@IF( Message/Unfallmeldung/um:Unfall/um:UnfallCode != 'false', @CONCAT(Message/Unfallmeldung/um:Unfall/um:UnfallCode, ''), '') }" />          
+		  <MapRule output="4440-2" input="{@IF(Message/Unfallmeldung/um:Anstellung/ZBase:OECode != 'false', @CONCAT( '/OE: ', Message/Unfallmeldung/um:Anstellung/ZBase:OECode), ' ' ) + Message/Unfallmeldung/um:Unfall/um:Beschreibung}" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-2" input="@ENDPARENT()" />
+          <MapRule output="SG5-3" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNC'" />
+          <MapRule output="4453" input="@REPLACE(@LOWER(Message/Unfallmeldung/um:Abklaerung/um:Abklaerungen), 'INVESTIGATION')" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="@IF(@LOWER(Message/Unfallmeldung/um:Abklaerung/um:Abklaerungen) == 'true', @CONCAT('',Message/Unfallmeldung/um:Abklaerung/um:Abklaerungensangaben ), '' )" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-3" input="@ENDPARENT()" />
+          <MapRule output="SG5-4" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UND'" />
+          <MapRule output="4453" input="@REPLACE(@LOWER(Message/Unfallmeldung/um:Abklaerung/um:Zeugen), 'WITNESSES')" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Abklaerung/um:Zeugenangaben" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-4" input="@ENDPARENT()" />
+          <MapRule output="SG5-5" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX-UNE-UNF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNE'" />
+          <MapRule output="4453" input="'139'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="Message/Unfallmeldung/um:Unfall/um:Verletzungen/um:Verletzung/ZBase:Koerperhaelfte" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Unfall/um:Verletzungen/um:Verletzung/ZBase:Koerperteil" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-5" input="@ENDPARENT()" />
+          <MapRule output="SG5-6" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNF'" />
+          <MapRule output="4453" input="'288'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Unfall/um:Verletzungen/um:Verletzung/ZBase:Schaedigungsart" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="FTX-UNE-UNF" input="@ENDPARENT()" />
+		  <MapRule output="SG5-6" input="@ENDPARENT()" />
+          <MapRule output="SG5-7" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'101'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Grundlohn/ZBase:ProStunde" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-7" input="@ENDPARENT()" />
+          <MapRule output="SG5-8" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+		  <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'102'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Grundlohn/ZBase:ProTag" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-8" input="@ENDPARENT()" />
+          <MapRule output="SG5-9" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'103'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Grundlohn/ZBase:ProMonat" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-9" input="@ENDPARENT()" />
+          <MapRule output="SG5-10" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'104'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Grundlohn/ZBase:ProJahr" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-10" input="@ENDPARENT()" />
+          <MapRule output="SG5-11" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'111'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Teuerungszulage/ZBase:ProStunde" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-11" input="@ENDPARENT()" />
+          <MapRule output="SG5-12" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'112'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Teuerungszulage/ZBase:ProTag" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-12" input="@ENDPARENT()" />
+          <MapRule output="SG5-13" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'113'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Teuerungszulage/ZBase:ProMonat" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-13" input="@ENDPARENT()" />
+          <MapRule output="SG5-14" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'114'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Teuerungszulage/ZBase:ProJahr" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-14" input="@ENDPARENT()" />
+          <MapRule output="SG5-15" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'121'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Akkord/ZBase:ProStunde" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-15" input="@ENDPARENT()" />
+          <MapRule output="SG5-16" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'122'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Akkord/ZBase:ProTag" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-16" input="@ENDPARENT()" />
+          <MapRule output="SG5-17" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'123'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Akkord/ZBase:ProMonat" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-17" input="@ENDPARENT()" />
+          <MapRule output="SG5-18" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'124'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Akkord/ZBase:ProJahr" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-18" input="@ENDPARENT()" />
+          <MapRule output="SG5-19" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'131'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Kinderzulage/ZBase:ProStunde" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-19" input="@ENDPARENT()" />
+          <MapRule output="SG5-20" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'132'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Kinderzulage/ZBase:ProTag" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-20" input="@ENDPARENT()" />
+          <MapRule output="SG5-21" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'133'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Kinderzulage/ZBase:ProMonat" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-21" input="@ENDPARENT()" />
+          <MapRule output="SG5-22" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'134'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Kinderzulage/ZBase:ProJahr" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-22" input="@ENDPARENT()" />
+          <MapRule output="SG5-23" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'141'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Ferienentschaedigung/ZBase:Entschaedigung/ZBase:ProStunde" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-23" input="@ENDPARENT()" />
+          <MapRule output="SG5-24" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'142'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Ferienentschaedigung/ZBase:Entschaedigung/ZBase:ProTag" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-24" input="@ENDPARENT()" />
+          <MapRule output="SG5-25" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'143'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Ferienentschaedigung/ZBase:Entschaedigung/ZBase:ProMonat" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-25" input="@ENDPARENT()" />
+          <MapRule output="SG5-26" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'144'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Ferienentschaedigung/ZBase:Entschaedigung/ZBase:ProJahr" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-26" input="@ENDPARENT()" />
+          <MapRule output="SG5-27" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'145'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Ferienentschaedigung/ZBase:Prozent" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-27" input="@ENDPARENT()" />
+          <MapRule output="SG5-28" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'161'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:AndereLohnzulagen/ZBase:Lohnzulage/ZBase:ProStunde" />
+          <MapRule output="4440-2" input="@IF(Message/Unfallmeldung/um:Lohn/ZBase:AndereLohnzulagen/ZBase:Lohnzulage/ZBase:ProStunde != @NULL(), @IF(Message/Unfallmeldung/um:Lohn/ZBase:AndereLohnzulagen/ZBase:Art != @NULL(), Message/Unfallmeldung/um:Lohn/ZBase:AndereLohnzulagen/ZBase:Art, @NULL()), '')" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-28" input="@ENDPARENT()" />
+          <MapRule output="SG5-29" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'162'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:AndereLohnzulagen/ZBase:Lohnzulage/ZBase:ProTag" />
+          <MapRule output="4440-2" input="@IF(Message/Unfallmeldung/um:Lohn/ZBase:AndereLohnzulagen/ZBase:Lohnzulage/ZBase:ProTag != @NULL(), @IF(Message/Unfallmeldung/um:Lohn/ZBase:AndereLohnzulagen/ZBase:Art != @NULL(), Message/Unfallmeldung/um:Lohn/ZBase:AndereLohnzulagen/ZBase:Art, @NULL()), '')" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-29" input="@ENDPARENT()" />
+          <MapRule output="SG5-30" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'163'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:AndereLohnzulagen/ZBase:Lohnzulage/ZBase:ProMonat" />
+          <MapRule output="4440-2" input="@IF(Message/Unfallmeldung/um:Lohn/ZBase:AndereLohnzulagen/ZBase:Lohnzulage/ZBase:ProMonat != @NULL(), @IF(Message/Unfallmeldung/um:Lohn/ZBase:AndereLohnzulagen/ZBase:Art != @NULL(), Message/Unfallmeldung/um:Lohn/ZBase:AndereLohnzulagen/ZBase:Art, @NULL()), '')" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-30" input="@ENDPARENT()" />
+          <MapRule output="SG5-31" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'164'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:AndereLohnzulagen/ZBase:Lohnzulage/ZBase:ProJahr" />
+          <MapRule output="4440-2" input="@IF(Message/Unfallmeldung/um:Lohn/ZBase:AndereLohnzulagen/ZBase:Lohnzulage/ZBase:ProJahr != @NULL(), @IF(Message/Unfallmeldung/um:Lohn/ZBase:AndereLohnzulagen/ZBase:Art != @NULL(), Message/Unfallmeldung/um:Lohn/ZBase:AndereLohnzulagen/ZBase:Art, @NULL()), '')" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-31" input="@ENDPARENT()" />
+          <MapRule output="SG5-32" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'171'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Gratifikation/ZBase:Entschaedigung/ZBase:ProStunde" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-32" input="@ENDPARENT()" />
+          <MapRule output="SG5-33" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'172'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Gratifikation/ZBase:Entschaedigung/ZBase:ProTag" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-33" input="@ENDPARENT()" />
+          <MapRule output="SG5-34" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'173'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Gratifikation/ZBase:Entschaedigung/ZBase:ProMonat" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-34" input="@ENDPARENT()" />
+          <MapRule output="SG5-35" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'174'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Gratifikation/ZBase:Entschaedigung/ZBase:ProJahr" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-35" input="@ENDPARENT()" />
+          <MapRule output="SG5-36" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'175'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Gratifikation/ZBase:Prozent" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-36" input="@ENDPARENT()" />
+          <MapRule output="SG5-37" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'191'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Naturahllohn/ZBase:Lohnzulage/ZBase:ProStunde" />
+          <MapRule output="4440-2" input="@IF(Message/Unfallmeldung/um:Lohn/ZBase:Naturahllohn/ZBase:Lohnzulage/ZBase:ProStunde != 'false', @IF(Message/Unfallmeldung/um:Lohn/ZBase:Naturahllohn/ZBase:Art != 'false', @CONCAT(Message/Unfallmeldung/um:Lohn/ZBase:Naturahllohn/ZBase:Art,''), ''), '' )" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-37" input="@ENDPARENT()" />
+          <MapRule output="SG5-38" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'192'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Naturahllohn/ZBase:Lohnzulage/ZBase:ProTag" />
+          <MapRule output="4440-2" input="@IF(Message/Unfallmeldung/um:Lohn/ZBase:Naturahllohn/ZBase:Lohnzulage/ZBase:ProTag != @NULL(), @IF(Message/Unfallmeldung/um:Lohn/ZBase:Naturahllohn/ZBase:Art != 'false', @CONCAT(Message/Unfallmeldung/um:Lohn/ZBase:Naturahllohn/ZBase:Art, ''), '' ), '')" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-38" input="@ENDPARENT()" />
+          <MapRule output="SG5-39" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'193'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Naturahllohn/ZBase:Lohnzulage/ZBase:ProMonat" />
+          <MapRule output="4440-2" input="@IF(Message/Unfallmeldung/um:Lohn/ZBase:Naturahllohn/ZBase:Lohnzulage/ZBase:ProMonat != 'false', @IF(Message/Unfallmeldung/um:Lohn/ZBase:Naturahllohn/ZBase:Art != 'false', @CONCAT(Message/Unfallmeldung/um:Lohn/ZBase:Naturahllohn/ZBase:Art, ''), '' ), '')" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-39" input="@ENDPARENT()" />
+          <MapRule output="SG5-40" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNH'" />
+          <MapRule output="4453" input="'194'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Lohn/ZBase:Naturahllohn/ZBase:Lohnzulage/ZBase:ProJahr" />
+          <MapRule output="4440-2" input="@IF(Message/Unfallmeldung/um:Lohn/ZBase:Naturahllohn/ZBase:Lohnzulage/ZBase:ProJahr != 'false', @IF(Message/Unfallmeldung/um:Lohn/ZBase:Naturahllohn/ZBase:Art != '', @CONCAT(Message/Unfallmeldung/um:Lohn/ZBase:Naturahllohn/ZBase:Art, ''), '' ), '')" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-40" input="@ENDPARENT()" />
+          <MapRule output="SG5-41" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNI'" />
+          <MapRule output="4453" input="'41'" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:Unfall/um:UnfallCode" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-41" input="@ENDPARENT()" />
+          <MapRule output="SG5-42" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNK'" />
+          <MapRule output="4453" input="" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="Message/Unfallmeldung/um:WeitereVersicherer" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-42" input="@ENDPARENT()" />
+          <MapRule output="SG5-43" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'UNZ'" />
+          <MapRule output="4453" input="@REPLACE(@LOWER(Message/Unfallmeldung/um:Verletzter/um:Person/um:Quellensteuer), 'TAX-WITHHOLDING')" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440-1" input="" />
+          <MapRule output="4440-2" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="4447" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG5-43" input="@ENDPARENT()" />
+          <MapRule output="SG5" input="@ENDPARENT()" />
+          <MapRule output="UNT" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0074" input="@COMMENT('* num segments *')" />
+          <MapRule output="0062" input="@COUNT()" />
+          <MapRule output="UNT" input="@ENDPARENT()" />
+          <MapRule output="MEDIDATA" input="@ENDPARENT()" />
+          <MapRule output="UNZ" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0036" input="@COMMENT('* num messages *')" />
+          <MapRule output="0020" input="'0'" />
+          <MapRule output="UNZ" input="@ENDPARENT()" />
+          <MapRule output="EDI" input="@ENDPARENT()" />
+        </Rules>
+      </Table>
+    </MapStructure>
+  </Mapping>
+</TransformTemplate>
+<Type>XML>EDIFACT</Type>
+<FileSystem></FileSystem>
+</Template>
+<Inputs>
+  <TransformationFile>testmessage.xml
+  </TransformationFile>
+  <Input>testmessage.xml
+  </Input>
+</Inputs>
+<Output></Output>
+<WebService>
+<Template>
+  <Id></Id>
+  <Url></Url>
+  <UserName></UserName>
+  <Password></Password>
+  <Label></Label>
+  <Description></Description>
+</Template>
+</WebService>
+<Registry>
+  <Url></Url>
+</Registry>
+</Project>

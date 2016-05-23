@@ -1,0 +1,46 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385394913674
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF Runtime OAuth 2.0 SAML
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime OAuth 2.0 SAML
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-rs-security-oauth2-saml
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.rs.security.oauth2.auth.saml;version="2.7
+ .9.SNAPSHOT",org.apache.cxf.rs.security.oauth2.grants.saml;version="2.7
+ .9.SNAPSHOT",org.apache.cxf.rs.security.oauth2.saml;version="2.7.9.SNAP
+ SHOT"
+Implementation-Title: Apache CXF Runtime OAuth 2.0 SAML
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.security.auth.callback,javax.ws.rs;version="[2.0,3
+ )",javax.ws.rs.core;version="[2.0,3)",org.apache.cxf.common.util;versio
+ n="[2.7,3)",org.apache.cxf.jaxrs.ext.form;version="[2.7,3)",org.apache.
+ cxf.jaxrs.impl;version="[2.7,3)",org.apache.cxf.jaxrs.model;version="[2
+ .7,3)",org.apache.cxf.jaxrs.provider;version="[2.7,3)",org.apache.cxf.j
+ axrs.utils;version="[2.7,3)",org.apache.cxf.message;version="[2.7,3)",o
+ rg.apache.cxf.phase;version="[2.7,3)",org.apache.cxf.rs.security.common
+ ;version="[2.7,3)",org.apache.cxf.rs.security.oauth2.common;version="[2
+ .7,3)",org.apache.cxf.rs.security.oauth2.grants;version="[2.7,3)",org.a
+ pache.cxf.rs.security.oauth2.provider;version="[2.7,3)",org.apache.cxf.
+ rs.security.oauth2.utils;version="[2.7,3)",org.apache.cxf.rs.security.s
+ aml;version="[2.7,3)",org.apache.cxf.rs.security.saml.assertion;version
+ ="[2.7,3)",org.apache.cxf.rs.security.saml.authorization;version="[2.7,
+ 3)",org.apache.cxf.security;version="[2.7,3)",org.apache.cxf.security.t
+ ransport;version="[2.7,3)",org.apache.cxf.staxutils;version="[2.7,3)",o
+ rg.apache.ws.security;version="[1.6,2)",org.apache.ws.security.componen
+ ts.crypto;version="[1.6,2)",org.apache.ws.security.handler;version="[1.
+ 6,2)",org.apache.ws.security.saml.ext;version="[1.6,2)",org.apache.ws.s
+ ecurity.validate;version="[1.6,2)",org.joda.time;version="[1.6,2)",org.
+ opensaml.saml2.core,org.w3c.dom
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime OAuth 2.0 SAML
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

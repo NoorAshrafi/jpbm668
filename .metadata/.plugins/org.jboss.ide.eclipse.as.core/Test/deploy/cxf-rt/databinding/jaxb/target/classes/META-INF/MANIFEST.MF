@@ -1,0 +1,54 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385436554572
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF Runtime JAXB DataBinding
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime JAXB DataBinding
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-databinding-jaxb
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.endpoint.dynamic;version="2.7.9.SNAPSHOT"
+ ,org.apache.cxf.jaxb;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxb.attac
+ hment;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxb.io;version="2.7.9.SN
+ APSHOT"
+Implementation-Title: Apache CXF Runtime JAXB DataBinding
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.activation;version="[0.0,2)",javax.xml.bind;versio
+ n="[0.0,3)",javax.xml.bind.annotation;version="[0.0,3)",javax.xml.bind.
+ annotation.adapters;version="[0.0,3)",javax.xml.bind.attachment;version
+ ="[0.0,3)",javax.xml.stream;version="[0.0,2)",javax.xml.stream.util;ver
+ sion="[0.0,2)",com.sun.tools.xjc.reader.internalizer;resolution:=option
+ al,javax.xml.datatype,javax.xml.namespace,javax.xml.transform.dom,javax
+ .xml.transform.stream,javax.xml.validation,org.apache.commons.lang;vers
+ ion="[2.6,3)";resolution:=optional,org.apache.commons.lang.builder;vers
+ ion="[2.6,3)";resolution:=optional,org.apache.cxf;version="[2.7,3)",org
+ .apache.cxf.annotations;version="[2.7,3)",org.apache.cxf.attachment;ver
+ sion="[2.7,3)",org.apache.cxf.bus;version="[2.7,3)",org.apache.cxf.cata
+ log;version="[2.7,3)",org.apache.cxf.common;version="[2.7,3)",org.apach
+ e.cxf.common.classloader;version="[2.7,3)",org.apache.cxf.common.i18n;v
+ ersion="[2.7,3)",org.apache.cxf.common.injection;version="[2.7,3)",org.
+ apache.cxf.common.jaxb;version="[2.7,3)",org.apache.cxf.common.logging;
+ version="[2.7,3)",org.apache.cxf.common.util;version="[2.7,3)",org.apac
+ he.cxf.common.xmlschema;version="[2.7,3)",org.apache.cxf.databinding;ve
+ rsion="[2.7,3)",org.apache.cxf.endpoint;version="[2.7,3)",org.apache.cx
+ f.helpers;version="[2.7,3)",org.apache.cxf.interceptor;version="[2.7,3)
+ ",org.apache.cxf.message;version="[2.7,3)",org.apache.cxf.phase;version
+ ="[2.7,3)",org.apache.cxf.resource;version="[2.7,3)",org.apache.cxf.ser
+ vice;version="[2.7,3)",org.apache.cxf.service.factory;version="[2.7,3)"
+ ,org.apache.cxf.service.model;version="[2.7,3)",org.apache.cxf.staxutil
+ s;version="[2.7,3)",org.apache.cxf.ws.addressing;version="[2.7,3)",org.
+ apache.cxf.wsdl11;version="[2.7,3)",org.apache.ws.commons.schema;versio
+ n="[2.0,3)",org.apache.ws.commons.schema.extensions;version="[2.0,3)",o
+ rg.apache.ws.commons.schema.utils;version="[2.0,3)",org.w3c.dom,org.xml
+ .sax,org.xml.sax.helpers
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime JAXB DataBinding
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

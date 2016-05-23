@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="issueManagementUrl">
+			<item value="https://issues.apache.org/jira/browse/CXF"/>
+		</list>
+		<list key="issueManagementSystem">
+			<item value="jira"/>
+		</list>
+		<list key="ciManagementUrl">
+			<item value="http://hudson.zones.apache.org/hudson/view/CXF/"/>
+		</list>
+		<list key="ciManagementSystem">
+			<item value="Hudson"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\DataCopy\Shirent\EmployeeAppWAR\drools-6.0.x"/>
+			<item value="C:\Form 16\2.7.x-fixes\2.7.x-fixes"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+		</list>
+	</section>
+</section>

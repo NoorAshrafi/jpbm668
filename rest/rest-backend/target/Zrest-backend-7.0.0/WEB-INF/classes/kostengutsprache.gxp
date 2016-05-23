@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with GoXML Transform Version 2.0 - http://www.xmlglobal.com -->
+<!-- xch version=Version 2.0 -->
+<Project>
+<Template>
+
+<TransformTemplate>
+  <TemplateMetadata>
+      <Version>$Revision: 1.1 $</Version>
+      <Title></Title>
+      <ModifiedDate>$Date: 2004/11/15 13:42:43 $</ModifiedDate>
+      <UniqueID></UniqueID>
+  </TemplateMetadata>
+  <CustomerExtensions>
+    <ReplaceFunctions>
+      <ReplaceFunction name="Rückfall-type" >
+        <Value match="true" replace="1" />
+        <Value match="false" replace="0" />
+      </ReplaceFunction>
+    </ReplaceFunctions>
+    <Functions>
+    </Functions>
+  </CustomerExtensions>
+  <Mapping>
+    <Input format="XML">
+      <Parameter name="Structure" value=""/>
+      <Parameter name="Validate" value="false"/>
+    </Input>
+    <Output format="EDIFACT">
+      <Parameter name="SegmentDelimiter" value="'&#xA;"/>
+      <Parameter name="Structure" value="Kostengutsprache.dic"/>
+    </Output>
+    <MapStructure>
+      <Table>
+        <Rules>
+          <MapRule output="EDI" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="UNB" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="S001" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0001" input="'UNOC'" />
+          <MapRule output="0002" input="'3'" />
+          <MapRule output="S001" input="@ENDPARENT()" />
+          <MapRule output="S002" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0004" input="Message/KoGu/kogu:Leistungserbringer/kogu:Nummer" />
+          <MapRule output="0007" input="'ZV'" />
+          <MapRule output="0008" input="" />
+          <MapRule output="S002" input="@ENDPARENT()" />
+          <MapRule output="S003" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0010" input="Message/Header/ZBase:Empfaenger/ZBase:Nnummer" />
+          <MapRule output="0007" input="'14'" />
+          <MapRule output="0014" input="" />
+          <MapRule output="S003" input="@ENDPARENT()" />
+          <MapRule output="S004" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0017" input="Message/Header/ZBase:Datum" />
+          <MapRule output="0019" input="Message/Header/ZBase:Zeit" />
+          <MapRule output="S004" input="@ENDPARENT()" />
+          <MapRule output="0020" input="'0'" />
+          <MapRule output="S005" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0022" input="" />
+          <MapRule output="0025" input="" />
+          <MapRule output="S005" input="@ENDPARENT()" />
+          <MapRule output="0026" input="'MEMC2200'" />
+          <MapRule output="0029" input="" />
+          <MapRule output="0031" input="" />
+          <MapRule output="0032" input="'Zürich'" />
+          <MapRule output="0035" input="'0'" />
+          <MapRule output="UNB" input="@ENDPARENT()" />
+          <MapRule output="Medidata" input="@PARENT()" unique="" sort="" sortType="None" context="Message/KoGu" path="" />
+          <MapRule output="UNH" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0062" input="@COUNT()" />
+          <MapRule output="S009" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0065" input="'REQOTE'" />
+          <MapRule output="0052" input="'D'" />
+          <MapRule output="0054" input="'96A'" />
+          <MapRule output="0051" input="'UN'" />
+          <MapRule output="0057" input="'ZMC2200'" />
+          <MapRule output="S009" input="@ENDPARENT()" />
+          <MapRule output="0068" input="" />
+          <MapRule output="S010" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0070" input="" />
+          <MapRule output="0073" input="" />
+          <MapRule output="S010" input="@ENDPARENT()" />
+          <MapRule output="UNH" input="@ENDPARENT()" />
+          <MapRule output="BGM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C002" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1001" input="'210'" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="1000" input="" />
+          <MapRule output="C002" input="@ENDPARENT()" />
+          <MapRule output="1004" input="@IF(Message/KoGu/kogu:Key/ZBase:MeldungsNummer != @NULL(),@CONCAT('',Message/KoGu/kogu:Key/ZBase:MeldungsNummer),'0')" />
+          <MapRule output="1225" input="'9'" />
+          <MapRule output="4343" input="" />
+          <MapRule output="BGM" input="@ENDPARENT()" />
+          <MapRule output="DTM+182" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'182'" />
+          <MapRule output="2380" input="@IF(Message/Header/ZBase:Datum != @NULL(),@IF(Message/Header/ZBase:Zeit != @NULL(),@CONCAT(Message/Header/ZBase:Datum,Message/Header/ZBase:Zeit),''),'')" />
+          <MapRule output="2379" input="'203'" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="DTM+182" input="@ENDPARENT()" />
+          <MapRule output="DTM+242" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'242'" />
+          <MapRule output="2380" input="Message/Header/ZBase:Datum" />
+          <MapRule output="2379" input="'102'" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="DTM+242" input="@ENDPARENT()" />
+          <MapRule output="SG11" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="NAD+MER" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="NAD" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3035" input="'MER'" />
+          <MapRule output="C082" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3039" input="Message/KoGu/kogu:Leistungserbringer/kogu:Nummer" />
+          <MapRule output="1131" input="'ZV'" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C082" input="@ENDPARENT()" />
+          <MapRule output="C058" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3124" input="" />
+          <MapRule output="3125" input="" />
+          <MapRule output="3126" input="" />
+          <MapRule output="3127" input="" />
+          <MapRule output="3128" input="" />
+          <MapRule output="C058" input="@ENDPARENT()" />
+          <MapRule output="C080" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3036" input="Message/KoGu/kogu:Leistungserbringer/kogu:Name" />
+          <MapRule output="3037" input="" />
+          <MapRule output="3038" input="" />
+          <MapRule output="3039" input="" />
+          <MapRule output="3040" input="" />
+          <MapRule output="3045" input="" />
+          <MapRule output="C080" input="@ENDPARENT()" />
+          <MapRule output="C059" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3042" input="@IF(Message/KoGu/kogu:Leistungserbringer/kogu:Adresse/ZBase:Strasse != @NULL(),@IF(Message/KoGu/kogu:Leistungserbringer/kogu:Adresse/ZBase:Nummer != @NULL(),@CONCAT(Message/KoGu/kogu:Leistungserbringer/kogu:Adresse/ZBase:Strasse,' ',Message/KoGu/kogu:Leistungserbringer/kogu:Adresse/ZBase:Nummer),Message/KoGu/kogu:Leistungserbringer/kogu:Adresse/ZBase:Strasse),'')" />
+          <MapRule output="3042" input="" />
+          <MapRule output="3042" input="" />
+          <MapRule output="3042" input="" />
+          <MapRule output="C059" input="@ENDPARENT()" />
+          <MapRule output="3164" input="Message/KoGu/kogu:Leistungserbringer/kogu:Adresse/ZBase:Ort" />
+          <MapRule output="3229" input="" />
+          <MapRule output="3251" input="Message/KoGu/kogu:Leistungserbringer/kogu:Adresse/ZBase:PLZ" />
+          <MapRule output="3207" input="Message/KoGu/kogu:Leistungserbringer/kogu:Adresse/ZBase:Land" />
+          <MapRule output="NAD" input="@ENDPARENT()" />
+          <MapRule output="SG12" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'FFF'" />
+          <MapRule output="1154" input="Message/KoGu/kogu:Referenzen/kogu:ReferenzNummer" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="SG12" input="@ENDPARENT()" />
+          <MapRule output="SG14" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="COM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C076" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3148" input="Message/KoGu/kogu:Leistungserbringer/kogu:Adresse/ZBase:Telefon" />
+          <MapRule output="3155" input="'TE'" />
+          <MapRule output="C076" input="@ENDPARENT()" />
+          <MapRule output="COM" input="@ENDPARENT()" />
+          <MapRule output="SG14" input="@ENDPARENT()" />
+          <MapRule output="SG15" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="CTA" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3139" input="'MS'" />
+          <MapRule output="C056" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3413" input="" />
+          <MapRule output="3412" input="@IF(Message/KoGu/kogu:Kontakt/ZBase:Familienname != 'false', @IF(Message/KoGu/kogu:Kontakt/ZBase:Vorname != 'false', @CONCAT(Message/KoGu/kogu:Kontakt/ZBase:Familienname,' ',Message/KoGu/kogu:Kontakt/ZBase:Vorname),Message/KoGu/kogu:Kontakt/ZBase:Familienname), @NULL() )" />
+          <MapRule output="C056" input="@ENDPARENT()" />
+          <MapRule output="CTA" input="@ENDPARENT()" />
+          <MapRule output="COM+EM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="COM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C076" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3148" input="Message/KoGu/kogu:Kontakt/ZBase:Email" />
+          <MapRule output="3155" input="'EM'" />
+          <MapRule output="C076" input="@ENDPARENT()" />
+          <MapRule output="COM" input="@ENDPARENT()" />
+          <MapRule output="COM+EM" input="@ENDPARENT()" />
+          <MapRule output="COM+TE" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="COM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C076" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3148" input="Message/KoGu/kogu:Kontakt/ZBase:Telephone" />
+          <MapRule output="3155" input="'TE'" />
+          <MapRule output="C076" input="@ENDPARENT()" />
+          <MapRule output="COM" input="@ENDPARENT()" />
+          <MapRule output="COM+TE" input="@ENDPARENT()" />
+          <MapRule output="SG15" input="@ENDPARENT()" />
+          <MapRule output="NAD+MER" input="@ENDPARENT()" />
+          <MapRule output="NAD+MEL" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="NAD" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3035" input="'MEL'" />
+          <MapRule output="C082" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3039" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C082" input="@ENDPARENT()" />
+          <MapRule output="C058" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3124" input="Message/KoGu/kogu:Aerzte/kogu:NachbehandelnderArzt/ZBase:Familienname" />
+          <MapRule output="3125" input="Message/KoGu/kogu:Aerzte/kogu:NachbehandelnderArzt/ZBase:Vorname" />
+          <MapRule output="3126" input="" />
+          <MapRule output="3127" input="" />
+          <MapRule output="3128" input="" />
+          <MapRule output="C058" input="@ENDPARENT()" />
+          <MapRule output="C080" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3036" input="Message/KoGu/kogu:Aerzte/kogu:NachbehandelnderArzt/ZBase:Titel" />
+          <MapRule output="3037" input="" />
+          <MapRule output="3038" input="" />
+          <MapRule output="3039" input="" />
+          <MapRule output="3040" input="" />
+          <MapRule output="3045" input="" />
+          <MapRule output="C080" input="@ENDPARENT()" />
+          <MapRule output="C059" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3042" input="@IF(Message/KoGu/kogu:Aerzte/kogu:NachbehandelnderArzt/ZBase:Strasse != 'false', @IF(Message/KoGu/kogu:Aerzte/kogu:NachbehandelnderArzt/ZBase:Nummer != 'false', @CONCAT(Message/KoGu/kogu:Aerzte/kogu:NachbehandelnderArzt/ZBase:Strasse,' ',Message/KoGu/kogu:Aerzte/kogu:NachbehandelnderArzt/ZBase:Nummer), Message/KoGu/kogu:Aerzte/kogu:NachbehandelnderArzt/ZBase:Strasse), '' )" />
+          <MapRule output="3042" input="" />
+          <MapRule output="3042" input="" />
+          <MapRule output="3042" input="" />
+          <MapRule output="C059" input="@ENDPARENT()" />
+          <MapRule output="3164" input="Message/KoGu/kogu:Aerzte/kogu:NachbehandelnderArzt/ZBase:Ort" />
+          <MapRule output="3229" input="" />
+          <MapRule output="3251" input="Message/KoGu/kogu:Aerzte/kogu:NachbehandelnderArzt/ZBase:PLZ" />
+          <MapRule output="3207" input="Message/KoGu/kogu:Aerzte/kogu:NachbehandelnderArzt/ZBase:Land" />
+          <MapRule output="NAD" input="@ENDPARENT()" />
+          <MapRule output="NAD+MEL" input="@ENDPARENT()" />
+          <MapRule output="NAD+MEP" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="NAD" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3035" input="'MEP'" />
+          <MapRule output="C082" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3039" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C082" input="@ENDPARENT()" />
+          <MapRule output="C058" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3124" input="" />
+          <MapRule output="3125" input="" />
+          <MapRule output="3126" input="" />
+          <MapRule output="3127" input="" />
+          <MapRule output="3128" input="" />
+          <MapRule output="C058" input="@ENDPARENT()" />
+          <MapRule output="C080" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3036" input="Message/KoGu/kogu:Verletzter/kogu:Person/kogu:FamilienName" />
+          <MapRule output="3037" input="Message/KoGu/kogu:Verletzter/kogu:Person/kogu:VorName" />
+          <MapRule output="3038" input="" />
+          <MapRule output="3039" input="" />
+          <MapRule output="3040" input="" />
+          <MapRule output="3045" input="" />
+          <MapRule output="C080" input="@ENDPARENT()" />
+          <MapRule output="C059" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3042" input="@IF(Message/KoGu/kogu:Verletzter/kogu:Adresse/ZBase:Strasse != 'false', @IF(Message/KoGu/kogu:Verletzter/kogu:Adresse/ZBase:Nummer != 'false', @CONCAT(Message/KoGu/kogu:Verletzter/kogu:Adresse/ZBase:Strasse,' ',Message/KoGu/kogu:Verletzter/kogu:Adresse/ZBase:Nummer), Message/KoGu/kogu:Verletzter/kogu:Adresse/ZBase:Strasse), '' )" />
+          <MapRule output="3042" input="" />
+          <MapRule output="3042" input="" />
+          <MapRule output="3042" input="" />
+          <MapRule output="C059" input="@ENDPARENT()" />
+          <MapRule output="3164" input="Message/KoGu/kogu:Verletzter/kogu:Adresse/ZBase:Ort" />
+          <MapRule output="3229" input="" />
+          <MapRule output="3251" input="Message/KoGu/kogu:Verletzter/kogu:Adresse/ZBase:PLZ" />
+          <MapRule output="3207" input="Message/KoGu/kogu:Verletzter/kogu:Adresse/ZBase:Land" />
+          <MapRule output="NAD" input="@ENDPARENT()" />
+          <MapRule output="SG12" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF+GGG" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'GGG'" />
+          <MapRule output="1154" input="Message/KoGu/kogu:Verletzter/kogu:Person/kogu:Geschlecht" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF+GGG" input="@ENDPARENT()" />
+          <MapRule output="RFF+UFI" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'UFI'" />
+          <MapRule output="1154" input="Message/KoGu/kogu:Verletzter/kogu:Person/kogu:Nationalitaet" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF+UFI" input="@ENDPARENT()" />
+          <MapRule output="RFF+UFM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'UFM'" />
+          <MapRule output="1154" input="Message/KoGu/kogu:Verletzter/kogu:Person/kogu:Zivilstand" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF+UFM" input="@ENDPARENT()" />
+          <MapRule output="RFF+UFK" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'UFK'" />
+          <MapRule output="1154" input="Message/KoGu/kogu:Verletzter/kogu:Person/kogu:AHVNummer" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF+UFK" input="@ENDPARENT()" />
+          <MapRule output="DTM+329" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'329'" />
+          <MapRule output="2380" input="Message/KoGu/kogu:Verletzter/kogu:Person/kogu:Geburtstag" />
+          <MapRule output="2379" input="'102'" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="DTM+329" input="@ENDPARENT()" />
+          <MapRule output="DTM+289" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'289'" />
+          <MapRule output="2380" input="Message/KoGu/kogu:Referenzen/kogu:Unfalldatum" />
+          <MapRule output="2379" input="'102'" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="DTM+289" input="@ENDPARENT()" />
+          <MapRule output="SG12" input="@ENDPARENT()" />
+          <MapRule output="SG14" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="COM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C076" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3148" input="Message/KoGu/kogu:Verletzter/kogu:Adresse/ZBase:Telefon" />
+          <MapRule output="3155" input="'TE'" />
+          <MapRule output="C076" input="@ENDPARENT()" />
+          <MapRule output="COM" input="@ENDPARENT()" />
+          <MapRule output="SG14" input="@ENDPARENT()" />
+          <MapRule output="NAD+MEP" input="@ENDPARENT()" />
+          <MapRule output="NAD+MEV" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="NAD" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3035" input="'MEV'" />
+          <MapRule output="C082" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3039" input="Message/Header/ZBase:Empfaenger/ZBase:Nnummer" />
+          <MapRule output="1131" input="'9'" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C082" input="@ENDPARENT()" />
+          <MapRule output="C058" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3124" input="Message/Header/ZBase:Empfaenger/ZBase:Name" />
+          <MapRule output="3125" input="" />
+          <MapRule output="3126" input="" />
+          <MapRule output="3127" input="" />
+          <MapRule output="3128" input="" />
+          <MapRule output="C058" input="@ENDPARENT()" />
+          <MapRule output="C080" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3036" input="" />
+          <MapRule output="3037" input="" />
+          <MapRule output="3038" input="" />
+          <MapRule output="3039" input="" />
+          <MapRule output="3040" input="" />
+          <MapRule output="3045" input="" />
+          <MapRule output="C080" input="@ENDPARENT()" />
+          <MapRule output="C059" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3042" input="" />
+          <MapRule output="3042" input="" />
+          <MapRule output="3042" input="" />
+          <MapRule output="3042" input="" />
+          <MapRule output="C059" input="@ENDPARENT()" />
+          <MapRule output="3164" input="" />
+          <MapRule output="3229" input="" />
+          <MapRule output="3251" input="" />
+          <MapRule output="3207" input="" />
+          <MapRule output="NAD" input="@ENDPARENT()" />
+          <MapRule output="SG12" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF-SUN" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'SUN'" />
+          <MapRule output="1154" input="Message/KoGu/kogu:Key/ZBase:SchadenNummer" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF-SUN" input="@ENDPARENT()" />
+          <MapRule output="RFF-VPA" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'VPA'" />
+          <MapRule output="1154" input="Message/KoGu/kogu:Arbeitgeber/kogu:PolicenNummer" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF-VPA" input="@ENDPARENT()" />
+          <MapRule output="SG12" input="@ENDPARENT()" />
+          <MapRule output="NAD+MEV" input="@ENDPARENT()" />
+          <MapRule output="NAD+MEA" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="NAD" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3035" input="'MEA'" />
+          <MapRule output="C082" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3039" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C082" input="@ENDPARENT()" />
+          <MapRule output="C058" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3124" input="Message/KoGu/kogu:Aerzte/kogu:ErstbehandelnderArzt/ZBase:Familienname" />
+          <MapRule output="3125" input="Message/KoGu/kogu:Aerzte/kogu:ErstbehandelnderArzt/ZBase:Vorname" />
+          <MapRule output="3126" input="" />
+          <MapRule output="3127" input="" />
+          <MapRule output="3128" input="" />
+          <MapRule output="C058" input="@ENDPARENT()" />
+          <MapRule output="C080" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3036" input="Message/KoGu/kogu:Aerzte/kogu:ErstbehandelnderArzt/ZBase:Titel" />
+          <MapRule output="3037" input="" />
+          <MapRule output="3038" input="" />
+          <MapRule output="3039" input="" />
+          <MapRule output="3040" input="" />
+          <MapRule output="3045" input="" />
+          <MapRule output="C080" input="@ENDPARENT()" />
+          <MapRule output="C059" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3042" input="@IF(Message/KoGu/kogu:Aerzte/kogu:ErstbehandelnderArzt/ZBase:Strasse != 'false', @IF(Message/KoGu/kogu:Aerzte/kogu:ErstbehandelnderArzt/ZBase:Nummer != 'false', @CONCAT(Message/KoGu/kogu:Aerzte/kogu:ErstbehandelnderArzt/ZBase:Strasse,' ',Message/KoGu/kogu:Aerzte/kogu:ErstbehandelnderArzt/ZBase:Nummer), Message/KoGu/kogu:Aerzte/kogu:ErstbehandelnderArzt/ZBase:Strasse), '' )" />
+          <MapRule output="3042" input="" />
+          <MapRule output="3042" input="" />
+          <MapRule output="3042" input="" />
+          <MapRule output="C059" input="@ENDPARENT()" />
+          <MapRule output="3164" input="Message/KoGu/kogu:Aerzte/kogu:ErstbehandelnderArzt/ZBase:Ort" />
+          <MapRule output="3229" input="" />
+          <MapRule output="3251" input="Message/KoGu/kogu:Aerzte/kogu:ErstbehandelnderArzt/ZBase:PLZ" />
+          <MapRule output="3207" input="Message/KoGu/kogu:Aerzte/kogu:ErstbehandelnderArzt/ZBase:Land" />
+          <MapRule output="NAD" input="@ENDPARENT()" />
+          <MapRule output="NAD+MEA" input="@ENDPARENT()" />
+          <MapRule output="NAD+MEB" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="NAD" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3035" input="'MEB'" />
+          <MapRule output="C082" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3039" input="Message/KoGu/kogu:Arbeitgeber/kogu:Firma/kogu:Nummer" />
+          <MapRule output="1131" input="'9'" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C082" input="@ENDPARENT()" />
+          <MapRule output="C058" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3124" input="" />
+          <MapRule output="3125" input="" />
+          <MapRule output="3126" input="" />
+          <MapRule output="3127" input="" />
+          <MapRule output="3128" input="" />
+          <MapRule output="C058" input="@ENDPARENT()" />
+          <MapRule output="C080" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3036" input="Message/KoGu/kogu:Arbeitgeber/kogu:Firma/kogu:Name" />
+          <MapRule output="3037" input="" />
+          <MapRule output="3038" input="" />
+          <MapRule output="3039" input="" />
+          <MapRule output="3040" input="" />
+          <MapRule output="3045" input="" />
+          <MapRule output="C080" input="@ENDPARENT()" />
+          <MapRule output="C059" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3042" input="@IF(Message/KoGu/kogu:Arbeitgeber/kogu:Adresse/kogu:Strasse != 'false', @IF(Message/KoGu/kogu:Arbeitgeber/kogu:Adresse/kogu:Nummer != 'false', @CONCAT(Message/KoGu/kogu:Arbeitgeber/kogu:Adresse/kogu:Strasse,' ',Message/KoGu/kogu:Arbeitgeber/kogu:Adresse/kogu:Nummer), Message/KoGu/kogu:Arbeitgeber/kogu:Adresse/kogu:Strasse ), '' )" />
+          <MapRule output="3042" input="" />
+          <MapRule output="3042" input="" />
+          <MapRule output="3042" input="" />
+          <MapRule output="C059" input="@ENDPARENT()" />
+          <MapRule output="3164" input="Message/KoGu/kogu:Arbeitgeber/kogu:Adresse/kogu:Ort" />
+          <MapRule output="3229" input="" />
+          <MapRule output="3251" input="Message/KoGu/kogu:Arbeitgeber/kogu:Adresse/kogu:PLZ" />
+          <MapRule output="3207" input="Message/KoGu/kogu:Arbeitgeber/kogu:Adresse/kogu:Land" />
+          <MapRule output="NAD" input="@ENDPARENT()" />
+          <MapRule output="SG14" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="COM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C076" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="3148" input="Message/KoGu/kogu:Arbeitgeber/kogu:Adresse/kogu:Telefon" />
+          <MapRule output="3155" input="'TE'" />
+          <MapRule output="C076" input="@ENDPARENT()" />
+          <MapRule output="COM" input="@ENDPARENT()" />
+          <MapRule output="SG14" input="@ENDPARENT()" />
+          <MapRule output="NAD+MEB" input="@ENDPARENT()" />
+          <MapRule output="SG11" input="@ENDPARENT()" />
+          <MapRule output="SG27" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="LIN" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1082" input="" />
+          <MapRule output="1229" input="'91'" />
+          <MapRule output="C212" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="7140" input="" />
+          <MapRule output="7143" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C212" input="@ENDPARENT()" />
+          <MapRule output="C829" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="5495" input="" />
+          <MapRule output="1082" input="" />
+          <MapRule output="C829" input="@ENDPARENT()" />
+          <MapRule output="1222" input="" />
+          <MapRule output="7083" input="" />
+          <MapRule output="LIN" input="@ENDPARENT()" />
+          <MapRule output="DTM+194" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'194'" />
+          <MapRule output="2380" input="Message/KoGu/kogu:Referenzen/kogu:HospitalisationsDatum" />
+          <MapRule output="2379" input="'102'" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="DTM+194" input="@ENDPARENT()" />
+          <MapRule output="DTM+206" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="DTM" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C507" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="2005" input="'206'" />
+          <MapRule output="2380" input="Message/KoGu/kogu:Referenzen/kogu:HospitalAustrittsdatum" />
+          <MapRule output="2379" input="'102'" />
+          <MapRule output="C507" input="@ENDPARENT()" />
+          <MapRule output="DTM" input="@ENDPARENT()" />
+          <MapRule output="DTM+206" input="@ENDPARENT()" />
+          <MapRule output="FTX" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4451" input="'AAI'" />
+          <MapRule output="4453" input="" />
+          <MapRule output="C107" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4441" input="" />
+          <MapRule output="1131" input="" />
+          <MapRule output="3055" input="" />
+          <MapRule output="C107" input="@ENDPARENT()" />
+          <MapRule output="C108" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="4440" input="Message/KoGu/kogu:Kontakt/ZBase:Bemerkungen" />
+          <MapRule output="4441" input="" />
+          <MapRule output="4442" input="" />
+          <MapRule output="4443" input="" />
+          <MapRule output="4444" input="" />
+          <MapRule output="C108" input="@ENDPARENT()" />
+          <MapRule output="3453" input="" />
+          <MapRule output="FTX" input="@ENDPARENT()" />
+          <MapRule output="SG32" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF+RUC" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'RUC'" />
+          <MapRule output="1154" input="@REPLACE(@LOWER(Message/KoGu/kogu:Referenzen/kogu:Rueckfall),'Rückfall-type')" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF+RUC" input="@ENDPARENT()" />
+          <MapRule output="RFF+REO" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'REO'" />
+          <MapRule output="1154" input="Message/KoGu/kogu:Referenzen/kogu:REHAOrt" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF+REO" input="@ENDPARENT()" />
+          <MapRule output="RFF+ETG" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'ETG'" />
+          <MapRule output="1154" input="Message/KoGu/kogu:Referenzen/kogu:HospitalisationsGrund" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF+ETG" input="@ENDPARENT()" />
+          <MapRule output="RFF+SKL" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'SKL'" />
+          <MapRule output="1154" input="Message/KoGu/kogu:Referenzen/kogu:HospitalisierteAbteilung" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF+SKL" input="@ENDPARENT()" />
+          <MapRule output="RFF+OPE" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'OPE'" />
+          <MapRule output="1154" input="Message/KoGu/kogu:Aerzte/kogu:Operateur" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF+OPE" input="@ENDPARENT()" />
+          <MapRule output="RFF+RCN" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="RFF" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="C506" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="1153" input="'RCN'" />
+          <MapRule output="1154" input="Message/KoGu/kogu:Arbeitgeber/kogu:MeldungsNummer" />
+          <MapRule output="1156" input="" />
+          <MapRule output="4000" input="" />
+          <MapRule output="C506" input="@ENDPARENT()" />
+          <MapRule output="RFF" input="@ENDPARENT()" />
+          <MapRule output="RFF+RCN" input="@ENDPARENT()" />
+          <MapRule output="SG32" input="@ENDPARENT()" />
+          <MapRule output="SG27" input="@ENDPARENT()" />
+          <MapRule output="UNS" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0081" input="'S'" />
+          <MapRule output="UNS" input="@ENDPARENT()" />
+          <MapRule output="UNT" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0074" input="" />
+          <MapRule output="0062" input="@COUNT()" />
+          <MapRule output="UNT" input="@ENDPARENT()" />
+          <MapRule output="Medidata" input="@ENDPARENT()" />
+          <MapRule output="UNZ" input="@PARENT()" unique="" sort="" sortType="None" context="" path="" />
+          <MapRule output="0036" input="" />
+          <MapRule output="0020" input="'0'" />
+          <MapRule output="UNZ" input="@ENDPARENT()" />
+          <MapRule output="EDI" input="@ENDPARENT()" />
+        </Rules>
+      </Table>
+    </MapStructure>
+  </Mapping>
+</TransformTemplate>
+<Type>XML>EDIFACT</Type>
+<FileSystem></FileSystem>
+</Template>
+<Inputs>
+  <TransformationFile>C:\Program Files\GoXML\20\my projects\Kostengutsprache\TestMessage.xml
+  </TransformationFile>
+  <Input>C:\Program Files\GoXML\20\my projects\Kostengutsprache\TestMessage.xml
+  </Input>
+</Inputs>
+<Output></Output>
+<WebService>
+<Template>
+  <Id></Id>
+  <Url></Url>
+  <UserName></UserName>
+  <Password></Password>
+  <Label></Label>
+  <Description></Description>
+</Template>
+</WebService>
+<Registry>
+  <Url></Url>
+</Registry>
+</Project>

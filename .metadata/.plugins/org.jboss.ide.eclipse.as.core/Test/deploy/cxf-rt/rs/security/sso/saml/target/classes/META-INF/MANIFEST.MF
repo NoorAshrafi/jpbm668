@@ -1,0 +1,53 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385394840134
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF RS SSO SAML
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF RS SSO SAML
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-rs-security-sso-saml
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.rs.security.saml.sso;version="2.7.9.SNAPS
+ HOT",org.apache.cxf.rs.security.saml.sso.state;version="2.7.9.SNAPSHOT"
+Implementation-Title: Apache CXF RS SSO SAML
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.servlet.http;version="[0.0,4)",net.sf.ehcache;reso
+ lution:=optional;version="[2.5,3.0.0)",net.sf.ehcache.config;resolution
+ :=optional;version="[2.5,3.0.0)",javax.annotation,javax.crypto,javax.se
+ curity.auth.callback,javax.ws.rs;version="[2.0,3)",javax.ws.rs.core;ver
+ sion="[2.0,3)",javax.xml.bind.annotation,javax.xml.namespace,org.apache
+ .cxf;version="[2.7,3)",org.apache.cxf.common.classloader;version="[2.7,
+ 3)",org.apache.cxf.common.i18n;version="[2.7,3)",org.apache.cxf.common.
+ logging;version="[2.7,3)",org.apache.cxf.common.security;version="[2.7,
+ 3)",org.apache.cxf.common.util;version="[2.7,3)",org.apache.cxf.helpers
+ ;version="[2.7,3)",org.apache.cxf.jaxrs.ext;version="[2.7,3)",org.apach
+ e.cxf.jaxrs.impl;version="[2.7,3)",org.apache.cxf.jaxrs.model;version="
+ [2.7,3)",org.apache.cxf.jaxrs.utils;version="[2.7,3)",org.apache.cxf.me
+ ssage;version="[2.7,3)",org.apache.cxf.phase;version="[2.7,3)",org.apac
+ he.cxf.resource;version="[2.7,3)",org.apache.cxf.rs.security.common;ver
+ sion="[2.7,3)",org.apache.cxf.rs.security.saml;version="[2.7,3)",org.ap
+ ache.cxf.rs.security.saml.assertion;version="[2.7,3)",org.apache.cxf.rs
+ .security.xml;version="[2.7,3)",org.apache.cxf.security;version="[2.7,3
+ )",org.apache.cxf.staxutils;version="[2.7,3)",org.apache.ws.security;ve
+ rsion="[1.6,2)",org.apache.ws.security.components.crypto;version="[1.6,
+ 2)",org.apache.ws.security.handler;version="[1.6,2)",org.apache.ws.secu
+ rity.saml;version="[1.6,2)",org.apache.ws.security.saml.ext;version="[1
+ .6,2)",org.apache.ws.security.util;version="[1.6,2)",org.apache.ws.secu
+ rity.validate;version="[1.6,2)",org.apache.xml.security.encryption;vers
+ ion="[1.5,2)",org.joda.time;version="[1.6,2)",org.opensaml,org.opensaml
+ .common,org.opensaml.saml1.core,org.opensaml.saml2.core,org.opensaml.se
+ curity,org.opensaml.xml,org.opensaml.xml.encryption,org.opensaml.xml.se
+ curity,org.opensaml.xml.security.credential,org.opensaml.xml.security.k
+ eyinfo,org.opensaml.xml.security.x509,org.opensaml.xml.signature,org.op
+ ensaml.xml.validation,org.w3c.dom
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF RS SSO SAML
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

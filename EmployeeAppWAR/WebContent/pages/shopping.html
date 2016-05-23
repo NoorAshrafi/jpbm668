@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></meta>
+    <title>Shopping</title>
+  </head>
+  <body>
+   <h1>Two Way Data Binding Example</h1><br>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js">
+    </script>
+      <script src="Shopping.js"></script>
+  <div ng-app>
+        <div ng-controller="ShoppingCartCtrl">
+            <br />
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Price</td>
+                        <td>Quantity</td>
+                        <td>Remove Item</td>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="item in items">
+                    <tr>
+                        <td>{{item.Name}}</td>
+                        <td>{{item.Price}}</td>
+                        <td>{{item.Quantity}}</td>
+                        <td><input type="button" value="Remove" ng-click="removeItem($index)" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <div>Total Price: {{totalPrice()}}</div>
+            <br />
+            <table>
+                <tr>
+                    <td>Name: </td>
+                    <td><input type="text" ng-model="item.Name" /></td>
+                </tr>
+                <tr>
+                    <td>Price: </td>
+                    <td><input type="text" ng-model="item.Price" /></td>
+                </tr>
+                <tr>
+                    <td>Quantity: </td>
+                    <td><input type="text" ng-model="item.Quantity" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="Button" value="Add" ng-click="addItem(item)" /> </td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+        </body>
+</html>

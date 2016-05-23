@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.5">
+<file name="C:\DataCopy\Shirent\EmployeeAppWAR\rs-saml\saml-rest-backend\src\main\java\org\apache\cxf\systest\jaxrs\security\Book.java">
+</file>
+<file name="C:\DataCopy\Shirent\EmployeeAppWAR\rs-saml\saml-rest-backend\src\main\java\org\apache\cxf\systest\jaxrs\security\saml\BookServerSaml.java">
+</file>
+<file name="C:\DataCopy\Shirent\EmployeeAppWAR\rs-saml\saml-rest-backend\src\main\java\org\apache\cxf\systest\jaxrs\security\saml\CustomSecurityContextProvider.java">
+</file>
+<file name="C:\DataCopy\Shirent\EmployeeAppWAR\rs-saml\saml-rest-backend\src\main\java\org\apache\cxf\systest\jaxrs\security\saml\JAXRSSamlAuthorizationTest.java">
+</file>
+<file name="C:\DataCopy\Shirent\EmployeeAppWAR\rs-saml\saml-rest-backend\src\main\java\org\apache\cxf\systest\jaxrs\security\saml\JAXRSSamlTest.java">
+</file>
+<file name="C:\DataCopy\Shirent\EmployeeAppWAR\rs-saml\saml-rest-backend\src\main\java\org\apache\cxf\systest\jaxrs\security\saml\KeystorePasswordCallback.java">
+</file>
+<file name="C:\DataCopy\Shirent\EmployeeAppWAR\rs-saml\saml-rest-backend\src\main\java\org\apache\cxf\systest\jaxrs\security\saml\SamlCallbackHandler.java">
+</file>
+<file name="C:\DataCopy\Shirent\EmployeeAppWAR\rs-saml\saml-rest-backend\src\main\java\org\apache\cxf\systest\jaxrs\security\saml\SamlRetrievalInterceptor.java">
+</file>
+<file name="C:\DataCopy\Shirent\EmployeeAppWAR\rs-saml\saml-rest-backend\src\main\java\org\apache\cxf\systest\jaxrs\security\saml\SecureBookServerSaml.java">
+</file>
+<file name="C:\DataCopy\Shirent\EmployeeAppWAR\rs-saml\saml-rest-backend\src\main\java\org\apache\cxf\systest\jaxrs\security\saml\SecureBookStore.java">
+</file>
+<file name="C:\DataCopy\Shirent\EmployeeAppWAR\rs-saml\saml-rest-backend\src\main\java\org\apache\cxf\systest\jaxrs\security\saml\SecureClaimBookStore.java">
+</file>
+</checkstyle>

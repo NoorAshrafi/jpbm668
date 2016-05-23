@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by ikw (Zürch Schweiz) -->
+<xsd:schema targetNamespace="file:KTG.xsd" xmlns:ktg="file:KTG.xsd" xmlns:ZBase="file:ZBase.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02">
+	<xsd:import namespace="file:ZBase.xsd" schemaLocation="ZBase.xsd"/>
+	<xsd:complexType name="KTGType">
+		<xsd:sequence>
+			<xsd:element name="Key" type="ZBase:KeyType" minOccurs="0"/>
+			<xsd:element name="Arbeitgeber" type="ktg:ArbeitgeberType"/>
+			<xsd:element name="Verletzter" type="ktg:VerletzterType"/>
+			<xsd:element name="Anstellung" type="ZBase:AnstellungType"/>
+			<xsd:element name="Ereignis" type="ktg:EreignisType"/>
+			<xsd:element name="Arbeitsunfaehigkeit" type="ktg:ArbeitsunfaehigkeitType"/>
+			<xsd:element name="Aerzte" type="ZBase:ArztenType"/>
+			<xsd:element name="Arbeitszeit" type="ZBase:ArbeitszeitType"/>
+			<xsd:element name="Lohn" type="ZBase:LohnType"/>
+			<xsd:element name="WeitereVersicherer">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Taggeld" type="xsd:boolean"/>
+						<xsd:element name="Versicherungsangeben" type="ZBase:String1000Type" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Kontakt" type="ZBase:KontaktType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--primary types-->
+	<xsd:complexType name="ArbeitgeberType">
+		<xsd:sequence>
+			<xsd:element name="Firma" type="ZBase:FirmennameType"/>
+			<xsd:element name="Adresse" type="ZBase:PostadressType"/>
+			<xsd:element name="Police">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="UVGPolice" type="ZBase:PolicenNummerType" minOccurs="0"/>
+						<xsd:element name="UVGZPolice" type="ZBase:PolicenNummerType" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Bank" type="ZBase:BankverbindungType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ArbeitsunfaehigkeitType">
+		<xsd:sequence>
+			<xsd:element name="ArbeitNiedergelegtDatum" type="xsd:date"/>
+			<xsd:element name="ArbeitNiedergelegtZeit" type="xsd:time" minOccurs="0"/>
+			<xsd:element name="ArbeitAufgenommen" type="xsd:boolean"/>
+			<xsd:element name="ArbeitAufgenommenZuProzent" minOccurs="0">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:decimal">
+						<xsd:minInclusive value="0"/>
+						<xsd:maxInclusive value="100"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="ArbeitAufgenommenAb" type="xsd:date" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="EreignisType">
+		<xsd:sequence>
+			<xsd:element name="Krankheitsart" type="ZBase:KrankheitsartType"/>
+			<xsd:element name="Krankheitsbeschreibung" type="ZBase:String1000Type" minOccurs="0"/>
+			<xsd:element name="Erkrankungsdatum" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="DatumDerGeburt" type="xsd:date" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="VerletzterType">
+		<xsd:sequence>
+			<xsd:element name="Person" type="ktg:PersonType"/>
+			<xsd:element name="Adresse" type="ZBase:PostadressType"/>
+			<xsd:element name="Bank" type="ZBase:BankverbindungType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--secondary types-->
+	<xsd:complexType name="PersonType">
+		<xsd:sequence>
+			<xsd:element name="Geschlecht" type="ZBase:GeschlechtType"/>
+			<xsd:element name="FamilienName" type="ZBase:NameType"/>
+			<xsd:element name="VorName" type="ZBase:NameType"/>
+			<xsd:element name="Geburtstag" type="xsd:date"/>
+			<xsd:element name="Nationalitaet" type="ZBase:LandType"/>
+			<xsd:element name="Zivilstand" type="ZBase:ZivilstandType"/>
+			<xsd:element name="AHVNummer" type="ZBase:AHVNummerType" minOccurs="0"/>
+			<xsd:element name="ZahlDerKinder">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:short">
+						<xsd:minInclusive value="0"/>
+						<xsd:maxInclusive value="30"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Quellensteuer" type="xsd:boolean"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

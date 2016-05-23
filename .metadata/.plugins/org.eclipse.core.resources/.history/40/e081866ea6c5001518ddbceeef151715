@@ -1,0 +1,41 @@
+package com.example;
+
+public class Fish extends Animal implements Pet{
+	
+	String name;
+
+	public Fish() {
+		super(0);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+		
+	}
+
+	@Override
+	public void play() {
+		System.out.println("always swimming");
+		
+	}
+
+	@Override
+	public void eat() {
+		System.out.println("eats worms");
+		
+	}
+	
+	@Override
+	public void walk(){
+		super.walk();
+		System.out.println("fish cant walk");
+	}
+
+}

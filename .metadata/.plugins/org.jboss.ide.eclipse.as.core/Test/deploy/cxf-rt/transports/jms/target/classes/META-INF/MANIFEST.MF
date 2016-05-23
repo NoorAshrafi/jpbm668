@@ -1,0 +1,64 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385440466155
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF Runtime JMS Transport
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime JMS Transport
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-transports-jms
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.transport.jms;version="2.7.9.SNAPSHOT",or
+ g.apache.cxf.transport.jms.continuations;version="2.7.9.SNAPSHOT",org.a
+ pache.cxf.transport.jms.spec;version="2.7.9.SNAPSHOT",org.apache.cxf.tr
+ ansport.jms.spring;version="2.7.9.SNAPSHOT",org.apache.cxf.transport.jm
+ s.uri;version="2.7.9.SNAPSHOT",org.apache.cxf.transport.jms.wsdl;versio
+ n="2.7.9.SNAPSHOT",org.apache.cxf.transport.jms.wsdl11;version="2.7.9.S
+ NAPSHOT"
+Implementation-Title: Apache CXF Runtime JMS Transport
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: org.springframework.beans.factory;resolution:=optional;v
+ ersion="[2.5,4)",org.springframework.beans.factory.annotation;resolutio
+ n:=optional;version="[2.5,4)",org.springframework.beans.factory.support
+ ;resolution:=optional;version="[2.5,4)",org.springframework.beans.facto
+ ry.xml;resolution:=optional;version="[2.5,4)",org.springframework.core.
+ task;resolution:=optional;version="[2.5,4)",org.springframework.jms;res
+ olution:=optional;version="[2.5,4)",org.springframework.jms.connection;
+ resolution:=optional;version="[2.5,4)",org.springframework.jms.core;res
+ olution:=optional;version="[2.5,4)",org.springframework.jms.listener;re
+ solution:=optional;version="[2.5,4)",org.springframework.jms.support;re
+ solution:=optional;version="[2.5,4)",org.springframework.jms.support.co
+ nverter;resolution:=optional;version="[2.5,4)",org.springframework.jms.
+ support.destination;resolution:=optional;version="[2.5,4)",org.springfr
+ amework.jndi;resolution:=optional;version="[2.5,4)",org.springframework
+ .transaction;resolution:=optional;version="[2.5,4)",org.springframework
+ .transaction.support;resolution:=optional;version="[2.5,4)",javax.annot
+ ation,javax.jms;version="[1.1,2)",javax.naming,javax.resource.spi.endpo
+ int;version="[1.5,2)";resolution:=optional,javax.transaction.xa,javax.w
+ sdl,javax.wsdl.extensions,javax.xml.bind,javax.xml.bind.annotation,java
+ x.xml.namespace,org.apache.cxf;version="[2.7,3)",org.apache.cxf.binding
+ ;version="[2.7,3)",org.apache.cxf.binding.soap.model;version="[2.7,3)",
+ org.apache.cxf.buslifecycle;version="[2.7,3)",org.apache.cxf.common.cla
+ ssloader;version="[2.7,3)",org.apache.cxf.common.i18n;version="[2.7,3)"
+ ,org.apache.cxf.common.injection;version="[2.7,3)",org.apache.cxf.commo
+ n.logging;version="[2.7,3)",org.apache.cxf.common.util;version="[2.7,3)
+ ",org.apache.cxf.configuration;version="[2.7,3)",org.apache.cxf.configu
+ ration.spring;version="[2.7,3)",org.apache.cxf.continuations;version="[
+ 2.7,3)",org.apache.cxf.endpoint;version="[2.7,3)",org.apache.cxf.featur
+ e;version="[2.7,3)",org.apache.cxf.helpers;version="[2.7,3)",org.apache
+ .cxf.interceptor;version="[2.7,3)",org.apache.cxf.io;version="[2.7,3)",
+ org.apache.cxf.message;version="[2.7,3)",org.apache.cxf.phase;version="
+ [2.7,3)",org.apache.cxf.security;version="[2.7,3)",org.apache.cxf.servi
+ ce.model;version="[2.7,3)",org.apache.cxf.transport;version="[2.7,3)",o
+ rg.apache.cxf.workqueue;version="[2.7,3)",org.apache.cxf.ws.addressing;
+ version="[2.7,3)",org.apache.cxf.wsdl;version="[2.7,3)",org.w3c.dom
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime JMS Transport
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

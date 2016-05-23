@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ==========================================================================
+   Date of Generation: 01.04.2004
+
+   This is the schema definition for a "Invoice Reminder Request" process encoded
+   in XML. The InvoiceReminderRequest is generated when an originally sent invoice was
+   not paid within the given periode. The reminder must be sent the same way
+   as the original invoice that is either as tier garant (recipient= guarantor)
+   or tiers payant (recipient=insurance).
+
+   This is normative for the electronic invoice project XMLInvoice.
+
+   Permission to use, and distribute this schema and its accompanying
+   documentation for any purpose and without fee is hereby granted in perpetuity,
+   provided that the above copyright notice and this paragraph appear in all copies
+   and this schema file is not altered.
+   The copyright holders make no representation about the suitability of the schema
+   for any purpose.
+
+   It is provided "as is" without expressed or implied warranty.
+
+   Copyright (c) 2004 Forum Datenaustausch, All Rights Reserved.
+   ========================================================================== -->
+<schema targetNamespace="http://www.xmlData.ch/xmlInvoice/XSD" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:invoice="http://www.xmlData.ch/xmlInvoice/XSD" xmlns="http://www.w3.org/2001/XMLSchema">
+	<!--
+	Datentyp string 1 bis 3 Zeichen
+	-->
+	<simpleType name="stringType1_3">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="3"/>
+		</restriction>
+	</simpleType>
+	<!--
+	Datentyp string 1 bis 9 Zeichen
+	-->
+	<simpleType name="stringType1_9">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="9"/>
+		</restriction>
+	</simpleType>
+	<!--
+	Datentyp string 1 bis 25 Zeichen
+	-->
+	<simpleType name="stringType1_25">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="25"/>
+		</restriction>
+	</simpleType>
+	<!--
+	Datentyp string 1 bis 35 Zeichen
+	-->
+	<simpleType name="stringType1_35">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="35"/>
+		</restriction>
+	</simpleType>
+	<!--
+	Datentyp string 1 bis 50 Zeichen
+	-->
+	<simpleType name="stringType1_50">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+	<!--
+	Datentyp string 1 bis 70 Zeichen
+	-->
+	<simpleType name="stringType1_70">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="70"/>
+		</restriction>
+	</simpleType>
+	<!--
+	Datentyp string 1 bis 350 Zeichen
+	-->
+	<simpleType name="stringType1_350">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="350"/>
+		</restriction>
+	</simpleType>
+	<!-- 
+	EAN-, ZSR und AHV-Nr.
+	-->
+	<simpleType name="eanPartyType">
+		<restriction base="string">
+			<pattern value="(20[0-9]{11}|76[0-9]{11})"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="xtendEanPartyType">
+		<restriction base="string">
+			<pattern value="(20[0-9]{11}|76[0-9]{11}|unknown)"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="zsrPartyType">
+		<restriction base="string">
+			<pattern value="([A-Z][0-9]{6})"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ssn13PartyType">
+		<restriction base="string">
+			<pattern value="[1-9][0-9]{12}"/>
+		</restriction>
+	</simpleType>
+	<!--
+	Adressen
+	-->
+	<complexType name="companyType">
+		<sequence>
+			<sequence>
+				<element name="companyname" type="invoice:stringType1_35"/>
+				<element name="department" type="invoice:stringType1_35" minOccurs="0" maxOccurs="3"/>
+			</sequence>
+			<element name="postal" type="invoice:postalAddressType" minOccurs="0"/>
+			<element name="telecom" type="invoice:telecomAddressType" minOccurs="0"/>
+			<element name="online" type="invoice:onlineAddressType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="personType">
+		<sequence>
+			<sequence>
+				<element name="familyname" type="invoice:stringType1_35"/>
+				<element name="givenname" type="invoice:stringType1_35" maxOccurs="3"/>
+			</sequence>
+			<element name="postal" type="invoice:postalAddressType" minOccurs="0"/>
+			<element name="telecom" type="invoice:telecomAddressType" minOccurs="0"/>
+			<element name="online" type="invoice:onlineAddressType" minOccurs="0"/>
+		</sequence>
+		<attribute name="salutation" type="invoice:stringType1_35"/>
+		<attribute name="title" type="invoice:stringType1_35"/>
+	</complexType>
+	<complexType name="zipType">
+		<simpleContent>
+			<extension base="invoice:stringType1_9">
+				<attribute name="statecode" type="invoice:stringType1_9"/>
+				<attribute name="countrycode" type="invoice:stringType1_3" default="CH"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="postalAddressType">
+		<sequence>
+			<sequence>
+				<element name="pobox" type="invoice:stringType1_35" minOccurs="0"/>
+				<element name="street" type="invoice:stringType1_35" minOccurs="0"/>
+			</sequence>
+			<element name="zip" type="invoice:zipType"/>
+			<element name="city" type="invoice:stringType1_35"/>
+		</sequence>
+	</complexType>
+	<complexType name="telecomAddressType">
+		<sequence>
+			<element name="phone" type="invoice:stringType1_25" maxOccurs="3"/>
+			<element name="fax" type="invoice:stringType1_25" minOccurs="0" maxOccurs="3"/>
+		</sequence>
+	</complexType>
+	<complexType name="onlineAddressType">
+		<sequence>
+			<element name="email" maxOccurs="3">
+				<simpleType>
+					<restriction base="invoice:stringType1_70">
+						<pattern value=".+@.+"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="url" minOccurs="0" maxOccurs="3">
+				<simpleType>
+					<restriction base="anyURI">
+						<minLength value="1"/>
+						<maxLength value="100"/>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- 
+	Adresse Rechnungssteller
+	-->
+	<complexType name="billerCompanyType">
+		<sequence>
+			<sequence>
+				<element name="companyname" type="invoice:stringType1_35"/>
+				<element name="department" type="invoice:stringType1_35" minOccurs="0" maxOccurs="3"/>
+			</sequence>
+			<sequence>
+				<element name="postal" type="invoice:postalAddressType"/>
+				<element name="telecom" type="invoice:telecomAddressType" minOccurs="0"/>
+				<element name="online" type="invoice:onlineAddressType" minOccurs="0"/>
+			</sequence>
+		</sequence>
+	</complexType>
+	<complexType name="billerPersonType">
+		<sequence>
+			<sequence>
+				<element name="familyname" type="invoice:stringType1_35"/>
+				<element name="givenname" type="invoice:stringType1_35" maxOccurs="3"/>
+			</sequence>
+			<sequence>
+				<element name="postal" type="invoice:postalAddressType"/>
+				<element name="telecom" type="invoice:telecomAddressType" minOccurs="0"/>
+				<element name="online" type="invoice:onlineAddressType" minOccurs="0"/>
+			</sequence>
+		</sequence>
+		<attribute name="salutation" type="invoice:stringType1_35"/>
+		<attribute name="title" type="invoice:stringType1_35"/>
+	</complexType>
+	<complexType name="billerAddressType">
+		<choice minOccurs="0">
+			<element name="company" type="invoice:billerCompanyType"/>
+			<element name="person" type="invoice:billerPersonType"/>
+		</choice>
+		<attribute name="ean_party" type="invoice:eanPartyType" use="required"/>
+		<attribute name="zsr" type="invoice:zsrPartyType"/>
+		<attribute name="specialty" type="invoice:stringType1_350"/>
+	</complexType>
+	<!--
+	Adresse Versicherer
+	-->
+	<complexType name="insuranceAddressType">
+		<sequence minOccurs="0">
+			<element name="company" type="invoice:companyType"/>
+		</sequence>
+		<attribute name="ean_party" type="invoice:eanPartyType" use="required"/>
+	</complexType>
+	<!-- 
+	Adresse des gesetzlichen Vertreters
+	-->
+	<complexType name="guarantorCompanyType">
+		<sequence>
+			<sequence>
+				<element name="companyname" type="invoice:stringType1_35"/>
+				<element name="department" type="invoice:stringType1_35" minOccurs="0" maxOccurs="3"/>
+			</sequence>
+			<sequence>
+				<element name="postal" type="invoice:postalAddressType"/>
+				<element name="telecom" type="invoice:telecomAddressType" minOccurs="0"/>
+				<element name="online" type="invoice:onlineAddressType" minOccurs="0"/>
+			</sequence>
+		</sequence>
+	</complexType>
+	<complexType name="guarantorPersonType">
+		<sequence>
+			<sequence>
+				<element name="familyname" type="invoice:stringType1_35"/>
+				<element name="givenname" type="invoice:stringType1_35" maxOccurs="3"/>
+			</sequence>
+			<sequence>
+				<element name="postal" type="invoice:postalAddressType"/>
+				<element name="telecom" type="invoice:telecomAddressType" minOccurs="0"/>
+				<element name="online" type="invoice:onlineAddressType" minOccurs="0"/>
+			</sequence>
+		</sequence>
+		<attribute name="salutation" type="invoice:stringType1_35"/>
+		<attribute name="title" type="invoice:stringType1_35"/>
+	</complexType>
+	<complexType name="guarantorAddressType">
+		<choice>
+			<element name="company" type="invoice:guarantorCompanyType"/>
+			<element name="person" type="invoice:guarantorPersonType"/>
+		</choice>
+		<attribute name="unique_id" type="invoice:ssn13PartyType"/>
+	</complexType>
+	<!--
+	Bankadresse
+	-->
+	<complexType name="bankCompanyType">
+		<sequence>
+			<sequence>
+				<element name="companyname" type="invoice:stringType1_35"/>
+				<element name="department" type="invoice:stringType1_35" minOccurs="0" maxOccurs="3"/>
+			</sequence>
+			<sequence>
+				<element name="postal" type="invoice:postalAddressType"/>
+				<element name="telecom" type="invoice:telecomAddressType" minOccurs="0"/>
+				<element name="online" type="invoice:onlineAddressType" minOccurs="0"/>
+			</sequence>
+		</sequence>
+	</complexType>
+	<complexType name="bankAddressType">
+		<sequence>
+			<element name="company" type="invoice:bankCompanyType"/>
+		</sequence>
+	</complexType>
+	<!--
+	Tiers Garant
+	-->
+	<complexType name="garantType">
+		<sequence>
+			<element name="biller" type="invoice:billerAddressType"/>
+			<element name="insurance" type="invoice:insuranceAddressType" minOccurs="0"/>
+			<element name="guarantor" type="invoice:guarantorAddressType"/>
+		</sequence>
+		<attribute name="payment_periode" type="duration"/>
+	</complexType>
+	<!--
+	Tiers Payant
+	-->
+	<complexType name="payantType">
+		<sequence>
+			<element name="biller" type="invoice:billerAddressType"/>
+			<element name="insurance" type="invoice:insuranceAddressType"/>
+		</sequence>
+	</complexType>
+	<!--
+	ESR9
+	-->
+	<complexType name="esr5Type">
+		<sequence>
+			<element name="bank" type="invoice:bankAddressType" minOccurs="0"/>
+		</sequence>
+		<attribute name="type" default="15">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="15plus"/>
+					<enumeration value="15"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="participant_number" use="required">
+			<simpleType>
+				<restriction base="string">
+					<pattern value="[0-9]{5}"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="reference_number" use="required">
+			<simpleType>
+				<restriction base="string">
+					<pattern value="[0-9]{5} [0-9]{5} [0-9]{5}"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="coding_line" use="required">
+			<simpleType>
+				<restriction base="string">
+					<pattern value="(&lt;[0-9]{2}0001[0-9]{9}&gt; [0-9]{15}\+ [0-9]{5}&gt;|[0-9]{15}\+ [0-9]{5}&gt;)"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+	<!--
+	ESR9
+	-->
+	<complexType name="esr9Type">
+		<sequence>
+			<element name="bank" type="invoice:bankAddressType" minOccurs="0"/>
+		</sequence>
+		<attribute name="type" default="16or27">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="16or27plus"/>
+					<enumeration value="16or27"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="reference_number" use="required">
+			<simpleType>
+				<restriction base="string">
+					<pattern value="([0-9] [0-9]{5} [0-9]{5} [0-9]{5}|[0-9]{2} [0-9]{5} [0-9]{5} [0-9]{5} [0-9]{5} [0-9]{5})"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="participant_number" use="required">
+			<simpleType>
+				<restriction base="string">
+					<pattern value="01-[1-9][0-9]{0,5}-[0-9]"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="coding_line" use="required">
+			<simpleType>
+				<restriction base="string">
+					<pattern value="(01[0-9]{11}&gt;[0-9]{16}\+ [0-9]{9}&gt;|042&gt;[0-9]{16}\+ [0-9]{9}&gt;|01[0-9]{11}&gt;[0-9]{27}\+ [0-9]{9}&gt;|042&gt;[0-9]{27}\+ [0-9]{9}&gt;)"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+	<!--
+	Monetaere Betraege
+	-->
+	<complexType name="balanceType">
+		<attribute name="currency" type="string" fixed="CHF"/>
+		<attribute name="amount" type="double" use="required"/>
+		<attribute name="amount_prepaid" default="0">
+			<simpleType>
+				<restriction base="double">
+					<minInclusive value="0"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="amount_due" use="required">
+			<simpleType>
+				<restriction base="double">
+					<minInclusive value="0"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+	<!--
+	Element reminder
+	-->
+	<complexType name="reminderType">
+		<sequence>
+			<element name="remark" type="invoice:stringType1_350"/>
+			<element name="balance" type="invoice:balanceType"/>
+			<choice>
+				<element name="esr5" type="invoice:esr5Type"/>
+				<element name="esr9" type="invoice:esr9Type"/>
+			</choice>
+			<choice>
+				<element name="tiers_garant" type="invoice:garantType"/>
+				<element name="tiers_payant" type="invoice:payantType"/>
+			</choice>
+		</sequence>
+		<attribute name="invoice_timestamp" type="unsignedLong" use="required"/>
+		<attribute name="invoice_id" type="invoice:stringType1_35" use="required"/>
+		<attribute name="invoice_date" type="dateTime" use="required"/>
+		<attribute name="resend" type="boolean" default="false"/>
+		<attribute name="case_id" type="invoice:stringType1_35"/>
+		<attribute name="reminder_timestamp" type="unsignedLong" use="required"/>
+		<attribute name="reminder_id" type="invoice:stringType1_35" use="required"/>
+		<attribute name="reminder_date" type="dateTime" use="required"/>
+		<attribute name="reminder_level" default="1">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="1"/>
+					<enumeration value="2"/>
+					<enumeration value="3"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+	<!-- 
+	Prolog
+	-->
+	<simpleType name="versionType">
+		<restriction base="integer">
+			<minInclusive value="100"/>
+		</restriction>
+	</simpleType>
+	<complexType name="softwareType">
+		<simpleContent>
+			<extension base="invoice:stringType1_50">
+				<attribute name="version" type="invoice:versionType" use="required"/>
+				<attribute name="id" default="0">
+					<simpleType>
+						<restriction base="integer">
+							<minInclusive value="0"/>
+						</restriction>
+					</simpleType>
+				</attribute>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="generatorType">
+		<sequence>
+			<element name="software" type="invoice:softwareType"/>
+		</sequence>
+	</complexType>
+	<complexType name="prologType">
+		<sequence>
+			<element name="package" type="invoice:softwareType" minOccurs="0"/>
+			<element name="generator" type="invoice:generatorType"/>
+		</sequence>
+	</complexType>
+	<!--
+	Header
+	-->
+	<complexType name="headerPartyType">
+		<attribute name="ean_party" type="invoice:eanPartyType" use="required"/>
+	</complexType>
+	<complexType name="xtendHeaderPartyType">
+		<attribute name="ean_party" type="invoice:xtendEanPartyType" use="required"/>
+	</complexType>
+	<complexType name="headerType">
+		<sequence>
+			<element name="sender" type="invoice:headerPartyType"/>
+			<element name="intermediate" type="invoice:headerPartyType"/>
+			<element name="recipient" type="invoice:xtendHeaderPartyType"/>
+		</sequence>
+	</complexType>
+	<!--
+	Beginn Mahnung
+	-->
+	<element name="request" type="invoice:requestType"/>
+	<complexType name="requestType">
+		<sequence>
+			<element name="header" type="invoice:headerType"/>
+			<element name="prolog" type="invoice:prologType"/>
+			<element name="reminder" type="invoice:reminderType"/>
+		</sequence>
+		<attribute name="role" default="production">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="production"/>
+					<enumeration value="test"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+</schema>

@@ -1,0 +1,21 @@
+echo "start pre section ecor"
+
+if [[ -d $RPM_RESPONSEFILESDIR ]] ; then
+   echo "responsefiles directory found: "$RPM_RESPONSEFILESDIR
+else
+   echo "RPM_RESPONSEFILESDIR not a directory! do the following:"
+   echo "export RPM_RESPONSEFILESDIR=<responsefilesdirectory>"
+   echo "and rerun rpm -i..."
+   exit -1
+fi
+
+%define server `hostname -s`
+
+Responsefile=$RPM_RESPONSEFILESDIR/Ecorbackend_response_%{server}
+if [[ -f $Responsefile ]] ; then
+   echo "response file found: "$Responsefile
+else
+   echo "response file missing: "$Responsefile
+   exit -1
+fi
+echo "end pre section ecor"

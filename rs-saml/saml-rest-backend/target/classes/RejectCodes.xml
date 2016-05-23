@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reject-codes>
+	<!-- * liste der offiziellen codes * -->
+	<major-codes>
+		<major-code id="1016">
+			<text>Generelle Information zur Nachricht</text>
+		</major-code>
+		<major-code id="1018">
+			<text>Geldbeträge</text>
+		</major-code>
+		<major-code id="1028">
+			<text>Versicherung</text>
+		</major-code>
+		<major-code id="1030">
+			<text>Patient</text>
+		</major-code>
+		<major-code id="1054">
+			<text>Arbeitgeber des Patienten</text>
+		</major-code>
+	</major-codes>
+	<minor-codes>
+		<minor-code id="0">
+			<text xml:lang="de">Keine Angabe</text>
+			<text xml:lang="fr">aucune indication</text>
+			<text xml:lang="it">Nessun'indicazione</text>
+		</minor-code>
+		<minor-code id="2032">
+			<text xml:lang="de">Gerundeter Nettorechnungsbetrag (fälliger Betrag)</text>
+			<text xml:lang="fr">Montant net arrondi de la facture (montant dû)</text>
+			<text xml:lang="it">Importo di fattura netto arrotondato (importo dovuto)</text>
+		</minor-code>
+		<minor-code id="2088">
+			<text xml:lang="de">Fall-Nummer der Versicherung</text>
+			<text xml:lang="fr">Numéro de cas de l'assurance</text>
+			<text xml:lang="it">Numero del caduta dell'assicurazione</text>
+		</minor-code>
+	</minor-codes>
+	<error-codes>
+		<!-- tests -->
+		<error-code id="0">
+			<text xml:lang="de">Keine Angabe</text>
+			<text xml:lang="fr">aucune indication</text>
+			<text xml:lang="it">Nessun'indicazione</text>
+		</error-code>
+		<error-code id="3028">
+			<text xml:lang="de">Behandlung geht zu Lasten eines anderen Kostenträgers</text>
+			<text xml:lang="fr">Le traitement est à charge d'une autre assurance</text>
+			<text xml:lang="it">Trattamento a carico di un'altra unità di costi</text>
+		</error-code>
+		<error-code id="3032">
+			<text xml:lang="de">Die gleiche Rechnung hatten wir schon einmal erhalten und bezahlt</text>
+			<text xml:lang="fr">La même facture nous était déjà parvenue une fois et nous l'avions payée</text>
+			<text xml:lang="it">Già una volta avevamo ricevuto ed avevamo pagato lo stesso calcolo</text>
+		</error-code>
+		<error-code id="3044">
+			<text xml:lang="de">Dieser Fall wurde von uns abgelehnt</text>
+			<text xml:lang="fr">Sinistre refusé</text>
+			<text xml:lang="it">Sinistro respinto</text>
+		</error-code>
+		<error-code id="3048">
+			<text xml:lang="de">Errechneter Betrag falsch</text>
+			<text xml:lang="fr">Le montant calculé est faux</text>
+			<text xml:lang="it">Importo calcolato scorrettamente</text>
+		</error-code>
+		<error-code id="3050">
+			<text xml:lang="de">Fehlt</text>
+			<text xml:lang="fr">Manque</text>
+			<text xml:lang="it">Manca</text>
+		</error-code>
+		<error-code id="3080">
+			<text xml:lang="de">Unbekannt</text>
+			<text xml:lang="fr">Inconnu</text>
+			<text xml:lang="it">Sconosciuto</text>
+		</error-code>
+		<error-code id="3092">
+			<text xml:lang="de">Wir besitzen keine Unfallmeldung mit Angabe des Arbeitgebers</text>
+			<text xml:lang="fr">Nous ne disposons d'aucun avis d'accident avec indication de l'employeur</text>
+			<text xml:lang="it">Ci manca la notifica d'infortunio con l'indicazione del datore di lavoro</text>
+		</error-code>
+		<error-code id="3110">
+			<text xml:lang="de">Die Original-Rechnung zu dieser Mahnung wurde von uns zurückgewiesen</text>
+			<text xml:lang="fr">Nous avions refusé la facture originale de ce rappel</text>
+			<text xml:lang="it">Abbiamo respinto la fattura originale relativa a questa diffida</text>
+		</error-code>
+	</error-codes>
+	<!-- mapping von bestehenden edi codes auf xml
+		Alle codes müssen gemappt werden
+		Die edi-codes werden als Basis für die Rüchweisungs codes verwendet.
+		Es ist wichtig, dass ein mapping eindeutig ist, das heisstjeder edi-code muss
+		auch eine einmalig Kombination von major, minor und error haben.
+	-->
+	<edi-codes>
+		<edi-code id="121" major-map="1016" minor-map="0" error-map="3032">
+			<text xml:lang="de">Rechnung wurde bereits bezahlt</text>
+			<text xml:lang="fr">Facture déjà payée</text>
+			<text xml:lang="it">Fattura già pagata</text>
+		</edi-code>
+		<edi-code id="123" major-map="1028" minor-map="0" error-map="3044">
+			<text xml:lang="de">Dieser Fall wurde von uns abgelehnt</text>
+			<text xml:lang="fr">Sinistre refusé</text>
+			<text xml:lang="it">Sinistro respinto</text>
+		</edi-code>
+		<edi-code id="124" major-map="1028" minor-map="0" error-map="3028">
+			<text xml:lang="de">Behandlung geht zu Lasten eines anderen Kostenträgers</text>
+			<text xml:lang="fr">Le traitement est à charge d'une autre assurance</text>
+			<text xml:lang="it">Trattamento a carico di un'altra unità di costi</text>
+		</edi-code>
+		<edi-code id="129" major-map="1054" minor-map="0" error-map="3092">
+			<text xml:lang="de">Wir besitzen keine Unfallmeldung mit Angabe des Arbeitgebers</text>
+			<text xml:lang="fr">Nous ne disposons d'aucun avis d'accident avec indication de l'employeur</text>
+			<text xml:lang="it">Ci manca la notifica d'infortunio con l'indicazione del datore di lavoro</text>
+		</edi-code>
+		<edi-code id="133" major-map="1028" minor-map="2088" error-map="3050">
+			<text xml:lang="de">Die Fall-Nr. oder das Unfalldatum fehlt</text>
+			<text xml:lang="fr">Le numéro ou la date de l'accident manque</text>
+			<text xml:lang="it">Mancano il numero o la data d'infortunio</text>
+		</edi-code>
+		<edi-code id="240" major-map="1030" minor-map="0" error-map="3080">
+			<text xml:lang="de">Patient unbekannt</text>
+			<text xml:lang="fr">Patient inconnu</text>
+			<text xml:lang="it">Paziente sconosciuto</text>
+		</edi-code>
+		<edi-code id="321" major-map="1028" minor-map="2088" error-map="3080">
+			<text xml:lang="de">Versicherung Patient: Fall-Nr. der Versicherung unbekannt</text>
+			<text xml:lang="fr">Assurance du patient: numéro du dossier de l'assurance inconnu</text>
+			<text xml:lang="it">Assicurazione paziente: n. di pratica dell'assicurazione sconosciuto</text>
+		</edi-code>
+		<edi-code id="382" major-map="1018" minor-map="2032" error-map="3048">
+			<text xml:lang="de">Nettorechnungsbetrag: Berechnung ist falsch</text>
+			<text xml:lang="fr">Montant net de la facture : calcul des coûts incorrect</text>
+			<text xml:lang="it">Importo netto della fattura: calcolo sbagliato dei costi</text>
+		</edi-code>
+		<edi-code id="402" major-map="1016" minor-map="0" error-map="3110">
+			<text xml:lang="de">Original-Rechnung zu dieser Mahnung wurde von uns zurückgewiesen</text>
+			<text xml:lang="fr">Nous avions refusé la facture originale de ce rappel</text>
+			<text xml:lang="it">Abbiamo respinto la fattura originale relativa a questa diffida</text>
+		</edi-code>
+		<edi-code id="999" major-map="1016" minor-map="0" error-map="0">
+			<text xml:lang="de">gemäss Freitext</text>
+			<text xml:lang="fr">Texte libre</text>
+			<text xml:lang="it">Testo libero</text>
+		</edi-code>
+	</edi-codes>
+</reject-codes>

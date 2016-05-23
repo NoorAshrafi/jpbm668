@@ -1,0 +1,55 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385439861548
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF Runtime Aegis Databinding
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime Aegis Databinding
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-databinding-aegis
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.aegis;version="2.7.9.SNAPSHOT",org.apache
+ .cxf.aegis.databinding;version="2.7.9.SNAPSHOT",org.apache.cxf.aegis.ty
+ pe;version="2.7.9.SNAPSHOT",org.apache.cxf.aegis.type.basic;version="2.
+ 7.9.SNAPSHOT",org.apache.cxf.aegis.type.collection;version="2.7.9.SNAPS
+ HOT",org.apache.cxf.aegis.type.encoded;version="2.7.9.SNAPSHOT",org.apa
+ che.cxf.aegis.type.java5;version="2.7.9.SNAPSHOT",org.apache.cxf.aegis.
+ type.mtom;version="2.7.9.SNAPSHOT",org.apache.cxf.aegis.type.xml;versio
+ n="2.7.9.SNAPSHOT",org.apache.cxf.aegis.util;version="2.7.9.SNAPSHOT",o
+ rg.apache.cxf.aegis.util.date;version="2.7.9.SNAPSHOT",org.apache.cxf.a
+ egis.util.jdom;version="2.7.9.SNAPSHOT",org.apache.cxf.aegis.util.stax;
+ version="2.7.9.SNAPSHOT",org.apache.cxf.aegis.xml;version="2.7.9.SNAPSH
+ OT",org.apache.cxf.aegis.xml.jdom;version="2.7.9.SNAPSHOT",org.apache.c
+ xf.aegis.xml.stax;version="2.7.9.SNAPSHOT"
+Implementation-Title: Apache CXF Runtime Aegis Databinding
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.activation,javax.xml.bind.annotation,javax.xml.dat
+ atype,javax.xml.namespace,javax.xml.parsers,javax.xml.stream,javax.xml.
+ transform,javax.xml.transform.dom,javax.xml.transform.stream,javax.xml.
+ validation,javax.xml.xpath,org.apache.cxf;version="[2.7,3)",org.apache.
+ cxf.annotations;version="[2.7,3)",org.apache.cxf.attachment;version="[2
+ .7,3)",org.apache.cxf.binding.soap;version="[2.7,3)",org.apache.cxf.bin
+ ding.soap.interceptor;version="[2.7,3)",org.apache.cxf.common.classload
+ er;version="[2.7,3)",org.apache.cxf.common.i18n;version="[2.7,3)",org.a
+ pache.cxf.common.logging;version="[2.7,3)",org.apache.cxf.common.util;v
+ ersion="[2.7,3)",org.apache.cxf.common.xmlschema;version="[2.7,3)",org.
+ apache.cxf.databinding;version="[2.7,3)",org.apache.cxf.endpoint;versio
+ n="[2.7,3)",org.apache.cxf.helpers;version="[2.7,3)",org.apache.cxf.int
+ erceptor;version="[2.7,3)",org.apache.cxf.io;version="[2.7,3)",org.apac
+ he.cxf.message;version="[2.7,3)",org.apache.cxf.phase;version="[2.7,3)"
+ ,org.apache.cxf.service;version="[2.7,3)",org.apache.cxf.service.factor
+ y;version="[2.7,3)",org.apache.cxf.service.invoker;version="[2.7,3)",or
+ g.apache.cxf.service.model;version="[2.7,3)",org.apache.cxf.staxutils;v
+ ersion="[2.7,3)",org.apache.ws.commons.schema;version="[2.0,3)",org.apa
+ che.ws.commons.schema.utils;version="[2.0,3)",org.jdom;resolution:=opti
+ onal,org.w3c.dom,org.xml.sax,org.xml.sax.helpers
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime Aegis Databinding
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

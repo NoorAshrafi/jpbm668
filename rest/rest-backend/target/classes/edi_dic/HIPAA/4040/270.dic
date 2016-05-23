@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<!-- Title = EDI Transaction Dictionary by Transaction Set -->
+<!-- Transaction = 270 Eligibility, Coverage or Benefit Inquiry -->
+
+<EDI Type="ASCII" Version="4040" Standard="HIPAA">
+<TransactionSet ID="270" Name="Eligibility, Coverage or Benefit Inquiry" Note="">
+
+<!--Table 1-->
+
+	<Segment ID="ST" Name="Transaction Set Header" Req="M" MaxUse="1">
+		<Element ID="01" Name="Transaction Set Identifier Code" Req="M" Type="ID" MinLength="3" MaxLength="3" Note="The transaction set identifier 'ST01' is used by the translation routines of the interchange partners to select the appropriate transaction set definition 'e.g., 810 select the Invoice Transaction Set'."/>
+		<Element ID="02" Name="Transaction Set Control Number" Req="M" Type="AN" MinLength="4" MaxLength="9"/>
+		<Element ID="03" Name="Implementation Convention Reference" Req="O" Type="AN" MinLength="1" MaxLength="35" Note="The implementation convention reference 'ST03' is used by the translation routines of the interchange partners to select the appropriate implementation convention to match the transaction set definition."/>
+	</Segment>
+	<Segment ID="BHT" Name="Beginning of Hierarchical Transaction" Req="M" MaxUse="1">
+		<Element ID="01" Name="Hierarchical Structure Code" Req="M" Type="ID" MinLength="4" MaxLength="4"/>
+		<Element ID="02" Name="Transaction Set Purpose Code" Req="M" Type="ID" MinLength="2" MaxLength="2"/>
+		<Element ID="03" Name="Reference Identification" Req="O" Type="AN" MinLength="1" MaxLength="50" Note="BHT03 is the number assigned by the originator to identify the transaction within the originator's business application system."/>
+		<Element ID="04" Name="Date" Req="O" Type="DT" MinLength="8" MaxLength="8" Note="BHT04 is the date the transaction was created within the business application system."/>
+		<Element ID="05" Name="Time" Req="O" Type="TM" MinLength="4" MaxLength="8" Note="BHT05 is the time the transaction was created within the business application system."/>
+		<Element ID="06" Name="Transaction Type Code" Req="O" Type="ID" MinLength="2" MaxLength="2"/>
+	</Segment>
+
+<!--Table 2-->
+
+	<Loop ID="2000" MaxUse="">
+		<Segment ID="HL" Name="Hierarchical Level" Req="M" MaxUse="1">
+			<Element ID="01" Name="Hierarchical ID Number" Req="M" Type="AN" MinLength="1" MaxLength="12"/>
+			<Element ID="02" Name="Hierarchical Parent ID Number" Req="O" Type="AN" MinLength="1" MaxLength="12"/>
+			<Element ID="03" Name="Hierarchical Level Code" Req="M" Type="ID" MinLength="1" MaxLength="2"/>
+			<Element ID="04" Name="Hierarchical Child Code" Req="O" Type="ID" MinLength="1" MaxLength="1"/>
+		</Segment>
+		<Segment ID="TRN" Name="Trace" Req="O" MaxUse="9">
+			<Element ID="01" Name="Trace Type Code" Req="M" Type="ID" MinLength="1" MaxLength="2"/>
+			<Element ID="02" Name="Reference Identification" Req="M" Type="AN" MinLength="1" MaxLength="50" Note="TRN02 provides unique identification for the transaction."/>
+			<Element ID="03" Name="Originating Company Identifier" Req="O" Type="AN" MinLength="10" MaxLength="10" Note="TRN03 identifies an organization."/>
+			<Element ID="04" Name="Reference Identification" Req="O" Type="AN" MinLength="1" MaxLength="50" Note="TRN04 identifies a further subdivision within the organization."/>
+		</Segment>
+
+	<Loop ID="2100" MaxUse="">
+		<Segment ID="NM1" Name="Individual or Organizational Name" Req="M" MaxUse="1">
+			<Element ID="01" Name="Entity Identifier Code" Req="M" Type="ID" MinLength="2" MaxLength="3"/>
+			<Element ID="02" Name="Entity Type Qualifier" Req="M" Type="ID" MinLength="1" MaxLength="1" Note="NM102 qualifies NM103."/>
+			<Element ID="03" Name="Name Last or Organization Name" Req="NM112,M,O" Type="AN" MinLength="1" MaxLength="60"/>
+			<Element ID="04" Name="Name First" Req="O" Type="AN" MinLength="1" MaxLength="35"/>
+			<Element ID="05" Name="Name Middle" Req="O" Type="AN" MinLength="1" MaxLength="25"/>
+			<Element ID="06" Name="Name Prefix" Req="O" Type="AN" MinLength="1" MaxLength="10"/>
+			<Element ID="07" Name="Name Suffix" Req="O" Type="AN" MinLength="1" MaxLength="10"/>
+			<Element ID="08" Name="Identification Code Qualifier" Req="NM109,M,O" Type="ID" MinLength="1" MaxLength="2"/>
+			<Element ID="09" Name="Identification Code" Req="NM108,M,O" Type="AN" MinLength="2" MaxLength="80"/>
+			<Element ID="10" Name="Entity Relationship Code" Req="NM111,M,O" Type="ID" MinLength="2" MaxLength="2"/>	
+			<Element ID="11" Name="Entity Identifier Code" Req="O" Type="ID" MinLength="2" MaxLength="3"/>
+			<Element ID="12" Name="Name Last or Organization Name" Req="O" Type="AN" MinLength="1" MaxLength="60"/>
+		</Segment>
+		<Segment ID="REF" Name="Reference Identification" Req="O" MaxUse="9">
+			<Element ID="01" Name="Reference Identification Qualifier" Req="M" Type="ID" MinLength="2" MaxLength="3"/>
+			<Element ID="02" Name="Reference Identification" Req="REF03,M,O" Type="AN" MinLength="1" MaxLength="50"/>
+			<Element ID="03" Name="Description" Req="REF02,M,O" Type="AN" MinLength="1" MaxLength="80"/>
+			<Element ID="04" Name="Reference Identifier" Req="O" Note="REF04 contains data relating to the value cited in REF02."/>
+		</Segment>
+		<Segment ID="N2" Name="Additional Name Information" Req="O" MaxUse="1">
+			<Element ID="01" Name="Name" Req="M" Type="AN" MinLength="1" MaxLength="60"/>
+			<Element ID="02" Name="Name" Req="O" Type="AN" MinLength="1" MaxLength="60"/>
+		</Segment>
+		<Segment ID="N3" Name="Address Information" Req="O" MaxUse="1">
+			<Element ID="01" Name="Address Information" Req="M" Type="AN" MinLength="1" MaxLength="55"/>
+			<Element ID="02" Name="Address Information" Req="O" Type="AN" MinLength="1" MaxLength="55"/>
+		</Segment>
+		<Segment ID="N4" Name="Geographic Location" Req="O" MaxUse="1">
+			<Element ID="01" Name="City Name" Req="O" Type="AN" MinLength="2" MaxLength="30"/>
+			<Element ID="02" Name="State or Province Code" Req="!N407,M,O" Type="ID" MinLength="2" MaxLength="2"/>
+			<Element ID="03" Name="Postal Code" Req="O" Type="ID" MinLength="3" MaxLength="15"/>
+			<Element ID="04" Name="Country Code" Req="N407,M,O" Type="ID" MinLength="2" MaxLength="3"/>
+			<Element ID="05" Name="Location Qualifier" Req="N406,M,O" Type="ID" MinLength="1" MaxLength="2"/>
+			<Element ID="06" Name="Location Identifier" Req="O" Type="AN" MinLength="1" MaxLength="30"/>
+			<Element ID="07" Name="Country Subdivision Code" Req="!N402,M,O" Type="ID" MinLength="1" MaxLength="3"/>
+		</Segment>
+		<Segment ID="PER" Name="Administrative Communications Contact" Req="O" MaxUse="3">
+			<Element ID="01" Name="Contact Function Code" Req="M" Type="ID" MinLength="2" MaxLength="2"/>
+			<Element ID="02" Name="Name" Req="O" Type="AN" MinLength="1" MaxLength="60"/>
+			<Element ID="03" Name="Communication Number Qualifier" Req="PER04,M,O" Type="ID" MinLength="2" MaxLength="2"/>
+			<Element ID="04" Name="Communication Number" Req="PER03,M,O" Type="AN" MinLength="1" MaxLength="256"/>
+			<Element ID="05" Name="Communication Number Qualifier" Req="PER06,M,O" Type="ID" MinLength="2" MaxLength="2"/>
+			<Element ID="06" Name="Communication Number" Req="PER05,M,O" Type="AN" MinLength="1" MaxLength="256"/>
+			<Element ID="07" Name="Communication Number Qualifier" Req="PER08,M,O" Type="ID" MinLength="2" MaxLength="2"/>
+			<Element ID="08" Name="Communication Number" Req="PER07,M,O" Type="AN" MinLength="1" MaxLength="256"/>
+			<Element ID="09" Name="Contact Inquiry Reference" Req="O" Type="AN" MinLength="1" MaxLength="20"/>
+		</Segment>
+		<Segment ID="PRV" Name="Provider Information" Req="O" MaxUse="1">
+			<Element ID="01" Name="Provider Code" Req="M" Type="ID" MinLength="1" MaxLength="3"/>
+			<Element ID="02" Name="Reference Identification Qualifier" Req="PRV03,M,O" Type="ID" MinLength="2" MaxLength="3"/>
+			<Element ID="03" Name="Reference Identification" Req="PRV02,M,O" Type="AN" MinLength="1" MaxLength="50"/>
+			<Element ID="04" Name="State or Province Code" Req="O" Type="ID" MinLength="2" MaxLength="2"/>
+			<Element ID="05" Name="Provider Speciality Information" Req="O"/>
+			<Element ID="06" Name="Provider Organization Code" Req="O" Type="ID" MinLength="3" MaxLength="3"/>
+		</Segment>
+		<Segment ID="DMG" Name="Demographic Information" Req="O" MaxUse="1">
+			<Element ID="01" Name="Date Time Period Format Qualifier" Req="DMG02,M,O" Type="ID" MinLength="2" MaxLength="3"/>
+			<Element ID="02" Name="Date Time Period" Req="DMG01,M,O" Type="AN" MinLength="1" MaxLength="35" Note="DMG02 is the date of birth."/>
+			<Element ID="03" Name="Gender Code" Req="O" Type="ID" MinLength="1" MaxLength="1"/>
+			<Element ID="04" Name="Maritial Status Code" Req="O" Type="ID" MinLength="1" MaxLength="1"/>
+			<Element ID="05" Name="Composite Race or Ethnicity Information" Req="DMG11,M,O"/>
+			<Element ID="06" Name="Citizenship Status Code" Req="O" Type="ID" MinLength="1" MaxLength="2"/>
+			<Element ID="07" Name="Country Code" Req="O" Type="ID" MinLength="2" MaxLength="3" Note="DMG07 is the country of citizenship."/>
+			<Element ID="08" Name="Basis of Verification Code" Req="O" Type="ID" MinLength="1" MaxLength="2"/>
+			<Element ID="09" Name="Quantity" Req="O" Type="R" MinLength="1" MaxLength="15" Note="DMG09 is the age in years."/>
+			<Element ID="10" Name="Code List Qualifier Code" Req="DMG11,M,O" Type="ID" MinLength="1" MaxLength="3"/>
+			<Element ID="11" Name="Industry Code" Req="DMG10,M,O" Type="AN" MinLength="1" MaxLength="30" Note="DMG11 is used to specify how the information in DMG05, including repeats of C056, was collected."/>
+		</Segment>
+		<Segment ID="INS" Name="Insured Benefit" Req="O" MaxUse="1">
+			<Element ID="01" Name="Yes/No Condition or Response Code" Req="M" Type="ID" MinLength="1" MaxLength="1" Note="INS01 indicates status of the insured. A 'Y' value indicates the insured is a subscriber; an 'N' value indicates the insured is a dependent."/>
+			<Element ID="02" Name="Individual Relationship Code" Req="M" Type="ID" MinLength="2" MaxLength="2"/>
+			<Element ID="03" Name="Maintenance Type Code" Req="O" Type="ID" MinLength="3" MaxLength="3"/>
+			<Element ID="04" Name="Maintenance Reason Code" Req="O" Type="ID" MinLength="2" MaxLength="3"/>
+			<Element ID="05" Name="Benefit Status Code" Req="O" Type="ID" MinLength="1" MaxLength="1"/>
+			<Element ID="06" Name="Medicare Status Code" Req="O"/>
+			<Element ID="07" Name="Consolidated Omnibus Budget Reconciliation Act 'COBRA' Qualifying Event Code" Req="O" Type="ID" MinLength="1" MaxLength="2"/>
+			<Element ID="08" Name="Employment Status Code" Req="O" Type="ID" MinLength="2" MaxLength="2"/>
+			<Element ID="09" Name="Student Status Code" Req="O" Type="ID" MinLength="1" MaxLength="1"/>
+			<Element ID="10" Name="Yes/No Condition or Response Code" Req="O" Type="ID" MinLength="1" MaxLength="1" Note="INS10 is the handicapped status indicator. A 'Y' value indicates an individual is handicapped; an 'N' value indicates an individual is not handicapped."/>
+			<Element ID="11" Name="Date Time Period Format Qualifier" Req="INS12,M,O" Type="ID" MinLength="2" MaxLength="3"/>
+			<Element ID="12" Name="Date Time Period" Req="INS11,M,O" Type="AN" MinLength="1" MaxLength="35" Note="INS12 is the date of death."/>
+			<Element ID="13" Name="Confidentiality Code" Req="O" Type="ID" MinLength="1" MaxLength="1"/>
+			<Element ID="14" Name="City Name" Req="O" Type="AN" MinLength="2" MaxLength="30" Note="INS14, INS15, and INS16 identify where the employee works."/>
+			<Element ID="15" Name="State or Province Code" Req="O" Type="ID" MinLength="2" MaxLength="2"/>
+			<Element ID="16" Name="Country Code" Req="O" Type="ID" MinLength="2" MaxLength="3"/>
+			<Element ID="17" Name="Number" Req="O" Type="N0" MinLength="1" MaxLength="9" Note="INS17 is the number assigned to each family member born with the same birth date. This number identifies birth sequence for multiple births allowing proper tracking and response of benefits for each dependent 'i.e.. twins, triplets, etc.'."/>
+		</Segment>
+		<Segment ID="DTP" Name="Date or Time or Period" Req="O" MaxUse="9">
+			<Element ID="01" Name="Date/Time Qualifier" Req="M" Type="ID" MinLength="3" MaxLength="3"/>
+			<Element ID="02" Name="Date Time Period Format Qualifier" Req="M" Type="ID" MinLength="2" MaxLength="3" Note="DTP02 is the date or time or period format that will appear in DTP03."/>
+			<Element ID="03" Name="Date Time Period" Req="M" Type="AN" MinLength="1" MaxLength="35"/>
+		</Segment>
+
+	<Loop ID="2110" MaxUse="99">
+		<Segment ID="EQ" Name="Eligibility or Benefit Inquiry" Req="O" MaxUse="1">
+			<Element ID="01" Name="Service Type Code" Req="EQ02,M,O" Type="ID" MinLength="1" MaxLength="2"/>
+			<Element ID="02" Name="Composite Medical Procedure Identifier" Req="EQ01,M,O"/>
+			<Element ID="03" Name="Coverage Level Code" Req="O" Type="ID" MinLength="3" MaxLength="3"/>
+			<Element ID="04" Name="Insurance Type Code" Req="O" Type="ID" MinLength="1" MaxLength="3"/>
+		</Segment>
+		<Segment ID="AMT" Name="Monetary Amount" Req="O" MaxUse="2">
+			<Element ID="01" Name="Amount Qualifier Code" Req="M" Type="ID" MinLength="1" MaxLength="3"/>
+			<Element ID="02" Name="Monetary Amount" Req="M" Type="R" MinLength="1" MaxLength="18"/>
+			<Element ID="03" Name="Credit/Debit Flag Code" Req="O" Type="ID" MinLength="1" MaxLength="1"/>
+		</Segment>
+		<Segment ID="VEH" Name="Vehicle Information" Req="O" MaxUse="1">
+			<Element ID="01" Name="Assigned Number" Req="O" Type="N0" MinLength="1" MaxLength="6"/>
+			<Element ID="02" Name="Vehicle Identification Number" Req="O" Type="AN" MinLength="1" MaxLength="30"/>
+			<Element ID="03" Name="Year" Req="O" Type="N0" MinLength="4" MaxLength="4"/>
+			<Element ID="04" Name="Agency Qualifier Code" Req="VEH05||VEH06||VEH07,M,O" Type="ID" MinLength="2" MaxLength="2" Note="VEH04 applies to VEH05, VEH06, and VEH07."/>
+			<Element ID="05" Name="Reference Identification" Req="VEH04||VEH06,M,O" Type="AN" MinLength="1" MaxLength="50" Note="VEH05 is the vehicle make."/>
+			<Element ID="06" Name="Reference Identification" Req="O" Type="AN" MinLength="1" MaxLength="50" Note="VEH06 is the vehicle model."/>
+			<Element ID="07" Name="Reference Identification" Req="VEH04&amp;&amp;!VEH05,M,O" Type="AN" MinLength="1" MaxLength="50" Note="VEH07 is the vehicle style."/>
+			<Element ID="08" Name="Length" Req="O" Type="R" MinLength="1" MaxLength="8" Note="VEH08 is the length of a vehicle measured in feet."/>
+			<Element ID="09" Name="Reference Identification" Req="O" Type="AN" MinLength="1" MaxLength="50" Note="VEH09 is the vehicle reference number."/>
+			<Element ID="10" Name="State or Province Code" Req="O" Type="ID" MinLength="2" MaxLength="2" Note="VEH10 is the vehicle registration state or province."/>
+			<Element ID="11" Name="Location Identifier" Req="O" Type="AN" MinLength="1" MaxLength="30" Note="VEH11 is used to identify a territory as defined by trading partners."/>
+			<Element ID="12" Name="Yes/No Condition or Response Code" Req="O" Type="ID" MinLength="1" MaxLength="1" Note="VEH12 is the used car indicator. A 'Y' value indicates the vehicle is a used vehicle; an 'N' value indicates the vehicle is a new vehicle. A value of 'U' indicating 'unknown' cannot be used."/>
+			<Element ID="13" Name="Amount" Req="O" Type="N2" MinLength="1" MaxLength="15" Note="VEH13 is the original cost of the vehicle when it was new 'i.e., OCN - original cost new'."/>
+			<Element ID="14" Name="Yes/No Condition or Response Code" Req="O" Type="ID" MinLength="1" MaxLength="1" Note="VEH14 is the vehicle altered indicator. A 'Y' value indicates the vehicle was altered; an 'N' value indicates the vehicle was not altered. A value of 'U' indicating 'unknown' cannot be used."/>
+			<Element ID="15" Name="Amount" Req="O" Type="N2" MinLength="1" MaxLength="15" Note="VEH15 is the value of alteration for a vehicle."/>
+			<Element ID="16" Name="Action Code" Req="O" Type="ID" MinLength="1" MaxLength="2"/>
+		</Segment>
+		<Segment ID="PDR" Name="Property Description - Real" Req="O" MaxUse="1">
+			<Element ID="01" Name="Type of Real Estate Asset Code" Req="M" Type="ID" MinLength="2" MaxLength="2"/>
+			<Element ID="02" Name="Code List Qualifier Code" Req="PDR03,M,O" Type="ID" MinLength="1" MaxLength="3"/>
+			<Element ID="03" Name="Industry Code" Req="PDR02,M,O" Type="AN" MinLength="1" MaxLength="30"/>
+			<Element ID="04" Name="Occupancy Code" Req="O" Type="ID" MinLength="2" MaxLength="2"/>
+		</Segment>
+		<Segment ID="PDP" Name="Property Description - Personal" Req="O" MaxUse="1">
+			<Element ID="01" Name="Type of Personal or Business Asset Code" Req="M" Type="ID" MinLength="2" MaxLength="2"/>
+			<Element ID="02" Name="Commodity Code Qualifier" Req="PDP03,M,O" Type="ID" MinLength="1" MaxLength="1"/>
+			<Element ID="03" Name="Commodity Code" Req="PDP02,M,O" Type="AN" MinLength="1" MaxLength="30"/>
+		</Segment>
+		<Segment ID="III" Name="Information" Req="O" MaxUse="10">
+			<Element ID="01" Name="Code List Qualifier Code" Req="III02,M,O" Type="ID" MinLength="1" MaxLength="3"/>
+			<Element ID="02" Name="Industry Code" Req="III01,M,O" Type="AN" MinLength="1" MaxLength="30"/>
+			<Element ID="03" Name="Code Category" Req="O" Type="ID" MinLength="2" MaxLength="2" Note="III03 is used to categorize III04."/>
+			<Element ID="04" Name="Agency Qualifier Code" Req="VEH05||VEH06||VEH07,M,O" Type="ID" MinLength="2" MaxLength="2" Note="VEH04 applies to VEH05, VEH06, and VEH07."/>
+			<Element ID="05" Name="Quantity" Req="III03||!III04,M,O" Type="R" MinLength="1" MaxLength="15"/>
+			<Element ID="06" Name="Composite Unit of Measure" Req="O"/>
+			<Element ID="07" Name="Surface/Layer/Position Code" Req="O" Type="ID" MinLength="2" MaxLength="2"/>
+			<Element ID="08" Name="Surface/Layer/Position Code" Req="O" Type="ID" MinLength="2" MaxLength="2"/>
+			<Element ID="09" Name="Surface/Layer/Position Code" Req="O" Type="ID" MinLength="2" MaxLength="2"/>
+		</Segment>
+		<Segment ID="REF" Name="Reference Identification" Req="O" MaxUse="1">
+			<Element ID="01" Name="Reference Identification Qualifier" Req="M" Type="ID" MinLength="2" MaxLength="3"/>
+			<Element ID="02" Name="Reference Identification" Req="REF03,M,O" Type="AN" MinLength="1" MaxLength="50"/>
+			<Element ID="03" Name="Description" Req="REF02,M,O" Type="AN" MinLength="1" MaxLength="80"/>
+			<Element ID="04" Name="Reference Identifier" Req="O" Note="REF04 contains data relating to the value cited in REF02."/>
+		</Segment>
+		<Segment ID="DTP" Name="Date or Time or Period" Req="O" MaxUse="9">
+			<Element ID="01" Name="Date/Time Qualifier" Req="M" Type="ID" MinLength="3" MaxLength="3"/>
+			<Element ID="02" Name="Date Time Period Format Qualifier" Req="M" Type="ID" MinLength="2" MaxLength="3" Note="DTP02 is the date or time or period format that will appear in DTP03."/>
+			<Element ID="03" Name="Date Time Period" Req="M" Type="AN" MinLength="1" MaxLength="35"/>
+		</Segment>
+	</Loop>
+
+	</Loop>
+
+	</Loop>
+
+	<Segment ID="SE" Name="Transaction Set Trailer" Req="M" MaxUse="1">
+		<Element ID="01" Name="Number of Included Segments" Req="M" Type="N0" MinLength="1" MaxLength="10"/>
+		<Element ID="02" Name="Transaction Set Control Number" Req="M" Type="AN" MinLength="4" MaxLength="9"/>
+	</Segment>
+
+</TransactionSet>
+</EDI>

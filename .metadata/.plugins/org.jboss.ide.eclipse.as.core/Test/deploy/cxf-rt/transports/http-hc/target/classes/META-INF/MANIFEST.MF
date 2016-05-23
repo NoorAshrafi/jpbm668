@@ -1,0 +1,56 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385440366744
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Blueprint: OSGI-INF/blueprint/cxf-http-async.xml
+Bundle-Description: Apache CXF Runtime HTTP Async Transport
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime HTTP Async Transport
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-transports-http-hc
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.transport.http.asyncclient;version="2.7.9
+ .SNAPSHOT"
+Export-Service: org.apache.cxf.transport.http.HTTPConduitFactory
+Implementation-Title: Apache CXF Runtime HTTP Async Transport
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: org.apache.http.nio.conn;version="[4.0.0.beta3,4.1)",org
+ .apache.http.nio.conn.scheme;version="[4.0.0.beta3,4.1)",org.apache.htt
+ p.nio.conn.ssl;version="[4.0.0.beta3,4.1)",org.apache.http.impl.nio.cli
+ ent;version="[4.0.0.beta3,4.1)",org.apache.http.impl.nio.conn;version="
+ [4.0.0.beta3,4.1)",org.apache.http;version="[4.2.1,4.3.0)",org.apache.h
+ ttp.auth;version="[4.2.1,4.3.0)",org.apache.http.client;version="[4.2.1
+ ,4.3.0)",org.apache.http.client.methods;version="[4.2.1,4.3.0)",org.apa
+ che.http.client.protocol;version="[4.2.1,4.3.0)",org.apache.http.concur
+ rent;version="[4.2.1,4.3.0)",org.apache.http.conn.params;version="[4.2.
+ 1,4.3.0)",org.apache.http.entity;version="[4.2.1,4.3.0)",org.apache.htt
+ p.impl;version="[4.2.1,4.3.0)",org.apache.http.impl.client;version="[4.
+ 2.1,4.3.0)",org.apache.http.impl.nio;version="[4.2.1,4.3.0)",org.apache
+ .http.impl.nio.reactor;version="[4.2.1,4.3.0)",org.apache.http.message;
+ version="[4.2.1,4.3.0)",org.apache.http.nio;version="[4.2.1,4.3.0)",org
+ .apache.http.nio.protocol;version="[4.2.1,4.3.0)",org.apache.http.nio.r
+ eactor;version="[4.2.1,4.3.0)",org.apache.http.nio.reactor.ssl;version=
+ "[4.2.1,4.3.0)",org.apache.http.nio.util;version="[4.2.1,4.3.0)",org.ap
+ ache.http.params;version="[4.2.1,4.3.0)",org.apache.http.protocol;versi
+ on="[4.2.1,4.3.0)",javax.annotation;version="[0.0,2)",javax.net.ssl,org
+ .apache.cxf;version="[2.7,3)",org.apache.cxf.buslifecycle;version="[2.7
+ ,3)",org.apache.cxf.common.injection;version="[2.7,3)",org.apache.cxf.c
+ ommon.util;version="[2.7,3)",org.apache.cxf.configuration.jsse;version=
+ "[2.7,3)",org.apache.cxf.configuration.security;version="[2.7,3)",org.a
+ pache.cxf.helpers;version="[2.7,3)",org.apache.cxf.io;version="[2.7,3)"
+ ,org.apache.cxf.message;version="[2.7,3)",org.apache.cxf.service.model;
+ version="[2.7,3)",org.apache.cxf.transport.http;version="[2.7,3)",org.a
+ pache.cxf.transport.https;version="[2.7,3)",org.apache.cxf.transports.h
+ ttp.configuration;version="[2.7,3)",org.apache.cxf.version;version="[2.
+ 7,3)",org.apache.cxf.ws.addressing;version="[2.7,3)",org.osgi.service.b
+ lueprint;version="[1.0.0,2.0.0)"
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime HTTP Async Transport
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

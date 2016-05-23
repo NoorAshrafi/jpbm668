@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<publish-info>
+  <server id="WildFly 8.0 Runtime Server1463667135041" path="publish2.dat"/>
+  <server id="Test" path="publish0.dat"/>
+  <server id="shirent Server1463666790151" path="publish1.dat"/>
+</publish-info>

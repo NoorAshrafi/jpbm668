@@ -1,0 +1,50 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385394897515
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF Runtime OAuth 2.0
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime OAuth 2.0
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-rs-security-oauth2
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.rs.security.oauth2.client;version="2.7.9.
+ SNAPSHOT",org.apache.cxf.rs.security.oauth2.common;version="2.7.9.SNAPS
+ HOT",org.apache.cxf.rs.security.oauth2.filters;version="2.7.9.SNAPSHOT"
+ ,org.apache.cxf.rs.security.oauth2.grants;version="2.7.9.SNAPSHOT",org.
+ apache.cxf.rs.security.oauth2.grants.clientcred;version="2.7.9.SNAPSHOT
+ ",org.apache.cxf.rs.security.oauth2.grants.code;version="2.7.9.SNAPSHOT
+ ",org.apache.cxf.rs.security.oauth2.grants.owner;version="2.7.9.SNAPSHO
+ T",org.apache.cxf.rs.security.oauth2.grants.refresh;version="2.7.9.SNAP
+ SHOT",org.apache.cxf.rs.security.oauth2.provider;version="2.7.9.SNAPSHO
+ T",org.apache.cxf.rs.security.oauth2.services;version="2.7.9.SNAPSHOT",
+ org.apache.cxf.rs.security.oauth2.tokens.bearer;version="2.7.9.SNAPSHOT
+ ",org.apache.cxf.rs.security.oauth2.tokens.mac;version="2.7.9.SNAPSHOT"
+ ,org.apache.cxf.rs.security.oauth2.tokens.refresh;version="2.7.9.SNAPSH
+ OT",org.apache.cxf.rs.security.oauth2.utils;version="2.7.9.SNAPSHOT"
+Implementation-Title: Apache CXF Runtime OAuth 2.0
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.servlet.http;version="[0.0,4)",javax.crypto,javax.
+ crypto.spec,javax.ws.rs;version="[2.0,3)",javax.ws.rs.client;version="[
+ 2.0,3)",javax.ws.rs.core;version="[2.0,3)",javax.ws.rs.ext;version="[2.
+ 0,3)",javax.xml.bind.annotation,org.apache.cxf.common.i18n;version="[2.
+ 7,3)",org.apache.cxf.common.logging;version="[2.7,3)",org.apache.cxf.co
+ mmon.security;version="[2.7,3)",org.apache.cxf.common.util;version="[2.
+ 7,3)",org.apache.cxf.configuration.security;version="[2.7,3)",org.apach
+ e.cxf.helpers;version="[2.7,3)",org.apache.cxf.interceptor.security;ver
+ sion="[2.7,3)",org.apache.cxf.jaxrs.client;version="[2.7,3)",org.apache
+ .cxf.jaxrs.ext;version="[2.7,3)",org.apache.cxf.jaxrs.ext.form;version=
+ "[2.7,3)",org.apache.cxf.jaxrs.impl;version="[2.7,3)",org.apache.cxf.ja
+ xrs.model;version="[2.7,3)",org.apache.cxf.jaxrs.utils;version="[2.7,3)
+ ",org.apache.cxf.message;version="[2.7,3)",org.apache.cxf.phase;version
+ ="[2.7,3)",org.apache.cxf.security;version="[2.7,3)"
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime OAuth 2.0
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

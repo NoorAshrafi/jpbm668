@@ -1,0 +1,27 @@
+Zookeeper endpoint list
+-----------------------
+http://b0d0yk02.ch.zurich.com:17700/show-tsl-status.jsf
+http://zsoazk.dev.ch.zurich.com:17600/show-tsl-status.jsf
+http://zsoazk.int.ch.zurich.com:17700/show-tsl-status.jsf
+http://b0d0ym02.ch.zurich.com:17800/show-tsl-status.jsf
+http://b0d0yn02.ch.zurich.com:17900/show-tsl-status.jsf
+
+locator config locator.properties
+---------------------------------
+zsoazk.dev.ch.zurich.com:16681
+zsoazk.int.ch.zurich.com:16781
+zsoazk.uat.ch.zurich.com:16881
+zsoazk.ch.zurich.com:16981
+
+Monitoring config agent.properties
+----------------------------------
+service.url=http://dev.zsoasam.ch.zurich.com:1?????/services/MonitoringServiceSOAP
+service.url=http://int.zsoasam.ch.zurich.com:16190/services/MonitoringServiceSOAP
+
+Services
+--------
+INT = https://b0d02bw2d.rz.ch.zurich.com:20443/ecor-app/services/elda/MsgExchange_1_0
+URL UAT 1 = https://b0d02c42d.rz.ch.zurich.com:30443/ecor-app/services/elda/MsgExchange_1_0?wsdl  
+URL UAT 2 = https://b0d02c52d.rz.ch.zurich.com:30443/ecor-app/services/elda/MsgExchange_1_0?wsdl
+
+

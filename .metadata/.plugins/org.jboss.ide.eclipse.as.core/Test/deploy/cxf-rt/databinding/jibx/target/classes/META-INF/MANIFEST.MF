@@ -1,0 +1,43 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385440076813
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF Runtime JiBX DataBinding
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime JiBX DataBinding
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-databinding-jibx
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.jibx;version="2.7.9.SNAPSHOT",org.apache.
+ cxf.jibx.tools;version="2.7.9.SNAPSHOT"
+Implementation-Title: Apache CXF Runtime JiBX DataBinding
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.wsdl,javax.wsdl.extensions,javax.wsdl.extensions.s
+ chema,javax.wsdl.factory,javax.wsdl.xml,javax.xml.namespace,javax.xml.s
+ tream,javax.xml.transform.dom,javax.xml.validation,org.apache.cxf;versi
+ on="[2.7,3)",org.apache.cxf.catalog;version="[2.7,3)",org.apache.cxf.co
+ mmon.jaxb;version="[2.7,3)",org.apache.cxf.common.logging;version="[2.7
+ ,3)",org.apache.cxf.common.util;version="[2.7,3)",org.apache.cxf.common
+ .xmlschema;version="[2.7,3)",org.apache.cxf.databinding;version="[2.7,3
+ )",org.apache.cxf.helpers;version="[2.7,3)",org.apache.cxf.message;vers
+ ion="[2.7,3)",org.apache.cxf.service;version="[2.7,3)",org.apache.cxf.s
+ ervice.model;version="[2.7,3)",org.apache.cxf.tools.common;version="[2.
+ 7,3)",org.apache.cxf.tools.common.model;version="[2.7,3)",org.apache.cx
+ f.tools.util;version="[2.7,3)",org.apache.cxf.tools.wsdlto.core;version
+ ="[2.7,3)",org.apache.ws.commons.schema;version="[2.0,3)",org.apache.ws
+ .commons.schema.resolver;version="[2.0,3)",org.jibx.binding;version="[1
+ .2,2)",org.jibx.binding.model;version="[1.2,2)",org.jibx.runtime;versio
+ n="[1.2,2)",org.jibx.runtime.impl;version="[1.2,2)",org.jibx.schema;ver
+ sion="[1.2,2)",org.jibx.schema.codegen;version="[1.2,2)",org.jibx.schem
+ a.codegen.custom;version="[1.2,2)",org.jibx.schema.validation;version="
+ [1.2,2)",org.jibx.util;version="[1.2,2)",org.w3c.dom,org.xml.sax
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime JiBX DataBinding
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

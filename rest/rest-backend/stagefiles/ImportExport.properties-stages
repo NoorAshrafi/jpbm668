@@ -1,0 +1,44 @@
+com.zurich.chz.importexport.export.log=export.log
+com.zurich.chz.importexport.exportDirName=export
+com.zurich.chz.importexport.exportDirNameTrace=true
+com.zurich.chz.importexport.import.log=import.log
+com.zurich.chz.importexport.importFileSuffix.1=.edi
+com.zurich.chz.importexport.importFileSuffix.2=.xml
+com.zurich.chz.importexport.internet=internet
+com.zurich.chz.importexport.lockDirName=lock
+com.zurich.chz.importexport.parkDirName=parked
+com.zurich.chz.importexport.ikmahnDirName=ikmahnung
+com.zurich.chz.importexport.root=/app/ecor/data
+com.zurich.chz.importexport.subDir1=assurbox
+com.zurich.chz.importexport.subDir2=mpgw 
+com.zurich.chz.importexport.subDir4=archive
+
+com.zurich.chz.importexport.tempZipFilePath=/app/ecor/data/tmp
+com.zurich.chz.importexport.tempXmlFilePath=/app/ecor/data/xmllog
+
+# next 3 entries for desa 
+com.zurich.chz.importexport.tempDESAFilePath=/app/ecor/data/tmp
+com.zurich.chz.importexport.xsl.DESALayoutXslPath=/app/ecor/container/webapps/ecor-app/WEB-INF/classes/xsl/desa/DESA_Layout.xsl
+com.zurich.chz.desa.absender=##DESA_ABSENDER##
+# soll desa fax aus Infoswiss gesendet werden
+com.zurich.chz.desa.infoFaxEnabled=##SEND_INFO_FAX_ENABLED##
+
+# next 3 entries for mob hp
+com.zurich.chz.importexport.tempPartFaxFilePath=/app/ecor/data/tmp
+com.zurich.chz.importexport.xsl.PartFaxLayoutXslPath=/app/ecor/container/webapps/ecor-app/WEB-INF/classes/xsl/mobhp/PartFax_Layout.xsl
+com.zurich.chz.partfax.absender=##PARTFAX_ABSENDER##
+# soll mob hp fax aus Infoswiss gesendet werden
+com.zurich.chz.mobhp.infoFaxEnabled=##SEND_INFO_MOBHP_FAX_ENABLED##
+
+com.zurich.chz.isProdEnv=##PROD_ENV##
+com.zurich.chz.test.receiver.desaAndPartFax=##TEST_DESA_AND_PARTFAX_RECEIVER##
+
+//	--- XXX_1 --- Temporäre Lösung: Spezialbehandlung ALPINA Schadenmeldungen ---
+com.zurich.chz.importexport.NovellidAlpinaAdmin=##NOVELL_ID_ALPINA_ADMIN##
+
+# --- 1Min --- für KdxMessageBatchHandlerPlugin -----------------------
+com.zurich.chz.importexport.pollingInterval=60000
+com.zurich.chz.importexport.writeFile=true
+# com.zurich.chz.importexport.xsl.removeFieldsXslPath=xsl/removeFields.xsl
+com.zurich.chz.importexport.xsl.removeFieldsXslPath=/app/ecor/container/webapps/ecor-app/WEB-INF/classes/xsl/removeFields.xsl
+

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	 xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:cxf="http://cxf.apache.org/core"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+	xmlns:sec="http://cxf.apache.org/configuration/security"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+		http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
+		http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://cxf.apache.org/configuration/security http://cxf.apache.org/schemas/configuration/security.xsd">
+
+
+    <import resource="classpath:META-INF/cxf/cxf.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-extension-http-jetty.xml" />
+
+    <context:annotation-config />
+ 
+    <context:property-placeholder
+        location="classpath:locator.properties,classpath:common.properties,classpath:stsTruststore.properties" />
+<!-- 
+ATTENTION : the ststTokenInterceptor is a temporary Solution as long as the Omniswitch does not sent 
+			a WS-Security Header.
+			This MUST be removed when the correct Security Header is provided
+ -->
+
+    <cxf:bus>
+        
+        <cxf:features>
+            <cxf:logging />
+        </cxf:features>
+    </cxf:bus>
+
+
+
+   
+  
+    
+    <!-- Start for Provider -->
+ <jaxrs:server id="customerService" address="http://localhost:9000/service1">
+    <jaxrs:serviceBeans>
+      <ref bean="customerBean" />
+    </jaxrs:serviceBeans>
+  </jaxrs:server>
+ 
+  <bean id="customerBean" class="demo.jaxrs.server.CustomerService" />
+    
+    <!-- end for Provider -->
+    
+    
+    
+    
+    
+    
+   
+
+</beans>

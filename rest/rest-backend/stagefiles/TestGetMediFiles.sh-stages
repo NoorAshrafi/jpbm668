@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+scp ##MEDIPORT_USER##@##MEDIPORT_SERVER##:MPGateway/mpgw/out/test/* ##BASEDIR##/##OWNER##/data/mpgw/
+ssh ##MEDIPORT_USER##@##MEDIPORT_SERVER## 'rm -f ##MEDIPORT_BASEDIR##/##MEDIPORT_USER##/MPGateway/mpgw/out/test/*'

@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!-- Title = EDI Transaction Dictionary by Transaction Set -->
+<!-- Transaction = Header and Footer information -->
+<!--Element Types Legend: A = alphabetic characters, N = numeric characters, AN = alpha-numeric characters-->
+
+<EDI Type="UN" Version="D.01A Syntax version 3" Standard="FACT">
+<!--Start of Header Information-->
+<!--Start of Interchange Header-->
+	<Segment ID="UNB" Name="Interchange Header" Req="O" MaxUse="1">
+		<CompositeElement ID="S001" Name="Syntax Identifier" Req="M" MaxUse="1">
+			<ComponentElement ID="0001" Name="Syntax Identifier" Req="M" MaxUse="1" Type="AN" MinLength="4" MaxLength="4"/>
+			<ComponentElement ID="0002" Name="Syntax Version Number" Req="M" MaxUse="1" Type="N" MinLength="1" MaxLength="1"/>
+		</CompositeElement>
+		<CompositeElement ID="S002" Name="Interchange Sender" Req="M" MaxUse="1">
+			<ComponentElement ID="0004" Name="Sender Identification" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+			<ComponentElement ID="0007" Name="Partner Identification Code Qualifier" Req="O" MaxUse="1" Type="AN" MinLengh="1" MaxLength="4"/>
+			<ComponentElement ID="0008" Name="Address For Reverse Routing" Req="O" MaxUse="1" Type="AN" MinLengh="1" MaxLength="14"/>
+		</CompositeElement>
+		<CompositeElement ID="S003" Name="Interchange Recipient" Req="M" MaxUse="1">
+			<ComponentElement ID="0010" Name="Recipient Identification" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+			<ComponentElement ID="0007" Name="Partner Identification Code Qualifier" Req="O" MaxUse="1" Type="AN" MinLengh="1" MaxLength="4"/>
+			<ComponentElement ID="0014" Name="Routing Address" Req="O" MaxUse="1" Type="AN" MinLengh="1" MaxLength="14"/>
+		</CompositeElement>
+		<CompositeElement ID="S004" Name="Date-Time Preparation" Req="M" MaxUse="1">
+			<ComponentElement ID="0017" Name="Date Of Preperation" Req="M" MaxUse="1" Type="N" MinLength="6" MaxLength="6"/>
+			<ComponentElement ID="0019" Name="Time Of Preperation" Req="M" MaxUse="1" Type="N" MinLengh="4" MaxLength="4"/>
+		</CompositeElement>
+		<Element ID="0020" Name="Interchange Control Reference" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="14"/>
+		<CompositeElement ID="S005" Name="Recipients Reference, Password" Req="O" MaxUse="1">
+			<ComponentElement ID="0022" Name="Recipients Reference-Password" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="14"/>
+			<ComponentElement ID="0025" Name="Recipients Reference-Password Qualifier" Req="O" MaxUse="1" Type="AN" MinLengh="2" MaxLength="2"/>
+		</CompositeElement>
+		<Element ID="0026" Name="Application Reference" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="14"/>
+		<Element ID="0029" Name="Process Priority Code" Req="O" MaxUse="1" Type="A" MinLength="1" MaxLength="1"/>
+		<Element ID="0031" Name="Acknowledgement Request" Req="O" MaxUse="1" Type="N" MinLength="1" MaxLength="1"/>
+		<Element ID="0032" Name="Communications Agreement ID" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+		<Element ID="0035" Name="Test Indicator" Req="O" MaxUse="1" Type="N" MinLength="1" MaxLength="1"/>
+	</Segment>
+<!--End of Interchange Header-->
+<!--Start of Group Header-->
+	<Segment ID="UNG" Name="Functional Group Header" Req="O" MaxUse="">
+		<Element ID="0038" Name="Functional Group Identification" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="6"/>
+		<CompositeElement ID="S006" Name="Application Senders Identification" Req="M" MaxUse="1">
+			<ComponentElement ID="0040" Name="Sender Identification" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+			<ComponentElement ID="0007" Name="Partner Identification Code Qualifier" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="4"/>
+		</CompositeElement>
+		<CompositeElement ID="S007" Name="Application Recipients IDentification" Req="M" MaxUse="1">
+			<ComponentElement ID="0044" Name="Recipients Identification" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="35"/>
+			<ComponentElement ID="0007" Name="Partner Identification Code Qualifier" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="4"/>
+		</CompositeElement>
+		<CompositeElement ID="S004" Name="Date-Time Preparation" Req="M" MaxUse="1">
+			<ComponentElement ID="0017" Name="Date Of Preperation" Req="M" MaxUse="1" Type="N" MinLength="6" MaxLength="6"/>
+			<ComponentElement ID="0019" Name="Time Of Preperation" Req="M" MaxUse="1" Type="N" MinLengh="4" MaxLength="4"/>
+		</CompositeElement>
+		<Element ID="0048" Name="Functional Group Reference Number" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="14"/>
+		<Element ID="0051" Name="Controlling Agency" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="2"/>
+		<CompositeElement ID="S008" Name="Message Version" Req="M" MaxUse="1">
+			<ComponentElement ID="0052" Name="Message Version Number" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="3"/>
+			<ComponentElement ID="0054" Name="Message Release Number" Req="M" MaxUse="1" Type="AN" MinLengh="1" MaxLength="3"/>
+			<ComponentElement ID="0057" Name="Associations Assigned Code" Req="O" MaxUse="1" Type="AN" MinLengh="1" MaxLength="6"/>
+		</CompositeElement>
+		<Element ID="0058" Name="Application Password" Req="O" MaxUse="1" Type="AN" MinLength="1" MaxLength="14"/>
+	</Segment>
+<!--End of Group Header-->
+<!--End of Header Information-->
+        <Loop ID="UNH"/>
+<!--Start of Footer Information-->
+	<Segment ID="UNE" Name="Functional Group Trailer" Req="O" MaxUse="">
+		<Element ID="0060" Name="Number of Messages" Req="M" MaxUse="1" Type="N" MinLength="1" MaxLength="6"/>
+		<Element ID="0048" Name="Functional Group Reference Number" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="14"/>
+	</Segment>
+	<Segment ID="UNZ" Name="Interchange Trailer" Req="O" MaxUse="1">
+		<Element ID="0036" Name="Interchange Control Count" Req="M" MaxUse="1" Type="N" MinLength="1" MaxLength="6"/>
+		<Element ID="0020" Name="Interchange Control Reference" Req="M" MaxUse="1" Type="AN" MinLength="1" MaxLength="14"/>
+	</Segment>
+<!--End of Footer Information-->
+</EDI>

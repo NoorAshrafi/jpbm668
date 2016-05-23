@@ -1,0 +1,462 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"> 
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>SamlZrest-backend</artifactId> 
+    <packaging>war</packaging>
+    <name>rest-backend webapp</name>
+    <url></url>
+
+    <parent>
+        <groupId>com.zurich.ch.elda</groupId>
+        <artifactId>elda-parent</artifactId>
+	    <version>7.0.0</version>         
+    </parent>
+ 
+    <dependencies>
+        
+       
+ 		<dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet.api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <dependency>
+
+        <groupId>org.apache.cxf</groupId>
+
+        <artifactId>cxf-rt-frontend-jaxws</artifactId>
+        <version>${cxf.version}</version>
+
+    </dependency>
+
+    <dependency>
+
+        <groupId>org.apache.cxf</groupId>
+
+        <artifactId>cxf-rt-transports-http</artifactId>
+
+        <version>${cxf.version}</version>
+
+    </dependency>
+
+    <dependency>
+
+        <groupId>org.apache.cxf</groupId>
+
+        <artifactId>cxf-rt-transports-http-jetty</artifactId>
+
+        <version>${cxf.version}</version>
+
+    </dependency>
+    <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring-version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring-version}</version>
+        </dependency>
+    
+    <dependency>
+    <groupId>org.apache.cxf</groupId>
+    <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+    <version>${cxf.version}</version></dependency>
+    <dependency><groupId>commons-httpclient</groupId>
+    <artifactId>commons-httpclient</artifactId>
+    <version>3.1</version></dependency>
+    <dependency><groupId>javax.ws.rs</groupId>
+    <artifactId>javax.ws.rs-api</artifactId>
+    <version>2.0-m10</version>
+    </dependency>
+    <dependency>
+    <groupId>org.apache.cxf</groupId>
+    <artifactId>cxf-testutils</artifactId>
+    <version>2.7.11</version>
+</dependency>
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.11</version>
+</dependency>
+<dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-ws-security</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-ws-policy</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-ws-addr</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-security-xml</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+    <groupId>org.apache.cxf.systests</groupId>
+    <artifactId>cxf-systests-jaxrs</artifactId>
+    <version>2.3.2</version>
+</dependency>
+    
+        <!--  new dependency start -->
+        <dependency><groupId>xalan</groupId><artifactId>xalan</artifactId><version>2.6.0</version></dependency>
+        
+        
+        <dependency><groupId>org.apache.cxf</groupId><artifactId>cxf-core</artifactId><version>${cxf.version}</version></dependency>
+        <dependency><groupId>org.apache.cxf</groupId><artifactId>cxf-rt-databinding-jaxb</artifactId><version>${cxf.version}</version></dependency>
+        <dependency><groupId>org.apache.cxf</groupId><artifactId>cxf-rt-rs-security-xml</artifactId><version>${cxf.version}</version></dependency>
+        <dependency><groupId>org.apache.cxf</groupId><artifactId>cxf-rt-rs-security-oauth</artifactId><version>${cxf.version}</version></dependency>
+        <dependency><groupId>org.apache.cxf</groupId><artifactId>cxf-rt-rs-security-oauth2-saml</artifactId><version>${cxf.version}</version></dependency>
+        <dependency><groupId>org.apache.cxf</groupId><artifactId>cxf-rt-transports-http</artifactId><version>${cxf.version}</version></dependency>
+        <dependency><groupId>org.apache.cxf</groupId><artifactId>cxf-rt-transports-http-jetty</artifactId><version>${cxf.version}</version></dependency>
+        
+        <dependency><groupId>org.apache.cxf</groupId><artifactId>cxf-rt-frontend-jaxrs</artifactId><version>${cxf.version}</version></dependency>
+        <dependency><groupId>org.apache.cxf</groupId><artifactId>cxf-rt-rs-client</artifactId><version>${cxf.version}</version></dependency>
+        
+        <dependency><groupId>javax.annotation</groupId><artifactId>jsr250-api</artifactId><version>1.0</version><scope>test</scope></dependency>
+        
+        <dependency><groupId>org.springframework</groupId><artifactId>spring-tx</artifactId><version>${spring-version}</version><scope>test</scope></dependency><dependency><groupId>org.aspectj</groupId><artifactId>aspectjrt</artifactId><version>1.5.4</version><scope>test</scope></dependency><dependency><groupId>org.aspectj</groupId><artifactId>aspectjweaver</artifactId><version>1.5.4</version><scope>test</scope></dependency>
+        
+        
+
+        <!--  new dependency end -->
+        <dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>1.6.1</version>
+</dependency>
+        
+
+    </dependencies>
+    
+    <build>
+		<plugins>
+			<!-- Enabling and configuring regular resources filtering. See also section "resources" below -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<!-- specify UTF-8, ISO-8859-1 or any other file encoding -->
+					<!--  <encoding>Cp1252</encoding>  -->
+					<!--  <encoding>UTF-8</encoding> NOK -->
+					<encoding>ISO-8859-1</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<webResources>
+						<resource>
+							<filtering>true</filtering>
+							<directory>src/main/webapp</directory>
+							<includes>
+								<include>**/*.css</include>
+								<!-- include any other file types you want to filter -->
+							</includes>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+		</plugins>
+		<!-- Instructing the resources plugin to filter certain directories -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+    </build>
+
+    
+<!-- Profiles start here -->
+	<profiles>
+        <profile>
+			<id>local</id>
+			<build>
+				<finalName>rest-app</finalName>
+			</build>
+			<properties>
+				<db.driverClass>oracle.jdbc.driver.OracleDriver</db.driverClass>
+
+				<!--  <db.connectionURL>jdbc:oracle:thin:@b0d0t502.rz.ch.zurich.com:1521:CHZUOLD1</db.connectionURL>   -->
+				<!--  <db.username>elda</db.username>   -->
+                <!--  <db.password>eu</db.password>     -->		
+				<!--  <service.url>http://int.zsoasam.ch.zurich.com:16190/services/MonitoringServiceSOAP</service.url>  -->
+                <!--  <locator.endpoints>zsoazk.dev.ch.zurich.com:16681</locator.endpoints>   -->	
+                <!--   <importexport.xsl.removeFieldsXslPath>/app/ecor/container/webapps/ecor-app/WEB-INF/classes/xsl/removeFields.xsl</importexport.xsl.removeFieldsXslPath>  -->
+
+				<db.connectionURL>jdbc:oracle:thin:@b0d0t502.rz.ch.zurich.com:1521:CHZUOLD1</db.connectionURL>
+				<db.username>elda</db.username>
+				<db.password>eu</db.password>
+				<service.url>http://int.zsoasam.ch.zurich.com:16190/services/MonitoringServiceSOAP</service.url>
+                <locator.endpoints>zsoazk1.uat.ch.zurich.com:16881,zsoazk2.uat.ch.zurich.com:16881</locator.endpoints>				
+                <importexport.xsl.removeFieldsXslPath>/app/rest/container/webapps/rest-app/WEB-INF/classes/xsl/removeFields.xsl</importexport.xsl.removeFieldsXslPath>
+
+			</properties>
+        </profile>
+		<profile>
+			<id>dev-env</id>
+			<build>
+				<finalName>${project.artifactId}</finalName>
+			</build>
+			<properties>
+				<db.driverClass>oracle.jdbc.driver.OracleDriver</db.driverClass>
+		<!--  	    <db.connectionURL>jdbc:oracle:thin:@dbuelda1.rz.ch.zurich.com:1521:UELDA1</db.connectionURL>    -->
+			    <db.connectionURL>jdbc:oracle:thin:@b0d0t502.rz.ch.zurich.com:1521:CHZUOLD1</db.connectionURL>
+				<db.username>elda</db.username>
+				<db.password>eu</db.password>
+				<service.url>http://int.zsoasam.ch.zurich.com:16190/services/MonitoringServiceSOAP</service.url>
+				<locator.endpoints>zsoazk.int.ch.zurich.com:16781</locator.endpoints>
+			</properties>
+		</profile>
+		<profile>
+			<id>int-env</id>
+			<build>
+				<finalName>${project.artifactId}</finalName>
+			</build>
+			<properties>
+				<db.driverClass>oracle.jdbc.driver.OracleDriver</db.driverClass>
+				<db.connectionURL>jdbc:oracle:thin:@ora-chzdold1.rz.ch.zurich.com:1521:chzdold1</db.connectionURL>
+				<db.username>elda</db.username>
+				<db.password>ed</db.password>
+				<service.url>http://int.zsoasam.ch.zurich.com:16190/services/MonitoringServiceSOAP</service.url>
+				<locator.endpoints>zsoazk.int.ch.zurich.com:16781</locator.endpoints>
+			</properties>
+		</profile>
+		<profile>
+			<id>uat-env</id>
+			<build>
+				<finalName>elda-app</finalName>
+			</build>
+			<properties>
+				<db.driverClass>oracle.jdbc.driver.OracleDriver</db.driverClass>
+				<db.connectionURL>jdbc:oracle:thin:@ora-chzqold1.rz.ch.zurich.com:1521:chzqold1</db.connectionURL>
+				<db.username>elda</db.username>
+				<db.password>life02</db.password>
+				<service.url>https://uat.zsoasam.ch.zurich.com:16090/services/MonitoringServiceSOAP</service.url>
+				<locator.endpoints>zsoazk1.uat.ch.zurich.com:16881,zsoazk2.uat.ch.zurich.com:16881</locator.endpoints>
+			</properties>
+		</profile>
+		<profile>
+                <id>server</id>
+                <build>
+                    <defaultGoal>test</defaultGoal>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>exec-maven-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <phase>test</phase>
+                                    <goals>
+                                        <goal>java</goal>
+                                    </goals>
+                                    <configuration>
+                                        <mainClass>demo.jaxrs.server.Server</mainClass>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </build>
+            </profile>
+            <profile>
+                <id>client</id>
+                <build>
+                    <defaultGoal>test</defaultGoal>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>exec-maven-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <phase>test</phase>
+                                    <goals>
+                                        <goal>java</goal>
+                                    </goals>
+                                    <configuration>
+                                        <mainClass>demo.jaxrs.client.Client</mainClass>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </build>
+        </profile>
+		<profile>
+			<id>rpm-env</id>
+			<properties>
+				<db.driverClass>oracle.jdbc.driver.OracleDriver</db.driverClass>
+				<db.connectionURL>jdbc:oracle:thin:@ora-chzqold1.rz.ch.zurich.com:1521:chzqold1</db.connectionURL>
+				<db.username>elda</db.username>
+				<db.password>life02</db.password>
+			</properties>
+			<!-- RPM Build -->
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>rpm-maven-plugin</artifactId>
+						<version>2.1</version>
+						<executions>
+							<execution>
+								<id>generate-rpm</id>
+								<goals>
+									<goal>rpm</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<license>Zurich Insurance</license>
+							<distribution>ECOR 2015</distribution>
+							<group>Business Application</group>
+							<release>1</release>
+							<!--<icon>src/main/resources/ci-logo.jpeg</icon> -->
+							<packager>Bamboo</packager>
+							<prefix>/app/rest</prefix>
+							<changelogFile>src/changelog</changelogFile>
+							<defineStatements>
+								<defineStatement>_unpackaged_files_terminate_build 0</defineStatement>
+								<defineStatement>user rest</defineStatement>
+								<defineStatement>groupname rest</defineStatement>
+								<defineStatement>webcontext rest-app</defineStatement>
+								<defineStatement>jdkhome /opt/tools/java/jdk1.7</defineStatement>
+								<defineStatement>jdk jdk1.7</defineStatement>
+
+							</defineStatements>
+							
+							<mappings>
+							    <!-- webapps/webapp -->
+								<mapping>
+									<directory>/app/rest/container/webapps/%{webcontext}</directory>
+									<filemode>775</filemode>
+									<username>%{user}</username>
+									<groupname>%{groupname}</groupname>
+									<sources>
+										<source>
+											<location>target/${artifactId}-${project.version}</location>
+										</source>
+									</sources>
+								</mapping>
+								<mapping>
+									<directory>/app/ecor/container/webapps</directory>
+									<filemode>775</filemode>
+									<username>%{user}</username>
+									<groupname>%{groupname}</groupname>
+								</mapping>
+								
+							    <!-- ecor-scripts -->								
+								<mapping>
+									<directory>/app/ecor/bin</directory>
+									<filemode>775</filemode>
+									<username>%{user}</username>
+									<groupname>%{groupname}</groupname>
+									<sources>
+										<source>
+											<location>${basedir}/scripts</location>
+										</source>
+									</sources>
+								</mapping>
+
+							    <!-- goxml -->								
+								<mapping>
+									<directory>/app/ecor/goxml</directory>
+									<filemode>775</filemode>
+									<username>%{user}</username>
+									<groupname>%{groupname}</groupname>
+									<sources>
+										<source>
+											<location>${basedir}/goxml</location>
+										</source>
+									</sources>
+								</mapping>
+
+							    <!-- stagefiles -->								
+								<mapping>
+									<directory>/app/ecor/stagefiles</directory>
+									<filemode>440</filemode>
+									<username>%{user}</username>
+									<groupname>%{groupname}</groupname>
+									<sources>
+										<source>
+											<location>${basedir}/stagefiles</location>
+										</source>
+									</sources>
+								</mapping>
+							</mappings>
+
+							<preinstallScriptlet>
+								<scriptFile>${basedir}/rpm-build/scripts/preinstall</scriptFile>
+								<fileEncoding>utf-8</fileEncoding>
+							</preinstallScriptlet>
+
+							<postinstallScriptlet>
+								<scriptFile>${basedir}/rpm-build/scripts/postinstall</scriptFile>
+								<fileEncoding>utf-8</fileEncoding>
+							</postinstallScriptlet>
+							<!-- <preremoveScriptlet> <scriptFile>src/main/scripts/preremove</scriptFile> 
+								<fileEncoding>utf-8</fileEncoding> </preremoveScriptlet> -->
+
+							<postremoveScriptlet>
+								<scriptFile>${basedir}/rpm-build/scripts/postremove</scriptFile>
+								<fileEncoding>utf-8</fileEncoding>
+							</postremoveScriptlet>
+
+						</configuration>
+					</plugin>
+
+					<plugin>
+						<artifactId>maven-deploy-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>installable rpm pom</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>deploy-file</goal>
+								</goals>
+								<configuration>
+									<artifactId>${artifactId}</artifactId>
+									<packaging>rpm</packaging>
+									<version>${project.version}</version>
+									<groupId>${groupId}</groupId>
+									<classifier>bin</classifier>
+									<file>target/rpm/${project.artifactId}/RPMS/noarch/${artifactId}-${project.version}-1.noarch.rpm</file>
+									<repositoryId>zurich.snapshots.https</repositoryId>
+									<pomFile>pom.xml</pomFile>
+									<url>http://int.zsoamaven.ch.zurich.com:45000/nexus/service/local/staging/deploy/maven2</url>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+
+		</profile>
+  </profiles>  
+</project>

@@ -1,0 +1,1205 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by ikw (Zürch Schweiz) -->
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Roger Müller (softwarepipeline.com) -->
+<xsd:schema targetNamespace="http://www.zurich.ch/elda" xmlns="http://www.zurich.ch/elda" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02">
+	<xsd:include schemaLocation="EldaExBase_1_0.xsd"/>
+	<xsd:include schemaLocation="Message_1_0.xsd"/>
+	<xsd:element name="MfExpertise" type="MfExpertisenDokument"/>
+	<!--simple types-->
+	<xsd:simpleType name="AuftragsnummerType">
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:totalDigits value="15"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PrioritaetType">
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:totalDigits value="2"/>
+			<xsd:maxInclusive value="99"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DatumType">
+		<xsd:restriction base="xsd:date">
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ZeitType">
+		<xsd:restriction base="xsd:time">
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--complex types-->
+	<xsd:complexType name="MfExpertisenDokument">
+		<xsd:complexContent>
+			<xsd:extension base="AbstractDokumentType">
+				<xsd:all>
+					<xsd:element name="Auftragsdaten">
+						<xsd:annotation>
+							<xsd:documentation>FeldNr: 1 - 16, 148 - 157</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:all>
+								<xsd:element name="Auftragsnummer" type="AuftragsnummerType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>Feldnr: 1</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Auftraggeber">
+									<xsd:complexType>
+										<xsd:all>
+											<xsd:element name="Gesellschaft">
+												<xsd:annotation>
+													<xsd:documentation>FeldNr: 2</xsd:documentation>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="NumCodeType">
+														<xsd:minInclusive value="1"/>
+														<xsd:maxInclusive value="40"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="UserId" type="UserIdType" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>FeldNr: 3</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="SpazId" type="UserIdType" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>FeldNr: 3a</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="Telefonnummer" type="TelefonnummerType" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>FeldNr: 6</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+										</xsd:all>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="Auftragsdatum" type="DatumType">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 4</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Auftragszeit" type="ZeitType">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 5</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Taetigkeit" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 10</xsd:documentation>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="NumCodeType">
+											<xsd:minInclusive value="1"/>
+											<xsd:maxInclusive value="10"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="DESARegion" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 14d</xsd:documentation>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="NumCodeType">
+											<xsd:minInclusive value="1"/>
+											<xsd:maxInclusive value="4"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="PoolBox" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 14e</xsd:documentation>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="NumCodeType">
+											<xsd:minInclusive value="1"/>
+											<xsd:maxInclusive value="999"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="Besichtigung" minOccurs="0">
+									<xsd:complexType>
+										<xsd:group ref="BesichtigungsGroup"/>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="Prioritaet" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 15a</xsd:documentation>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="PrioritaetType"/>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="Erledigungsart" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 15b</xsd:documentation>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="NumCodeType">
+											<xsd:minInclusive value="1"/>
+											<xsd:maxInclusive value="12"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="ErledigungsartEffektiv" type="NumCodeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 15d</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Vorschaeden" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 15c</xsd:documentation>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:boolean">
+											<xsd:whiteSpace value="collapse"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="Bemerkungen" type="MemoType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 16</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="ExpertiseErzwingen" type="xsd:boolean" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 21</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="DurchlaufZeitKDX" type="xsd:positiveInteger" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>technisches Feld ELDA-Intern Anzahl Tage</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="SherpaOut" type="DatumType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>technisches Feld ELDA-Intern (Eingangs-Datum Expertise/Bewertung)</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="SchadenInfoEmpfaenger" type="NumCodeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 606</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Dokumentensprache" type="NumCodeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 607</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="MeldungDurch" type="String255Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 611</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:all>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="Schadendaten" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>FeldNr: 18 - 28, 7, 7a, 135 - 146, 246</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:all>
+								<xsd:element name="Schadennummer" type="String64Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 18</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Schadendatum" type="xsd:date">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 7</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="SchadendatumMutiert" type="xsd:date" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 7a</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Zeitpunkt" type="xsd:time" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 203</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Ort" type="String30Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 204</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Geschaedigter" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 135 - 146</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:group ref="Geschaedigter"/>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="Schadenhergang" type="MemoType">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 22</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Schadenklassifikation" type="Num3StatusCodeType">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 24</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Schaetzer" type="String255Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 25a</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="SchadenBeschreibung1" type="MemoType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 25b</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="SchadenBeschreibung2" type="MemoType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 25c</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Verschulden" type="Num3StatusCodeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 26</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="HalswirbelsaeulenVerletzung" type="Num3StatusCodeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 27</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Verletzte" type="Num3StatusCodeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 27a</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Behandlungsort" type="String255Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 27b</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Rapport" type="String255Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 28</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="RapportDienststelle" type="String30Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 205</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="FahrzeugAbgeschlossen" type="Num3StatusCodeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 206</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="AlarmEingeschaltet" type="Num3StatusCodeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 207</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="FahrzeugSchluessel" type="String30Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 209</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:all>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="Fahrzeugdaten" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>FeldNr: 30 - 45</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:all>
+								<xsd:element name="Kontrollschild" type="KontrollschildType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 30</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Fahrgestellnummer" type="String64Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 32</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="ErstInbetriebnahme" type="xsd:date" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 33</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Fahrzeugart">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 34</xsd:documentation>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="NumCodeType">
+											<xsd:enumeration value="1"/>
+											<xsd:enumeration value="3"/>
+											<xsd:enumeration value="5"/>
+											<xsd:enumeration value="6"/>
+											<xsd:enumeration value="7"/>
+											<xsd:enumeration value="8"/>
+											<xsd:enumeration value="9"/>
+											<xsd:enumeration value="10"/>
+											<xsd:enumeration value="11"/>
+											<xsd:enumeration value="12"/>
+											<xsd:enumeration value="13"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="Marke" type="String64Type">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 37</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Haupttyp" type="String255Type">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 38</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Untertyp" type="String255Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr:  602</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Farbe" type="String255Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 41</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Baujahr" type="xsd:gYear" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 43</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="DeklarierterKatalogpreis" type="GeldMengeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 44b</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Zubehoerpreis" type="GeldMengeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 45</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Kilometerstand" type="xsd:unsignedLong" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 208</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:all>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="Versicherungsdaten" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>FeldNr: 31. 39 - 40, 46 - 56, 108 - 120</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:all>
+								<xsd:element name="Policennummer" type="PolicenNummerType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 46</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Versicherungsnehmer" type="AdressenType">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 108 - 120</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Deckung">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 50</xsd:documentation>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="NumCodeType">
+											<xsd:enumeration value="1"/>
+											<xsd:enumeration value="2"/>
+											<xsd:enumeration value="3"/>
+											<xsd:enumeration value="4"/>
+											<xsd:enumeration value="5"/>
+											<xsd:enumeration value="6"/>
+											<xsd:enumeration value="7"/>
+											<xsd:enumeration value="8"/>
+											<xsd:enumeration value="9"/>
+											<xsd:enumeration value="10"/>
+											<xsd:enumeration value="11"/>
+											<xsd:enumeration value="12"/>
+											<xsd:enumeration value="13"/>
+											<xsd:enumeration value="14"/>
+											<xsd:enumeration value="15"/>
+											<xsd:enumeration value="16"/>
+											<xsd:enumeration value="17"/>
+											<xsd:enumeration value="18"/>
+											<xsd:enumeration value="21"/>
+											<xsd:enumeration value="22"/>
+											<xsd:enumeration value="23"/>
+											<xsd:enumeration value="24"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="Deckungsumfang" type="MemoType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 51</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Klauseln" type="MemoType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 52</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="BesondereBestimmungen" type="MemoType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 53</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="AllgemeineBedingungen" type="MemoType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 54</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Leasing" type="xsd:boolean" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 55</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Zession" type="xsd:boolean" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 56</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Selbstbehalt" type="GeldMengeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 68</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="SelbstbehaltGemBBZB" type="String255Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 69</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="KontrollschildVN" type="KontrollschildType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 31</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="MarkeVN" type="String64Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 39</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Zeitwertzusatz" type="xsd:boolean" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 57</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="FahrzeugtypVN" type="String255Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 40</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:all>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="Rueckfuehrungsdaten" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>FeldNr: 400 - 499</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:all>
+								<xsd:element name="Rueckfuehrung" type="xsd:boolean">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 400</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="AnsprechpartnerVorOrt" type="String64Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 402</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="FahrzeugAusweis" type="LageplatzCodeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 403</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="FahrzeugSchluessel" type="LageplatzCodeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 404</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="FahrzeugDokumente" type="LageplatzCodeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 405</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="PhotosVorhanden" type="xsd:boolean">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 406</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="FahrzeugAdresse" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 407 - 412, 418</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:all>
+											<xsd:element name="StandortZurZeit" type="String64Type">
+												<xsd:annotation>
+													<xsd:documentation>FeldNr: 418</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="Strasse" type="String64Type">
+												<xsd:annotation>
+													<xsd:documentation>FeldNr: 407</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="PLZ" type="PLZType">
+												<xsd:annotation>
+													<xsd:documentation>FeldNr: 408</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="Ort" type="String64Type">
+												<xsd:annotation>
+													<xsd:documentation>FeldNr: 409</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="Land">
+												<xsd:annotation>
+													<xsd:documentation>FeldNr: 410</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="Telefonnummer" type="TelefonnummerType">
+												<xsd:annotation>
+													<xsd:documentation>FeldNr: 411</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="Faxnummer" type="TelefonnummerType" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>FeldNr: 412</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+										</xsd:all>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="Branche" type="BranchenCodeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 413</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Rueckfuehrkosten" type="GeldMengeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 414</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Restwerterloes" type="GeldMengeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 415</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Auftragserteilung" type="xsd:date" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 416</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Ablieferung" type="xsd:date" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 417</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Einbindung" type="xsd:boolean" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr. 419</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Totalschaden" type="xsd:boolean" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 521</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Restwertverwerter" type="String64Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 522</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="RueckfuehrungStatus" type="NumCodeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>technisches Feld ELDA-Intern </xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="RueckfuehrungEffektiv" type="xsd:boolean" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 523</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:all>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="Lenker" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>FeldNr: 123 - 131, 200, 201</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:all>
+								<xsd:element name="Name" type="String64Type">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 123</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Vorname" type="String64Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 122</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Strasse" type="String64Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 124</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Nummer" type="String16Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 125</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="PLZ" type="PLZType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 126</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Ort" type="String64Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 127</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Land" type="IsoLandCodeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 128</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="TelefonPrivat" type="TelefonnummerType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 129</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Mobile" type="TelefonnummerType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 131</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Geburtsdatum" type="xsd:date" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 200</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Pruefungsdatum" type="xsd:date" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 201</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:all>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="Schadenpartnerdaten" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>FeldNr: 500 - 599</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:all>
+								<xsd:element name="Einbindbar" type="xsd:boolean" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 501</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Einbindungsfall" type="xsd:boolean" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: ??</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="NichtEinbindbarGrund" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: ??</xsd:documentation>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="NumCodeType">
+											<xsd:minInclusive value="1"/>
+											<xsd:maxInclusive value="7"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="Totalschaden" type="xsd:boolean" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 502</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Zuweisung" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 503</xsd:documentation>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="NumCodeType">
+											<xsd:minInclusive value="1"/>
+											<xsd:maxInclusive value="5"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="Reparaturpartner" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 506</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Partnerrabat" type="ProzentType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 508</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="EffektRepKosten" type="GeldMengeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 511</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="EffektRepDauerInTagen" type="AnzahlType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 513</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="UebergabeAnRepPartner" type="xsd:date" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 514</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="RuecknahmeVonRepPartner" type="xsd:date" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 515</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Reparaturqualitaet" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 516</xsd:documentation>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="NumCodeType">
+											<xsd:minInclusive value="1"/>
+											<xsd:maxInclusive value="2"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="Ersatzwagen" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 517 - 518</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:all>
+											<xsd:element name="Benutzung" type="NumCodeType">
+												<xsd:annotation>
+													<xsd:documentation>FeldNr: 517</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="Kosten" type="GeldMengeType" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>FeldNr: 518</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+										</xsd:all>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="KostenAndereMobilitaet" type="GeldMengeType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 519</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Bemerkungen" type="MemoType" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 520</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Selbstzahler" type="xsd:boolean" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 609</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:all>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="Verursacher" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>FeldNr: 235 - 243</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:all>
+								<xsd:element name="Adresse" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 235 - 239</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:all>
+											<xsd:element name="Vorname" type="String30Type" minOccurs="0"/>
+											<xsd:element name="Nachname" type="String64Type"/>
+											<xsd:element name="Strasse" type="String64Type" minOccurs="0"/>
+											<xsd:element name="Nummer" type="String16Type" minOccurs="0"/>
+											<xsd:element name="PLZ" type="PLZType" minOccurs="0"/>
+											<xsd:element name="Ort" type="String64Type" minOccurs="0"/>
+											<xsd:element name="Land" type="IsoLandCodeType" minOccurs="0"/>
+											<xsd:element name="PrivatTelefonnummer" type="TelefonnummerType" minOccurs="0"/>
+										</xsd:all>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="Fahrzeug" type="String64Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 240</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Farbe" type="String30Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 241</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Kontrollschild" type="String16Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 242</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="Versicherer" type="String64Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>FeldNr: 243</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:all>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="AuslaendischerVersicherungsnehmer" minOccurs="0">
+						<xsd:complexType>
+							<xsd:group ref="AuslVersicherungsnehmerGroup"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="Expertisendaten" type="ExpertisendatenType"/>
+				</xsd:all>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!--groups-->
+	<xsd:group name="Geschaedigter">
+		<xsd:all>
+			<xsd:element name="Versicherer" type="String64Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 202</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Adresse" type="AdressenType"/>
+		</xsd:all>
+	</xsd:group>
+	<xsd:group name="BesichtigungsGroup">
+		<xsd:all>
+			<xsd:element name="Besichtigungstermin" minOccurs="0">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="Besichtigungsdatum" type="DatumType">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 11</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="BesichtigungszeitVon" type="ZeitType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 12</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="BesichtigungszeitBis" type="ZeitType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 13</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="BesichtigungszeitCode" type="NumCodeType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 610</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="BesichtigungsOrt" minOccurs="0">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="Partnernummer" type="AlphaNumCodeType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 14g</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Ratingcode" type="RatingCodeType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 14f</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Adresse" type="AdressenType">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 148 - 158</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+	</xsd:group>
+	<xsd:group name="AuslVersicherungsnehmerGroup">
+		<xsd:all>
+			<xsd:element name="Adresse" type="AdressenType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 280- 286</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Fahrzeug" type="String64Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 287</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Kontrollschild" type="String16Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 288</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Immatrikulationsland" type="IsoLandCodeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 289</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AuslVersicherer" type="String64Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 290</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GrueneVersicherungskartenNr" type="String16Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 291</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Grenzversicherung" type="String64Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 292</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:all>
+	</xsd:group>
+	<!--expertisendaten-->
+	<xsd:complexType name="ExpertisendatenType">
+		<xsd:all>
+			<xsd:element name="Experte" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 60 - 63 (Email: 62  Mobilenummer: 63)</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="Region" type="RegionenCodeType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 500</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Id" type="NumCodeType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 60b</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Vorname" type="String30Type" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 60a</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Nachname" type="String64Type">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 60</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Email" type="EmailType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 62</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Mobilenummer" type="TelefonnummerType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 63</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ReparaturkostenKalkuliert" type="GeldMengeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 64 (temporär: optional)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SummeAbzPartnerRabatt" type="GeldMengeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 67 (temporär: optional)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EffektiveBesichtigung" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 75 - 75.2 (temporär: optional)</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="Besichtigungsdatum" type="DatumType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 75</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="BesichtigungszeitVon" type="ZeitType">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 75.1</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="BesichtigungszeitBis" type="ZeitType">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 75.2</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TaetigkeitKDX" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 612</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="NumCodeType">
+						<xsd:minInclusive value="1"/>
+						<xsd:maxInclusive value="10"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="MinderwertBerechnung" type="xsd:boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 79</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FahrzeugwertErmittlung" type="GeldMengeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 80</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ReparaturdauerTage" type="AnzahlType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 91</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AusfalldauerTage" type="AnzahlType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 92 (temporär: optional)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Ersatzwagen" type="GeldMengeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 98</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="StatusKDX" type="NumCodeType">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 107a</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Fremdexpertise" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 107b - 107c</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="Fremdexpertisenbuero">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 107b</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:pattern value=".*"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="FremdexpertisenHonorar" type="GeldMengeType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 107c</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Dokumente" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FeldNr: 613 - 617</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Dokument" type="DokumentenType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Werkstatt" minOccurs="0">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="Vorname" type="String30Type" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 618</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Nachname" type="String64Type">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 619</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Strasse" type="String64Type" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 620</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Nummer" type="String16Type" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 621</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="PLZ" type="PLZType">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 622</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Ort" type="String64Type">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 623</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Land" type="IsoLandCodeType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 624</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="PrivatTelefonnummer" type="TelefonnummerType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 625</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="GeschaeftTelefonnummer" type="TelefonnummerType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 626</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Mobilenummer" type="TelefonnummerType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 627</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Faxnummer" type="TelefonnummerType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 628</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Ratingcode" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 629</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Partnernummer" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>FeldNr: 630</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,219 @@
+XML GLOBAL TECHNOLOGIES, INC. END USER
+       LICENSE AGREEMENT (EULA)
+       
+THIS IS A LEGAL AGREEMENT BETWEEN  YOU
+(EITHER  AN INDIVIDUAL OR AN  ENTITY),
+AS   THE  END  USER,  AND  XML  GLOBAL
+TECHNOLOGIES, INC. ("XML GLOBAL").  BY
+INSTALLING, DOWNLOADING, OR  OTHERWISE
+USING  THE SOFTWARE, YOU AGREE  TO  BE
+BOUND  BY  ALL  OF THE TERMS  OF  THIS
+AGREEMENT. IF YOU DO NOT AGREE TO  THE
+TERMS   OF  THIS  AGREEMENT,  DO   NOT
+INSTALL, DOWNLOAD OR OTHERWISE USE THE
+SOFTWARE.
+
+1. Grant of License.
+XML  Global  grants to you a  limited,
+royalty-free,   non-exclusive,    non-
+transferable license without right  to
+sublicense, distribute or modify,  for
+you  and  your employees  to  use  the
+software   and  related  documentation
+("Product")  for  business   purposes.
+This license is valid for installation
+on  one  server with between  one  and
+four  processors. XML Global  reserves
+all   other  rights  unless  expressly
+provided herein. If the terms of  this
+license  agreement are  violated,  XML
+Global  immediately  terminates   said
+license and you will be subject to the
+liability  of  any harm  done  to  XML
+Global.
+
+2. Title.
+The  Product, its copyright, trademark
+and  any  other intellectual  property
+rights in the Product are owned by XML
+Global. XML Global retains all rights,
+title and ownership of the Product and
+all  subsequent full or partial copies
+and  derivatives of the Product,  made
+by  you  or XML Global, including  but
+not    limited    to,    translations,
+compilations,     partial      copies,
+modifications and updates,  regardless
+of  the  form or media in or on  which
+the  same  may exist. This license  is
+not  a sale of the Product or any copy
+or    derivative.   You   acquire   no
+ownership  rights to the Product  from
+this Agreement and no right to use the
+Product  beyond  the  terms  of   this
+agreement. You shall have no right  to
+reproduce  any full or partial  copies
+of  the Product and as such, you agree
+not to take any steps, such as reverse
+assembly  or  reverse compilation,  to
+derive a source code equivalent of any
+software contained in the Product.
+
+3. Confidential Information.
+You  agree that the Product, and other
+information, technical data, or  know-
+how   (including   documentation   and
+results  of  testing) related  to  the
+Product     shall    be     considered
+Confidential   Information   of    XML
+Global.  You  agree  to  protect   the
+confidentiality of, and  not  disclose
+the  Confidential Information  to  any
+other   party   without  the   written
+permission of XML Global. Unauthorized
+use   or  disclosure  of  Confidential
+Information may cause irreparable harm
+to  XML  Global. You agree  to  report
+promptly  any  unauthorized   use   or
+disclosure to XML Global.
+
+4. Term of Agreement.
+This  Agreement shall commence  as  of
+the   date   of  your  indication   of
+acceptance,  by following  the  online
+procedure and installing the  Product.
+The  Agreement shall remain in  effect
+at XML Global’s discretion, and may be
+replaced  with a subsequent  agreement
+at   which  time  the  Agreement  will
+terminate    without    notice.    The
+Agreement  may  also be terminated  by
+XML  Global  in writing at  any  time,
+with    or    without   cause.    Upon
+termination  of  this  Agreement,  you
+agree  to  return to  XML  Global,  or
+certify the destruction of, all copies
+of  the Product, whether in full or in
+part, in your possession.
+
+5.  Warranty and Maintenance. 
+For  the period   of  ninety  (90)days 
+from  receipt  of  Product, XML Global
+warrants that unmodified, the  Product
+will  operate in accordance  with  the
+specifications.  Upon notification  of
+any  errors,  XML Global will,  during
+its  normal business hours and  at  no
+further  cost  to you, use  reasonable
+efforts  to correct such errors  which
+are reproducible and verifiable by XML
+Global  so  long as such  errors  were
+caused  by  use  of  the  Product   in
+accordance  with  the  specifications.
+XML  Global is not required to provide
+any  further  support  or  maintenance
+unless contracted for under a separate
+maintenance agreement.
+
+6. Warranty Exclusion.
+EXCEPT  AS  PROVIDED FOR IN SECTION 5,
+XML GLOBAL PROVIDES THIS PRODUCT AS IS
+AND   WITH  ALL  FAULTS,  AND   HEREBY
+DISCLAIMS    ALL    WARRANTIES     AND
+CONDITIONS, EITHER EXPRESS, IMPLIED OR
+STATUTORY, INCLUDING, BUT NOT  LIMITED
+TO,     IMPLIED     WARRANTIES      OF
+MERCHANTABILITY  OR  FITNESS   FOR   A
+PARTICULAR   PURPOSE.  THERE   IS   NO
+WARRANTY OR CONDITION OF TITLE,  QUIET
+ENJOYMENT,      CORRESPONDENCE      TO
+DESCRIPTION OR NON-INFRINGEMENT,  WITH
+REGARD TO THE PRODUCT. THE ENTIRE RISK
+AS TO THE QUALITY OF OR ARISING OUT OF
+USE OR PERFORMANCE OF THE PRODUCT,  IF
+ANY, REMAINS WITH YOU. XML GLOBAL  AND
+ITS   SUPPLIERS  DO  NOT  AND   CANNOT
+WARRANT THE PERFORMANCE OR RESULTS YOU
+MAY OBTAIN BY USING THE PRODUCT.
+
+7. Exclusion of Damages and Limitation
+of Liability.
+  IN  NO  EVENT  SHALL XML  GLOBAL  BE
+LIABLE  FOR DAMAGES YOU MAY INCUR  FOR
+ANY  REASON WHATSOEVER, INCLUDING, BUT
+NOT  LIMITED TO, LOSS OF PROFITS, LOSS
+OF   USE,   SPECIAL,   INCIDENTAL   OR
+CONSEQUENTIAL DAMAGES ARISING  OUT  OF
+OR  RELATED TO THE USE OF THE PRODUCT,
+OR  OTHERWISE IN CONNECTION WITH  THIS
+AGREEMENT,  EVEN  IN  THE   EVENT   OF
+NEGLIGENCE,  STRICT LIABILITY,  BREACH
+OF  CONTRACT OR WARRANTY OF XML GLOBAL
+OR  ONE  OF  ITS  SUPPLIERS,  EVEN  IF
+ADVISED  OF  THE POSSIBILITY  OF  SUCH
+DAMAGES.
+
+8. Indemnification.
+You  agree  to indemnify,  defend  and
+hold  XML  Global  harmless  from  and
+against  any and all claims,  actions,
+suits, liabilities, judgments, losses,
+damages,  attorneys’  fees  and  other
+expenses of every nature and character
+by  reason of this Agreement or use by
+you of products utilizing the Product.
+
+9. Exports Restrictions.
+You  agree  not to export or transfer,
+directly  or indirectly, any  Product,
+or the direct product of such Product,
+to  any  destination subject to export
+restrictions  under U.S.  law,  unless
+prior  written authorization has  been
+obtained  from  the  appropriate  U.S.
+agency.  You  agree to  indemnify  and
+hold  XML Global harmless against  all
+losses, damages, penalties, or  causes
+of  action  resulting from a violation
+of this Section.
+
+10. U.S. Government Restricted Rights
+All   Product  provided  to  the  U.S.
+Government is provided with RESTRICTED
+RIGHTS.    Use,    duplication,     or
+disclosure   by   the  Government   is
+subject  to restrictions as set  forth
+in   subparagraph  (c)(1)(ii)  of  the
+Rights  in Technical Data and Computer
+Software  clause at DFARS 252.227-7013
+or subparagraphs (c)(1) and (2) of the
+Commercial   Computer   Software    --
+Restricted Rights at 48 CFR 52.227-19,
+as applicable.
+
+11. Governing Law.
+The       validity,       performance,
+construction  and  interpretation   of
+this  Agreement shall be  governed  by
+the  laws  of the state of  New  York,
+excluding its conflicts of laws rules.
+
+12. Entire Agreement.
+This  Agreement  contains  the  entire
+understanding  of  the  parties   with
+respect  to the subject matter  hereof
+and  supersedes  all prior  agreements
+and    understandings   between    the
+parties.  This Agreement may  only  be
+altered   or   otherwise  amended   or
+terminated  pursuant to an  instrument
+in writing signed by both parties.
+
+13. Parties Bound.
+The party accepting this Agreement  on
+behalf  of  an entity represents  that
+he/she  is authorized to execute  this
+Agreement on the entity’s behalf.
+
+
+

@@ -1,0 +1,6 @@
+locator.endpoints=##LOC_END##
+endpoint.prefix=##LOC_PRF##
+locator.strategy=defaultSelectionStrategy
+locator.reloadAdressesCount=10
+connection.timeout=5000
+session.timeout=5000

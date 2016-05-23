@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--XSD file template-->
+<!--Created by IONA Artix Designer-->
+<schema targetNamespace="http://schemas.zurich.com/zsoa/ch/common/2006/10" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://schemas.zurich.com/zsoa/ch/common/2006/10" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="NVPair">
+      <sequence>
+         <element name="name" type="string"/>
+         <element name="value" type="string"/>
+      </sequence>
+   </complexType>
+   <element name="ZSOAFaultDetails">
+      <complexType>
+         <sequence>
+            <element name="exceptionCode" type="string"/>
+            <element name="timestamp" type="string"/>
+            <element name="additionalExceptionInformation" type="tns:NVPair" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+      </complexType>
+   </element>
+   <simpleType name="Gender">
+      <restriction base="string">
+         <enumeration value="M"/>
+         <enumeration value="F"/>
+      </restriction>
+   </simpleType>
+   <simpleType name="LanguageType">
+      <restriction base="string">
+         <enumeration value="DE"/>
+         <enumeration value="FR"/>
+         <enumeration value="IT"/>
+      </restriction>
+   </simpleType>
+</schema>

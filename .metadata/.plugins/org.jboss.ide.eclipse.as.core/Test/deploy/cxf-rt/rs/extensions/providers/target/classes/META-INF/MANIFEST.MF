@@ -1,0 +1,54 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385394770012
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF JAX-RS Extensions: Providers
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF JAX-RS Extensions: Providers
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-rs-extension-providers
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.jaxrs.provider.aegis;version="2.7.9.SNAPS
+ HOT",org.apache.cxf.jaxrs.provider.atom;version="2.7.9.SNAPSHOT",org.ap
+ ache.cxf.jaxrs.provider.dom4j;version="2.7.9.SNAPSHOT",org.apache.cxf.j
+ axrs.provider.json;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.provid
+ er.json.utils;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.provider.js
+ onp;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.provider.xmlbeans;ver
+ sion="2.7.9.SNAPSHOT"
+Implementation-Title: Apache CXF JAX-RS Extensions: Providers
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.servlet;version="[0.0,4)";resolution:=optional,jav
+ ax.servlet.http;version="[0.0,4)";resolution:=optional,javax.ws.rs;vers
+ ion="[2.0,3)",javax.ws.rs.core;version="[2.0,3)",javax.ws.rs.ext;versio
+ n="[2.0,3)",javax.xml.bind,javax.xml.bind.annotation.adapters,javax.xml
+ .namespace,javax.xml.stream,org.apache.abdera;version="[1.1,2)";resolut
+ ion:=optional,org.apache.abdera.factory;version="[1.1,2)";resolution:=o
+ ptional,org.apache.abdera.model;version="[1.1,2)";resolution:=optional,
+ org.apache.abdera.parser;version="[1.1,2)";resolution:=optional,org.apa
+ che.abdera.writer;version="[1.1,2)";resolution:=optional,org.apache.cxf
+ .aegis;version="[2.7,3)";resolution:=optional,org.apache.cxf.aegis.type
+ ;version="[2.7,3)";resolution:=optional,org.apache.cxf.common.logging;v
+ ersion="[2.7,3)",org.apache.cxf.common.util;version="[2.7,3)",org.apach
+ e.cxf.helpers;version="[2.7,3)",org.apache.cxf.interceptor;version="[2.
+ 7,3)",org.apache.cxf.io;version="[2.7,3)",org.apache.cxf.jaxrs.ext;vers
+ ion="[2.7,3)",org.apache.cxf.jaxrs.provider;version="[2.7,3)",org.apach
+ e.cxf.jaxrs.utils;version="[2.7,3)",org.apache.cxf.message;version="[2.
+ 7,3)",org.apache.cxf.phase;version="[2.7,3)",org.apache.cxf.staxutils;v
+ ersion="[2.7,3)",org.apache.cxf.staxutils.transform;version="[2.7,3)",o
+ rg.apache.xmlbeans;resolution:=optional,org.codehaus.jettison;version="
+ [1.3,2)";resolution:=optional,org.codehaus.jettison.badgerfish;version=
+ "[1.3,2)";resolution:=optional,org.codehaus.jettison.json;version="[1.3
+ ,2)";resolution:=optional,org.codehaus.jettison.mapped;version="[1.3,2)
+ ";resolution:=optional,org.codehaus.jettison.util;version="[1.3,2)";res
+ olution:=optional,org.dom4j;resolution:=optional,org.dom4j.io;resolutio
+ n:=optional,org.w3c.dom;resolution:=optional
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF JAX-RS Extensions: Providers
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

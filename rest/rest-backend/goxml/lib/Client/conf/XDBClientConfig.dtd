@@ -1,0 +1,10 @@
+<!-- DTD for GoXMLDB server config file -->
+
+<!ELEMENT XDBConfig (SrvInfo*)>
+<!ELEMENT SrvInfo (#PCDATA) >
+<!ATTLIST SrvInfo name CDATA #REQUIRED>
+<!ATTLIST SrvInfo host CDATA #REQUIRED>
+<!ATTLIST SrvInfo port CDATA #REQUIRED>
+
+
+

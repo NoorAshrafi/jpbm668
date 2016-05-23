@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  ==========================================================================
+
+   This is the schema definition for a "General Credit Request" process encoded
+   in XML. The GeneralCreditRequest is generated when sending one credit request
+   to a recipient via an intermediate either for tier garant or tiers payant. 
+   That is the sender deals with the intermediate in the sense of a mailbox. 
+   It is the intermediate's responsibility to manage the communication with the 
+   recipient.
+
+   This is normative for the electronic invoice/cancel project XMLInvoice.
+
+   Permission to use, and distribute this schema and its accompanying
+   documentation for any purpose and without fee is hereby granted in perpetuity,
+   provided that the above copyright notice and this paragraph appear in all copies
+   and this schema file is not altered.
+   The copyright holders make no representation about the suitability of the schema
+   for any purpose.
+
+   It is provided "as is" without expressed or implied warranty.
+
+   Copyright (c) 2005 Forum Datenaustausch, 
+   All Rights Reserved.
+   ==========================================================================  -->
+<schema targetNamespace="http://www.forum-datenaustausch.ch/de" 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:credit="http://www.forum-datenaustausch.ch/de" 
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+<!-- =======================================================================
+	General data type definitions
+ ======================================================================= -->
+	<!--  string type with length 1-3 characters  -->
+	<simpleType name="stringType1_3">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="3"/>
+		</restriction>
+	</simpleType>
+	<!--  string type with length 1-6 characters  -->
+	<simpleType name="stringType1_6">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="6"/>
+		</restriction>
+	</simpleType>
+	<!--  string type with length 1-9 characters  -->
+	<simpleType name="stringType1_9">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="9"/>
+		</restriction>
+	</simpleType>
+	<!--  string type with length 1-12 characters  -->
+	<simpleType name="stringType1_12">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="12"/>
+		</restriction>
+	</simpleType>
+	<!--  string type with length 1-25 characters  -->
+	<simpleType name="stringType1_25">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="25"/>
+		</restriction>
+	</simpleType>
+	<!--  string type with length 1-35 characters  -->
+	<simpleType name="stringType1_35">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="35"/>
+		</restriction>
+	</simpleType>
+	<!--  string type with length 1-50 characters  -->
+	<simpleType name="stringType1_50">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+	<!--  string type with length 1-70 characters  -->
+	<simpleType name="stringType1_70">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="70"/>
+		</restriction>
+	</simpleType>
+	<!--  string type with length 1-350 characters  -->
+	<simpleType name="stringType1_350">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="350"/>
+		</restriction>
+	</simpleType>
+	<!--  string type with length 0-350 characters  -->
+	<simpleType name="stringType0_350">
+		<restriction base="string">
+			<maxLength value="350"/>
+		</restriction>
+	</simpleType>
+	<!--  EAN-, ZSR-, NIF-Nr.  -->
+	<simpleType name="eanPartyType">
+		<restriction base="string">
+			<pattern value="(20[0-9]{11}|76[0-9]{11})"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="xtendEanPartyType">
+		<restriction base="string">
+			<pattern value="(20[0-9]{11}|76[0-9]{11}|unknown)"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="zsrPartyType">
+		<restriction base="string">
+			<pattern value="([A-Z][0-9]{6}|[0-9]{6}[A-Z])"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="unionPartyType">
+		<union memberTypes="credit:xtendEanPartyType credit:zsrPartyType"/>
+	</simpleType>
+	<simpleType name="nifPartyType">
+		<restriction base="string">
+			<pattern value="[0-9]{1,7}"/>
+		</restriction>
+	</simpleType>
+	<!--  SSN-Nr.  -->
+	<simpleType name="ssnPartyType">
+		<restriction base="string">
+			<pattern value="[1-9][0-9]{10}|[1-9][0-9]{12}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ssn13PartyType">
+		<restriction base="string">
+			<pattern value="[1-9][0-9]{12}"/>
+		</restriction>
+	</simpleType>
+	<!--  employee of a company  -->
+	<complexType name="employeeType">
+		<sequence>
+			<element name="familyname" type="credit:stringType1_35"/>
+			<element name="givenname" type="credit:stringType1_35" maxOccurs="3"/>
+			<element name="telecom" type="credit:telecomAddressType" minOccurs="0"/>
+			<element name="online" type="credit:onlineAddressType" minOccurs="0"/>
+		</sequence>
+		<attribute name="salutation" type="credit:stringType1_35"/>
+		<attribute name="title" type="credit:stringType1_35"/>
+	</complexType>
+	<!--  amount  -->
+	<simpleType name="amountType">
+		<restriction base="double">
+			<minInclusive value="0"/>
+		</restriction>
+	</simpleType>
+	<!--  costs definition  -->
+	<complexType name="costsType">
+		<attribute name="amount" type="credit:amountType"/>
+		<attribute name="currency" type="string" fixed="CHF"/>
+		<attribute name="remark" type="credit:stringType1_35"/>
+	</complexType>
+	<!-- =======================================================================
+	address data type definitions for companies and persons
+ ======================================================================= -->
+	<!--  Company  -->
+	<complexType name="companyType">
+		<sequence>
+			<element name="companyname" type="credit:stringType1_35"/>
+			<element name="department" type="credit:stringType1_35" minOccurs="0" maxOccurs="3"/>
+			<element name="postal" type="credit:postalAddressType"/>
+			<element name="telecom" type="credit:telecomAddressType" minOccurs="0"/>
+			<element name="online" type="credit:onlineAddressType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<!--  Person  -->
+	<complexType name="personType">
+		<sequence>
+			<element name="familyname" type="credit:stringType1_35"/>
+			<element name="givenname" type="credit:stringType1_35" maxOccurs="3"/>
+			<element name="postal" type="credit:postalAddressType"/>
+			<element name="telecom" type="credit:telecomAddressType" minOccurs="0"/>
+			<element name="online" type="credit:onlineAddressType" minOccurs="0"/>
+		</sequence>
+		<attribute name="salutation" type="credit:stringType1_35"/>
+		<attribute name="title" type="credit:stringType1_35"/>
+	</complexType>
+	<complexType name="postalAddressType">
+		<sequence>
+			<element name="pobox" type="credit:stringType1_35" minOccurs="0"/>
+			<element name="street" type="credit:stringType1_35" minOccurs="0"/>
+			<element name="zip" type="credit:zipType"/>
+			<element name="city" type="credit:stringType1_35"/>
+		</sequence>
+	</complexType>
+	<complexType name="zipType">
+		<simpleContent>
+			<extension base="credit:stringType1_9">
+				<attribute name="statecode" type="credit:stringType1_9"/>
+				<attribute name="countrycode" type="credit:stringType1_3" default="CH"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="telecomAddressType">
+		<sequence>
+			<element name="phone" type="credit:stringType1_25" maxOccurs="3"/>
+			<element name="fax" type="credit:stringType1_25" minOccurs="0" maxOccurs="3"/>
+		</sequence>
+	</complexType>
+	<complexType name="onlineAddressType">
+		<sequence>
+			<element name="email" maxOccurs="3">
+				<simpleType>
+					<restriction base="credit:stringType1_70">
+						<pattern value=".+@.+"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="url" minOccurs="0" maxOccurs="3">
+				<simpleType>
+					<restriction base="anyURI">
+						<minLength value="1"/>
+						<maxLength value="100"/>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- =======================================================================
+	the specific address type data definitions
+ ======================================================================= -->
+	<!--  address = "Employer"  -->
+	<complexType name="employerAddressType">
+		<choice>
+			<element name="company" type="credit:companyType"/>
+			<element name="person" type="credit:personType"/>
+		</choice>
+		<attribute name="ean_party" type="credit:eanPartyType"/>
+		<attribute name="reg_number" type="credit:stringType1_35"/>
+	</complexType>
+	<!--  address = "Requestor"  -->
+	<complexType name="requestorAddressType">
+		<choice>
+			<element name="company" type="credit:companyType"/>
+			<element name="person" type="credit:personType"/>
+		</choice>
+		<attribute name="ean_party" type="credit:eanPartyType" use="required"/>
+		<attribute name="zsr" type="credit:zsrPartyType"/>
+		<attribute name="specialty" type="credit:stringType1_350"/>
+	</complexType>
+	<!--  address = "Provider"  -->
+	<complexType name="providerAddressType">
+		<choice>
+			<element name="company" type="credit:companyType"/>
+			<element name="person" type="credit:personType"/>
+		</choice>
+		<attribute name="ean_party" type="credit:eanPartyType" use="required"/>
+		<attribute name="zsr" type="credit:zsrPartyType" use="required"/>
+		<attribute name="specialty" type="credit:stringType1_350"/>
+	</complexType>
+	<!--  address = "Insurance"  -->
+	<complexType name="insuranceAddressType">
+		<sequence>
+			<element name="company" type="credit:companyType"/>
+		</sequence>
+		<attribute name="ean_party" type="credit:eanPartyType" use="required"/>
+	</complexType>
+	<!--  address = "Patient"  -->
+	<complexType name="patientAddressType">
+		<sequence>
+			<element name="person" type="credit:personType"/>
+		</sequence>
+		<attribute name="gender" use="required">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="male"/>
+					<enumeration value="female"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="birthdate" type="dateTime" use="required"/>
+		<attribute name="ssn" type="credit:ssnPartyType"/>
+	</complexType>
+	<!--  address = "Referrer"  -->
+	<complexType name="referrerAddressType">
+		<choice>
+			<element name="company" type="credit:companyType"/>
+			<element name="person" type="credit:personType"/>
+		</choice>
+		<attribute name="ean_party" type="credit:xtendEanPartyType" default="unknown"/>
+		<attribute name="zsr" type="credit:zsrPartyType"/>
+	</complexType>
+	<!--  address = "Contact"  -->
+	<complexType name="contactAddressType">
+		<choice>
+			<element name="person" type="credit:personType"/>
+			<sequence>
+				<element name="employee" type="credit:employeeType"/>
+				<element name="company" type="credit:companyType"/>
+			</sequence>
+		</choice>
+	</complexType>
+	<!-- =======================================================================
+	data type definitions regarding the applied law per insurance
+ ======================================================================= -->
+	<!--  law = KVG  -->
+	<complexType name="kvgLawType">
+		<sequence>
+			<element name="treatment_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="material_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="drug_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="unclassified_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="total_costs" type="credit:costsType" minOccurs="0"/>
+		</sequence>
+		<attribute name="patient_id" type="credit:stringType1_35"/>
+		<attribute name="case_id" type="credit:stringType1_35"/>
+		<attribute name="case_date" type="dateTime"/>
+		<attribute name="contract_number" type="credit:stringType1_35"/>
+	</complexType>
+	<!--  law = VVG  -->
+	<complexType name="vvgLawType">
+		<sequence>
+			<element name="treatment_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="material_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="drug_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="unclassified_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="total_costs" type="credit:costsType" minOccurs="0"/>
+		</sequence>
+		<attribute name="patient_id" type="credit:stringType1_35"/>
+		<attribute name="case_id" type="credit:stringType1_35"/>
+		<attribute name="case_date" type="dateTime"/>
+		<attribute name="contract_number" type="credit:stringType1_35"/>
+	</complexType>
+	<!--  law = UVG  -->
+	<complexType name="uvgLawType">
+		<sequence>
+			<element name="treatment_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="material_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="drug_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="unclassified_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="total_costs" type="credit:costsType" minOccurs="0"/>
+		</sequence>
+		<attribute name="patient_id" type="credit:stringType1_35"/>
+		<attribute name="case_id" type="credit:stringType1_35"/>
+		<attribute name="case_date" type="dateTime"/>
+		<attribute name="contract_number" type="credit:stringType1_35"/>
+		<attribute name="ssn" type="credit:ssnPartyType"/>
+	</complexType>
+	<!--  law = IVG  -->
+	<complexType name="ivgLawType">
+		<sequence>
+			<element name="treatment_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="material_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="drug_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="unclassified_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="total_costs" type="credit:costsType" minOccurs="0"/>
+		</sequence>
+		<attribute name="case_id" use="required">
+			<simpleType>
+				<restriction base="string">
+					<pattern value="([0-9]{14}|[0-9]{10}|[0-9]{9}|[0-9]{6})"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="case_date" type="dateTime"/>
+		<attribute name="ssn" type="credit:ssnPartyType" use="required"/>
+		<attribute name="nif" type="credit:nifPartyType" use="required"/>
+	</complexType>
+	<!--  law = MVG  -->
+	<complexType name="mvgLawType">
+		<sequence>
+			<element name="treatment_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="material_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="drug_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="unclassified_costs" type="credit:costsType" minOccurs="0"/>
+			<element name="total_costs" type="credit:costsType" minOccurs="0"/>
+		</sequence>
+		<attribute name="patient_id" type="credit:stringType1_35"/>
+		<attribute name="case_date" type="dateTime"/>
+		<attribute name="ssn" type="credit:ssnPartyType"/>
+	</complexType>
+	<!-- =======================================================================
+	diagnosis and therapy coding data type definitions
+ ======================================================================= -->
+	<complexType name="diagnosisType">
+		<simpleContent>
+			<extension base="credit:stringType0_350">
+				<attribute name="type" default="by_contract">
+					<simpleType>
+						<restriction base="NMTOKEN">
+							<enumeration value="ICD10"/>
+							<enumeration value="DRG"/>
+							<enumeration value="by_contract"/>
+							<enumeration value="freetext"/>
+							<enumeration value="birthdefect"/>
+							<enumeration value="ICPC"/>
+						</restriction>
+					</simpleType>
+				</attribute>
+				<attribute name="code" type="credit:stringType1_12"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="therapyType">
+		<simpleContent>
+			<extension base="credit:stringType0_350">
+				<attribute name="tariff_type" use="required">
+					<simpleType>
+						<restriction base="string">
+							<pattern value="[0-9A-Z]{3}"/>
+						</restriction>
+					</simpleType>
+				</attribute>
+				<attribute name="code" type="credit:stringType1_25"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<!-- =======================================================================
+	detailed cancel data type definitions
+ ======================================================================= -->
+	<complexType name="detailType">
+		<sequence>
+			<element name="diagnosis" type="credit:diagnosisType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="therapy" type="credit:therapyType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="functional_deficits" type="string" minOccurs="0"/>
+			<element name="accompanying_affections" type="string" minOccurs="0"/>
+			<element name="treatment_goals" type="string" minOccurs="0"/>
+			<element name="remark" type="string" minOccurs="0"/>
+		</sequence>
+		<attribute name="date_begin" type="dateTime" use="required"/>
+		<attribute name="date_end" type="dateTime" use="required"/>
+		<attribute name="days" type="duration" use="required"/>
+		<attribute name="sessions" type="unsignedLong"/>
+		<attribute name="treatment_canton" use="required">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="AG"/>
+					<enumeration value="AI"/>
+					<enumeration value="AR"/>
+					<enumeration value="BE"/>
+					<enumeration value="BL"/>
+					<enumeration value="BS"/>
+					<enumeration value="FR"/>
+					<enumeration value="GE"/>
+					<enumeration value="GL"/>
+					<enumeration value="GR"/>
+					<enumeration value="JU"/>
+					<enumeration value="LU"/>
+					<enumeration value="NE"/>
+					<enumeration value="NW"/>
+					<enumeration value="OW"/>
+					<enumeration value="SG"/>
+					<enumeration value="SH"/>
+					<enumeration value="SO"/>
+					<enumeration value="SZ"/>
+					<enumeration value="TI"/>
+					<enumeration value="TG"/>
+					<enumeration value="UR"/>
+					<enumeration value="VD"/>
+					<enumeration value="VS"/>
+					<enumeration value="ZG"/>
+					<enumeration value="ZH"/>
+					<enumeration value="LI"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="reason" use="required">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="disease"/>
+					<enumeration value="accident"/>
+					<enumeration value="maternity"/>
+					<enumeration value="prevention"/>
+					<enumeration value="birthdefect"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="relapse" type="boolean" default="false"/>
+	</complexType>
+	<!-- =======================================================================
+	Header data type definitions
+ ======================================================================= -->
+	<complexType name="headerPartyType">
+		<attribute name="ean_party" type="credit:eanPartyType" use="required"/>
+	</complexType>
+	<complexType name="xtendHeaderPartyType">
+		<attribute name="ean_party" type="credit:xtendEanPartyType" use="required"/>
+	</complexType>
+	<complexType name="headerType">
+		<sequence>
+			<element name="sender" type="credit:xtendHeaderPartyType"/>
+			<element name="intermediate" type="credit:headerPartyType"/>
+			<element name="recipient" type="credit:xtendHeaderPartyType"/>
+		</sequence>
+	</complexType>
+	<!-- =======================================================================
+	misc administrative data type definitions
+ ======================================================================= -->
+	<simpleType name="versionType">
+		<restriction base="integer"/>
+	</simpleType>
+	<complexType name="softwareType">
+		<simpleContent>
+			<extension base="credit:stringType1_50">
+				<attribute name="version" type="credit:versionType" use="required"/>
+				<attribute name="id" default="0">
+					<simpleType>
+						<restriction base="integer">
+							<minInclusive value="0"/>
+						</restriction>
+					</simpleType>
+				</attribute>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="generatorType">
+		<sequence>
+			<element name="software" type="credit:softwareType"/>
+		</sequence>
+	</complexType>
+	<!--  prolog section  -->
+	<complexType name="prologType">
+		<sequence>
+			<element name="package" type="credit:softwareType" minOccurs="0"/>
+			<element name="generator" type="credit:generatorType"/>
+		</sequence>
+	</complexType>
+	<!-- =======================================================================
+	data type definitions for a sponsor (aka Kostentraeger) and related data
+ ======================================================================= -->
+	<complexType name="sponsorType">
+		<sequence>
+			<element name="insurance" type="credit:insuranceAddressType"/>
+			<choice>
+				<element name="kvg" type="credit:kvgLawType"/>
+				<element name="vvg" type="credit:vvgLawType"/>
+				<element name="uvg" type="credit:uvgLawType"/>
+				<element name="ivg" type="credit:ivgLawType"/>
+				<element name="mvg" type="credit:mvgLawType"/>
+			</choice>
+		</sequence>
+	</complexType>
+	<!-- =======================================================================
+	credit data type definitions
+ ======================================================================= -->
+	<complexType name="creditType">
+		<sequence>
+			<element name="requestor" type="credit:requestorAddressType"/>
+			<element name="contact" type="credit:contactAddressType"/>
+			<element name="provider" type="credit:providerAddressType"/>
+			<element name="patient" type="credit:patientAddressType"/>
+			<element name="referrer" type="credit:referrerAddressType" minOccurs="0"/>
+			<element name="sponsor" type="credit:sponsorType"/>
+			<element name="employer" type="credit:employerAddressType" minOccurs="0"/>
+			<element name="detail" type="credit:detailType"/>
+		</sequence>
+		<attribute name="case_id" type="credit:stringType1_35"/>
+		<attribute name="credit_timestamp" type="unsignedLong" use="required"/>
+		<attribute name="credit_id" type="credit:stringType1_35" use="required"/>
+		<attribute name="credit_date" type="dateTime" use="required"/>
+		<attribute name="resend_number" type="unsignedLong" default="0"/>
+		<attribute name="resend_date" type="dateTime"/>
+		<attribute name="copy" type="boolean" default="false"/>
+		<attribute name="type" default="new">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="new"/>
+					<enumeration value="re-consideration"/>
+					<enumeration value="prolongation"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+	<!-- =======================================================================
+     =======================================================================
+	Here starts the request with its root element
+ =======================================================================
+ ======================================================================= -->
+	<element name="request" type="credit:requestType"/>
+	<complexType name="requestType">
+		<sequence>
+			<element name="header" type="credit:headerType"/>
+			<element name="prolog" type="credit:prologType"/>
+			<element name="credit" type="credit:creditType"/>
+		</sequence>
+		<attribute name="assignment_title" type="credit:stringType1_35"/>
+		<attribute name="assignment_role" use="required">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="labtechnician"/>
+					<enumeration value="orthopaedictechnician"/>
+					<enumeration value="dentist"/>
+					<enumeration value="dentaltechnician"/>
+					<enumeration value="dentalhygienist"/>
+					<enumeration value="physiotherapist"/>
+					<enumeration value="ergotherapist"/>
+					<enumeration value="logotherapist"/>
+					<enumeration value="chiropraktor"/>
+					<enumeration value="diet"/>
+					<enumeration value="diabetics"/>
+					<enumeration value="massage"/>
+					<enumeration value="midwife"/>
+					<enumeration value="wholesaler"/>
+					<enumeration value="shoemaker"/>
+					<enumeration value="nurse"/>
+					<enumeration value="ambulance"/>
+					<enumeration value="druggist"/>
+					<enumeration value="carrier"/>
+					<enumeration value="other"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="assignment_place" use="required">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="practice"/>
+					<enumeration value="hospital"/>
+					<enumeration value="lab"/>
+					<enumeration value="association"/>
+					<enumeration value="company"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="role" default="production">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="production"/>
+					<enumeration value="test"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+</schema>

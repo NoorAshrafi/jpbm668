@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://ch.zurich.com/ecm"
+    xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="http://ch.zurich.com/ecm" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd1="http://ch.zurich.com/ecm/xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+    xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
+    xmlns:t="http://docs.oasis-open.org/ws-sx/ws-trust/200512"
+    xmlns:wsaw="http://www.w3.org/2005/08/addressing">
+    <types>
+        <schema targetNamespace="http://ch.zurich.com/ecm/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <complexType name="common.Header_T">
+                <sequence>
+                    <element name="traceOn" type="boolean" />
+                    <element name="clientId" type="string" />
+                </sequence>
+            </complexType>
+            <complexType name="common.ExValuePair_T">
+                <sequence>
+                    <element name="key" type="string" />
+                    <element name="value" type="string" />
+                    <element name="ctx" type="int" />
+                </sequence>
+            </complexType>
+            <complexType name="common.ExValuePairSeq_T">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="item" type="xsd1:common.ExValuePair_T" />
+                </sequence>
+            </complexType>
+            <complexType name="common.ExDescr_T">
+                <sequence>
+                    <element name="domain" type="string" />
+                    <element name="exCode" type="int" />
+                    <element name="timestamp" type="string" />
+                    <element name="extend" type="xsd1:common.ExValuePairSeq_T" />
+                    <element name="traceId" type="string" />
+                </sequence>
+            </complexType>
+            <complexType name="common.Ex_T">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="item" type="xsd1:common.ExDescr_T" />
+                </sequence>
+            </complexType>
+            <complexType name="common.Remarks_T">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="item" type="xsd1:common.ExDescr_T" />
+                </sequence>
+            </complexType>
+            <complexType name="common.RemarksSeq_T">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="item" type="xsd1:common.Remarks_T" />
+                </sequence>
+            </complexType>
+            <complexType name="common.SeqLimit_T">
+                <sequence>
+                    <element name="returnAll" type="boolean" />
+                    <element name="maxToReturn" type="int" />
+                    <element name="hasMore" type="boolean" />
+                    <element name="totalFound" type="int" />
+                </sequence>
+            </complexType>
+            <complexType name="common.Cursor_T">
+                <sequence>
+                    <element name="limSeq" type="xsd1:common.SeqLimit_T" />
+                    <element name="sessionKey" type="base64Binary" />
+                </sequence>
+            </complexType>
+            <complexType name="common.ValuePair_T">
+                <sequence>
+                    <element name="key" type="string" />
+                    <element name="value" type="string" />
+                    <element name="ctx" type="string" />
+                </sequence>
+            </complexType>
+            <complexType name="common.ValidityDate_T">
+                <sequence>
+                    <element name="from" type="string" />
+                    <element name="until" type="string" />
+                </sequence>
+            </complexType>
+            <complexType name="common.ValuePairSeq_T">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="item" type="xsd1:common.ValuePair_T" />
+                </sequence>
+            </complexType>
+            <complexType name="ecm.Document_1_0.Header_T">
+                <sequence>
+                    <element name="identifier" type="int" />
+                    <element name="type" type="string" />
+                    <element name="indexFieldList" type="xsd1:common.ValuePairSeq_T" />
+                    <element name="name" type="string" />
+                    <element name="mimeType" type="string" />
+                    <element name="revisionNumber" type="string" />
+                    <element name="revisionDate" type="string" />
+                </sequence>
+            </complexType>
+            <complexType name="ecm.Document_1_0.HeaderSeq_T">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="item" type="xsd1:ecm.Document_1_0.Header_T" />
+                </sequence>
+            </complexType>
+            <complexType name="ecm.Document_1_0.ReferenceValueSeq_T">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="item" type="string" />
+                </sequence>
+            </complexType>
+            <complexType name="ecm.Document_1_0.Reference_T">
+                <sequence>
+                    <element name="name" type="string" />
+                    <element name="referenceValueList"
+                        type="xsd1:ecm.Document_1_0.ReferenceValueSeq_T" />
+                </sequence>
+            </complexType>
+            <complexType name="ecm.Document_1_0.ReferenceSeq_T">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="item" type="xsd1:ecm.Document_1_0.Reference_T" />
+                </sequence>
+            </complexType>
+            <complexType name="ecm.Document_1_0.Document_T">
+                <sequence>
+                    <element name="header"
+                        type="xsd1:ecm.Document_1_0.Header_T" />
+                    <element name="content" type="base64Binary" />
+                    <element name="referenceList"
+                        type="xsd1:ecm.Document_1_0.ReferenceSeq_T" />
+                </sequence>
+            </complexType>
+            <complexType name="ecm.Document_1_0.DocumentSeq_T">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="item" type="xsd1:ecm.Document_1_0.Document_T" />
+                </sequence>
+            </complexType>
+            <element name="common.Object_1_0.ping">
+                <complexType>
+                    <sequence />
+                </complexType>
+            </element>
+            <element name="common.Object_1_0.pingResult">
+                <complexType>
+                    <sequence />
+                </complexType>
+            </element>
+            <element name="ecm.Document_1_0.retrieve">
+                <complexType>
+                    <sequence>
+                        <element name="header" type="xsd1:common.Header_T" />
+                        <element name="headerList"
+                            type="xsd1:ecm.Document_1_0.HeaderSeq_T" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="ecm.Document_1_0.retrieveResult">
+                <complexType>
+                    <sequence>
+                        <element name="documentList"
+                            type="xsd1:ecm.Document_1_0.DocumentSeq_T" />
+                        <element name="ex" type="xsd1:common.Ex_T" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="ecm.Document_1_0.search">
+                <complexType>
+                    <sequence>
+                        <element name="header" type="xsd1:common.Header_T" />
+                        <element name="indexFieldList"
+                            type="xsd1:common.ValuePairSeq_T" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="ecm.Document_1_0.searchResult">
+                <complexType>
+                    <sequence>
+                        <element name="headerList"
+                            type="xsd1:ecm.Document_1_0.HeaderSeq_T" />
+                        <element name="remark" type="xsd1:common.Remarks_T" />
+                        <element name="ex" type="xsd1:common.Ex_T" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="ecm.Document_1_0.save">
+                <complexType>
+                    <sequence>
+                        <element name="header" type="xsd1:common.Header_T" />
+                        <element name="documentList"
+                            type="xsd1:ecm.Document_1_0.DocumentSeq_T" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="ecm.Document_1_0.saveResult">
+                <complexType>
+                    <sequence>
+                        <element name="remark" type="xsd1:common.Remarks_T" />
+                        <element name="ex" type="xsd1:common.Ex_T" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="ecm.Document_1_0.delete">
+                <complexType>
+                    <sequence>
+                        <element name="header" type="xsd1:common.Header_T" />
+                        <element name="headerList"
+                            type="xsd1:ecm.Document_1_0.HeaderSeq_T" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="ecm.Document_1_0.deleteResult">
+                <complexType>
+                    <sequence>
+                        <element name="ex" type="xsd1:common.Ex_T" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="ecm.Document_1_0.retrieveHeader">
+                <complexType>
+                    <sequence>
+                        <element name="header" type="xsd1:common.Header_T" />
+                        <element name="identifier" type="int" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="ecm.Document_1_0.retrieveHeaderResult">
+                <complexType>
+                    <sequence>
+                        <element name="documentHeader"
+                            type="xsd1:ecm.Document_1_0.Header_T" />
+                        <element name="ex" type="xsd1:common.Ex_T" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="ecm.Document_1_0.saveHeader">
+                <complexType>
+                    <sequence>
+                        <element name="header" type="xsd1:common.Header_T" />
+                        <element name="documentHeader"
+                            type="xsd1:ecm.Document_1_0.Header_T" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="ecm.Document_1_0.saveHeaderResult">
+                <complexType>
+                    <sequence>
+                        <element name="ex" type="xsd1:common.Ex_T" />
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </types>
+    <message name="common.Object_1_0.ping">
+        <part name="parameters" element="xsd1:common.Object_1_0.ping" />
+    </message>
+    <message name="common.Object_1_0.pingResponse">
+        <part name="parameters" element="xsd1:common.Object_1_0.pingResult" />
+    </message>
+    <message name="ecm.Document_1_0.retrieve">
+        <part name="parameters" element="xsd1:ecm.Document_1_0.retrieve" />
+    </message>
+    <message name="ecm.Document_1_0.retrieveResponse">
+        <part name="parameters" element="xsd1:ecm.Document_1_0.retrieveResult" />
+    </message>
+    <message name="ecm.Document_1_0.search">
+        <part name="parameters" element="xsd1:ecm.Document_1_0.search" />
+    </message>
+    <message name="ecm.Document_1_0.searchResponse">
+        <part name="parameters" element="xsd1:ecm.Document_1_0.searchResult" />
+    </message>
+    <message name="ecm.Document_1_0.save">
+        <part name="parameters" element="xsd1:ecm.Document_1_0.save" />
+    </message>
+    <message name="ecm.Document_1_0.saveResponse">
+        <part name="parameters" element="xsd1:ecm.Document_1_0.saveResult" />
+    </message>
+    <message name="ecm.Document_1_0.delete">
+        <part name="parameters" element="xsd1:ecm.Document_1_0.delete" />
+    </message>
+    <message name="ecm.Document_1_0.deleteResponse">
+        <part name="parameters" element="xsd1:ecm.Document_1_0.deleteResult" />
+    </message>
+    <message name="ecm.Document_1_0.retrieveHeader">
+        <part name="parameters" element="xsd1:ecm.Document_1_0.retrieveHeader" />
+    </message>
+    <message name="ecm.Document_1_0.retrieveHeaderResponse">
+        <part name="parameters" element="xsd1:ecm.Document_1_0.retrieveHeaderResult" />
+    </message>
+    <message name="ecm.Document_1_0.saveHeader">
+        <part name="parameters" element="xsd1:ecm.Document_1_0.saveHeader" />
+    </message>
+    <message name="ecm.Document_1_0.saveHeaderResponse">
+        <part name="parameters" element="xsd1:ecm.Document_1_0.saveHeaderResult" />
+    </message>
+    <portType name="common.Object_0_0" />
+    <portType name="common.Object_1_0">
+        <operation name="ping">
+            <input name="ping" message="tns:common.Object_1_0.ping" />
+            <output name="pingResponse" message="tns:common.Object_1_0.pingResponse" />
+        </operation>
+    </portType>
+    <portType name="ecm.Document_0_0">
+        <operation name="ping">
+            <input name="ping" message="tns:common.Object_1_0.ping" />
+            <output name="pingResponse" message="tns:common.Object_1_0.pingResponse" />
+        </operation>
+    </portType>
+    <portType name="ecm.Document_1_0">
+        <operation name="retrieve">
+            <input name="retrieve" message="tns:ecm.Document_1_0.retrieve" />
+            <output name="retrieveResponse" message="tns:ecm.Document_1_0.retrieveResponse" />
+        </operation>
+        <operation name="search">
+            <input name="search" message="tns:ecm.Document_1_0.search" />
+            <output name="searchResponse" message="tns:ecm.Document_1_0.searchResponse" />
+        </operation>
+        <operation name="save">
+            <input name="save" message="tns:ecm.Document_1_0.save" />
+            <output name="saveResponse" message="tns:ecm.Document_1_0.saveResponse" />
+        </operation>
+        <operation name="delete">
+            <input name="delete" message="tns:ecm.Document_1_0.delete" />
+            <output name="deleteResponse" message="tns:ecm.Document_1_0.deleteResponse" />
+        </operation>
+        <operation name="retrieveHeader">
+            <input name="retrieveHeader" message="tns:ecm.Document_1_0.retrieveHeader" />
+            <output name="retrieveHeaderResponse"
+                message="tns:ecm.Document_1_0.retrieveHeaderResponse" />
+        </operation>
+        <operation name="saveHeader">
+            <input name="saveHeader" message="tns:ecm.Document_1_0.saveHeader" />
+            <output name="saveHeaderResponse"
+                message="tns:ecm.Document_1_0.saveHeaderResponse" />
+        </operation>
+        <operation name="ping">
+            <input name="ping" message="tns:common.Object_1_0.ping" />
+            <output name="pingResponse" message="tns:common.Object_1_0.pingResponse" />
+        </operation>
+    </portType>
+    <binding name="ecm.Document_1_0SOAPBinding" type="tns:ecm.Document_1_0">
+        <wsp:PolicyReference URI="#BindingTransportBSTPolicy" />
+        <soap:binding style="document"
+            transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="retrieve">
+            <soap:operation soapAction="http://ch.zurich.com/ecm/retrieve"
+                style="document" />
+            <input name="retrieve">
+                <soap:body use="literal" />
+            </input>
+            <output name="retrieveResponse">
+                <soap:body use="literal" />
+            </output>
+        </operation>
+        <operation name="search">
+            <soap:operation soapAction="http://ch.zurich.com/ecm/search"
+                style="document" />
+            <input name="search">
+                <soap:body use="literal" />
+            </input>
+            <output name="searchResponse">
+                <soap:body use="literal" />
+            </output>
+        </operation>
+        <operation name="save">
+            <soap:operation soapAction="http://ch.zurich.com/ecm/save"
+                style="document" />
+            <input name="save">
+                <soap:body use="literal" />
+            </input>
+            <output name="saveResponse">
+                <soap:body use="literal" />
+            </output>
+        </operation>
+        <operation name="delete">
+            <soap:operation soapAction="http://ch.zurich.com/ecm/delete"
+                style="document" />
+            <input name="delete">
+                <soap:body use="literal" />
+            </input>
+            <output name="deleteResponse">
+                <soap:body use="literal" />
+            </output>
+        </operation>
+        <operation name="retrieveHeader">
+            <soap:operation soapAction="http://ch.zurich.com/ecm/retrieveHeader"
+                style="document" />
+            <input name="retrieveHeader">
+                <soap:body use="literal" />
+            </input>
+            <output name="retrieveHeaderResponse">
+                <soap:body use="literal" />
+            </output>
+        </operation>
+        <operation name="saveHeader">
+            <soap:operation soapAction="http://ch.zurich.com/ecm/saveHeader"
+                style="document" />
+            <input name="saveHeader">
+                <soap:body use="literal" />
+            </input>
+            <output name="saveHeaderResponse">
+                <soap:body use="literal" />
+            </output>
+        </operation>
+        <operation name="ping">
+            <soap:operation soapAction="http://ch.zurich.com/ecm/ping"
+                style="document" />
+            <input name="ping">
+                <soap:body use="literal" />
+            </input>
+            <output name="pingResponse">
+                <soap:body use="literal" />
+            </output>
+        </operation>
+    </binding>
+    <wsp:Policy wsu:Id="BindingTransportBSTPolicy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <!-- <wsam:Addressing wsp:Optional="false"> <wsp:Policy /> 
+                    </wsam:Addressing> -->
+                <sp:TransportBinding>
+                    <wsp:Policy>
+                        <sp:TransportToken>
+                            <wsp:Policy>
+                                <sp:HttpsToken
+                                    RequireClientCertificate="false">
+                                    <wsp:Policy />
+                                </sp:HttpsToken>
+                            </wsp:Policy>
+                        </sp:TransportToken>
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <sp:TripleDesRsa15 />
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Lax />
+                            </wsp:Policy>
+                        </sp:Layout>
+                        <!--  <sp:IncludeTimestamp /> -->
+                    </wsp:Policy>
+                </sp:TransportBinding>
+                <sp:SupportingTokens>
+                    <wsp:Policy>
+                        <sp:IssuedToken
+                            sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+                            <sp:RequestSecurityTokenTemplate>
+                                <t:TokenType>http://schemas.iona.com/security/IONASSOToken</t:TokenType>
+                                <t:KeyType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/Bearer</t:KeyType>
+                            </sp:RequestSecurityTokenTemplate>
+                            <wsp:Policy>
+                                <sp:RequireInternalReference />
+                            </wsp:Policy>
+                            <sp:Issuer>
+                                <wsaw:Address>http://to-be-ignored/</wsaw:Address>
+                            </sp:Issuer>
+                        </sp:IssuedToken>
+                    </wsp:Policy>
+                </sp:SupportingTokens>
+                <sp:Wss11>
+                    <wsp:Policy>
+                        <sp:MustSupportRefIssuerSerial />
+                        <sp:MustSupportRefThumbprint />
+                        <sp:MustSupportRefEncryptedKey />
+                    </wsp:Policy>
+                </sp:Wss11>
+                <sp:Trust13>
+                    <wsp:Policy>
+                        <sp:MustSupportIssuedTokens />
+                        <sp:RequireClientEntropy />
+                        <sp:RequireServerEntropy />
+                    </wsp:Policy>
+                </sp:Trust13>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <service name="ecm.Document_1_0SOAPService">
+        <port name="ecm.Document_1_0SOAPPort" binding="tns:ecm.Document_1_0SOAPBinding">
+            <soap:address
+                location="http://localhost:9000/testserver/ecm2cmis/services" />
+        </port>
+    </service>
+</definitions>

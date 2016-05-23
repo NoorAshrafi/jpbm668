@@ -1,0 +1,145 @@
+	BODY:before { content: "used css-file: main.css"; }
+	INPUT:focus {background-color:#ffff99;} /* Versuch */
+
+
+BODY {
+	COLOR: #000000; FONT-FAMILY: Arial,Helvetica,Univers,sans-serif; FONT-SIZE: 10pt
+}
+TD {
+	COLOR: #000000; FONT-FAMILY: Arial,Helvetica,Univers,sans-serif; FONT-SIZE: 10pt
+}
+TH {
+	COLOR: #000000; FONT-FAMILY: Arial,Helvetica,Univers,sans-serif; FONT-SIZE: 10pt
+}
+P {
+	FONT-FAMILY: Arial,Helvetica,Univers,sans-serif; FONT-SIZE: 10pt
+}
+H1 {
+	COLOR: #000066; FONT-FAMILY: "Frutiger 55 Roman",Arial,Helvetica,Univers,sans-serif; FONT-SIZE: 24pt; FONT-WEIGHT: normal
+}
+H2 {
+	COLOR: #003399; FONT-FAMILY: "Frutiger 55 Roman",Arial,Helvetica,Univers,sans-serif; FONT-SIZE: 16pt; FONT-WEIGHT: normal; LETTER-SPACING: -1px
+}
+H3 {
+	COLOR: #003399; FONT-FAMILY: Arial,Helvetica,Univers,sans-serif; FONT-SIZE: 11pt; FONT-WEIGHT: 600
+}
+.date {
+	COLOR: #003399; FONT-WEIGHT: 600
+}
+.newsDate {
+	COLOR: #003399; FONT-SIZE: 9pt; FONT-WEIGHT: 700
+}
+.bodyNav {
+	FONT-SIZE: 9pt
+}
+.newsText {
+	FONT-SIZE: 9pt
+}
+.glocSelectionConfirmation {
+	FONT-SIZE: 8pt
+}
+.glocSelectionConfirmationBlue {
+	FONT-SIZE: 8pt;
+	COLOR: #003399;
+}
+.zgpTitle {
+	COLOR: #003399; FONT-SIZE: 9pt; FONT-WEIGHT: 700
+}
+.abstract {
+	FONT-SIZE: 8pt
+}
+.languageNav {
+	FONT-SIZE: 10px; COLOR: #000000; FONT-FAMILY: Verdana,Arial,Helvetica,Univers,sans-serif;text-decoration:none
+}
+.tableInfoHeader {
+	COLOR: #003399; FONT-SIZE: 8pt; FONT-WEIGHT: 600
+}
+.tableStockText {
+	FONT-SIZE: 10px
+}
+.tableStockFooter {
+	COLOR: #727272; FONT-SIZE: 10px
+}
+.tableInfoText {
+	FONT-SIZE: 8pt
+}
+.tableFiguresHeader {
+	FONT-SIZE: 9pt
+}
+.tableFiguresText {
+	FONT-SIZE: 9pt
+}
+.listTitle {
+	COLOR: #003399; FONT-SIZE: 11pt; FONT-WEIGHT: 600
+}
+.paragraphIntro {
+	COLOR: #003399; FONT-SIZE: 11pt; FONT-WEIGHT: 600
+}
+.tableIntro {
+	COLOR: #003399; FONT-SIZE: 11pt; FONT-WEIGHT: 600
+}
+.faq {
+	COLOR: #003399; FONT-SIZE: 11pt; FONT-WEIGHT: 600
+}
+.explanatoryTitle {
+	COLOR: #003399; FONT-SIZE: 11pt; FONT-WEIGHT: 600
+}
+.formListLabel {
+	COLOR: #003399; FONT-SIZE: 10pt; FONT-WEIGHT: 600
+}
+.footer {
+	COLOR: #727272; FONT-SIZE: 10px
+}
+.addressHeader {
+	COLOR: #003399; FONT-SIZE: 11pt; FONT-WEIGHT: 500
+}
+.listItemTitle {
+	COLOR: #003399; FONT-SIZE: 11pt; FONT-WEIGHT: 500
+}
+.listItemSubtitle {
+	FONT-SIZE: 8pt
+}
+.slogan {
+	COLOR: #003399; FONT-SIZE: 9pt; FONT-WEIGHT: 600
+}
+.date {
+	COLOR: #003399; FONT-WEIGHT: 600
+}
+.zgpcell {
+	
+}
+A:link {
+	COLOR: #003399
+}
+A:active {
+	COLOR: #cc0000
+}
+A:visited {
+	COLOR: #666666
+}
+.tableBg {
+	BACKGROUND-COLOR: #ced6e9
+}
+.tableBgHighlight {
+	BACKGROUND-COLOR: #9aadd7
+}
+.statement {
+	BACKGROUND-COLOR: #dfdfdf
+}
+.tableBorder {
+	BACKGROUND-COLOR: #003399
+}
+.globallocator {
+	FONT-SIZE: 10px; max-width: 130
+}
+.globallocator-ns {
+	BACKGROUND-COLOR: #ced6e9; FONT-SIZE: 8pt; max-width: 130
+}
+
+.globallocator-nobg {
+	FONT-SIZE: 8pt; max-width: 130
+}
+
+.errormessage{
+	COLOR: #ffffff;BACKGROUND-COLOR: #ff0000;
+}

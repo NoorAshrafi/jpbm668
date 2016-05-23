@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  ==========================================================================
+	This is the schema definition for a "Hospital MCD Response" process encoded
+	in XML. The hospitalMCDResponse always constitutes an answer to a received 
+	"Hospital MCD Request" and by design there can be [0,n] such responses but 
+	solely to the topmost object reference given given in the request. If there is no 
+	response sent then the request is considered implicitly as accepted.
+
+	The response is sent via 1 or more intermediates to the final recipient, who 
+	is the initial sender of the request by definition. The chain of intermediates 
+	from the request is reversed for the response.
+
+	This XML project is normative for the electronic MCD process in Switzerland.
+
+	Permission to use, and distribute this schema and its accompanying documentation 
+	for any purpose and without fee is hereby granted in perpetuity, provided that 
+	the above copyright notice and this paragraph appear in all copies and this schema 
+	file is not altered.
+	The copyright holders make no representation about the suitability of the schema
+	for any purpose.
+
+	It is provided "as is" without expressed or implied warranty.
+
+	Copyright (c) 2010 Forum Datenaustausch, 
+	All Rights Reserved.
+  ==========================================================================  -->
+<schema targetNamespace="http://www.forum-datenaustausch.ch/mcd" 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"
+	xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+	xmlns:mcd="http://www.forum-datenaustausch.ch/mcd" 
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+<!-- =======================================================================
+	import fo encryption and signature schema definitions as local files
+	in fact MSXML4.0 has a problem with network loaded schema definitions
+	and there is a significant time impact of always loading these schemas 
+	from W3C.
+	
+	W3C locations:
+	   	http://www.w3c.org/TR/xmlenc-core/xenc-schema.xsd
+  		http://www.w3c.org/TR/xmldsig-core/xmldsig-core-schema.xsd
+ ======================================================================= -->
+   <import namespace="http://www.w3.org/2000/09/xmldsig#" 
+   		   schemaLocation="xmldsig-core-schema.xsd"/>
+   <import namespace="http://www.w3.org/2001/04/xmlenc#" 
+   		   schemaLocation="xenc-schema.xsd"/>
+
+<!-- =======================================================================
+	General data type definitions
+ ======================================================================= -->
+	<simpleType name="stringType1_3">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="3"/>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="stringType1_9">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="9"/>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="stringType1_15">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="15"/>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="stringType1_25">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="25"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="stringType1_35">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="35"/>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="stringType1_50">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="stringType1_70">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="70"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="stringType1_350">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="350"/>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="stringType1_700">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="700"/>
+		</restriction>
+	</simpleType>
+	
+	<!--  EAN and SSN numbers -->
+	<simpleType name="ssnPartyType">
+		<restriction base="string">
+			<pattern value="[0-9]{4,10}|[1-9][0-9]{10}|756[0-9]{10}"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="eanPartyType">
+		<restriction base="string">
+			<pattern value="([0-9]{13})"/>
+		</restriction>
+	</simpleType>
+
+<!-- =======================================================================
+	address definitions for persons and companies
+ ======================================================================= -->
+	<complexType name="personType">
+		<sequence>
+			<element name="familyname" type="mcd:stringType1_35"/>
+			<element name="givenname" type="mcd:stringType1_35"/>
+			<element name="subaddressing" type="mcd:stringType1_35" minOccurs="0"/>
+			<element name="postal" type="mcd:postalAddressType"/>
+			<element name="telecom" type="mcd:telecomAddressType" minOccurs="0"/>
+			<element name="online" type="mcd:onlineAddressType" minOccurs="0"/>
+		</sequence>
+		<attribute name="salutation" type="mcd:stringType1_35"/>
+		<attribute name="title" type="mcd:stringType1_35"/>
+	</complexType>
+	
+	<complexType name="companyType">
+		<sequence>
+			<element name="companyname" type="mcd:stringType1_35"/>
+			<element name="department" type="mcd:stringType1_35" minOccurs="0"/>
+			<element name="subaddressing" type="mcd:stringType1_35" minOccurs="0"/>
+			<element name="postal" type="mcd:postalAddressType"/>
+			<element name="telecom" type="mcd:telecomAddressType" minOccurs="0"/>
+			<element name="online" type="mcd:onlineAddressType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="postalAddressType">
+		<sequence>
+			<element name="pobox" type="mcd:stringType1_35" minOccurs="0"/>
+			<element name="street" type="mcd:stringType1_35" minOccurs="0"/>
+			<element name="zip" type="mcd:zipType"/>
+			<element name="city" type="mcd:stringType1_35"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="zipType">
+		<simpleContent>
+			<extension base="mcd:stringType1_9">
+				<attribute name="statecode" type="mcd:stringType1_9"/>
+				<attribute name="countrycode" type="mcd:stringType1_3" default="CH"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+
+	<complexType name="telecomAddressType">
+		<sequence>
+			<element name="phone" type="mcd:stringType1_25" maxOccurs="3"/>
+			<element name="fax" type="mcd:stringType1_25" minOccurs="0" maxOccurs="3"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="onlineAddressType">
+		<sequence>
+			<element name="email" maxOccurs="3">
+				<simpleType>
+					<restriction base="mcd:stringType1_70">
+						<pattern value=".+@.+"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="url" minOccurs="0" maxOccurs="3">
+				<simpleType>
+					<restriction base="anyURI">
+						<minLength value="1"/>
+						<maxLength value="100"/>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+
+<!-- =======================================================================
+	address definitions for specific roles possibly augmented with further data
+ ======================================================================= -->
+	<complexType name="patientAddressType">
+		<attribute name="gender" use="required">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="male"/>
+					<enumeration value="female"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="birthdate" type="dateTime" use="required"/>
+	</complexType>
+
+	<complexType name="contactAddressType">
+		<choice>
+			<element name="person" type="mcd:personType"/>
+			<sequence>
+				<element name="company" type="mcd:companyType"/>
+				<element name="employee" type="mcd:employeeType" minOccurs="0"/>
+			</sequence>
+		</choice>
+		<attribute name="ean_party" type="mcd:eanPartyType"/>
+	</complexType>
+
+	<complexType name="employeeType">
+		<sequence>
+			<element name="familyname" type="mcd:stringType1_35"/>
+			<element name="givenname" type="mcd:stringType1_35" minOccurs="0"/>
+			<element name="telecom" type="mcd:telecomAddressType" minOccurs="0"/>
+			<element name="online" type="mcd:onlineAddressType" minOccurs="0"/>
+		</sequence>
+		<attribute name="salutation" type="mcd:stringType1_35"/>
+		<attribute name="title" type="mcd:stringType1_35"/>
+	</complexType>
+
+<!-- =======================================================================
+	data type definitions for the 3 fundamental response status types
+	pending | accepted | rejected 
+ ======================================================================= -->
+	<complexType name="statusType">
+		<attribute name="status_in" use="required">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="unknown"/>
+					<enumeration value="ambiguous"/>
+					<enumeration value="received"/>
+					<enumeration value="frozen"/>
+					<enumeration value="processed"/>
+					<enumeration value="granted"/>
+					<enumeration value="canceled"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="status_out" use="required">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="unknown"/>
+					<enumeration value="ambiguous"/>
+					<enumeration value="received"/>
+					<enumeration value="frozen"/>
+					<enumeration value="processed"/>
+					<enumeration value="granted"/>
+					<enumeration value="canceled"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+
+	<complexType name="pendingType">
+		<complexContent>
+			<extension base="mcd:statusType">
+			<sequence>
+				<element name="explanation" type="mcd:stringType1_700" minOccurs="0"/>
+				<element name="message" type="mcd:notificationType" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="acceptedType">
+		<complexContent>
+			<extension base="mcd:statusType">
+			<sequence>
+				<element name="explanation" type="mcd:stringType1_700" minOccurs="0"/>
+			</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="rejectedType">
+		<complexContent>
+			<extension base="mcd:statusType">
+			<sequence>
+				<element name="explanation" type="mcd:stringType1_700" minOccurs="0"/>
+				<element name="error" type="mcd:errorType" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+<!-- =======================================================================
+	data type definitions regarding errors or messages
+ ======================================================================= -->
+	<complexType name="notificationType">
+		<attribute name="code" type="mcd:stringType1_9" use="required"/>
+		<attribute name="text" type="mcd:stringType1_350" use="required"/>
+	</complexType>
+
+	<complexType name="errorType">
+		<complexContent>
+			<extension base="mcd:notificationType">
+				<attribute name="error_value" type="mcd:stringType1_350"/>
+				<attribute name="valid_value" type="mcd:stringType1_350"/>
+				<attribute name="record_id" type="positiveInteger"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+<!-- =======================================================================
+	parties: data type definitions for involved communication parties
+ ======================================================================= -->
+	<complexType name="partyType">
+		<attribute name="ean_party" type="mcd:eanPartyType" use="required"/>
+	</complexType>
+
+<!-- =======================================================================
+	processing definitions (might be analysed and changed by intermediates)
+ ======================================================================= -->
+	<complexType name="processingType">
+		<sequence>
+			<element name="transport" type="mcd:transportType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="transportType">
+		<sequence>
+			<element name="via" maxOccurs="unbounded">
+				<complexType>
+					<attribute name="via" type="mcd:eanPartyType" use="required"/>
+					<attribute name="sequence_id" type="unsignedShort" use="required"/>
+				</complexType>
+			</element>
+		</sequence>
+		<attribute name="from" type="mcd:eanPartyType" use="required"/>
+		<attribute name="to" type="mcd:eanPartyType" use="required"/>
+	</complexType>
+
+<!-- =======================================================================
+	prolog definitions for defining the chain of involved/used software
+ ======================================================================= -->
+	<complexType name="prologType">
+		<sequence>
+			<element name="package" type="mcd:softwareType" minOccurs="0"/>
+			<element name="generator" type="mcd:softwareType"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="softwareType">
+		<sequence>
+			<element name="depends_on" type="mcd:dependsOnType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+		<attribute name="name" type="mcd:stringType1_50" use="required"/>
+		<attribute name="copyright" type="mcd:stringType1_50"/>
+		<attribute name="description" type="mcd:stringType1_50"/>
+		<attribute name="version" type="unsignedInt"/>
+		<attribute name="id" type="unsignedInt" default="0"/>
+	</complexType>
+
+	<complexType name="dependsOnType">
+		<attribute name="name" type="mcd:stringType1_50" use="required"/>
+		<attribute name="copyright" type="mcd:stringType1_50"/>
+		<attribute name="description" type="mcd:stringType1_50"/>
+		<attribute name="version" type="unsignedInt"/>
+		<attribute name="id" type="unsignedInt" default="0"/>
+	</complexType>
+	
+<!-- =======================================================================
+	invoice object: definition for defining/referencing an invoice
+                    copied from the request
+======================================================================= -->
+	<complexType name="invoiceType">
+		<attribute name="request_timestamp" type="unsignedLong" use="required"/>
+		<attribute name="request_date" type="dateTime" use="required"/>
+		<attribute name="request_id" type="mcd:stringType1_35" use="required"/>
+		<attribute name="request_patient_id" type="mcd:stringType1_35"/>
+	</complexType>
+	
+<!-- =======================================================================
+	mcd object: definition for defining/referencing a MCD
+                copied from the request
+ ======================================================================= -->
+	<complexType name="mcdType">
+		<attribute name="request_timestamp" type="unsignedLong" use="required"/>
+		<attribute name="request_date" type="dateTime" use="required"/>
+		<attribute name="request_id" type="mcd:stringType1_35" use="required"/>
+	</complexType>
+
+<!-- =======================================================================
+	body definition with all sensitive data regarding data privacy
+	This element and subelements therein can be encrypted 
+ ======================================================================= -->
+	<complexType name="bodyType">
+		<sequence>
+			<element name="prolog" type="mcd:prologType"/>
+			<element name="biller" type="mcd:partyType"/>
+			<element name="provider" type="mcd:partyType"/>
+			<element name="insurance" type="mcd:partyType"/>
+			<element name="patient" type="mcd:patientAddressType"/>
+			<element name="contact" type="mcd:contactAddressType"/>
+			<choice>
+				<element name="pending" type="mcd:pendingType"/>
+				<element name="accepted" type="mcd:acceptedType"/>
+				<element name="rejected" type="mcd:rejectedType"/>
+			</choice>
+		</sequence>
+	</complexType>
+
+<!-- =======================================================================
+	payload definitions with the mirrored chain of object references (mcd and 
+	invoice) plus the sensitive data regarding data privacy
+	This element and subelements therein can be signed
+ ======================================================================= -->
+	<complexType name="payloadType">
+		<sequence>
+			<element name="invoice" type="mcd:invoiceType"/>
+			<element name="mcd" type="mcd:mcdType"/>
+			<choice>
+				<element name="body" type="mcd:bodyType"/>
+				<element ref="xenc:EncryptedData"/>
+			</choice>
+		</sequence>
+		<attribute name="storno" type="boolean" default="false"/>
+		<attribute name="copy" type="boolean" default="false"/>
+		<attribute name="response_timestamp" type="unsignedLong" use="required"/>
+	</complexType>
+	
+<!-- =======================================================================
+     =======================================================================
+	Here starts the response with its root element
+ =======================================================================
+ ======================================================================= -->
+	<element name="response" type="mcd:responseType"/>
+
+
+	<complexType name="responseType">
+		<sequence>
+			<element name="processing" type="mcd:processingType"/>
+			<element name="payload" type="mcd:payloadType"/>
+			<element ref="ds:Signature" minOccurs="0"/>
+		</sequence>
+
+		<attribute name="language" use="required">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="de"/>
+					<enumeration value="fr"/>
+					<enumeration value="it"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="modus" default="production">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="production"/>
+					<enumeration value="test"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+</schema>

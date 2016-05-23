@@ -1,0 +1,58 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385394827641
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF RS XML Security
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF RS XML Security
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-rs-security-xml
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.rs.security.common;version="2.7.9.SNAPSHO
+ T",org.apache.cxf.rs.security.saml;version="2.7.9.SNAPSHOT",org.apache.
+ cxf.rs.security.saml.assertion;version="2.7.9.SNAPSHOT",org.apache.cxf.
+ rs.security.saml.authorization;version="2.7.9.SNAPSHOT",org.apache.cxf.
+ rs.security.xml;version="2.7.9.SNAPSHOT"
+Implementation-Title: Apache CXF RS XML Security
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.crypto,javax.crypto.spec,javax.security.auth.callb
+ ack,javax.ws.rs;version="[2.0,3)",javax.ws.rs.core;version="[2.0,3)",ja
+ vax.ws.rs.ext;version="[2.0,3)",javax.xml.namespace,javax.xml.stream,ja
+ vax.xml.transform.dom,org.apache.cxf;version="[2.7,3)",org.apache.cxf.c
+ ommon.classloader;version="[2.7,3)",org.apache.cxf.common.logging;versi
+ on="[2.7,3)",org.apache.cxf.common.security;version="[2.7,3)",org.apach
+ e.cxf.common.util;version="[2.7,3)",org.apache.cxf.endpoint;version="[2
+ .7,3)",org.apache.cxf.helpers;version="[2.7,3)",org.apache.cxf.intercep
+ tor;version="[2.7,3)",org.apache.cxf.interceptor.security;version="[2.7
+ ,3)",org.apache.cxf.io;version="[2.7,3)",org.apache.cxf.jaxrs.ext;versi
+ on="[2.7,3)",org.apache.cxf.jaxrs.ext.form;version="[2.7,3)",org.apache
+ .cxf.jaxrs.impl;version="[2.7,3)",org.apache.cxf.jaxrs.model;version="[
+ 2.7,3)",org.apache.cxf.jaxrs.provider;version="[2.7,3)",org.apache.cxf.
+ jaxrs.utils;version="[2.7,3)",org.apache.cxf.message;version="[2.7,3)",
+ org.apache.cxf.phase;version="[2.7,3)",org.apache.cxf.resource;version=
+ "[2.7,3)",org.apache.cxf.security;version="[2.7,3)",org.apache.cxf.secu
+ rity.claims.authorization;version="[2.7,3)",org.apache.cxf.security.tra
+ nsport;version="[2.7,3)",org.apache.cxf.service;version="[2.7,3)",org.a
+ pache.cxf.service.invoker;version="[2.7,3)",org.apache.cxf.service.mode
+ l;version="[2.7,3)",org.apache.cxf.staxutils;version="[2.7,3)",org.apac
+ he.ws.security;version="[1.6,2)",org.apache.ws.security.components.cryp
+ to;version="[1.6,2)",org.apache.ws.security.handler;version="[1.6,2)",o
+ rg.apache.ws.security.message.token;version="[1.6,2)",org.apache.ws.sec
+ urity.saml;version="[1.6,2)",org.apache.ws.security.saml.ext;version="[
+ 1.6,2)",org.apache.ws.security.util;version="[1.6,2)",org.apache.ws.sec
+ urity.validate;version="[1.6,2)",org.apache.xml.security.algorithms;ver
+ sion="[1.5,2)",org.apache.xml.security.encryption;version="[1.5,2)",org
+ .apache.xml.security.exceptions;version="[1.5,2)",org.apache.xml.securi
+ ty.keys;version="[1.5,2)",org.apache.xml.security.signature;version="[1
+ .5,2)",org.apache.xml.security.transforms;version="[1.5,2)",org.opensam
+ l.saml2.core,org.opensaml.xml,org.w3c.dom
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF RS XML Security
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

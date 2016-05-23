@@ -1,0 +1,45 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385440180163
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Blueprint: OSGI-INF/blueprint/cxf-clustering.xml
+Bundle-Description: Failover and loadbalancing support
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime Clustering
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-features-clustering
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.clustering;version="2.7.9.SNAPSHOT",org.a
+ pache.cxf.clustering.blueprint;version="2.7.9.SNAPSHOT",org.apache.cxf.
+ clustering.spring;version="2.7.9.SNAPSHOT"
+Export-Service: org.apache.aries.blueprint.NamespaceHandler;osgi.service
+ .blueprint.namespace="http://cxf.apache.org/clustering"
+Implementation-Title: Apache CXF Runtime Clustering
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: org.apache.aries.blueprint;version="[0.3,2)";resolution:
+ =optional,org.springframework.beans.factory.support;resolution:=optiona
+ l;version="[2.5,4)",org.springframework.beans.factory.xml;resolution:=o
+ ptional;version="[2.5,4)",javax.xml.namespace,org.apache.cxf;version="[
+ 2.7,3)",org.apache.cxf.annotations;version="[2.7,3)",org.apache.cxf.bin
+ ding;version="[2.7,3)",org.apache.cxf.common.injection;version="[2.7,3)
+ ",org.apache.cxf.common.logging;version="[2.7,3)",org.apache.cxf.common
+ .util;version="[2.7,3)",org.apache.cxf.configuration.blueprint;version=
+ "[2.7,3)",org.apache.cxf.configuration.spring;version="[2.7,3)",org.apa
+ che.cxf.endpoint;version="[2.7,3)",org.apache.cxf.feature;version="[2.7
+ ,3)",org.apache.cxf.helpers;version="[2.7,3)",org.apache.cxf.intercepto
+ r;version="[2.7,3)",org.apache.cxf.message;version="[2.7,3)",org.apache
+ .cxf.service;version="[2.7,3)",org.apache.cxf.service.model;version="[2
+ .7,3)",org.apache.cxf.transport;version="[2.7,3)",org.apache.cxf.ws.add
+ ressing;version="[2.7,3)",org.osgi.service.blueprint;version="[1.0.0,2.
+ 0.0)";resolution:=optional,org.osgi.service.blueprint.reflect;version="
+ [1.0,2)";resolution:=optional,org.w3c.dom
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime Clustering
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

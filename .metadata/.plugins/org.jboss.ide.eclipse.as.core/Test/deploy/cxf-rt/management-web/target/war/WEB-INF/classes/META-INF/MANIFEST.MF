@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Title: Apache CXF Runtime Web Management
+Implementation-Vendor-Id: org.apache
+Specification-Vendor: The Apache Software Foundation
+Build-Jdk: 1.7.0_45
+Built-By: pupperpelly
+Specification-Title: Apache CXF Runtime Web Management
+Created-By: Maven Integration for Eclipse
+

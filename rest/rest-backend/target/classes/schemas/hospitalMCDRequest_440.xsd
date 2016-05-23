@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  ==========================================================================
+   This is the schema definition for a hospital "Minimal clinical dataset" (MCD) 
+   request process encoded in XML. The content is a minimal clinical dataset of
+   a hospital that basically defines the required input to a DRG grouper. All patient 
+   data is anonymized.
+
+	Upon receiving the request the recipient can respond by [0,n] "Hospital MCD 
+	Response" messages!
+
+   This is normative for the electronic hospital MCD project.
+
+   Permission to use, and distribute this schema and its accompanying
+   documentation for any purpose and without fee is hereby granted in perpetuity,
+   provided that the above copyright notice and this paragraph appear in all copies
+   and this schema file is not altered.
+   The copyright holders make no representation about the suitability of the schema
+   for any purpose.
+
+   It is provided "as is" without expressed or implied warranty.
+
+   Copyright (c) 2012 Forum Datenaustausch, http://www.forum-datenaustausch.ch
+   All Rights Reserved.
+   ==========================================================================  -->
+<schema targetNamespace="http://www.forum-datenaustausch.ch/mcd" 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"
+	xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+	xmlns:mcd="http://www.forum-datenaustausch.ch/mcd" 
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+<!-- =======================================================================
+	import of encryption and signature schema definitions as local files
+	in fact MSXML4.0 has a problem with network loaded schema definitions
+	and there is a significant time impact of always loading these schemas 
+	from W3C.
+	
+	W3C locations:
+	   	http://www.w3c.org/TR/xmlenc-core/xenc-schema.xsd
+  		http://www.w3c.org/TR/xmldsig-core/xmldsig-core-schema.xsd
+ ======================================================================= -->
+   <import namespace="http://www.w3.org/2000/09/xmldsig#" 
+   		   schemaLocation="xmldsig-core-schema.xsd"/>
+   <import namespace="http://www.w3.org/2001/04/xmlenc#" 
+   		   schemaLocation="xenc-schema.xsd"/>
+
+<!-- =======================================================================
+	General data type definitions
+ ======================================================================= -->
+	<simpleType name="nonEmptyStringType">
+		<restriction base="string">
+			<minLength value="1"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="stringType1_3">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="3"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="stringType1_9">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="9"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="stringType1_12">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="12"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="stringType1_15">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="15"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="stringType1_25">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="25"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="stringType1_30">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="30"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="stringType1_35">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="35"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="stringType1_50">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="stringType1_64">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="64"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="stringType1_70">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="70"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="stringType1_255">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="255"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="stringType1_350">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="350"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="eanPartyType">
+		<restriction base="string">
+			<pattern value="([0-9]{13})"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="zsrPartyType">
+		<restriction base="string">
+			<pattern value="([A-Z][0-9]{6})"/>
+		</restriction>
+	</simpleType>
+	
+<!-- =======================================================================
+	address definitions for persons and companies
+ ======================================================================= -->
+	<complexType name="personType">
+		<sequence>
+			<element name="familyname" type="mcd:stringType1_35"/>
+			<element name="givenname" type="mcd:stringType1_35"/>
+			<element name="subaddressing" type="mcd:stringType1_35" minOccurs="0"/>
+			<element name="postal" type="mcd:postalAddressType"/>
+			<element name="telecom" type="mcd:telecomAddressType" minOccurs="0"/>
+			<element name="online" type="mcd:onlineAddressType" minOccurs="0"/>
+		</sequence>
+		<attribute name="salutation" type="mcd:stringType1_35"/>
+		<attribute name="title" type="mcd:stringType1_35"/>
+	</complexType>	
+
+	<complexType name="companyType">
+		<sequence>
+			<element name="companyname" type="mcd:stringType1_35"/>
+			<element name="department" type="mcd:stringType1_35" minOccurs="0"/>
+			<element name="subaddressing" type="mcd:stringType1_35" minOccurs="0"/>
+			<element name="postal" type="mcd:postalAddressType"/>
+			<element name="telecom" type="mcd:telecomAddressType" minOccurs="0"/>
+			<element name="online" type="mcd:onlineAddressType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="postalAddressType">
+		<sequence>
+			<sequence>
+				<element name="pobox" type="mcd:stringType1_35" minOccurs="0"/>
+				<element name="street" type="mcd:stringType1_35" minOccurs="0"/>
+			</sequence>
+			<element name="zip" type="mcd:zipType"/>
+			<element name="city" type="mcd:stringType1_35"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="zipType">
+		<simpleContent>
+			<extension base="mcd:stringType1_9">
+				<attribute name="statecode" type="mcd:stringType1_9"/>
+				<attribute name="countrycode" type="mcd:stringType1_3" default="CH"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+
+	<complexType name="telecomAddressType">
+		<sequence>
+			<element name="phone" type="mcd:stringType1_25" maxOccurs="3"/>
+			<element name="fax" type="mcd:stringType1_25" minOccurs="0" maxOccurs="3"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="onlineAddressType">
+		<sequence>
+			<element name="email" maxOccurs="3">
+				<simpleType>
+					<restriction base="mcd:stringType1_70">
+						<pattern value=".+@.+"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="url" minOccurs="0" maxOccurs="3">
+				<simpleType>
+					<restriction base="anyURI">
+						<minLength value="1"/>
+						<maxLength value="100"/>
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+	
+<!-- =======================================================================
+	address definitions for specific roles possibly augmented with further data
+ ======================================================================= -->
+	<complexType name="billerAddressType">
+		<choice>
+			<element name="company" type="mcd:companyType"/>
+			<element name="person" type="mcd:personType"/>
+		</choice>
+		<attribute name="ean_party" type="mcd:eanPartyType" use="required"/>
+		<attribute name="zsr" type="mcd:zsrPartyType"/>
+		<attribute name="specialty" type="mcd:stringType1_350"/>
+		<attribute name="uid_number" type="mcd:stringType1_15"/>
+	</complexType>
+
+	<complexType name="providerAddressType">
+		<choice>
+			<element name="company" type="mcd:companyType"/>
+			<element name="person" type="mcd:personType"/>
+		</choice>
+		<attribute name="ean_party" type="mcd:eanPartyType" use="required"/>
+		<attribute name="zsr" type="mcd:zsrPartyType" use="required"/>
+		<attribute name="specialty" type="mcd:stringType1_350"/>
+	</complexType>
+
+	<complexType name="insuranceAddressType">
+		<choice>
+			<element name="company" type="mcd:companyType"/>
+			<element name="person" type="mcd:personType"/>
+		</choice>
+		<attribute name="ean_party" type="mcd:eanPartyType" use="required"/>
+	</complexType>
+
+	<complexType name="patientAddressType">
+		<attribute name="gender" use="required">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="male"/>
+					<enumeration value="female"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="birthdate" type="dateTime" use="required"/>
+	</complexType>
+
+<!-- =======================================================================
+	document(s) data definitions
+	this is either OFFLINE=REMOTE or INLINE=INCLUDED in the infoset
+ ======================================================================= -->
+	<complexType name="documentsType">
+		<sequence>
+			<element name="document" type="mcd:documentType" minOccurs="1" maxOccurs="unbounded"/>
+		</sequence>
+		<attribute name="number" type="unsignedLong" use="required"/>
+	</complexType>
+
+	<complexType name="documentType">
+		<choice>
+			<element name="base64" type="base64Binary"/>
+			<element name="url" type="anyURI"/>
+		</choice>
+		<attribute name="filename" type="mcd:stringType1_255" use="required"/>
+		<attribute name="mimeType" type="mcd:stringType1_35" use="required"/>
+		<attribute name="viewer" type="anyURI"/>
+	</complexType>
+
+<!-- =======================================================================
+	DRG service record data type definitions
+ ======================================================================= -->
+	<complexType name="recordDRGType">
+		<sequence>
+			<element name="grouper" type="mcd:grouperType"/>
+		</sequence>
+
+		<attribute name="record_id" use="required">
+			<simpleType>
+				<restriction base="int">
+					<minInclusive value="1"/>
+					<maxInclusive value="999999999"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="tariff_type" use="required">
+			<simpleType>
+				<restriction base="string">
+					<pattern value="[0-9A-Z]{3}"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="code" type="mcd:stringType1_30" use="required"/>
+		<attribute name="name" type="mcd:stringType1_350" use="required"/>
+	</complexType>
+
+<!-- =======================================================================
+	grouper: data type definitions for the DRG grouper consisting of diagnoses 
+	         and procedures basically defining the MCD 
+
+	NOTE: it is PER DEFINITION that the first diagnosis is the MAIN DIAGNOSIS
+ ======================================================================= -->
+	<complexType name="grouperType">
+		<sequence>
+			<element name="admission_type" type="mcd:grouperDataType"/> 
+			<element name="discharge_type" type="mcd:grouperDataType"/> 
+			<element name="provider_type" type="mcd:grouperDataType"/> 
+
+			<element name="bfs_residence_before_admission" type="mcd:bfsDataType"/> 
+			<element name="bfs_admission_type" type="mcd:bfsDataType"/>
+			<element name="bfs_decision_for_discharge" type="mcd:bfsDataType"/> 
+			<element name="bfs_residence_after_discharge" type="mcd:bfsDataType"/>
+
+			<element name="diagnosis" type="mcd:diagnosisType" minOccurs="1" maxOccurs="unbounded"/>
+			<element name="procedure" type="mcd:procedureType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+		<attribute name="date_begin" type="dateTime" use="required"/>
+		<attribute name="date_end" type="dateTime" use="required"/>
+		<attribute name="treatment_days" type="duration" use="required"/>
+		<attribute name="respiration_time" type="duration"/>
+		<attribute name="admission_weight" type="double"/>
+		<attribute name="grouper" type="mcd:stringType1_35" use="required"/>
+		<attribute name="acid" type="mcd:stringType1_35"/>
+	</complexType>
+	
+	<complexType name="grouperDataType">
+		<attribute name="number" type="mcd:stringType1_3" use="required"/>
+		<attribute name="name" type="mcd:stringType1_64" use="required"/>
+	</complexType>
+
+	<complexType name="bfsDataType">
+		<attribute name="code" type="mcd:stringType1_3" use="required"/>
+		<attribute name="name" type="mcd:stringType1_64" use="required"/>
+	</complexType>
+
+	<complexType name="diagnosisType">
+		<attribute name="diagnosis_id" use="required">
+			<simpleType>
+				<restriction base="int">
+					<minInclusive value="1"/>
+					<maxInclusive value="999999999"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="code" type="mcd:stringType1_12" use="required"/>
+		<attribute name="name" type="mcd:stringType1_350" use="required"/>
+		<attribute name="catalog" type="mcd:stringType1_35" use="required"/>
+		<attribute name="remark" type="mcd:stringType1_350"/>
+	</complexType>
+
+	<complexType name="procedureType">
+		<attribute name="procedure_id" use="required">
+			<simpleType>
+				<restriction base="int">
+					<minInclusive value="1"/>
+					<maxInclusive value="999999999"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="code" type="mcd:stringType1_12" use="required"/>
+		<attribute name="name" type="mcd:stringType1_350" use="required"/>
+		<attribute name="catalog" type="mcd:stringType1_35" use="required"/>
+		<attribute name="side">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="both"/>
+					<enumeration value="left"/>
+					<enumeration value="right"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="date" type="dateTime"/>
+		<attribute name="remark" type="mcd:stringType1_350"/>
+	</complexType>
+
+<!-- =======================================================================
+	processing definitions (might be expanded by intermediates)
+ ======================================================================= -->
+	<complexType name="processingType">
+		<sequence>
+			<element name="transport" type="mcd:transportType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="transportType">
+		<sequence>
+			<element name="via" maxOccurs="unbounded">
+				<complexType>
+					<attribute name="via" type="mcd:eanPartyType" use="required"/>
+					<attribute name="sequence_id" type="unsignedShort" use="required"/>
+				</complexType>
+			</element>
+		</sequence>
+		<attribute name="from" type="mcd:eanPartyType" use="required"/>
+		<attribute name="to" type="mcd:eanPartyType" use="required"/>
+	</complexType>
+	
+<!-- =======================================================================
+	prolog: data type definitions for producing a chain of involved software
+ ======================================================================= -->
+	<complexType name="prologType">
+		<sequence>
+			<element name="package" type="mcd:softwareType" minOccurs="0"/>
+			<element name="generator" type="mcd:softwareType"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="softwareType">
+		<sequence>
+			<element name="depends_on" type="mcd:dependsOnType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+		<attribute name="name" type="mcd:stringType1_50" use="required"/>
+		<attribute name="copyright" type="mcd:stringType1_50"/>
+		<attribute name="description" type="mcd:stringType1_50"/>
+		<attribute name="version" type="unsignedInt"/>
+		<attribute name="id" type="unsignedInt" default="0"/>
+	</complexType>
+
+	<complexType name="dependsOnType">
+		<attribute name="name" type="mcd:stringType1_50" use="required"/>
+		<attribute name="copyright" type="mcd:stringType1_50"/>
+		<attribute name="description" type="mcd:stringType1_50"/>
+		<attribute name="version" type="unsignedInt"/>
+		<attribute name="id" type="unsignedInt" default="0"/>
+	</complexType>
+
+<!-- =======================================================================
+	invoice object: definition for defining/referencing an invoice
+ ======================================================================= -->
+	<complexType name="invoiceType">
+		<attribute name="request_timestamp" type="unsignedLong" use="required"/>
+		<attribute name="request_date" type="dateTime" use="required"/>
+		<attribute name="request_id" type="mcd:stringType1_35" use="required"/>
+	</complexType>
+
+<!-- =======================================================================
+	mcd object: definition for defining/referencing the MCD itself
+ ======================================================================= -->
+	<complexType name="mcdType">
+		<attribute name="request_timestamp" type="unsignedLong" use="required"/>
+		<attribute name="request_date" type="dateTime" use="required"/>
+		<attribute name="request_id" type="mcd:stringType1_35" use="required"/>
+	</complexType>
+		
+<!-- =======================================================================
+	body definition with all sensitive data regarding data privacy
+	This element and subelements therein can be encrypted 
+ ======================================================================= -->
+	<complexType name="bodyType">
+		<sequence>
+			<element name="prolog" type="mcd:prologType"/>
+			<element name="remark" type="mcd:stringType1_350" minOccurs="0"/>
+			<element name="biller" type="mcd:billerAddressType"/>
+			<element name="provider" type="mcd:providerAddressType"/>
+			<element name="insurance" type="mcd:insuranceAddressType"/>
+			<element name="patient" type="mcd:patientAddressType"/>
+			<element name="record_drg" type="mcd:recordDRGType" maxOccurs="unbounded"/>
+			<element name="documents" type="mcd:documentsType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	
+<!-- =======================================================================
+	payload definitions with the chain of object references (invoice and mcd) 
+	plus the sensitive data regarding data privacy.
+	This element and subelements therein can be signed
+ ======================================================================= -->
+	<complexType name="payloadType">
+		<sequence>
+			<element name="invoice" type="mcd:invoiceType"/>
+			<element name="mcd" type="mcd:mcdType"/>
+			<choice>
+				<element name="body" type="mcd:bodyType"/>
+				<element ref="xenc:EncryptedData"/>
+			</choice>
+		</sequence>
+		<attribute name="storno" type="boolean" default="false"/>
+		<attribute name="copy" type="boolean" default="false"/>
+	</complexType>
+		
+<!-- =======================================================================
+     =======================================================================
+	Here starts the request with its root element
+ =======================================================================
+ ======================================================================= -->
+	<element name="request" type="mcd:requestType"/>
+
+
+	<complexType name="requestType">
+		<sequence>
+			<element name="processing" type="mcd:processingType"/>
+			<element name="payload" type="mcd:payloadType"/>
+			<element ref="ds:Signature" minOccurs="0"/>
+		</sequence>
+		<attribute name="language" use="required">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="de"/>
+					<enumeration value="fr"/>
+					<enumeration value="it"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="modus" default="production">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="production"/>
+					<enumeration value="test"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="validation_status" type="long"/>
+		<attribute name="is_confidential" type="boolean" use="required"/>
+	</complexType>
+</schema>

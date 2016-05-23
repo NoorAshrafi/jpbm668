@@ -1,0 +1,139 @@
+	BODY:before { content: "used css-file: styles_alternate.css"; }
+	INPUT:focus {background-color:#ffff99;} /* Versuch */
+
+
+<!-- created: 19991223 DHTMLui //-->
+<!-- hier sind die Grafiken positioniert //-->
+
+#sitemap {
+	position: absolute;
+	Z-index: 1;
+	left: 105px;
+	top: 160px;
+}
+
+#privatpersonen {
+	position: absolute;
+	Z-index: 2;
+	left: 298px;
+	top: 217px;
+}
+
+#firmen {
+	position: absolute;
+	Z-index: 3;
+	left: 235px;
+	top: 272px;
+}
+
+#zurich {
+	position: absolute;
+	Z-index: 4;
+	left: 495px;
+	top: 312px;
+}
+
+#wolken {
+	position: absolute;
+	Z-index: 1;
+	left: 0px;
+	top: 0px;
+}
+
+#logo {
+	position: absolute;
+	Z-index: 1;
+	left: 674px;
+	top: 23px;
+}
+
+#home {
+	position: absolute;
+	Z-index: 1;
+	left: 414px;
+	top: 233px;
+}
+
+<!-- jetzt kommen die Submenues //-->
+
+#menuesitemap {
+	position: absolute;
+	Z-index: 3;
+	left: 115px;
+	top: 223px;
+	width: 112px;
+	height: 160px;
+}
+
+#menueaktuelles {
+	position: absolute;
+	Z-index: 3;
+	left: 170px;
+	top: 120px;
+	width: 112px;
+	height: 50px;
+}
+
+#menueunternehmen {
+	position: absolute;
+	Z-index: 3;
+	left: 244px;
+	top: 311px;
+	width: 150px;
+	height: 100px;
+}
+
+#menueprivatpersonen {
+	position: absolute;
+	Z-index: 3;
+	left: 375px;
+	top: 70px;
+	width: 112px;
+	height: 100px;
+}
+
+#menuezurich {
+	position: absolute;
+	Z-index: 3;
+	left: 501px;
+	top: 348px;
+	width: 112px;
+	height: 60px;
+}
+
+<!-- und nun noch die Textformatierungen //-->
+
+.textsitemap {
+	font: 10pt/12pt Arial, Helv, Helvetica; 
+	color: #4D4DB9;
+	text-decoration: none;
+}
+
+.textsitemap2 {
+	font: 10pt/12pt Arial, Helv, Helvetica; 
+	color: #8C8CD9;
+	text-decoration: none;
+}
+
+.textunternehmen {
+	font: 10pt/12pt Arial, Helv, Helvetica; 
+	color: #FFCC00;
+	text-decoration: none;
+}
+
+.textprivatpersonen {
+	font: 10pt/12pt Arial, Helv, Helvetica; 
+	color: #FF0033;
+	text-decoration: none;
+}
+
+.textzurich {
+	font: 10pt/12pt Arial, Helv, Helvetica; 
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.legal { 
+	font: 8pt/8pt Arial, Helv, Helvetica;
+	color: #9999CC ; 
+}

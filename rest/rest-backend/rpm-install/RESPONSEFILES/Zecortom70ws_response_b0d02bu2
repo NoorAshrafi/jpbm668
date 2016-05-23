@@ -1,0 +1,9 @@
+s/##SERVER_PORT##/10040/g
+s/##HTTPS_PORT##/10443/g
+s/##NETWORK_IP##/172.28.212.204/g
+s/##PKCS12_PW##/bowmore/g
+s/##PKCS12_FILE##/\/app\/certs\/runtime\/certs\/b0d02bu2d.rz.ch.zurich.com.p12/g
+s/##TRUSTSTORE##/\/app\/certs\/runtime\/caLists\/truststore/g
+s/##TRUSTSTORE_PW##/omnisec/g
+s/##INSTALLUSER##/ecor/g
+

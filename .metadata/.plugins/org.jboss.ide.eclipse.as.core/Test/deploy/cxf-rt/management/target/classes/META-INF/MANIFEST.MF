@@ -1,0 +1,41 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385440389868
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF Runtime Management
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime Management
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-management
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.management.counters;version="2.7.9.SNAPSH
+ OT",org.apache.cxf.management.interceptor;version="2.7.9.SNAPSHOT",org.
+ apache.cxf.management.jmx;version="2.7.9.SNAPSHOT",org.apache.cxf.manag
+ ement.jmx.export.runtime;version="2.7.9.SNAPSHOT",org.apache.cxf.manage
+ ment.jmx.type;version="2.7.9.SNAPSHOT",org.apache.cxf.management.persis
+ tence;version="2.7.9.SNAPSHOT",org.apache.cxf.management.utils;version=
+ "2.7.9.SNAPSHOT"
+Implementation-Title: Apache CXF Runtime Management
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.annotation,javax.management,javax.management.model
+ mbean,javax.management.remote,javax.xml.bind,javax.xml.bind.annotation,
+ javax.xml.namespace,org.apache.cxf;version="[2.7,3)",org.apache.cxf.bus
+ ;version="[2.7,3)",org.apache.cxf.buslifecycle;version="[2.7,3)",org.ap
+ ache.cxf.common.injection;version="[2.7,3)",org.apache.cxf.common.loggi
+ ng;version="[2.7,3)",org.apache.cxf.endpoint;version="[2.7,3)",org.apac
+ he.cxf.feature;version="[2.7,3)",org.apache.cxf.helpers;version="[2.7,3
+ )",org.apache.cxf.interceptor;version="[2.7,3)",org.apache.cxf.io;versi
+ on="[2.7,3)",org.apache.cxf.management;version="[2.7,3)",org.apache.cxf
+ .management.annotation;version="[2.7,3)",org.apache.cxf.message;version
+ ="[2.7,3)",org.apache.cxf.phase;version="[2.7,3)",org.apache.cxf.servic
+ e;version="[2.7,3)",org.apache.cxf.service.model;version="[2.7,3)"
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime Management
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

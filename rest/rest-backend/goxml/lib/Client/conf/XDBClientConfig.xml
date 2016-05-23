@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<XDBClientConfig>
+<Servers>
+<Server name = "MyServer" host = "localhost" port = "1223" />
+</Servers>
+<!--<InstallType type="MonolithicCS" />-->
+<InstallType type="ClientServer"/>
+</XDBClientConfig>

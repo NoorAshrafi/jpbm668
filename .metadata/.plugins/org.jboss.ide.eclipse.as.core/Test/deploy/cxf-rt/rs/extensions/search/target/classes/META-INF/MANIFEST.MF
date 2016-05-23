@@ -1,0 +1,42 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385394798368
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF JAX-RS Extensions: Search
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF JAX-RS Extensions: Search
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-rs-extension-search
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.jaxrs.ext.search;version="2.7.9.SNAPSHOT"
+ ,org.apache.cxf.jaxrs.ext.search.client;version="2.7.9.SNAPSHOT",org.ap
+ ache.cxf.jaxrs.ext.search.collections;version="2.7.9.SNAPSHOT",org.apac
+ he.cxf.jaxrs.ext.search.fiql;version="2.7.9.SNAPSHOT",org.apache.cxf.ja
+ xrs.ext.search.jpa;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.ext.se
+ arch.ldap;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.ext.search.luce
+ ne;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.ext.search.sql;version
+ ="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.ext.search.visitor;version="2.7.
+ 9.SNAPSHOT"
+Implementation-Title: Apache CXF JAX-RS Extensions: Search
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.persistence;version="[2.0,3)";resolution:=optional
+ ,javax.persistence.criteria;version="[2.0,3)";resolution:=optional,java
+ x.persistence.metamodel;version="[2.0,3)";resolution:=optional,javax.ws
+ .rs.core;version="[2.0,3)",javax.ws.rs.ext;version="[2.0,3)",javax.xml.
+ datatype,org.apache.cxf.common.logging;version="[2.7,3)",org.apache.cxf
+ .common.util;version="[2.7,3)",org.apache.cxf.helpers;version="[2.7,3)"
+ ,org.apache.cxf.jaxrs.ext;version="[2.7,3)",org.apache.cxf.jaxrs.utils;
+ version="[2.7,3)",org.apache.cxf.message;version="[2.7,3)",org.apache.l
+ ucene.document;resolution:=optional,org.apache.lucene.index;resolution:
+ =optional,org.apache.lucene.search;resolution:=optional,org.apache.cxf.
+ jaxrs.impl.tl;version="[2.7,3)"
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF JAX-RS Extensions: Search
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

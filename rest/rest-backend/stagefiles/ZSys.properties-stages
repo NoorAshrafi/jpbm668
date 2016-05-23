@@ -1,0 +1,67 @@
+#
+# ZSys.properties ECOR backend
+#
+#
+com.zurich.chz.version=5.26a
+com.zurich.chz.dftLanguage=de
+com.zurich.chz.dftCountry=CH
+
+com.zurich.chz.db.driver=oracle.jdbc.driver.OracleDriver
+com.zurich.chz.db.url=##JDBC_URL##
+com.zurich.chz.db.userId=##DATABASE_USERNAME##
+com.zurich.chz.db.password=##DATABASE_PASSWORD##
+
+com.zurich.chz.cics.jgateUrl=##CICS_URL##
+com.zurich.chz.cics.server=##CICS_SERVER##
+com.zurich.chz.cics.userId=##CICS_USERID##
+com.zurich.chz.cics.password=##CICS_PASSWORD##
+
+com.zurich.chz.error.msg.basename=ELDAErrMessages
+com.zurich.chz.error.log=true
+
+com.zurich.chz.trace=##TRACE##
+com.zurich.chz.trace.sink=log
+com.zurich.chz.trace.format=complete
+
+com.zurich.chz.access.check.enabled=false
+
+com.zurich.chz.logPath=/app/ecor/container/logs
+com.zurich.chz.smokeLogPath=/app/ecor/container/logs
+
+com.zurich.chz.importexportPath=.
+
+com.zurich.chz.EldaFactory=EldaFactory
+
+com.zurich.chz.EANnummer=##EAN_NUMMER##
+
+# this Id will be used, if an invalid id comes from FP
+com.zurich.chz.Supervisor.MFDocus.NovellId=##MF_ADMIN_NOVID##
+
+# Be aware: This properties are set in elda and ecor
+com.zurich.chz.authorization.sadUserNovellId=##SAD_USER_NOV_ID##
+com.zurich.chz.authorization.sadUserRacfId=##SAD_USER_RACF_ID##
+
+// --- BVM Values ------- Be aware: Admin is set in elda and ecor ------------
+com.zurich.chz.bvm.specialServedAdmin.novellId=##BVM_SPEZIALDIENSTADMIN_NOVID##
+com.zurich.chz.bvm.specialServedAdminStv.novellId=##BVM_SPEZIALDIENSTADMIN_NOVID_STV##
+com.zurich.chz.bvm.SVVVAdmin.novellId=##BVM_SVVV_ADMIN_NOVID##
+com.zurich.chz.bvm.SVVVAdmin.mail=##BVM_SVVV_ADMIN_MAIL##
+
+// -- BVM DOK Management List
+com.zurich.chz.bvm.dokMgmt.vehiclehistory.faxnumber=##DOKMGMT_VEHICLEHIST_FAXNO##
+com.zurich.chz.bvm.dokMgmt.SDSFolderName=##DOKMGMT_SDSFOLDER##
+com.zurich.chz.bvm.dokMgmt.Templates=##DOKMGMT_REPORTTEMPLATES##
+com.zurich.chz.bvm.dokMgmt.OtherTemplates=##DOKMGMT_TEMPLATES##
+com.zurich.chz.bvm.dokMgmt.FaxStatusFolder=##DOKMGMT_FAXSTATUS##
+com.zurich.chz.bvm.dokMgmt.InputFileAdderss=##DOKMGMT_INPUTFILEADD##
+com.zurich.chz.bvm.dokMgmt.LogFileName=##DOKMGMT_LOGFILE##
+com.zurich.chz.bvm.dokMgmt.WordProcesserAddress=##DOKMGMT_WORDTOOLADD##
+
+
+# SUMEX 
+com.zurich.chz.sumex.folder.elda_out.initiate=/app/ecor/data/sumex/elda_out/claimSync/
+com.zurich.chz.sumex.folder.elda_in.checkResults=/app/ecor/data/sumex/elda_in/statusSync/
+com.zurich.chz.sumex.folder.elda_out.finalRep=/app/ecor/data/sumex/elda_out/statusSync/
+com.zurich.chz.sumex.schemas.ns.statusSync=http://www.zurich.ch/sumexii ./schemas/statusSync.xsd
+# for rw by sumex
+com.zurich.chz.schema.schemaPath=/app/ecor/container/webapps/ecor-app/WEB-INF/classes/schemas/

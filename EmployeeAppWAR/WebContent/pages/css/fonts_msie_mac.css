@@ -1,0 +1,91 @@
+
+    .title { font-family:arial, helvetica, univers, sans-serif; font-size:9pt; color:#ffffff; font-weight:600; }
+    .text { font-family:arial, helvetica, univers, sans-serif; font-size:9pt; color:#000000; }
+    .body { font-family:arial, helvetica, univers, sans-serif; font-size:9pt; color:#000066; }
+    .klein-rot { font-family:arial, helvetica, univers, sans-serif; font-size:9pt; color:#ff0000; }
+
+    input.xlarge { font-family:arial, helvetica, univers, sans-serif; font-size:9pt; width:500px; border-style:solid; border-width:1px; border-color:#000066;  }
+    input.large { font-family:arial, helvetica, univers, sans-serif; font-size:9pt; width:200px; border-style:solid; border-width:1px; border-color:#000066;  }
+	input.standard { font-family:arial, helvetica, univers, sans-serif; font-size:9pt; width:150px; border-style:solid; border-width:1px; border-color:#000066;  }
+    input.medium { font-family:arial, helvetica, univers, sans-serif; font-size:9pt; width:110px; border-style:solid; border-width:1px; border-color:#000066; }
+    input.middle { font-family:arial, helvetica, univers, sans-serif; font-size:9pt; width:100px; border-style:solid; border-width:1px; border-color:#000066; }
+    input.date { font-family:arial, helvetica, univers, sans-serif; font-size:9pt; width:70px; border-style:solid; border-width:1px; border-color:#000066; }
+    input.small { font-family:arial, helvetica, univers, sans-serif; font-size:9pt; width:40px; border-style:solid; border-width:1px; border-color:#000066; }
+    
+    select.select {font-family:arial, helvetica, univers, sans-serif; font-size:9pt; border-style:solid; border-width:1px; border-color:#000066; }
+    
+    input.radio { background:#ced6e9; }
+    
+    textarea.area { font-family:arial, helvetica, univers, sans-serif; font-size:9pt; width:500px; border-style:solid; border-width:1px; border-color:#000066; }
+    textarea.sarea { font-family:arial, helvetica, univers, sans-serif; font-size:9pt; width:300px; border-style:solid; border-width:1px; border-color:#000066; }
+    
+    td.caption { vertical-align:top; border-width:0px; border-style:solid; font-family:arial, helvetica, univers, sans-serif; font-size:8pt; }
+    
+    td.space { vertical-align:top; border-width:0px; width:10px; border-style:solid; }
+    td.tdXX  { vertical-align:top; border-width:2px; border-style:inset; background-color:#CED6E9; font-family:arial, helvetica, univers, sans-serif; font-size:9pt; empty-cells:show;}
+    td.td50  { vertical-align:top; border-width:2px; width:50px; border-style:inset; background-color:#CED6E9; font-family:arial, helvetica, univers, sans-serif; font-size:9pt; empty-cells:show;}
+    td.td100 { vertical-align:top; border-width:2px; width:100px; border-style:inset; background-color:#CED6E9; font-family:arial, helvetica, univers, sans-serif; font-size:9pt; border-collapse:separate; empty-cells:show;}
+    td.td150 { vertical-align:top; border-width:2px; width:150px; border-style:inset; background-color:#CED6E9; font-family:arial, helvetica, univers, sans-serif; font-size:9pt; border-collapse:separate; empty-cells:show;}
+    td.td200 { vertical-align:top; border-width:2px; width:200px; border-style:inset; background-color:#CED6E9; font-family:arial, helvetica, univers, sans-serif; font-size:9pt; border-collapse:separate; empty-cells:show;}
+    .output { border:1px #808080 solid; padding-left:1px; padding-right:1px;  vertical-align:top; font-size:8pt; }
+    .data { border-collapse:collapse; empty-cells:show; border-spacing:1px; background-color="#ced6e9"; font-family:arial, helvetica, univers, sans-serif; font-size:9pt; }
+    
+        .spacing1 { height:5px;  }
+    .spacing2 { height:10px; }
+    .spacing3 { height:15px; }
+    .spacing4 { height:20px; }
+    .spacing5 { height:25px; }
+        
+    .w30  { width:30px;  height:0px; }
+    .w50  { width:50px;  height:0px; }
+    .w70  { width:70px;  height:0px; }    
+    .w100 { width:100px; height:0px; }
+    .w120 { width:120px; height:0px; }
+    .w130 { width:130px; height:0px; }
+    .w150 { width:150px; height:0px; }
+    .w200 { width:200px; height:0px; } 
+    .w520 { width:540px; height:0px; }       
+    
+    /* start for p2000 */
+    .activeTab {
+        Font-Family: Arial;
+        Font-Size  : 12px;
+        Font-Weight: Bold;
+        Background-Color: #ced6e9;
+        Border-Top:   1px solid #000000;
+        Border-Left:  1px solid #000000;
+        Border-Right: 1px solid #000000;
+    }
+    .inactiveTab {
+        Font-Family: Arial;
+        Font-Size  : 12px;
+        Font-Weight: Boldx;
+        Background-Color: #C0C0C0;
+        Border     : 1px solid #000000;
+    }
+    .tabContent {
+        Font-Family: Arial;
+        Font-Size  : 12px;
+        Font-Weight: Boldx;
+        Background-Color: #ced6e9;
+        Border-Left:  1px solid #000000;
+        Border-Right: 1px solid #000000;
+        Border-Bottom:   1px solid #000000;
+    }
+    
+   a:link { COLOR: #003399 }
+   a:active { COLOR: #003399; FONT-SIZE: 9pt; Font-Weight: Bold }
+   a:visited { COLOR: #003399 }
+   a { TEXT-DECORATION: none }
+
+   .heading { font-family:arial, helvetica, univers, sans-serif; font-size:8pt; color:#000000; font-weight:600; }	
+   /* end for p2000 */
+
+    /* added for Swiss Apps changes WO */
+   h1 {
+		Color:#000066;
+		Font-Family:Arial,Helvetica,sans-serif;
+		Font-Size:140%;
+		Font-Weight:normal;
+		Margin: 0px;
+   }

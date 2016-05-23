@@ -1,0 +1,27 @@
+#!/bin/sh
+PATH=/bin:.
+
+echo "step 1"
+
+export PATH
+
+echo "step 2"
+
+LEER=`ls ##BASEDIR##/##OWNER##/data/export/`
+
+echo "step 3"
+
+if [ -z "$LEER" ]
+then
+        echo `date`     "No files found" >> ##BASEDIR##/##OWNER##/container/logs/Medi.log
+        echo "step 4"
+        exit 1
+else
+
+/usr/bin/scp ##BASEDIR##/##OWNER##/data/export/* ##MEDIPORT_USER##@##MEDIPORT_SERVER##:MPGateway/mpgw/sendMP && mv ##BASEDIR##/##OWNER##/data/export/* ##BASEDIR##/##OWNER##/data/export_archive
+
+fi
+
+echo "step 5"
+
+exit

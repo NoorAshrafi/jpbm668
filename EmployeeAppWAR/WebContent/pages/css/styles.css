@@ -1,0 +1,297 @@
+	BODY:before { content: "used css-file: styles.css"; }
+	INPUT:focus {background-color:#ffff99;} /* Versuch */
+
+
+
+A:Hover {
+	color: #9999CC ; /* zuri-blue */
+	text-decoration: none;
+}
+
+.contact {
+	font: bold 11pt Arial, Helvetica; 
+	color: #000099 ; 
+	text-decoration: none;
+	}
+
+.klein-navi { 
+	font: 8pt/9pt Arial, Helvetica;
+	color: #000066 ; 
+	text-decoration: none;
+}
+
+.klein { 
+	font: 8pt Arial, Helvetica;
+	color: #000066 ; 
+	text-decoration: none;
+}
+
+.kleinwhite { 
+	font: 8pt Arial, Helvetica;
+	color: #ffffff ; 
+	text-decoration: none;
+}
+
+.kleinwhite-bold { 
+	font: bold 8pt Arial,Helvetica,Univers,sans-serif;
+	color: #ffffff ; 
+	FONT-WEIGHT:   600;
+	text-decoration: none;
+}
+
+.legal { 
+	font: 8pt/8pt Arial, Helvetica;
+	color: #9999CC ; 
+}
+
+.klein-rot { 
+	font: 8pt Arial, Helvetica; 
+	color: #ff0000 ; 
+	text-decoration: none ;
+}
+
+.kleinbold { 
+	font: bold 8pt Arial, Helvetica; 
+	color: #000066 ; 
+	text-decoration: none;
+}
+
+.mittel {
+	font: 10pt Arial, Helvetica; 
+	color: #000066 ; 
+	text-decoration: none;
+}
+
+.hellblau {
+	font: 10pt Arial, Helvetica;
+	color: #9999CC ;
+	text-decoration: none;
+}
+
+.mittelbold {
+	font: bold 10pt Arial, Helvetica; 
+	color: #000066 ; 
+	text-decoration: none;
+}
+
+.mittelwhite {
+	font: bold 10pt Arial, Helvetica; 
+	color: #ffffff ; 
+	text-decoration: none;
+}
+
+.gross {
+	font: bold 13pt  Arial, Helvetica;  
+	color: #000066 ; 
+	text-decoration: none;
+}
+
+.xgross {
+	font: 16pt Times, Times New Roman; 
+	color: #000066 ; 
+	text-decoration: none;
+}
+
+.home-klein { 
+	font: 9pt Arial, Helvetica; 
+	color: #9999ff; 
+	text-decoration: none;
+}
+
+.home-fuerunternehmen { 
+	font: bold 9pt Arial, Helvetica; 
+	color: #FFCC33; 
+	text-decoration: none; 
+}
+
+.home-fuerprivatpersonen { 
+	font: bold 9pt Arial, Helvetica; 
+	color: #FF0000; 
+	text-decoration: none ;
+	
+}
+
+.home-diezuerich { 
+	font: bold 9pt Arial, Helvetica; 
+	color: #ffffff; 
+	text-decoration: none ;
+}
+
+
+.home-zurichinvestbank { 
+	font: bold 9pt Arial, Helvetica; 
+	color: #FFFFFF; 
+	text-decoration: none; 
+}
+
+.feature-headline { 
+	font: bold 12pt Times New Roman; 
+	color: #FFFFFF; 
+	text-decoration: none; 
+}
+
+.feature-text { 
+	font: 10pt Arial, Helvetica; 
+	color: #FFFFFF; 
+	text-decoration: none ;
+}
+
+.fussnote {
+	font: 8pt Arial, Helvetica; 
+	color: #000066 ; 
+	text-decoration: none;
+}
+
+a:hover {
+	color: #9999cc
+}
+
+b {
+	font-weight: bold;
+}
+
+i {
+	font-style: italic;
+}
+
+font { 
+	font: 8pt Arial, Helvetica; 
+	color: #000066 ; 
+	text-decoration: none;
+}
+
+
+/* ab hier alles fuer die homepage */
+
+/* hier sind die Grafiken positioniert */
+#privatpersonen {
+	position: absolute;
+	Z-index: 5;
+	left: 110px;
+	top: 215px;
+	visibility: visible;
+}
+
+#firmen {
+	position: absolute;
+	Z-index: 4;
+	left: 107px;
+	top: 265px;
+	visibility: visible;
+}
+
+#zurich {
+	position: absolute;
+	Z-index: 3;
+	left: 475px;
+	top: 291px;
+	visibility: visible;
+}
+
+#wolken {
+	position: absolute;
+	Z-index: 1;
+	left: 0px;
+	top: 0px;
+	visibility: visible;
+}
+
+#logo {
+	position: absolute;
+	Z-index: 1;
+	left: 673px;
+	top: 0px;
+	visibility: visible;
+}
+
+#home {
+	position: absolute;
+	Z-index: 1;
+	left: 340px;
+	top: 223px;
+	visibility: visible;
+}
+
+#legal {
+	position: absolute;
+	Z-index: 1;
+	left: 169px;
+	top: 420px;
+	width:543px;
+	height:35px;
+	visibility: visible;
+}
+
+/* jetzt kommen die Submenues */
+#menuesitemap {
+	position: absolute;
+	Z-index: 9;
+	left: 496px;
+	top: 142px;
+	width: 181px;
+	height: 115px;
+	visibility: visible;
+}
+
+#subnavi4 {
+	position: absolute;
+	Z-index: 9;
+	left: 593px;
+	top: 232px;
+	width: 112px;
+	height: 50px;
+	visibility: hidden;
+}
+
+/* und nun noch die Textformatierungen */
+.textsitemap {
+	font: 10pt/12pt Arial, Helvetica; 
+	color: #8C8CD9;
+	text-decoration: none;
+}
+
+.textsitemap2 {
+	font: 10pt/12pt Arial, Helvetica; 
+	color: #8C8CD9;
+	text-decoration: none;
+}
+
+.textfirmen {
+	font: 10pt/12pt Arial, Helvetica; 
+	color: #FFCC00;
+	text-decoration: none;
+}
+
+.textprivatpersonen {
+	font: 10pt/12pt Arial, Helvetica; 
+	color: #FF0033;
+	text-decoration: none;
+}
+
+.textzurich {
+	font: 10pt/12pt Arial, Helvetica; 
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.zh-radio {
+	background-color:#CCCCFF;
+}
+
+.TabelleHell {
+	 background-color:#CCCCFF;
+}
+
+.copytextBold {
+	font: 8pt Arial, Helvetica;
+	font-weight: bold;
+	color: #000099 ; 
+	text-decoration: none;
+}
+
+.headline { 
+	font: 8pt Arial, Helvetica;
+	font-weight: bold;
+	color: #FFFFFF ; 
+	text-decoration: none;
+}

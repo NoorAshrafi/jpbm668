@@ -1,0 +1,100 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385436884557
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Blueprint: OSGI-INF/blueprint/cxf-jaxws.xml
+Bundle-Description: Apache CXF Runtime JAX-WS Frontend
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime JAX-WS Frontend
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-frontend-jaxws
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.jaxws;version="2.7.9.SNAPSHOT",org.apache
+ .cxf.jaxws.binding;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxws.bindin
+ g.http;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxws.binding.soap;versi
+ on="2.7.9.SNAPSHOT",org.apache.cxf.jaxws.blueprint;version="2.7.9.SNAPS
+ HOT",org.apache.cxf.jaxws.context;version="2.7.9.SNAPSHOT",org.apache.c
+ xf.jaxws.endpoint.dynamic;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxws
+ .handler;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxws.handler.logical;
+ version="2.7.9.SNAPSHOT",org.apache.cxf.jaxws.handler.soap;version="2.7
+ .9.SNAPSHOT",org.apache.cxf.jaxws.interceptors;version="2.7.9.SNAPSHOT"
+ ,org.apache.cxf.jaxws.javaee;version="2.7.9.SNAPSHOT",org.apache.cxf.ja
+ xws.spi;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxws.spring;version="2
+ .7.9.SNAPSHOT",org.apache.cxf.jaxws.support;version="2.7.9.SNAPSHOT"
+Export-Service: org.apache.aries.blueprint.NamespaceHandler;osgi.service
+ .blueprint.namespace="http://cxf.apache.org/blueprint/jaxws"
+Implementation-Title: Apache CXF Runtime JAX-WS Frontend
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.servlet;version="[0.0,4)";resolution:=optional,jav
+ ax.servlet.http;version="[0.0,4)";resolution:=optional,org.apache.aries
+ .blueprint;version="[0.3,2)";resolution:=optional,org.apache.aries.blue
+ print.mutable;version="[0.3,2)";resolution:=optional,javax.xml.ws;versi
+ on="[0.0,3)",javax.xml.ws.handler;version="[0.0,3)",javax.xml.ws.handle
+ r.soap;version="[0.0,3)",javax.xml.ws.http;version="[0.0,3)",javax.xml.
+ ws.soap;version="[0.0,3)",javax.xml.ws.spi;version="[0.0,3)",javax.xml.
+ ws.wsaddressing;version="[0.0,3)",org.springframework.beans;resolution:
+ =optional;version="[2.5,4)",org.springframework.beans.factory;resolutio
+ n:=optional;version="[2.5,4)",org.springframework.beans.factory.config;
+ resolution:=optional;version="[2.5,4)",org.springframework.beans.factor
+ y.support;resolution:=optional;version="[2.5,4)",org.springframework.be
+ ans.factory.xml;resolution:=optional;version="[2.5,4)",org.springframew
+ ork.context;resolution:=optional;version="[2.5,4)",org.springframework.
+ context.annotation;resolution:=optional;version="[2.5,4)",org.springfra
+ mework.web.context;resolution:=optional;version="[2.5,4)",org.springfra
+ mework.web.servlet;resolution:=optional;version="[2.5,4)",org.springfra
+ mework.web.servlet.handler;resolution:=optional;version="[2.5,4)",org.s
+ pringframework.web.servlet.mvc;resolution:=optional;version="[2.5,4)",j
+ avax.activation,javax.annotation,javax.imageio,javax.imageio.stream,jav
+ ax.jws,javax.jws.soap,javax.wsdl,javax.wsdl.extensions,javax.wsdl.exten
+ sions.soap,javax.wsdl.extensions.soap12,javax.xml.bind,javax.xml.bind.a
+ nnotation,javax.xml.bind.annotation.adapters,javax.xml.namespace,javax.
+ xml.parsers,javax.xml.soap,javax.xml.stream,javax.xml.transform,javax.x
+ ml.transform.dom,javax.xml.transform.sax,javax.xml.transform.stream,org
+ .apache.commons.logging;resolution:=optional,org.apache.cxf;version="[2
+ .7,3)",org.apache.cxf.annotations;version="[2.7,3)",org.apache.cxf.atta
+ chment;version="[2.7,3)",org.apache.cxf.binding;version="[2.7,3)",org.a
+ pache.cxf.binding.soap;version="[2.7,3)",org.apache.cxf.binding.soap.in
+ terceptor;version="[2.7,3)",org.apache.cxf.binding.soap.model;version="
+ [2.7,3)",org.apache.cxf.binding.soap.saaj;version="[2.7,3)",org.apache.
+ cxf.binding.soap.wsdl.extensions;version="[2.7,3)",org.apache.cxf.bindi
+ ng.xml;version="[2.7,3)",org.apache.cxf.bus;version="[2.7,3)",org.apach
+ e.cxf.bus.spring;version="[2.7,3)",org.apache.cxf.common;version="[2.7,
+ 3)",org.apache.cxf.common.classloader;version="[2.7,3)",org.apache.cxf.
+ common.i18n;version="[2.7,3)",org.apache.cxf.common.injection;version="
+ [2.7,3)",org.apache.cxf.common.jaxb;version="[2.7,3)",org.apache.cxf.co
+ mmon.logging;version="[2.7,3)",org.apache.cxf.common.util;version="[2.7
+ ,3)",org.apache.cxf.configuration;version="[2.7,3)",org.apache.cxf.conf
+ iguration.blueprint;version="[2.7,3)",org.apache.cxf.configuration.secu
+ rity;version="[2.7,3)",org.apache.cxf.configuration.spring;version="[2.
+ 7,3)",org.apache.cxf.continuations;version="[2.7,3)",org.apache.cxf.dat
+ abinding;version="[2.7,3)",org.apache.cxf.databinding.source;version="[
+ 2.7,3)",org.apache.cxf.endpoint;version="[2.7,3)",org.apache.cxf.endpoi
+ nt.dynamic;version="[2.7,3)",org.apache.cxf.feature;version="[2.7,3)",o
+ rg.apache.cxf.frontend;version="[2.7,3)",org.apache.cxf.frontend.bluepr
+ int;version="[2.7,3)",org.apache.cxf.frontend.spring;version="[2.7,3)",
+ org.apache.cxf.headers;version="[2.7,3)",org.apache.cxf.helpers;version
+ ="[2.7,3)",org.apache.cxf.interceptor;version="[2.7,3)",org.apache.cxf.
+ io;version="[2.7,3)",org.apache.cxf.jaxb;version="[2.7,3)",org.apache.c
+ xf.message;version="[2.7,3)",org.apache.cxf.phase;version="[2.7,3)",org
+ .apache.cxf.resource;version="[2.7,3)",org.apache.cxf.security;version=
+ "[2.7,3)",org.apache.cxf.service;version="[2.7,3)",org.apache.cxf.servi
+ ce.factory;version="[2.7,3)",org.apache.cxf.service.invoker;version="[2
+ .7,3)",org.apache.cxf.service.model;version="[2.7,3)",org.apache.cxf.st
+ axutils;version="[2.7,3)",org.apache.cxf.transport;version="[2.7,3)",or
+ g.apache.cxf.ws.addressing;version="[2.7,3)",org.apache.cxf.wsdl;versio
+ n="[2.7,3)",org.apache.cxf.wsdl.http;version="[2.7,3)",org.apache.cxf.w
+ sdl11;version="[2.7,3)",org.osgi.service.blueprint;version="[1.0.0,2.0.
+ 0)";resolution:=optional,org.osgi.service.blueprint.container;version="
+ [1.0,2)";resolution:=optional,org.osgi.service.blueprint.reflect;versio
+ n="[1.0,2)";resolution:=optional,org.w3c.dom,javax.xml.ws.spi.http;vers
+ ion="[0.0,3)";resolution:=optional
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime JAX-WS Frontend
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

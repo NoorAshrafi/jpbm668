@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="jbpm6-example">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <property name="context-root" value="jbpm6-example"/>
+        <property name="java-output-path" value="/jbpm6-example/target/classes"/>
+    </wb-module>
+</project-modules>

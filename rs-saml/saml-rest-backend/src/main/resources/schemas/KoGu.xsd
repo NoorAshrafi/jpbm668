@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by ikw (Zürch Schweiz) -->
+<xsd:schema targetNamespace="file:KoGu.xsd" xmlns:KoGu="file:KoGu.xsd" xmlns:ZBase="file:ZBase.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.01">
+	<xsd:import namespace="file:ZBase.xsd" schemaLocation="ZBase.xsd"/>
+	<xsd:complexType name="KoGuType">
+		<xsd:sequence>
+			<xsd:element name="Key" type="ZBase:KeyType" minOccurs="0"/>
+			<xsd:element name="Leistungserbringer" type="KoGu:LeistungserbringerType"/>
+			<xsd:element name="Arbeitgeber" type="KoGu:ArbeitgeberType"/>
+			<xsd:element name="Verletzter" type="KoGu:VerletzterType"/>
+			<xsd:element name="Referenzen" type="KoGu:ReferenzenType"/>
+			<xsd:element name="Aerzte" type="KoGu:ArztenType" minOccurs="0"/>
+			<xsd:element name="Kontakt" type="ZBase:KontaktType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--primary types-->
+	<xsd:complexType name="ArbeitgeberType">
+		<xsd:sequence>
+			<xsd:element name="Firma">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Name" type="ZBase:NameType"/>
+						<xsd:element name="Nummer" type="ZBase:FirmenNummerType" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Adresse" type="KoGu:FirmenadressType"/>
+			<xsd:element name="PolicenNummer" type="ZBase:PolicenNummerType" minOccurs="0"/>
+			<xsd:element name="MeldungsNummer" type="ZBase:MeldungsNummerType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ArztenType">
+		<xsd:sequence>
+			<xsd:element name="ErstbehandelnderArzt" type="ZBase:ArztType" minOccurs="0"/>
+			<xsd:element name="NachbehandelnderArzt" type="ZBase:ArztType" minOccurs="0"/>
+			<xsd:element name="Operateur" type="ZBase:String80Type" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LeistungserbringerType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="ZBase:NameType"/>
+			<xsd:element name="Nummer" type="ZBase:FirmenNummerType"/>
+			<xsd:element name="Adresse" type="ZBase:PostadressType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ReferenzenType">
+		<xsd:sequence>
+			<xsd:element name="ReferenzNummer" type="ZBase:String40Type" minOccurs="0"/>
+			<xsd:element name="HospitalisationsDatum" type="xsd:date"/>
+			<xsd:element name="HospitalisierteAbteilung" type="ZBase:AbteilungType"/>
+			<xsd:element name="HospitalisationsGrund" type="ZBase:HospitalisationsgrundType"/>
+			<xsd:element name="HospitalAustrittsdatum" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="Unfalldatum" type="xsd:date"/>
+			<xsd:element name="Rueckfall" type="xsd:boolean"/>
+			<xsd:element name="REHAOrt" type="ZBase:String40Type" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="VerletzterType">
+		<xsd:sequence>
+			<xsd:element name="Person" type="KoGu:PersonType"/>
+			<xsd:element name="Adresse" type="ZBase:PostadressType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--secondary types-->
+	<xsd:complexType name="FirmenadressType">
+		<xsd:sequence>
+			<xsd:element name="Strasse" type="ZBase:NameType" minOccurs="0"/>
+			<xsd:element name="Nummer" type="ZBase:NameType" minOccurs="0"/>
+			<xsd:element name="PLZ" type="ZBase:PLZType" minOccurs="0"/>
+			<xsd:element name="Ort" type="ZBase:NameType"/>
+			<xsd:element name="Land" type="ZBase:LandType" minOccurs="0"/>
+			<xsd:element name="Telefon" type="ZBase:String40Type" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PersonType">
+		<xsd:sequence>
+			<xsd:element name="Geschlecht" type="ZBase:GeschlechtType"/>
+			<xsd:element name="FamilienName" type="ZBase:NameType"/>
+			<xsd:element name="VorName" type="ZBase:NameType"/>
+			<xsd:element name="Geburtstag" type="xsd:date"/>
+			<xsd:element name="Nationalitaet" type="ZBase:LandType"/>
+			<xsd:element name="Zivilstand" type="ZBase:ZivilstandType"/>
+			<xsd:element name="AHVNummer" type="ZBase:AHVNummerType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

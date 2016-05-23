@@ -1,0 +1,102 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385440306261
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Blueprint: OSGI-INF/blueprint/cxf-jaxrs.xml
+Bundle-Description: Apache CXF Runtime JAX-RS Frontend
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime JAX-RS Frontend
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-frontend-jaxrs
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.jaxrs;version="2.7.9.SNAPSHOT",org.apache
+ .cxf.jaxrs.blueprint;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.clie
+ nt;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.client.spec;version="2
+ .7.9.SNAPSHOT",org.apache.cxf.jaxrs.ext;version="2.7.9.SNAPSHOT",org.ap
+ ache.cxf.jaxrs.ext.form;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.e
+ xt.multipart;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.ext.xml;vers
+ ion="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.impl;version="2.7.9.SNAPSHOT"
+ ,org.apache.cxf.jaxrs.impl.tl;version="2.7.9.SNAPSHOT",org.apache.cxf.j
+ axrs.interceptor;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.lifecycl
+ e;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.model;version="2.7.9.SN
+ APSHOT",org.apache.cxf.jaxrs.model.wadl;version="2.7.9.SNAPSHOT",org.ap
+ ache.cxf.jaxrs.provider;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.s
+ ecurity;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.servlet;version="
+ 2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.spring;version="2.7.9.SNAPSHOT",or
+ g.apache.cxf.jaxrs.swagger;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxr
+ s.utils;version="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.utils.multipart;v
+ ersion="2.7.9.SNAPSHOT",org.apache.cxf.jaxrs.utils.schemas;version="2.7
+ .9.SNAPSHOT"
+Export-Service: org.apache.aries.blueprint.NamespaceHandler;osgi.service
+ .blueprint.namespace="http://cxf.apache.org/blueprint/jaxrs"
+Implementation-Title: Apache CXF Runtime JAX-RS Frontend
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.servlet;version="[0.0,4)";resolution:=optional,jav
+ ax.servlet.descriptor;version="[0.0,4)";resolution:=optional,javax.serv
+ let.http;version="[0.0,4)";resolution:=optional,org.apache.aries.bluepr
+ int;version="[0.3,2)";resolution:=optional,org.apache.aries.blueprint.m
+ utable;version="[0.3,2)";resolution:=optional,org.springframework.beans
+ ;resolution:=optional;version="[2.5,4)",org.springframework.beans.facto
+ ry;resolution:=optional;version="[2.5,4)",org.springframework.beans.fac
+ tory.config;resolution:=optional;version="[2.5,4)",org.springframework.
+ beans.factory.support;resolution:=optional;version="[2.5,4)",org.spring
+ framework.beans.factory.xml;resolution:=optional;version="[2.5,4)",org.
+ springframework.context;resolution:=optional;version="[2.5,4)",javax.ws
+ .rs.client;version="[2.0,3)",javax.ws.rs;version="[1.0,3)",javax.ws.rs.
+ container;version="[1.0,3)",javax.ws.rs.core;version="[1.0,3)",javax.ws
+ .rs.ext;version="[1.0,3)",com.wordnik.swagger.jaxrs.config;resolution:=
+ optional,com.wordnik.swagger.jaxrs.listing;resolution:=optional,javax.a
+ ctivation,javax.annotation;resolution:=optional,javax.mail.internet;ver
+ sion="[1.4,2)",javax.security.auth,javax.security.auth.callback,javax.s
+ ecurity.auth.login,javax.xml.bind,javax.xml.bind.annotation,javax.xml.b
+ ind.annotation.adapters,javax.xml.bind.attachment,javax.xml.namespace,j
+ avax.xml.parsers;resolution:=optional,javax.xml.stream,javax.xml.stream
+ .events,javax.xml.transform;resolution:=optional,javax.xml.transform.do
+ m;resolution:=optional,javax.xml.transform.sax;resolution:=optional,jav
+ ax.xml.transform.stream;resolution:=optional,javax.xml.validation,javax
+ .xml.xpath,org.apache.cxf;version="[2.7,3)",org.apache.cxf.annotations;
+ version="[2.7,3)",org.apache.cxf.attachment;version="[2.7,3)",org.apach
+ e.cxf.binding;version="[2.7,3)",org.apache.cxf.binding.xml;version="[2.
+ 7,3)",org.apache.cxf.binding.xml.interceptor;version="[2.7,3)",org.apac
+ he.cxf.bus.spring;version="[2.7,3)",org.apache.cxf.catalog;version="[2.
+ 7,3)",org.apache.cxf.common.classloader;version="[2.7,3)",org.apache.cx
+ f.common.i18n;version="[2.7,3)",org.apache.cxf.common.injection;version
+ ="[2.7,3)",org.apache.cxf.common.jaxb;version="[2.7,3)",org.apache.cxf.
+ common.logging;version="[2.7,3)",org.apache.cxf.common.security;version
+ ="[2.7,3)",org.apache.cxf.common.util;version="[2.7,3)",org.apache.cxf.
+ common.xmlschema;version="[2.7,3)",org.apache.cxf.configuration;version
+ ="[2.7,3)",org.apache.cxf.configuration.blueprint;version="[2.7,3)",org
+ .apache.cxf.configuration.security;version="[2.7,3)",org.apache.cxf.con
+ figuration.spring;version="[2.7,3)",org.apache.cxf.continuations;versio
+ n="[2.7,3)",org.apache.cxf.databinding;version="[2.7,3)",org.apache.cxf
+ .endpoint;version="[2.7,3)",org.apache.cxf.feature;version="[2.7,3)",or
+ g.apache.cxf.helpers;version="[2.7,3)",org.apache.cxf.interceptor;versi
+ on="[2.7,3)",org.apache.cxf.interceptor.security;version="[2.7,3)",org.
+ apache.cxf.io;version="[2.7,3)",org.apache.cxf.logging;version="[2.7,3)
+ ",org.apache.cxf.message;version="[2.7,3)",org.apache.cxf.phase;version
+ ="[2.7,3)",org.apache.cxf.resource;version="[2.7,3)",org.apache.cxf.sec
+ urity;version="[2.7,3)",org.apache.cxf.service;version="[2.7,3)",org.ap
+ ache.cxf.service.factory;version="[2.7,3)",org.apache.cxf.service.invok
+ er;version="[2.7,3)",org.apache.cxf.service.model;version="[2.7,3)",org
+ .apache.cxf.staxutils;version="[2.7,3)",org.apache.cxf.staxutils.transf
+ orm;version="[2.7,3)",org.apache.cxf.transport;version="[2.7,3)",org.ap
+ ache.cxf.transport.http;version="[2.7,3)",org.apache.cxf.transport.http
+ .auth;version="[2.7,3)",org.apache.cxf.transport.servlet;version="[2.7,
+ 3)",org.apache.cxf.transports.http.configuration;version="[2.7,3)",org.
+ apache.cxf.ws.addressing;version="[2.7,3)",org.apache.ws.commons.schema
+ ;version="[2.0,3)",org.ietf.jgss,org.osgi.service.blueprint;version="[1
+ .0.0,2.0.0)";resolution:=optional,org.osgi.service.blueprint.container;
+ version="[1.0,2)";resolution:=optional,org.osgi.service.blueprint.refle
+ ct;version="[1.0,2)";resolution:=optional,org.w3c.dom;resolution:=optio
+ nal,org.w3c.dom.ls,org.xml.sax;resolution:=optional,org.xml.sax.helpers
+ ;resolution:=optional
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime JAX-RS Frontend
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

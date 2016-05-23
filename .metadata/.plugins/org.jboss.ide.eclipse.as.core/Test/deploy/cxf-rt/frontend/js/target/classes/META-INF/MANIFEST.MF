@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1385440348893
+Build-Jdk: 1.6.0_26
+Built-By: pupperpelly
+Bundle-Description: Apache CXF Runtime JavaScript Frontend
+Bundle-DocURL: http://cxf.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache CXF Runtime JavaScript Frontend
+Bundle-SymbolicName: org.apache.cxf.cxf-rt-frontend-js
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.7.9.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.cxf.js.rhino;version="2.7.9.SNAPSHOT"
+Implementation-Title: Apache CXF Runtime JavaScript Frontend
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 2.7.9.SNAPSHOT
+Import-Package: javax.xml.namespace,javax.xml.transform.dom,javax.xml.ws
+ ,org.apache.cxf;version="[2.7,3)",org.apache.cxf.common.logging;version
+ ="[2.7,3)",org.apache.cxf.jaxws;version="[2.7,3)",org.mozilla.javascrip
+ t,org.mozilla.javascript.xml,org.mozilla.javascript.xmlimpl,org.w3c.dom
+Originally-Created-By: Maven Integration for Eclipse
+Specification-Title: Apache CXF Runtime JavaScript Frontend
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 2.7.9.SNAPSHOT
+Tool: Bnd-2.1.0.20130426-122213

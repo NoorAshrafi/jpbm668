@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XML Spy v4.0.1 U (http://www.xmlspy.com) by Tarmo Ploom (Zurich Versicherung) -->
+<xsd:schema targetNamespace="file:Message.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ktg="file:KTG.xsd" xmlns:kogu="file:KoGu.xsd" xmlns:bum="file:Bagatellunfallmeldung.xsd" xmlns:um="file:Unfallmeldung.xsd" xmlns:ZBase="file:ZBase.xsd" xmlns:message="file:Message.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02">
+	<xsd:import namespace="file:ZBase.xsd" schemaLocation="ZBase.xsd"/>
+	<xsd:import namespace="file:Unfallmeldung.xsd" schemaLocation="Unfallmeldung.xsd"/>
+	<xsd:import namespace="file:Bagatellunfallmeldung.xsd" schemaLocation="Bagatellunfallmeldung.xsd"/>
+	<xsd:import namespace="file:KoGu.xsd" schemaLocation="KoGu.xsd"/>
+	<xsd:import namespace="file:KTG.xsd" schemaLocation="KTG.xsd"/>
+	<xsd:element name="Message">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Header" type="ZBase:HeaderType"/>
+				<xsd:element name="Unfallmeldung" type="um:UnfallmeldungType" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="Bagatellunfallmeldung" type="bum:BagatellunfallmeldungType" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="KoGu" type="kogu:KoGuType" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="Krankentaggeld" type="ktg:KTGType" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

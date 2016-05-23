@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.zurich.ch/sumexii" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.zurich.ch/sumexii" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">This schema is used to synchronize the claim number of an invoice from ELDA to Sumex II. The invoice is referred by the filename of this sync file which has to match the claimSync_&lt;Sumex-ID&gt;_YYYYMMDD-HHMMSS.xml pattern.</xs:documentation>
+	</xs:annotation>
+	<xs:element name="claimSync" type="claimSyncType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Root element of the claim synchronization.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="claimType">
+		<xs:restriction base="xs:string">
+			<xs:length value="10"/>
+			<xs:pattern value="[0-9]{2}-[0-9]{3}\.[0-9]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="userType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The username of the user.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="userValueType">
+				<xs:attribute name="email" type="emailType" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Email address of the user.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="unit" type="unitType" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Organization unit of the user. This node is only written by ELDA. Expected values are: OST, MITTE, WEST, SUED, MAFAELLE, DIVERSE</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="userValueType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="emailType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="70"/>
+			<xs:minLength value="0"/>
+			<xs:pattern value=".+@.+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="unitType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="generatorType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ELDA"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="claimSyncType">
+		<xs:sequence>
+			<xs:element name="timestamp" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">File creation timestamp.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="generator" type="generatorType">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The system which generated the current file. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="claim" type="claimType">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The claim number. A correct claim number follows the pattern 99-999.999</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="user" type="userType">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The username of the user which verified the claim number.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
